@@ -1,62 +1,92 @@
-import React from "react";
-import {
-  useAuthState,
-  useSignInWithEmailAndPassword,
-  useSignInWithGoogle,
-} from "react-firebase-hooks/auth";
-
+import React, { FormEventHandler } from "react";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { useLocation, useNavigate } from "react-router-dom";
-import auth from "../../firebase.init";
+import { CgProfile } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 import SocalLogin from "./SocalLogin";
 import { useForm } from "react-hook-form";
-interface UserSubmitForm {
-  email: string;
-  password: string;
-}
-const Login = () => {
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
-  const [signInWithEmailAndPassword, users, loading, Logerror] =
-    useSignInWithEmailAndPassword(auth);
+import auth from "../../firebase.init";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+const SignUp: React.FC = () => {
   const [user, loadings, error] = useAuthState(auth);
+
+  const navigate = useNavigate();
+  type UserSubmitForm = {
+    name: string;
+    email: string;
+    password: string;
+  };
+
   const {
     register,
+    reset,
     formState: { errors },
     handleSubmit,
   } = useForm<UserSubmitForm>();
-  const navigate = useNavigate();
+  // create user hook
+  const [createUserWithEmailAndPassword, Cuser, loading, Cerror] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const [updateProfile, updating, Uerror] = useUpdateProfile(auth);
   const [signInWithGoogle, Guser, Gloading, Gerror] = useSignInWithGoogle(auth);
-  const onSubmit = (data: UserSubmitForm) => {
-    signInWithEmailAndPassword(data.email, data.password);
-    console.log(data);
+  const onSubmit = async (data: UserSubmitForm) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
   };
   let errorMessage;
-  if (error || Logerror) {
+  if (Cerror || Uerror) {
     errorMessage = (
       <p className="text-red-500">
-        {error?.message || Logerror?.message || Gerror?.message}
+        {Cerror?.message || Uerror?.message || Gerror?.message}
       </p>
     );
   }
   if (user || Guser) {
-    navigate(from, { replace: true });
+    navigate("/");
   }
   return (
     <div className="flex h-screen justify-center items-center px-4 ">
       <div className="card w-full lg:w-3/4 bg-base-100 shadow border">
-        <div className=" grid lg:grid-cols-2  grid-cols-1">
-          <div>
-            <img src="/assets/picture/Fingerprint-rafiki.svg" alt="" />
+        <div className=" grid lg:grid-cols-2  grid-cols-1 gap-10">
+          <div className="flex items-center">
+            <img src="/assets/picture/Reset password-pana.svg" alt="" />
           </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="lg:p-10 p-5">
-              <div className="text-center mt-5 ">
-                <h2 className="text-2xl font-medium ">Welcome Back!</h2>
-                <p className="mt-2 text-gray-700">Sign in to your Account</p>
-              </div>
+          <div className="lg:p-10 p-5">
+            <div className="text-center mt-5 ">
+              <h2 className="text-2xl font-medium ">Sign Up!</h2>
+              <p className="mt-2 text-gray-700">
+                Please fill in the from an Account!
+              </p>
+            </div>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="mt-5 h-14  relative">
+                <input
+                  {...register("name", {
+                    required: {
+                      value: true,
+                      message: "Name is Required",
+                    },
+                  })}
+                  className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                  placeholder="Enter Your Name"
+                  type="text"
+                />
+
+                <div className=" px-1 ">
+                  <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                </div>
+              </div>
+              <label className="">
+                {errors.name?.type === "required" && (
+                  <span className="text-red-500 ">{errors.name.message}</span>
+                )}
+              </label>
+              <div className="mt-3 h-14  relative">
                 <input
                   {...register("email", {
                     required: {
@@ -69,7 +99,7 @@ const Login = () => {
                     },
                   })}
                   className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
-                  placeholder="Enter Your username & email"
+                  placeholder="Enter Your Email"
                   type="email"
                 />
                 <div className=" px-1 ">
@@ -116,33 +146,31 @@ const Login = () => {
                   </span>
                 )}
               </label>
-              <p className="text-center my-1 text-blue-500">
-                Forgate Password?
-              </p>
+
               <div className="mt-5">
                 <input
-                  className="bg-red-500 cursor-pointer w-full rounded-full text-white h-12"
+                  className="bg-red-500 w-full rounded-full text-white h-12"
                   type="submit"
                   value="Sing in"
                 />
                 {errorMessage}
                 <SocalLogin signInWithGoogle={signInWithGoogle} />
                 <p className="text-center text-sm mt-3">
-                  Are You new?{" "}
+                  All Ready Sing up?{" "}
                   <span
                     className="text-blue-500"
-                    onClick={() => navigate("/signup")}
+                    onClick={() => navigate("/login")}
                   >
-                    Please Sing up
+                    Please Sing in
                   </span>
                 </p>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;
