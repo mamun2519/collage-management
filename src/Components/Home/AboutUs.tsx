@@ -3,8 +3,14 @@ import React from "react";
 const AboutUs = () => {
   return (
     <div className="my-20 max-w-7xl m-auto px-3 ">
-    
-     <h1 className="text-center text-3xl font-medium">ABOUT US</h1>
+     <div className="w-max mx-auto">
+      
+      <div className="border-b-2 rounded-full border-red-500 ">
+      <h1 className="text-4xl pb-2 text-center mt-10 px-12  font-medium uppercase">ABOUT US</h1>
+      </div>
+
+      </div>
+  
    
       <div className=" grid lg:grid-cols-2 grid-cols-1 gap-5  mt-10">
         <div className=" flex  items-center">

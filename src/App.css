@@ -3,7 +3,11 @@
 .App {
   text-align: center;
 }
+.allEvent:hover .goEvent{
+  opacity: 1;
+  pointer-events: auto;
 
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
