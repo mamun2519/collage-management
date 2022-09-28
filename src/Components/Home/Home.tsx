@@ -11,8 +11,9 @@ import Professor from './Professor';
 const Home = () => {
       return (
             <div>
-                  <Latesnewes/>
+                  
                   <Banner/>
+                  <Latesnewes/>
                   <AboutUs/>
                   <Professor/>
                   <Notice/>

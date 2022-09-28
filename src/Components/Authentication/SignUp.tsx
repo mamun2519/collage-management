@@ -12,6 +12,8 @@ import {
   useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
+import Loading from "../Shared/Loading";
+import axios from "axios";
 const SignUp: React.FC = () => {
   const [user, loadings, error] = useAuthState(auth);
 
@@ -37,6 +39,18 @@ const SignUp: React.FC = () => {
   const onSubmit = async (data: UserSubmitForm) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
+    axios
+      .post("http://localhost:5000/v1/user", {
+        name: data.name,
+        email: data.email,
+      })
+      .then((res: any): void => {
+        console.log(res);
+        localStorage.setItem("Token", res?.data?.token);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   let errorMessage;
   if (Cerror || Uerror) {
@@ -46,6 +60,24 @@ const SignUp: React.FC = () => {
       </p>
     );
   }
+  if (loading || loadings || Gloading) {
+    return <Loading />;
+  }
+  if (Guser) {
+    axios
+      .post("http://localhost:5000/v1/user", {
+        name: user?.displayName,
+        email: user?.email,
+      })
+      .then((res: any): void => {
+        console.log(res);
+        localStorage.setItem("Token", res?.data?.token);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   if (user || Guser) {
     navigate("/");
   }

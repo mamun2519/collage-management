@@ -4,13 +4,14 @@ import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
-
+import axios from "axios";
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocalLogin from "./SocalLogin";
 import { useForm } from "react-hook-form";
+import Loading from "../Shared/Loading";
 interface UserSubmitForm {
   email: string;
   password: string;
@@ -30,7 +31,17 @@ const Login = () => {
   const [signInWithGoogle, Guser, Gloading, Gerror] = useSignInWithGoogle(auth);
   const onSubmit = (data: UserSubmitForm) => {
     signInWithEmailAndPassword(data.email, data.password);
-    console.log(data);
+    axios
+      .post("http://localhost:5000/v1/user", {
+        email: data.email,
+      })
+      .then((res: any): void => {
+        console.log(res);
+        localStorage.setItem("Token", res?.data?.token);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   let errorMessage;
   if (error || Logerror) {
@@ -39,6 +50,23 @@ const Login = () => {
         {error?.message || Logerror?.message || Gerror?.message}
       </p>
     );
+  }
+  if (loading || loadings || Gloading) {
+    return <Loading />;
+  }
+  if (Guser) {
+    axios
+      .post("http://localhost:5000/v1/user", {
+        name: user?.displayName,
+        email: user?.email,
+      })
+      .then((res: any): void => {
+        console.log(res);
+        localStorage.setItem("Token", res?.data?.token);
+      })
+      .catch(function (er: any) {
+        console.log(er);
+      });
   }
   if (user || Guser) {
     navigate(from, { replace: true });

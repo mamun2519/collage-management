@@ -85,7 +85,7 @@ export const links = [
               { name: "Exam Routine", link: "/" },
               { name: "Result", link: "/" },
               { name: "Student Id card", link: "/" },
-              { name: "Online Admission", link: "/" },
+              { name: "Online Admission", link: "/onlineAdmission" },
             ],
           },
          
