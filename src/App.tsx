@@ -9,6 +9,8 @@ import Login from './Components/Authentication/Login';
 import SignUp from './Components/Authentication/SignUp';
 import Admission from './Components/Acadmic/Admission';
 import RequreAuth from './Components/Authentication/RequreAuth';
+import PersonalInfo from './Components/Acadmic/PersonalInfo';
+import AdmissonPreview from './Components/Acadmic/AdmissonPreview';
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
       <Route path='/login' element={<Login/>}></Route>
       <Route path='/signup' element={<SignUp/>}></Route>
       <Route path='/onlineAdmission' element={<RequreAuth><Admission/></RequreAuth>}></Route>
+      <Route path='/onlineAdmission/personalInfromation' element={<RequreAuth><PersonalInfo/></RequreAuth>}></Route>
+      <Route path='/onlineAdmission/personalInfromation/admissionPreview' element={<RequreAuth><AdmissonPreview/></RequreAuth>}></Route>
      </Routes>
     
     </div>

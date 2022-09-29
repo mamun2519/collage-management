@@ -4,7 +4,7 @@ import { CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
 const Admission = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [admission, setAdmission] = useState("");
   const [subjectList, setSubjectList] = useState("");
   type UserSubmitForm = {
@@ -15,11 +15,10 @@ const Admission = () => {
     department: string;
     class: string;
     session: string;
-    name:string
-    email: string;
-    password: string;
+    admissionFee: string;
+    
   };
-  console.log(admission);
+  console.log(admission );
 
   const {
     register,
@@ -71,7 +70,7 @@ const Admission = () => {
     { title: "Finance & Banking" },
     { title: "Marketing" },
     { title: "Economics" },
-  ]
+  ];
   const bscSubject = [
     { title: "Physics" },
     { title: "Math" },
@@ -79,7 +78,7 @@ const Admission = () => {
     { title: "Zoology" },
     { title: "Chemistry" },
     { title: "Statistics" },
-  ]
+  ];
   const baSubject = [
     { title: "Economics" },
     { title: "Political Science" },
@@ -88,92 +87,121 @@ const Admission = () => {
     { title: "History" },
     { title: "Philosophy" },
     { title: "Psychology" },
-  ]
-  const backHandeler = ():void =>{
-    setAdmission("")
-  }
+  ];
+  const backHandeler = (): void => {
+    setAdmission("");
+  };
 
   useEffect(() => {
-    setSubjectList("")
-  }, [admission , navigate]);
+    setSubjectList("");
+  }, [admission]);
+  const onSubmit = (data: UserSubmitForm) => {
+    if(subjectList === "Bachelor of Busniness Studies (BBS)"){
+      const admissionInfo = {
+        data, bbsSubject
+      }
+      localStorage.setItem("admissionInfo" , JSON.stringify(admissionInfo))
+      console.log(admissionInfo)
+    }
+    if(subjectList === "Bachelor of Science (BSC)"){
+      const admissionInfo = {
+        data, bscSubject
+      }
+      localStorage.setItem("admissionInfo" , JSON.stringify(admissionInfo))
+      console.log(admissionInfo)
+    }
+    if(subjectList === "Bachelor of Arts (BA)"){
+      const admissionInfo = {
+        data, baSubject
+      }
+      console.log(admissionInfo)
+      localStorage.setItem("admissionInfo" , JSON.stringify(admissionInfo))
+    }
+    navigate("/onlineAdmission/personalInfromation")
+    
+  }
   return (
-    <div className="my-10 max-w-7xl m-auto px-3">
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="my-10 max-w-7xl m-auto px-3">
       <div className="card w-full bg-base-100 border pb-5">
         <div className="bg-red-500 h-16 flex items-center  justify-between px-8">
           <div>
-            <button onClick={()=>backHandeler()} className="bg-white text-black px-6 py-1  rounded-lg">
+            <button
+              onClick={() => backHandeler()}
+              className="bg-white text-black px-6 py-1  rounded-lg"
+            >
               Back
             </button>
           </div>
           <div>
-            <button className="bg-white text-black px-6 py-1  rounded-lg">
-              Back
-            </button>
+      
+            <input className="bg-white text-black px-6 py-1  rounded-lg" type="submit" value=" Next" />
           </div>
         </div>
 
         <div className="p-5">
           <div className={admission ? " hidden" : ""}>
-          <h1 className="text-xl">Admission Type</h1>
-          <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
-            <div>
-              {" "}
-              <div className="h-14 mt-2  relative">
-                <select
-                  {...register("admissionType", {
-                    required: {
-                      value: true,
-                      message: "Admission Type is Required",
-                    },
-                  })}
-                  className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
-                  placeholder="Enter Your Name"
-                  onChange={(e) => setAdmission(e.target.value)}
-                >
-                  {admissions.map((ad) => (
-                    <option value={ad.title}>{ad.title}</option>
-                  ))}
-                </select>
+            <h1 className="text-xl">Admission Type</h1>
+            <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
+              <div>
+                {" "}
+                <div className="h-14 mt-2  relative">
+                  <select
+                    {...register("admissionType", {
+                      required: {
+                        value: true,
+                        message: "Admission Type is Required",
+                      },
+                    })}
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    placeholder="Enter Your Name"
+                    onChange={(e) => setAdmission(e.target.value)}
+                  >
+                    {admissions.map((ad) => (
+                      <option value={ad.title}>{ad.title}</option>
+                    ))}
+                  </select>
 
-                <div className=" px-1 ">
-                  <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                  <div className=" px-1 ">
+                    <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                  </div>
                 </div>
+                <label className="">
+                  {errors.admissionType?.type === "required" && (
+                    <span className="text-red-500 ">
+                      {errors.admissionType.message}
+                    </span>
+                  )}
+                </label>
               </div>
-              <label className="">
-                {errors.admissionType?.type === "required" && (
-                  <span className="text-red-500 ">{errors.admissionType.message}</span>
-                )}
-              </label>
+              <div></div>
             </div>
-            <div></div>
-          </div>
           </div>
           {admission ? (
             <div className="mt-5">
               <div className="w-max mx-auto">
-      
-      <div className="border-b-2 rounded-full border-red-500 ">
-      <h1 className="text-xl pb-2 text-center mt-10 px-12  font-medium uppercase"> {admission}</h1>
-      </div>
-
-      </div>
+                <div className="border-b-2 rounded-full border-red-500 ">
+                  <h1 className="text-xl pb-2 text-center mt-10 px-12  font-medium uppercase">
+                    {" "}
+                    {admission}
+                  </h1>
+                </div>
+              </div>
               {/* <h1 className=" uppercase">{admission}</h1> */}
               <div className="grid  lg:grid-cols-2 grid-cols-1 gap-10 mt-5">
                 <div className="mt-5">
                   <h1>Board</h1>
-                  
+
                   <div className="h-14 mt-2  relative">
                     <select
                       {...register("board", {
                         required: {
                           value: true,
                           message: "Board is Required",
-                          
                         },
                       })}
                       className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
                       placeholder="Enter Your Name"
-                      
                     >
                       {board.map((bor) => (
                         <option value={bor.title}>{bor.title}</option>
@@ -301,7 +329,6 @@ const Admission = () => {
                     <>
                       <div className="h-14 mt-2  relative">
                         <select
-                        
                           {...register("class", {
                             required: {
                               value: true,
@@ -410,7 +437,6 @@ const Admission = () => {
                       placeholder="Enter Passing Year"
                       type="number"
                     />
-                     
 
                     <div className=" px-1 ">
                       <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
@@ -451,24 +477,203 @@ const Admission = () => {
                   </label>
                 </div>
               </div>
-              <div className="mt-6">
-                {subjectList === "Bachelor of Busniness Studies (BBS)" &&<><h1>Your First Year Subject List</h1> <div className="flex gap-10 mt-2">
-              {bbsSubject.map((subject) => <div className="">
-                 <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">{subject.title}</span>
-                </div>)}
-              </div></> }
-                {subjectList === "Bachelor of Science (BSC)" &&<><h1>Your First Year Subject List</h1> <div className="flex gap-10 mt-2">
-              {bscSubject.map((subject) => <div className="">
-                 <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">{subject.title}</span>
-                </div>)}
-              </div></> }
-                {subjectList === "Bachelor of Arts (BA)" &&<><h1>Your First Year Subject List</h1> <div className="flex gap-10 mt-2">
-              {baSubject.map((subject) => <div className="">
-                 <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">{subject.title}</span>
-                </div>)}
-              </div></> }
+              {/* degree admission fre  */}
+              {admission === "Higer Secondary Admission" && <div className="mt-5">
+                  <h1>Admission Fee</h1>
+
+                  <div className="h-14 mt-2  relative">
+                    <input
+                      {...register("admissionFee", {
+                        required: {
+                          value: true,
+                          message: "Board is Required",
+                        },
+                      })}
+                      value={3100}
+                      readOnly
+                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      placeholder="Enter Your Name"
+                      type='number'
+                    />
+
+                    <div className=" px-1 ">
+                      <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                    </div>
+                  </div>
+                  <label className="">
+                    {errors.admissionFee?.type === "required" && (
+                      <span className="text-red-500 ">
+                        {errors.admissionFee.message}
+                      </span>
+                    )}
+                  </label>
+                </div>}
+              {admission === "Degree Admission" && <div className="mt-5">
+                  <h1>Admission Fee</h1>
+
+                  <div className="h-14 mt-2  relative">
+                    <input
+                      {...register("admissionFee", {
+                        required: {
+                          value: true,
+                          message: "Board is Required",
+                        },
+                      })}
+                      value={3900}
+                      readOnly
+                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      placeholder="Enter Your Name"
+                      type='number'
+                    />
+
+                    <div className=" px-1 ">
+                      <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                    </div>
+                  </div>
+                  <label className="">
+                    {errors.admissionFee?.type === "required" && (
+                      <span className="text-red-500 ">
+                        {errors.admissionFee.message}
+                      </span>
+                    )}
+                  </label>
+                </div>}
+              {admission === "Degree Private Admission" && <div className="mt-5">
+                  <h1>Admission Fee</h1>
+
+                  <div className="h-14 mt-2  relative">
+                    <input
+                      {...register("admissionFee", {
+                        required: {
+                          value: true,
+                          message: "Board is Required",
+                        },
+                      })}
+                      value={5700}
+                      readOnly
+                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      placeholder="Enter Your Name"
+                      type='number'
+                    />
+
+                    <div className=" px-1 ">
+                      <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                    </div>
+                  </div>
+                  <label className="">
+                    {errors.admissionFee?.type === "required" && (
+                      <span className="text-red-500 ">
+                        {errors.admissionFee.message}
+                      </span>
+                    )}
+                  </label>
+                </div>}
+              {admission === "Under graduate Admission (honours)" && <div className="mt-5">
+                  <h1>Admission Fee</h1>
+
+                  <div className="h-14 mt-2  relative">
+                    <input
+                      {...register("admissionFee", {
+                        required: {
+                          value: true,
+                          message: "Board is Required",
+                        },
+                      })}
+                      value={4800}
+                      readOnly
+                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      placeholder="Enter Your Name"
+                      type='number'
+                    />
+
+                    <div className=" px-1 ">
+                      <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                    </div>
+                  </div>
+                  <label className="">
+                    {errors.admissionFee?.type === "required" && (
+                      <span className="text-red-500 ">
+                        {errors.admissionFee.message}
+                      </span>
+                    )}
+                  </label>
+                </div>}
+              {admission === "Graduate Admission (Master's)" && <div className="mt-5">
+                  <h1>Admission Fee</h1>
+
+                  <div className="h-14 mt-2  relative">
+                    <input
+                      {...register("admissionFee", {
+                        required: {
+                          value: true,
+                          message: "Board is Required",
+                        },
+                      })}
+                      value={8900}
+                      readOnly
+                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      placeholder="Enter Your Name"
+                      type='number'
+                    />
+
+                    <div className=" px-1 ">
+                      <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                    </div>
+                  </div>
+                  <label className="">
+                    {errors.admissionFee?.type === "required" && (
+                      <span className="text-red-500 ">
+                        {errors.admissionFee.message}
+                      </span>
+                    )}
+                  </label>
+                </div>}
               
-                
+
+              <div className="mt-6">
+                {/* degree book list  */}
+                {subjectList === "Bachelor of Busniness Studies (BBS)" && (
+                  <>
+                    <h1>Your First Year Subject List</h1>{" "}
+                    <div className="flex gap-10 mt-2">
+                      {bbsSubject.map((subject) => (
+                        <div className="">
+                          <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
+                            {subject.title}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+                {subjectList === "Bachelor of Science (BSC)" && (
+                  <>
+                    <h1>Your First Year Subject List</h1>{" "}
+                    <div className="flex gap-10 mt-2">
+                      {bscSubject.map((subject) => (
+                        <div className="">
+                          <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
+                            {subject.title}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+                {subjectList === "Bachelor of Arts (BA)" && (
+                  <>
+                    <h1>Your First Year Subject List</h1>{" "}
+                    <div className="flex gap-10 mt-2">
+                      {baSubject.map((subject) => (
+                        <div className="">
+                          <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
+                            {subject.title}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           ) : (
@@ -477,6 +682,7 @@ const Admission = () => {
         </div>
       </div>
     </div>
+    </form>
   );
 };
 
