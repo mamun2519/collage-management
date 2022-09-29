@@ -98,21 +98,21 @@ const Admission = () => {
   const onSubmit = (data: UserSubmitForm) => {
     if(subjectList === "Bachelor of Busniness Studies (BBS)"){
       const admissionInfo = {
-        data, bbsSubject
+        data, subject:bbsSubject
       }
       localStorage.setItem("admissionInfo" , JSON.stringify(admissionInfo))
       console.log(admissionInfo)
     }
     if(subjectList === "Bachelor of Science (BSC)"){
       const admissionInfo = {
-        data, bscSubject
+        data, subjet:bscSubject
       }
       localStorage.setItem("admissionInfo" , JSON.stringify(admissionInfo))
       console.log(admissionInfo)
     }
     if(subjectList === "Bachelor of Arts (BA)"){
       const admissionInfo = {
-        data, baSubject
+        data, subject:baSubject
       }
       console.log(admissionInfo)
       localStorage.setItem("admissionInfo" , JSON.stringify(admissionInfo))

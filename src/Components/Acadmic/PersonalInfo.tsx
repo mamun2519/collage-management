@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
@@ -9,6 +9,7 @@ const PersonalInfo = () => {
   const [user] = useAuthState(auth);
   type UserSubmitForm = {
     country: string;
+    images: string;
     village: string;
     address: string;
     email: string;
@@ -385,6 +386,8 @@ const PersonalInfo = () => {
               </div>
             </div>
           </div>
+
+          
         </div>
       </div>
     </form>
