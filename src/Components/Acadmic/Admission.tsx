@@ -105,7 +105,7 @@ const Admission = () => {
     }
     if(subjectList === "Bachelor of Science (BSC)"){
       const admissionInfo = {
-        data, subjet:bscSubject
+        data, subject:bscSubject
       }
       localStorage.setItem("admissionInfo" , JSON.stringify(admissionInfo))
       console.log(admissionInfo)
@@ -126,12 +126,12 @@ const Admission = () => {
       <div className="card w-full bg-base-100 border pb-5">
         <div className="bg-red-500 h-16 flex items-center  justify-between px-8">
           <div>
-            <button
+            <span
               onClick={() => backHandeler()}
               className="bg-white text-black px-6 py-1  rounded-lg"
             >
               Back
-            </button>
+            </span>
           </div>
           <div>
       

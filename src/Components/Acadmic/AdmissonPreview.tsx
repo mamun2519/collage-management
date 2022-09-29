@@ -15,28 +15,46 @@ interface Person {
     title:string
   }]
 }
+
+interface Student{
+
+    name:string,
+    address:string,
+    age:string,
+    birthday:string,
+    country:string,
+    email:string,
+    gender:string,
+    gerdianName:string,
+    number:string,
+    village:string,
+  
+}
 const AdmissonPreview = () => {
   const navigate = useNavigate()
   const [previewInfo, setPreview] = useState<Person>();
+  const [personalInfo ,setPersonalInfo]=useState<Student>()
   useEffect(() => {
     const data: any = localStorage.getItem("admissionInfo");
     setPreview(JSON.parse(data));
+    const studeentInfo: any = localStorage.getItem("studentInfo");
+    setPersonalInfo(JSON.parse(studeentInfo));
   }, []);
-  console.log(previewInfo?.data);
+  console.log(personalInfo);
   return (
     <div className="my-10 max-w-7xl m-auto px-3">
       <div className="card w-full bg-base-100 border  pb-5">
         <div className="bg-red-500 h-16 flex items-center  justify-between px-8">
           <div>
-            <button onClick={()=>navigate("/onlineAdmission/personalInfromation")} className="bg-white text-black px-6 py-1  rounded-lg">
+            <span onClick={()=>navigate("/onlineAdmission/personalInfromation")} className="bg-white text-black px-6 py-1  rounded-lg">
               Back
-            </button>
+            </span>
           </div>
           <div>
             <input
               className="bg-white text-black px-6 py-1  rounded-lg"
               type="submit"
-              value=" Next"
+              value="Payment Now"
             />
           </div>
         </div>
@@ -48,8 +66,7 @@ const AdmissonPreview = () => {
           </div>
         </div>
 
-        <div className="mt-10 p-5">
-          <p></p>
+        <div className="mt-5 p-5">
           <div className=" grid lg:grid-cols-2 grid-cols-1 gap-10">
             <div className="card wfull bg-base-100 shadow-sm border">
               <div className="card-boy">
@@ -146,7 +163,7 @@ const AdmissonPreview = () => {
                   
                  </div>
                 </div>
-                <div className="p-5  grid grid-cols-3 gap-3">
+                <div className="p-5  grid lg:grid-cols-3 grid-cols-2 gap-3">
                 {previewInfo?.subject?.map((sub) => 
                     <div className="h-16 flex items-center  shadow-sm justify-center border rounded-lg">{sub?.title}</div>
                   )}
@@ -155,6 +172,113 @@ const AdmissonPreview = () => {
             </div>
           </div>
         </div>
+
+        <div className=" p-5">
+        <div className="card w-full bg-base-100 shadow-sm border">
+              <div className="card-boy">
+                <div className=" w-full">
+                  <div className="shadow  lg:overflow-hidden overflow-scroll rounded  border-gray-200">
+                    <table className="min-w-full text-white">
+                      <thead className="bg-red-500 text-white">
+                        <tr>
+                          <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
+                            Personal Info
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6 uppercase font-semibold ">
+                            Details
+                          </td>
+                          <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
+                            Personal Info
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6 uppercase font-semibold ">
+                            Details
+                          </td>
+                        </tr>
+                      </thead>
+                      <tbody className="text-gray-700">
+                        <tr>
+                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                            Name
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6">
+                            {personalInfo?.name}
+                          </td>
+                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                            Gerdian Name
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6">
+                            {personalInfo?.gerdianName}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                            Email
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6">
+                            {personalInfo?.email}
+                          </td>
+                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                            Age
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6">
+                            {personalInfo?.age}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                            Number 
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6">
+                            {personalInfo?.number}
+                          </td>
+                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                           Address
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6">
+                            {personalInfo?.number}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                            Gender 
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6">
+                            {personalInfo?.gender}
+                          </td>
+                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                            Date Of Births
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6">
+                            {personalInfo?.birthday}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                          Village
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6">
+                            {personalInfo?.village}
+                          </td>
+                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                          Country
+                          </th>
+                          <td className="w-1/3 text-left py-3 px-6">
+                            {personalInfo?.country}
+                          </td>
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        {/* <div className=" flex justify-center">
+          <button className="bg-red-500 text-white px-8 rounded-lg py-2">Payment Now</button>
+
+        </div> */}
       </div>
     </div>
   );
