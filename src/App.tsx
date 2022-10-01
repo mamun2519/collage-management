@@ -11,6 +11,8 @@ import Admission from './Components/Acadmic/Admission';
 import RequreAuth from './Components/Authentication/RequreAuth';
 import PersonalInfo from './Components/Acadmic/PersonalInfo';
 import AdmissonPreview from './Components/Acadmic/AdmissonPreview';
+import Payment from './Components/Acadmic/Payment';
+import ConfromMessage from './Components/Acadmic/ConfromMessage';
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
       <Route path='/onlineAdmission' element={<RequreAuth><Admission/></RequreAuth>}></Route>
       <Route path='/onlineAdmission/personalInfromation' element={<RequreAuth><PersonalInfo/></RequreAuth>}></Route>
       <Route path='/onlineAdmission/personalInfromation/admissionPreview' element={<RequreAuth><AdmissonPreview/></RequreAuth>}></Route>
+      <Route path='/onlineAdmission/personalInfromation/admissionPreview/payment' element={<RequreAuth><Payment/></RequreAuth>}></Route>
+      <Route path='/onlineAdmission/personalInfromation/admissionPreview/payment/paymentConfrom' element={<RequreAuth><ConfromMessage/></RequreAuth>}></Route>
      </Routes>
     
     </div>

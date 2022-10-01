@@ -1,5 +1,6 @@
+
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 interface Person {
   data: {
     passingAcademy: number;
@@ -40,7 +41,8 @@ const AdmissonPreview = () => {
     const studeentInfo: any = localStorage.getItem("studentInfo");
     setPersonalInfo(JSON.parse(studeentInfo));
   }, []);
-  console.log(personalInfo);
+  // console.log(personalInfo);
+
   return (
     <div className="my-10 max-w-7xl m-auto px-3">
       <div className="card w-full bg-base-100 border  pb-5">
@@ -51,11 +53,12 @@ const AdmissonPreview = () => {
             </span>
           </div>
           <div>
-            <input
+            <span
+            onClick={()=>navigate("/onlineAdmission/personalInfromation/admissionPreview/payment")}
               className="bg-white text-black px-6 py-1  rounded-lg"
-              type="submit"
-              value="Payment Now"
-            />
+            >
+              Next
+              </span>
           </div>
         </div>
         <div className="w-max mx-auto">
