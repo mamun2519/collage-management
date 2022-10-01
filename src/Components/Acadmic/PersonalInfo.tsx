@@ -11,7 +11,6 @@ const PersonalInfo = () => {
   const [user] = useAuthState(auth);
   type UserSubmitForm = {
     country: string;
-    images: string;
     village: string;
     address: string;
     number: string;
@@ -374,64 +373,6 @@ const PersonalInfo = () => {
             </div>
           </div>
 
-          <div className="mt-5 px-5">
-            <h1 className="">Student Picture</h1>
-            <div className="mt-2">
-              <div className="flex items-center justify-between relative"></div>
-
-              <input
-                {...register("images", {
-                  required: {
-                    value: true,
-                    message: "images is Required",
-                  },
-                })}
-                onChange={(e) => imagesPitureHendeler(e)}
-                type="file"
-                name="image-uplode"
-                id="product-img"
-                hidden
-                placeholder="Enter seller name"
-                //   className="block w-full px-4 py-2 mt-2 pl-12  bg-white border rounded-md   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-              <label htmlFor="product-img" className=" ">
-                <div>
-                  {!images && (
-                    <div className="h-44 lg:w-72 w-52 border rounded-md flex justify-center  items-center">
-                      <div className=" ">
-                        <span className="text-6xl text-[#EC255A]">
-                          <MdAddPhotoAlternate />
-                        </span>
-                      </div>
-                    </div>
-                  )}
-                  {images && (
-                    <div className="h-44 w-72 border rounded-md flex justify-center  items-center">
-                      <div className="h-44 w-72 relative">
-                        <img
-                          className="h-44 w-72 p-1 rounded-lg"
-                          src={images}
-                          alt="productPicure"
-                        />
-                        <span
-                          onClick={() => setImages("")}
-                          className=" absolute text-2xl top-[5px] text-red-500 right-[5px] cursor-pointer"
-                        >
-                          <TiDelete />
-                        </span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </label>
-
-              <label className="label">
-                {errors.images?.type === "required" && (
-                  <span className="text-red-500">{errors.images.message}</span>
-                )}
-              </label>
-            </div>
-          </div>
         </div>
       </div>
     </form>

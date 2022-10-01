@@ -1,6 +1,8 @@
 
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import {  useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
 interface Person {
   data: {
     passingAcademy: number;
@@ -32,6 +34,7 @@ interface Student{
   
 }
 const AdmissonPreview = () => {
+  const [user] = useAuthState(auth)
   const navigate = useNavigate()
   const [previewInfo, setPreview] = useState<Person>();
   const [personalInfo ,setPersonalInfo]=useState<Student>()
@@ -218,7 +221,7 @@ const AdmissonPreview = () => {
                             Email
                           </th>
                           <td className="w-1/3 text-left py-3 px-6">
-                            {personalInfo?.email}
+                            {user?.email}
                           </td>
                           <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
                             Age
