@@ -13,12 +13,12 @@ const Admission = () => {
     admissionType: string;
     board: string;
     department: string;
-    class: string;
+    classs: string;
     session: string;
     admissionFee: string;
     
   };
-  console.log(admission );
+  console.log(admission);
 
   const {
     register,
@@ -261,7 +261,7 @@ const Admission = () => {
                       {" "}
                       <div className="h-14 mt-2  relative">
                         <select
-                          {...register("class", {
+                          {...register("classs", {
                             required: {
                               value: true,
                               message: "Class is Required",
@@ -282,9 +282,9 @@ const Admission = () => {
                         </div>
                       </div>
                       <label className="">
-                        {errors.class?.type === "required" && (
+                        {errors.classs?.type === "required" && (
                           <span className="text-red-500 ">
-                            {errors.class.message}
+                            {errors.classs.message}
                           </span>
                         )}
                       </label>
@@ -295,7 +295,7 @@ const Admission = () => {
                       {" "}
                       <div className="h-14 mt-2  relative">
                         <select
-                          {...register("class", {
+                          {...register("classs", {
                             required: {
                               value: true,
                               message: "Class is Required",
@@ -316,9 +316,9 @@ const Admission = () => {
                         </div>
                       </div>
                       <label className="">
-                        {errors.class?.type === "required" && (
+                        {errors.classs?.type === "required" && (
                           <span className="text-red-500 ">
-                            {errors.class.message}
+                            {errors.classs.message}
                           </span>
                         )}
                       </label>
@@ -329,7 +329,7 @@ const Admission = () => {
                     <>
                       <div className="h-14 mt-2  relative">
                         <select
-                          {...register("class", {
+                          {...register("classs", {
                             required: {
                               value: true,
                               message: "Class is Required",
@@ -349,9 +349,9 @@ const Admission = () => {
                         </div>
                       </div>
                       <label className="">
-                        {errors.class?.type === "required" && (
+                        {errors.classs?.type === "required" && (
                           <span className="text-red-500 ">
-                            {errors.class.message}
+                            {errors.classs.message}
                           </span>
                         )}
                       </label>
@@ -362,7 +362,7 @@ const Admission = () => {
                     <>
                       <div className="h-14 mt-2  relative">
                         <select
-                          {...register("class", {
+                          {...register("classs", {
                             required: {
                               value: true,
                               message: "Class is Required",
@@ -382,9 +382,9 @@ const Admission = () => {
                         </div>
                       </div>
                       <label className="">
-                        {errors.class?.type === "required" && (
+                        {errors.classs?.type === "required" && (
                           <span className="text-red-500 ">
-                            {errors.class.message}
+                            {errors.classs.message}
                           </span>
                         )}
                       </label>

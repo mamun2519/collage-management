@@ -7,17 +7,7 @@ import auth from "../../firebase.init";
 const ConfromMessage = () => {
       const [user] = useAuthState(auth)
 
-      type UserSubmitForm = {
-            passingAcademy: number;
-            passingYear: string;
-            admissionType: string;
-            board: string;
-            department: string;
-            class: string;
-            session: string;
-            admissionFee: string;
-            
-          };
+     
   swal({
     title: "Your Payment Successfull",
     text: "Thank you",
@@ -34,6 +24,8 @@ const ConfromMessage = () => {
             admissionInfo,studentInfo,
             email: user?.email
       }
+      console.log(admission)
+      
       axios.post('http://localhost:5000/v1/student/admission', admission)
           .then(function (response) {
             console.log(response);

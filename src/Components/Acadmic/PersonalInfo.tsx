@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
+import { MdAddPhotoAlternate } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
-
+import { TiDelete } from "react-icons/ti";
 const PersonalInfo = () => {
+  const [images, setImages] = useState("");
   const [user] = useAuthState(auth);
   type UserSubmitForm = {
     country: string;
     images: string;
     village: string;
     address: string;
-    email: string;
     number: string;
     gerdianName: string;
     gender: string;
@@ -36,7 +37,6 @@ const PersonalInfo = () => {
       country: data.country,
       village: data.village,
       address: data.address,
-      email: data.email,
       number: data.number,
       gerdianName: data.gerdianName,
       gender: data.gender,
@@ -46,13 +46,27 @@ const PersonalInfo = () => {
     localStorage.setItem("studentInfo", JSON.stringify(studentInfo));
     navigate("/onlineAdmission/personalInfromation/admissionPreview");
   };
+  const imagesPitureHendeler = (e: any) => {
+    const reader: any = new FileReader();
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setImages(reader?.result);
+      }
+    };
+    reader.readAsDataURL(e.target.files[0]);
+  };
+  console.log(images);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="my-10 max-w-7xl m-auto px-3">
         <div className="card w-full bg-base-100 border pb-5">
           <div className="bg-red-500 h-16 flex items-center  justify-between px-8">
             <div>
-              <span onClick={()=>navigate("/onlineAdmission")}  className="bg-white text-black px-6 py-1  rounded-lg">
+              <span
+                onClick={() => navigate("/onlineAdmission")}
+                className="bg-white text-black px-6 py-1  rounded-lg"
+              >
                 Back
               </span>
             </div>
@@ -271,33 +285,6 @@ const PersonalInfo = () => {
                   )}
                 </label>
               </div>
-              <div>
-                <p>Email</p>
-                <div className="h-14 mt-2  relative">
-                  <input
-                    {...register("email", {
-                      required: {
-                        value: true,
-                        message: "Email is Required",
-                      },
-                    })}
-                    //   value={user?.email}
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
-                    placeholder="Enter Your Last Name"
-                  />
-
-                  <div className=" px-1 ">
-                    <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
-                  </div>
-                </div>
-                <label className="">
-                  {errors.email?.type === "required" && (
-                    <span className="text-red-500 ">
-                      {errors.email.message}
-                    </span>
-                  )}
-                </label>
-              </div>
             </div>
           </div>
           <div className="mt-5 px-5">
@@ -387,7 +374,64 @@ const PersonalInfo = () => {
             </div>
           </div>
 
-          
+          <div className="mt-5 px-5">
+            <h1 className="">Student Picture</h1>
+            <div className="mt-2">
+              <div className="flex items-center justify-between relative"></div>
+
+              <input
+                {...register("images", {
+                  required: {
+                    value: true,
+                    message: "images is Required",
+                  },
+                })}
+                onChange={(e) => imagesPitureHendeler(e)}
+                type="file"
+                name="image-uplode"
+                id="product-img"
+                hidden
+                placeholder="Enter seller name"
+                //   className="block w-full px-4 py-2 mt-2 pl-12  bg-white border rounded-md   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              />
+              <label htmlFor="product-img" className=" ">
+                <div>
+                  {!images && (
+                    <div className="h-44 lg:w-72 w-52 border rounded-md flex justify-center  items-center">
+                      <div className=" ">
+                        <span className="text-6xl text-[#EC255A]">
+                          <MdAddPhotoAlternate />
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                  {images && (
+                    <div className="h-44 w-72 border rounded-md flex justify-center  items-center">
+                      <div className="h-44 w-72 relative">
+                        <img
+                          className="h-44 w-72 p-1 rounded-lg"
+                          src={images}
+                          alt="productPicure"
+                        />
+                        <span
+                          onClick={() => setImages("")}
+                          className=" absolute text-2xl top-[5px] text-red-500 right-[5px] cursor-pointer"
+                        >
+                          <TiDelete />
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </label>
+
+              <label className="label">
+                {errors.images?.type === "required" && (
+                  <span className="text-red-500">{errors.images.message}</span>
+                )}
+              </label>
+            </div>
+          </div>
         </div>
       </div>
     </form>

@@ -8,7 +8,7 @@ interface Person {
     admissionType: string;
     board: string;
     department: string;
-    class: string;
+    classs: string;
     session: string;
     admissionFee: string;
   };
@@ -117,7 +117,7 @@ const AdmissonPreview = () => {
                             Class
                           </th>
                           <td className="w-1/3 text-left py-3 px-6">
-                            {previewInfo?.data?.class}
+                            {previewInfo?.data?.classs}
                           </td>
                         </tr>
                         <tr>
@@ -161,7 +161,7 @@ const AdmissonPreview = () => {
             <div>
               <div className="card wfull bg-base-100 h-full  shadow-sm border">
                 <div className="bg-red-500 h-12 flex items-center  px-6 text-white uppercase font-semibold">
-                 <h1>First Year    "{previewInfo?.data?.class}" Book List</h1>
+                 <h1>First Year    "{previewInfo?.data?.classs}" Book List</h1>
                  <div>
                   
                  </div>
