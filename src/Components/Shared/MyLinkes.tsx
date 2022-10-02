@@ -42,32 +42,33 @@ export const links = [
         submenu: true,
         sublinks: [
           {
-            Head: "Science",
+            Head: "Degree",
             sublink: [
-              { name: "Matchematics", link: "/" },
-              { name: "Physics", link: "/" },
-              { name: "Chemistry", link: "/" },
-              { name: "Zoology", link: "/" },
-              { name: "ICt", link: "/" },
+              { name: "Bachelor of Busniness Studies (BBS)", link: "/deparmentOfBBS" },
+              { name: "Bachelor of Science (BSC)", link: "/" },
+              { name: "Bachelor of Arts (BA)", link: "/" },
             ],
           },
           {
-            Head: "Commarce",
+            Head: "Honurs",
             sublink: [
-              { name: "Accounting", link: "/" },
-              { name: "Management", link: "/" }
+              { name: "Bachelor of Busniness Administraion(BBA)", link: "/" },
+              // { name: "Management", link: "/" }
             
             ],
           },
           {
-            Head: "Arts",
+            Head: "Master's",
             sublink: [
-              { name: "Bangla", link: "/" },
-              { name: "Economoics", link: "/" },
-              { name: "English", link: "/" },
-              { name: "Histry", link: "/" },
-              { name: "Islamic Histry & culture", link: "/" },
-              { name: "Political Science", link: "/" },
+              { name: "Graduate Admission (Master's)", link: "/" },
+              
+            ],
+          },
+          {
+            Head: "HSC",
+            sublink: [
+              { name: "Higer Secondary Admission", link: "/" },
+              
             ],
           },
     

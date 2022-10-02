@@ -1,9 +1,48 @@
-import React from "react";
+
+import QRCode from 'qrcode'
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const StudentId = () => {
+  const [user ] = useAuthState(auth)
+	const [qr, setQr] = useState('')
+  const [studentCard , setStudentCard] = useState<any>("")
+  const navigate = useNavigate()
+  useEffect(() => {
+    console.log("helo")
+    if(user?.email){
+      fetch(
+        `http://localhost:5000/v1/student/chackadmission?email=${user?.email}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            setStudentCard(data?.student);
+            QRCode.toDataURL(`StudentName: ${studentCard?.name}, Department: ${studentCard?.classs} , RollNumber: ${studentCard?.roll} , Gender: ${studentCard?.gender}, Session: ${studentCard?.session} Phone: ${studentCard?.phone},  `, {
+              
+              color: {
+                dark: '#335383FF',
+                light: '#EEEEEEFF'
+              }
+            }, (err, url) => {
+              if (err) return console.error(err)
+        
+              console.log(url)
+              setQr(url)
+            })
+           
+          }
+        });
+    }
+    
+  }, []);
+  console.log(studentCard);
+	
   return (
     <div className="my-10 max-w-7xl m-auto px-3">
-      <div className=" grid lg:grid-cols-2  col-span-1">
+      {studentCard && <><div className=" grid lg:grid-cols-2  col-span-1">
         <div
           className="card lg:w-3/5 w-full  h-[500px] mx-auto bg-base-100 border  shadow-lg
         "
@@ -42,13 +81,14 @@ const StudentId = () => {
                 <p className="font-semibold   text-gray-600 mt-1">Number</p>
               </div>
               <div className=" col-span-2">
-                <p className=" uppercase">Juboraj islam Mamun</p>
-                <p className="mt-1">BBS</p>
-                <p className="mt-1">446455</p>
-                <p className="mt-1">Male</p>
-                <p className="mt-1">2020-2021</p>
-                <p className="mt-1">Aboul Kalam</p>
-                <p className="mt-1">01860700702</p>
+                <p className=" uppercase  font-semibold ">{studentCard?.name}</p>
+                <p className="mt-1">{studentCard?.classs}</p>
+                <p className="mt-1">{studentCard?.roll}</p>
+                <p className="mt-1">{studentCard?.session}</p>
+                <p className="mt-1">{studentCard?.gender}</p>
+                <p className="mt-1">{studentCard?.gerdianName}</p>
+                <p className="mt-1">{studentCard?.number}</p>
+               
               </div>
             </div>
           </div>
@@ -101,13 +141,45 @@ const StudentId = () => {
             <div className=" mt-4 text-white uppercase font-semibold ">
                   <p>Student Qr Code</p>
             </div>
-            <div className=" mt-3  flex justify-end">
-                  <img className="h-[40px]" src="/assets/picture/studentQrcode3.png" alt="" />
+            <div className="py-1  flex justify-end">
+                  <img className="h-[70px]" src={qr} alt="" />
             </div>
            </div>
           </div>
         </div>
+       
       </div>
+
+      <div className=' flex justify-center mt-5'>
+      <a  className='bg-red-500 text-white px-10 rounded-lg py-2' href={qr} download="qrcode.png">Download Qr Code</a>
+      </div></>}
+
+      {!studentCard && <>
+        <div className="my-10 max-w-7xl m-auto px-3">
+      <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border pb-5">
+        <div className="flex justify-center ">
+          <img
+            className="w-[350px]"
+            src="/assets/picture/sorry.gif"
+            alt=""
+          />
+        </div>
+        <div className="text-center">
+          <p className="  font-medium text-xl">Sorry,</p>
+          <p className="text-gray-800">
+            {" "}
+            You Are Not Our Student. Please enroll Our Collage
+          </p>
+          <p>Thank You.</p>
+          <button onClick={()=>navigate("/onlineAdmission")} className="bg-red-500 text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold">enroll Now</button>
+        </div>
+
+      
+      </div>
+    </div>
+      
+      </>}
+      
     </div>
   );
 };

@@ -14,6 +14,7 @@ import AdmissonPreview from "./Components/Acadmic/AdmissonPreview";
 import Payment from "./Components/Acadmic/Payment";
 import ConfromMessage from "./Components/Acadmic/ConfromMessage";
 import StudentId from "./Components/Acadmic/StudentId";
+import BBS from "./Components/Department/BBS";
 
 function App() {
   return (
@@ -70,6 +71,10 @@ function App() {
               <StudentId />
             </RequreAuth>
           }
+        ></Route>
+        <Route
+          path="/deparmentOfBBS"
+          element={<BBS />}
         ></Route>
       </Routes>
     </div>
