@@ -14,6 +14,7 @@ const Admission = () => {
   const navigate = useNavigate();
   const [admission, setAdmission] = useState("");
   const [subjectList, setSubjectList] = useState("");
+  const [loading, isLoading] = useState(false);
   const [allReadyAdmissiom, setAllReadyAdmissiom] =
     useState<AdmissionStudent>();
   type UserSubmitForm = {
@@ -30,7 +31,7 @@ const Admission = () => {
   
   
   useEffect(() => {
-    console.log("helo")
+    isLoading(true)
     if(user?.email){
       fetch(
         `http://localhost:5000/v1/student/chackadmission?email=${user?.email}`
@@ -39,7 +40,7 @@ const Admission = () => {
         .then((data) => {
           if (data.success) {
             setAllReadyAdmissiom(data?.student);
-            console.log("hi");
+            isLoading(false)
           }
         });
     }
@@ -152,7 +153,8 @@ const Admission = () => {
   
   return (
     <>
-      {allReadyAdmissiom ? (
+
+      {loading ? <Loading/> :  allReadyAdmissiom ? (
         <div className="my-10 max-w-7xl m-auto px-3">
           {allReadyAdmissiom?.verifay ? (
             <>

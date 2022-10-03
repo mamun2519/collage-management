@@ -1,38 +1,27 @@
 export const links = [
       {
-        name: "About Us",
+        name: "About",
         submenu: true,
         sublinks: [
           {
-            Head: "Topwear",
+            Head: "History",
             sublink: [
-              { name: "T-shirt", link: "/" },
-              { name: "Casual shirts", link: "/" },
-              { name: "formal shirts", link: "/" },
-              { name: "formal shirts", link: "/" },
-              { name: "formal shirts", link: "/" },
+              { name: "Teachers,", link: "/" },
+              { name: "Collage History", link: "/" },
+              { name: "Gellary", link: "/" },
             ],
           },
           {
-            Head: "Bottomwear",
+            Head: "Collage information",
             sublink: [
-              { name: "T-shirt", link: "/" },
-              { name: "Casual shirts", link: "/" },
-              { name: "formal shirts", link: "/" },
-              { name: "formal shirts", link: "/" },
-              { name: "formal shirts", link: "/" },
+              { name: "About The Collage", link: "/" },
+              { name: "Mission & Vission", link: "/" },
+              { name: "collage Location", link: "/" },
+              { name: "Google Map", link: "/" },
+              { name: "Contact us", link: "/" },
             ],
           },
-          {
-            Head: "innerwear",
-            sublink: [
-              { name: "T-shirt", link: "/" },
-              { name: "Casual shirts", link: "/" },
-              { name: "formal shirts", link: "/" },
-              { name: "formal shirts", link: "/" },
-              { name: "formal shirts", link: "/" },
-            ],
-          },
+       
     
          
         ],
@@ -44,9 +33,9 @@ export const links = [
           {
             Head: "Degree",
             sublink: [
-              { name: "Bachelor of Busniness Studies (BBS)", link: "/deparmentOfBBS" },
-              { name: "Bachelor of Science (BSC)", link: "/" },
-              { name: "Bachelor of Arts (BA)", link: "/" },
+              { name: "Bachelor of Busniness Studies (BBS)", link: "/deparmentOf/Bachelor of Busniness Studies (BBS)" },
+              { name: "Bachelor of Science (BSC)", link: "/deparmentOf/Bachelor of Science (BSC)" },
+              { name: "Bachelor of Arts (BA)", link: "/deparmentOf/Bachelor of Arts (BA)" },
             ],
           },
           {
@@ -82,9 +71,9 @@ export const links = [
             Head: "Online Service",
             sublink: [
               { name: "syllabus", link: "/" },
-              { name: "Class Rotine", link: "/" },
-              { name: "Exam Routine", link: "/" },
-              { name: "Result", link: "/" },
+              { name: "Class Rotine", link: "/routine" },
+              { name: "Find Result", link: "/result" },
+              { name: "All Department Result", link: "/reslt" },
               { name: "Student Id card", link: "/studentId" },
               { name: "Online Admission", link: "/onlineAdmission" },
             ],

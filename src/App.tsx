@@ -14,7 +14,9 @@ import AdmissonPreview from "./Components/Acadmic/AdmissonPreview";
 import Payment from "./Components/Acadmic/Payment";
 import ConfromMessage from "./Components/Acadmic/ConfromMessage";
 import StudentId from "./Components/Acadmic/StudentId";
-import BBS from "./Components/Department/BBS";
+import BBS from "./Components/Department/Department";
+import Result from "./Components/Acadmic/Result";
+import ClassRoutine from "./Components/Acadmic/ClassRoutine";
 
 function App() {
   return (
@@ -73,8 +75,16 @@ function App() {
           }
         ></Route>
         <Route
-          path="/deparmentOfBBS"
+          path="/deparmentOf/:department"
           element={<BBS />}
+        ></Route>
+        <Route
+          path="/result"
+          element={<Result />}
+        ></Route>
+        <Route
+          path="/routine"
+          element={<ClassRoutine />}
         ></Route>
       </Routes>
     </div>
