@@ -1,20 +1,22 @@
 import React from "react";
-interface StudentInfo {
-  student: any;
+interface TeacherInfo {
+  teacher: any;
   key: string;
 }
-const StudentRow = ({ student }: StudentInfo) => {
-  const { name, roll } = student;
+const TeacherRow = ({ teacher }: TeacherInfo) => {
+  const { name, email, educationalQualification } = teacher;
   return (
     <tr>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <p className="text-gray-900 whitespace-no-wrap">{name}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{roll}</p>
+        <p className="text-gray-900 whitespace-no-wrap">
+          {educationalQualification}
+        </p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">N/A</p>
+        <p className="text-gray-900 whitespace-no-wrap">{email}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm flex justify-center">
         <button className="bg-red-500 text-white px-4 py-1 rounded-lg">
@@ -25,4 +27,4 @@ const StudentRow = ({ student }: StudentInfo) => {
   );
 };
 
-export default StudentRow;
+export default TeacherRow;

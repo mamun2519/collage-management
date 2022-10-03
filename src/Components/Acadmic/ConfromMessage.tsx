@@ -5,35 +5,36 @@ import swal from "sweetalert";
 import auth from "../../firebase.init";
 
 const ConfromMessage = () => {
-      const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
 
-     
   swal({
     title: "Your Payment Successfull",
     text: "Thank you",
     icon: "success",
     buttons: [false],
   });
-  useEffect(()=>{
-      const admisson:any = localStorage.getItem("admissionInfo")
-      const admissionInfo = JSON.parse(admisson)
-      const student:any = localStorage.getItem("studentInfo")
-      const studentInfo = JSON.parse(student)
-      console.log(admissionInfo.data , studentInfo );
-      const admission = {
-            admissionInfo,studentInfo,
-            email: user?.email
-      }
-      console.log(admission)
-      
-      axios.post('http://localhost:5000/v1/student/admission', admission)
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-  },[])
+  useEffect(() => {
+    const admisson: any = localStorage.getItem("admissionInfo");
+    const admissionInfo = JSON.parse(admisson);
+    const student: any = localStorage.getItem("studentInfo");
+    const studentInfo = JSON.parse(student);
+    console.log(admissionInfo.data, studentInfo);
+    const admission = {
+      admissionInfo,
+      studentInfo,
+      email: user?.email,
+    };
+    console.log(admission);
+
+    axios
+      .post("http://localhost:5000/v1/student/admission", admission)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="my-10 max-w-7xl m-auto px-3">
       <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border pb-5">
@@ -53,8 +54,6 @@ const ConfromMessage = () => {
           </p>
           <p>Thank You.</p>
         </div>
-
-      
       </div>
     </div>
   );

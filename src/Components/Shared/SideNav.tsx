@@ -20,7 +20,7 @@ const SideNav = () => {
             ></GiHamburgerMenu>
           </div>
         </div>
-        <ul  className="md:flex hidden myNavber uppercase items-center gap-8">
+        <ul className="md:flex hidden myNavber uppercase items-center gap-8">
           <li>
             <NavLink
               style={({ isActive, isPending }) => {
@@ -41,7 +41,7 @@ const SideNav = () => {
             </NavLink>
           </li>
           <NavLinks />
-          
+
           <li>
             <NavLink
               style={({ isActive, isPending }) => {
@@ -59,6 +59,25 @@ const SideNav = () => {
               to="/"
             >
               Notice
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              style={({ isActive, isPending }) => {
+                return {
+                  color: isActive ? "red" : "inherit",
+                };
+              }}
+              className={({ isActive, isPending }) => {
+                return isActive
+                  ? "active py-7 px-3 inline-block"
+                  : isPending
+                  ? "pending py-7 px-3 inline-block"
+                  : "";
+              }}
+              to="/dashboard"
+            >
+              Dashboard
             </NavLink>
           </li>
         </ul>
@@ -92,7 +111,7 @@ const SideNav = () => {
             </NavLink>
           </li>
           <NavLinks />
-        
+
           <li>
             <NavLink
               style={({ isActive, isPending }) => {
@@ -110,6 +129,25 @@ const SideNav = () => {
               to="/"
             >
               Notice
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              style={({ isActive, isPending }) => {
+                return {
+                  color: isActive ? "red" : "inherit",
+                };
+              }}
+              className={({ isActive, isPending }) => {
+                return isActive
+                  ? "active py-7 px-3 inline-block"
+                  : isPending
+                  ? "pending py-7 px-3 inline-block"
+                  : "";
+              }}
+              to="/dashboard"
+            >
+             Dashboard
             </NavLink>
           </li>
           <div className="py-5">

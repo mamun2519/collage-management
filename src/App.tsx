@@ -17,6 +17,8 @@ import StudentId from "./Components/Acadmic/StudentId";
 import BBS from "./Components/Department/Department";
 import Result from "./Components/Acadmic/Result";
 import ClassRoutine from "./Components/Acadmic/ClassRoutine";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import AdmissionList from "./Components/Dashboard/AdmissionList";
 
 function App() {
   return (
@@ -86,6 +88,12 @@ function App() {
           path="/routine"
           element={<ClassRoutine />}
         ></Route>
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
+        >
+          <Route path="/dashboard/admissionList" element={<AdmissionList/>} />
+        </Route>
       </Routes>
     </div>
   );

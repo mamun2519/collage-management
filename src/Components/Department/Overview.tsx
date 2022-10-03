@@ -6,7 +6,6 @@ const Overview = () => {
   const { department } = useParams();
   return (
     <div className="card  w-full  mx-auto bg-base-100 border shadow-md py-8 my-10">
-     
       <div className="bg-red-400 h-[25px] "></div>
       <h1 className="text-2xl pb-2  font-medium uppercase px-8">
         Department Profile
@@ -43,7 +42,7 @@ const Overview = () => {
           secure good employement evenues in different government and private
           sector departments. A few are also well settled as self-employed.
         </p>
-    
+
         <div className="bg-red-400 h-[25px] mt-8"></div>
         <h1 className="text-2xl pb-2  font-medium uppercase px-8">OBJECTIVE</h1>
         <p className="leading-relaxed text-xl  text-gray-600 px-8">

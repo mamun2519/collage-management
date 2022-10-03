@@ -1,7 +1,6 @@
-
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 interface Person {
   data: {
@@ -14,30 +13,30 @@ interface Person {
     session: string;
     admissionFee: string;
   };
-  subject: [{
-    title:string
-  }]
+  subject: [
+    {
+      title: string;
+    }
+  ];
 }
 
-interface Student{
-
-    name:string,
-    address:string,
-    age:string,
-    birthday:string,
-    country:string,
-    email:string,
-    gender:string,
-    gerdianName:string,
-    number:string,
-    village:string,
-  
+interface Student {
+  name: string;
+  address: string;
+  age: string;
+  birthday: string;
+  country: string;
+  email: string;
+  gender: string;
+  gerdianName: string;
+  number: string;
+  village: string;
 }
 const AdmissonPreview = () => {
-  const [user] = useAuthState(auth)
-  const navigate = useNavigate()
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
   const [previewInfo, setPreview] = useState<Person>();
-  const [personalInfo ,setPersonalInfo]=useState<Student>()
+  const [personalInfo, setPersonalInfo] = useState<Student>();
   useEffect(() => {
     const data: any = localStorage.getItem("admissionInfo");
     setPreview(JSON.parse(data));
@@ -51,17 +50,24 @@ const AdmissonPreview = () => {
       <div className="card w-full bg-base-100 border  pb-5">
         <div className="bg-red-500 h-16 flex items-center  justify-between px-8">
           <div>
-            <span onClick={()=>navigate("/onlineAdmission/personalInfromation")} className="bg-white text-black px-6 py-1  rounded-lg">
+            <span
+              onClick={() => navigate("/onlineAdmission/personalInfromation")}
+              className="bg-white text-black px-6 py-1  rounded-lg"
+            >
               Back
             </span>
           </div>
           <div>
             <span
-            onClick={()=>navigate("/onlineAdmission/personalInfromation/admissionPreview/payment")}
+              onClick={() =>
+                navigate(
+                  "/onlineAdmission/personalInfromation/admissionPreview/payment"
+                )
+              }
               className="bg-white text-black px-6 py-1  rounded-lg"
             >
               Next
-              </span>
+            </span>
           </div>
         </div>
         <div className="w-max mx-auto">
@@ -164,15 +170,15 @@ const AdmissonPreview = () => {
             <div>
               <div className="card wfull bg-base-100 h-full  shadow-sm border">
                 <div className="bg-red-500 h-12 flex items-center  px-6 text-white uppercase font-semibold">
-                 <h1>First Year    "{previewInfo?.data?.classs}" Book List</h1>
-                 <div>
-                  
-                 </div>
+                  <h1>First Year "{previewInfo?.data?.classs}" Book List</h1>
+                  <div></div>
                 </div>
                 <div className="p-5  grid lg:grid-cols-3 grid-cols-2 gap-3">
-                {previewInfo?.subject?.map((sub) => 
-                    <div className="h-16 flex items-center  shadow-sm justify-center border rounded-lg">{sub?.title}</div>
-                  )}
+                  {previewInfo?.subject?.map((sub) => (
+                    <div className="h-16 flex items-center  shadow-sm justify-center border rounded-lg">
+                      {sub?.title}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -180,105 +186,104 @@ const AdmissonPreview = () => {
         </div>
 
         <div className=" p-5">
-        <div className="card w-full bg-base-100 shadow-sm border">
-              <div className="card-boy">
-                <div className=" w-full">
-                  <div className="shadow  lg:overflow-hidden overflow-scroll rounded  border-gray-200">
-                    <table className="min-w-full text-white">
-                      <thead className="bg-red-500 text-white">
-                        <tr>
-                          <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
-                            Personal Info
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6 uppercase font-semibold ">
-                            Details
-                          </td>
-                          <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
-                            Personal Info
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6 uppercase font-semibold ">
-                            Details
-                          </td>
-                        </tr>
-                      </thead>
-                      <tbody className="text-gray-700">
-                        <tr>
-                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
-                            Name
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6">
-                            {personalInfo?.name}
-                          </td>
-                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
-                            Gerdian Name
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6">
-                            {personalInfo?.gerdianName}
-                          </td>
-                        </tr>
-                        <tr>
-                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
-                            Email
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6">
-                            {user?.email}
-                          </td>
-                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
-                            Age
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6">
-                            {personalInfo?.age}
-                          </td>
-                        </tr>
-                        <tr>
-                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
-                            Number 
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6">
-                            {personalInfo?.number}
-                          </td>
-                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
-                           Address
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6">
-                            {personalInfo?.number}
-                          </td>
-                        </tr>
-                        <tr>
-                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
-                            Gender 
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6">
-                            {personalInfo?.gender}
-                          </td>
-                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
-                            Date Of Births
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6">
-                            {personalInfo?.birthday}
-                          </td>
-                        </tr>
-                        <tr>
-                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+          <div className="card w-full bg-base-100 shadow-sm border">
+            <div className="card-boy">
+              <div className=" w-full">
+                <div className="shadow  lg:overflow-hidden overflow-scroll rounded  border-gray-200">
+                  <table className="min-w-full text-white">
+                    <thead className="bg-red-500 text-white">
+                      <tr>
+                        <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
+                          Personal Info
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6 uppercase font-semibold ">
+                          Details
+                        </td>
+                        <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
+                          Personal Info
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6 uppercase font-semibold ">
+                          Details
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody className="text-gray-700">
+                      <tr>
+                        <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                          Name
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6">
+                          {personalInfo?.name}
+                        </td>
+                        <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                          Gerdian Name
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6">
+                          {personalInfo?.gerdianName}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                          Email
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6">
+                          {user?.email}
+                        </td>
+                        <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                          Age
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6">
+                          {personalInfo?.age}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                          Number
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6">
+                          {personalInfo?.number}
+                        </td>
+                        <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                          Address
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6">
+                          {personalInfo?.number}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                          Gender
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6">
+                          {personalInfo?.gender}
+                        </td>
+                        <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                          Date Of Births
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6">
+                          {personalInfo?.birthday}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
                           Village
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6">
-                            {personalInfo?.village}
-                          </td>
-                          <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6">
+                          {personalInfo?.village}
+                        </td>
+                        <th className="w-1/3 text-left py-3 px-6 font-semibold text-sm">
                           Country
-                          </th>
-                          <td className="w-1/3 text-left py-3 px-6">
-                            {personalInfo?.country}
-                          </td>
-                        </tr>
-                       
-                      </tbody>
-                    </table>
-                  </div>
+                        </th>
+                        <td className="w-1/3 text-left py-3 px-6">
+                          {personalInfo?.country}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
+          </div>
         </div>
 
         {/* <div className=" flex justify-center">

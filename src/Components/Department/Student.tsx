@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import StudentRow from "./StudentRow";
-interface StudentInfo{
-  students: string[]
+interface StudentInfo {
+  students: string[];
 }
-const Student = ({students}:StudentInfo) => {
+const Student = ({ students }: StudentInfo) => {
   console.log(students);
   return (
     <div className="my-10">
@@ -29,9 +29,9 @@ const Student = ({students}:StudentInfo) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {students?.map((student) =>  <StudentRow key={student} student={student} />)}
-                 
-                  
+                  {students?.map((student) => (
+                    <StudentRow key={student} student={student} />
+                  ))}
                 </tbody>
               </table>
             </div>

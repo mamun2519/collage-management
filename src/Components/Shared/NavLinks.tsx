@@ -50,14 +50,17 @@ const NavLinks = () => {
                             <NavLink
                               to={slink.link}
                               style={({ isActive, isPending }) => {
-                                    return {
-                                      color: isActive ? "red" : "inherit",
-                                    };
-                                  }}
-                                  className={({ isActive, isPending }) => {
-                                    return isActive ? "active hover:text-primary" : isPending ? "pending hover:text-primary" : "";
-                                  }} 
-                            
+                                return {
+                                  color: isActive ? "red" : "inherit",
+                                };
+                              }}
+                              className={({ isActive, isPending }) => {
+                                return isActive
+                                  ? "active hover:text-primary"
+                                  : isPending
+                                  ? "pending hover:text-primary"
+                                  : "";
+                              }}
                             >
                               {slink.name}
                             </NavLink>
@@ -99,7 +102,6 @@ const NavLinks = () => {
                         }`}
                       ></MdKeyboardArrowDown>
                     </span>
-                    
                   </h1>
                   <div
                     className={`${

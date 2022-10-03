@@ -5,7 +5,6 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 
-
 const CheckoutFrom = () => {
   // const [email, setEmail] = useState('');
   const stripe = useStripe();
