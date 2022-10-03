@@ -23,7 +23,7 @@ const BBS = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setStudents(data);
+          setStudents(data.student);
           fetch(
             `http://localhost:5000/v1/teacher/department?department=${department}`
           )
@@ -47,7 +47,7 @@ const BBS = () => {
         }
       });
   }, [department]);
-  console.log(routine);
+  console.log(students);
   const Tabs = [
     {
       name: "Overview",
@@ -62,7 +62,7 @@ const BBS = () => {
       name: "Student infromatio",
       content: (
         <div data-aos="fade-right" data-aos-duration="1000">
-          <Student />
+          <Student students={students} />
         </div>
       ),
     },

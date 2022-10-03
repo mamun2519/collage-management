@@ -1,6 +1,10 @@
-import React from "react";
-
-const Student = () => {
+import React, { FC } from "react";
+import StudentRow from "./StudentRow";
+interface StudentInfo{
+  students: string[]
+}
+const Student = ({students}:StudentInfo) => {
+  console.log(students);
   return (
     <div className="my-10">
       <div className="card  w-full mx-auto bg-base-100 border  shadow-lg">
@@ -25,48 +29,9 @@ const Student = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <div className="">
-                        <div className=" ">Md Mamun</div>
-                      </div>
-                    </td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        4453234
-                      </p>
-                    </td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <p className="text-gray-900 whitespace-no-wrap">N/A</p>
-                    </td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm flex justify-center">
-                      <button className="bg-red-500 text-white px-4 py-1 rounded-lg">
-                        View Now
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <div className="">
-                        <p className="text-gray-900 whitespace-no-wrap">
-                          2022-09-25
-                        </p>
-                      </div>
-                    </td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <p className="text-gray-900 whitespace-no-wrap">
-                        2pm-5pm
-                      </p>
-                    </td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                      <p className="text-gray-900 whitespace-no-wrap">444</p>
-                    </td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm flex justify-center">
-                      <button className="bg-red-500 text-white px-4 py-1 rounded-lg">
-                        View Now
-                      </button>
-                    </td>
-                  </tr>
+                  {students?.map((student) =>  <StudentRow key={student} student={student} />)}
+                 
+                  
                 </tbody>
               </table>
             </div>
