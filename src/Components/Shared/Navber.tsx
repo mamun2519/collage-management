@@ -11,12 +11,15 @@ const Navber = () => {
   const menus = [
     { name: "Admission List", link: "/dashboard/admissionList", icon: MdOutlineDashboard },
     { name: "Student List", link: "/dashboard/studentList", icon: AiOutlineUser },
-    { name: "messages", link: "/", icon: FiMessageSquare },
-    { name: "analytics", link: "/", icon: TbReportAnalytics, margin: true },
-    { name: "File Manager", link: "/", icon: FiFolder },
-    { name: "Cart", link: "/", icon: FiShoppingCart },
-    { name: "Saved", link: "/", icon: AiOutlineHeart, margin: true },
-    { name: "Setting", link: "/", icon: RiSettings4Line },
+    { name: "Add Class Routine", link: "/dashboard/classRoutine", icon: FiMessageSquare },
+    { name: "Add Exam Routine", link: "/", icon: TbReportAnalytics, margin: true },
+    { name: "Notices", link: "/", icon: FiFolder },
+    { name: "Add Notice", link: "/", icon: FiFolder },
+    { name: "Teacher List", link: "/", icon: FiShoppingCart },
+    { name: "Events", link: "/", icon: AiOutlineHeart, margin: true },
+    { name: "Add Events", link: "/", icon: AiOutlineHeart,},
+    { name: "Result Published", link: "/", icon: AiOutlineHeart,  },
+    { name: "User List", link: "/", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);
   return (

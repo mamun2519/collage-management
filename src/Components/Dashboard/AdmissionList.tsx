@@ -50,7 +50,8 @@ const AdmissionList = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {admissions?.map((admission:any)=> <AdmissionLIstRow key={admission._id} admission={admission} />)}
+                  {admissions?.map((admission:any)=> !admission.verifay &&
+                  <AdmissionLIstRow key={admission._id} admission={admission} />)}
                 </tbody>
               </table>
             </div>

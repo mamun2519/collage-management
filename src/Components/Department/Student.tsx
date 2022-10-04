@@ -29,7 +29,8 @@ const Student = ({ students }: StudentInfo) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {students?.map((student) => (
+                  {students?.map((student:any) => (
+                    student?.verifay &&
                     <StudentRow key={student} student={student} />
                   ))}
                 </tbody>

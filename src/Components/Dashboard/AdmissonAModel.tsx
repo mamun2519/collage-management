@@ -2,37 +2,68 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
+import swal from "sweetalert";
 interface Modal {
-      isOpen: boolean, 
-      closeModal:any
-      id?: string 
+  isOpen: boolean;
+  closeModal: any;
+  id?: string;
+  setAgain: any
 }
-const AdmissonAModel = ({ isOpen, closeModal , id }: Modal) => {
-      type UserSubmitForm = {
-            name: string;
-            roll: string;
-          };
-      console.log(id)
-      const [student , setStudent] = useState<any>({})
-      useEffect(()=>{
-            fetch(`http://localhost:5000/v1/student/admission/${id}`)
+const AdmissonAModel = ({ isOpen, closeModal, id , setAgain}: Modal) => {
+  type UserSubmitForm = {
+    name: string;
+    roll: string;
+  };
+  console.log(id);
+  const [student, setStudent] = useState<any>({});
+
+  const { name } = student;
+  useEffect(() => {
+    fetch(`http://localhost:5000/v1/student/admission/${id}`)
       .then((res) => res.json())
-      .then((data) => setStudent(data.student))
-      },[])
-      
-          const {
-            register,
-            reset,
-            formState: { errors },
-            handleSubmit,
-          } = useForm<UserSubmitForm>({
-            defaultValues: {
-              name: student.name,
-            },
+      .then((data) => {
+       
+        setStudent(data.student)});
+  }, []);
+
+  const {
+    register,
+    reset,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<UserSubmitForm>({
+    defaultValues: {
+      name: name,
+    },
+  });
+
+  const onSubmit = (data: UserSubmitForm) => {
+    const verifay = {
+      roll: data.roll,
+      verifay: true,
+    };
+    fetch(`http://localhost:5000/v1/student/admission/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(verifay),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data.student.roll);
+          setAgain(true)
+          closeModal();
+          swal({
+            title: "Student Verified Successfull",
+            text: `Now Student Roll Is ${data.student.roll}`,
+            icon: "success",
+            buttons: [false],
           });
-          const onSubmit = (data: UserSubmitForm) => {
-            console.log(data);
-          };
+        }
+      });
+  };
   return (
     <div>
       <Transition appear show={isOpen} as={Fragment}>
@@ -64,12 +95,10 @@ const AdmissonAModel = ({ isOpen, closeModal , id }: Modal) => {
                   <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
-                  >
-                  
-                  </Dialog.Title>
+                  ></Dialog.Title>
                   <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className="mt-2">
-                  <div>
+                    <div className="mt-2">
+                      {/* <div>
                       <p>Name</p>
                       <div className="h-14 mt-2  relative">
                         <input
@@ -95,44 +124,43 @@ const AdmissonAModel = ({ isOpen, closeModal , id }: Modal) => {
                           </span>
                         )}
                       </label>
-                    </div>
-                  <div className="mt-3">
-                      <p>Student Roll</p>
-                      <div className="h-14 mt-2  relative">
-                        <input
-                          {...register("roll", {
-                            required: {
-                              value: true,
-                              message: "Roll is Required",
-                            },
-                          })}
-                          className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
-                          placeholder="Enter Roll"
-                          type="text"
-                        />
+                    </div> */}
+                      <div className="mt-3">
+                        <p>Student Roll</p>
+                        <div className="h-14 mt-2  relative">
+                          <input
+                            {...register("roll", {
+                              required: {
+                                value: true,
+                                message: "Roll is Required",
+                              },
+                            })}
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            placeholder="Enter Roll"
+                            type="text"
+                          />
 
-                        <div className=" px-1 ">
-                          <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                          <div className=" px-1 ">
+                            <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                          </div>
                         </div>
+                        <label className="">
+                          {errors.roll?.type === "required" && (
+                            <span className="text-red-500 ">
+                              {errors.roll.message}
+                            </span>
+                          )}
+                        </label>
                       </div>
-                      <label className="">
-                        {errors.roll?.type === "required" && (
-                          <span className="text-red-500 ">
-                            {errors.roll.message}
-                          </span>
-                        )}
-                      </label>
+                      <div className="  mt-5">
+                        <input
+                          className="bg-red-500 w-full text-white px-6 py-2 rounded-lg"
+                          type="submit"
+                          value="Submit Roll"
+                        />
+                      </div>
                     </div>
-                    <div className="  mt-5">
-                  <input
-                    className="bg-red-500 w-full text-white px-6 py-2 rounded-lg"
-                    type="submit"
-                    value="Submit Roll"
-                  />
-                </div>
-                  </div>
                   </form>
-                  
                 </Dialog.Panel>
               </Transition.Child>
             </div>

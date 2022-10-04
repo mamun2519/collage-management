@@ -6,6 +6,7 @@ import AdmissonAModel from "./AdmissonAModel";
 const AdmissionDetails = () => {
   const [student, setStudent] = useState<any>({});
   const [loading, isLoading] = useState(false);
+  const [again , setAgain] = useState(false)
   const { id } = useParams();
   let [isOpen, setIsOpen] = useState(false)
 
@@ -26,8 +27,7 @@ const AdmissionDetails = () => {
           isLoading(false);
         }
       });
-  }, []);
-  console.log(student);
+  }, [again]);
 
   return (
     <>
@@ -293,10 +293,10 @@ const AdmissionDetails = () => {
           </div>
           </div>
 
-          <div className=" flex justify-center mt-5">
-            <button onClick={()=>openModal()} className="bg-red-500 text-white px-6 rounded-lg py-2">Admission Accpect Now</button>
+          <div className=" flex justify-center mt-10">
+            <button onClick={()=>openModal()} className="bg-red-500 font-semibold text-white px-8 rounded-lg py-2">Admission Accpect Now</button>
           </div>
-          {isOpen && <AdmissonAModel id={id} isOpen={isOpen} closeModal={closeModal}/>}
+          {isOpen && <AdmissonAModel setAgain={setAgain} id={id} isOpen={isOpen} closeModal={closeModal}/>}
         </div>
       )}
     </>
