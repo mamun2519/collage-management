@@ -10,7 +10,7 @@ import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 const Navber = () => {
   const menus = [
     { name: "Admission List", link: "/dashboard/admissionList", icon: MdOutlineDashboard },
-    { name: "user", link: "/", icon: AiOutlineUser },
+    { name: "Student List", link: "/dashboard/studentList", icon: AiOutlineUser },
     { name: "messages", link: "/", icon: FiMessageSquare },
     { name: "analytics", link: "/", icon: TbReportAnalytics, margin: true },
     { name: "File Manager", link: "/", icon: FiFolder },
@@ -22,7 +22,7 @@ const Navber = () => {
   return (
     <section className="flex ">
       <div
-        className={`bg-[#0e0e0e] min-h-screen ${
+        className={`bg-red-400 min-h-screen ${
           open ? "w-72" : "w-16"
         } duration-500 text-gray-100 px-4`}
       >

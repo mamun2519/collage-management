@@ -19,6 +19,8 @@ import Result from "./Components/Acadmic/Result";
 import ClassRoutine from "./Components/Acadmic/ClassRoutine";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import AdmissionList from "./Components/Dashboard/AdmissionList";
+import AdmissionDetails from "./Components/Dashboard/AdmissionDetails";
+import StudentLIst from "./Components/Dashboard/StudentLIst";
 
 function App() {
   return (
@@ -93,6 +95,8 @@ function App() {
           element={<Dashboard />}
         >
           <Route path="/dashboard/admissionList" element={<AdmissionList/>} />
+          <Route path="/dashboard/admissionList/addmissionDetails/:id" element={<AdmissionDetails/>} />
+          <Route path="/dashboard/studentList" element={<StudentLIst/>} />
         </Route>
       </Routes>
     </div>
