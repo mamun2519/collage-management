@@ -22,6 +22,7 @@ import AdmissionList from "./Components/Dashboard/AdmissionList";
 import AdmissionDetails from "./Components/Dashboard/AdmissionDetails";
 import StudentLIst from "./Components/Dashboard/StudentLIst";
 import AddClassRoutine from "./Components/Dashboard/AddClassRoutine";
+import AddExamRoutine from "./Components/Dashboard/AddExamRoutine";
 
 function App() {
   return (
@@ -99,6 +100,7 @@ function App() {
           <Route path="/dashboard/admissionList/addmissionDetails/:id" element={<AdmissionDetails/>} />
           <Route path="/dashboard/studentList" element={<StudentLIst/>} />
           <Route path="/dashboard/classRoutine" element={<AddClassRoutine/>} />
+          <Route path="/dashboard/examRoutine" element={<AddExamRoutine/>} />
         </Route>
       </Routes>
     </div>

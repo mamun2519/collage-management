@@ -1,66 +1,61 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BsStopwatch } from "react-icons/bs";
-import { CgProfile } from "react-icons/cg";
+import { GiNotebook } from "react-icons/gi";
 import swal from "sweetalert";
+import Loading from "../Shared/Loading";
 
-const AddClassRoutine = () => {
+const AddExamRoutine = () => {
+  const [classRotuine, setClassRoutine] = useState([]);
+  const [routineId, setRoutineId] = useState("");
   const [selected, setSelected] = useState<any>(false);
+  const [loading, isLoading] = useState(false);
   const [dataDispaly, SetDataDisplay] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [selectedSession, SetSelectedSession] = useState("");
+  const [selectedExamType, setSelectedExamType] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  useEffect(() => {
+    isLoading(true);
+    fetch("http://localhost:5000/v1/routine/classRoutine")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setClassRoutine(data.routine);
+          isLoading(false);
+        }
+      });
+  }, []);
   const routine = {
-    day: "",
-    firstPeriode: "",
-    secendPeriode: "",
-    thardePeriode: "",
-    forthPeriode: "",
+    date: "",
+    start: "",
+    end: "",
+    subjectCode: "",
+    subject: "",
   };
+  const examType = [
+    { title: "Select examType" },
+    { title: "Incourse Exam" },
+    { title: "Test Exam" },
+    { title: "Final Exam" },
+  ];
   const [routines, setRoutine] = useState([routine]);
-  const admission = [
-    { title: "Higer Secondary Admission" },
-    { title: "Bachelor of Busniness Studies (BBS)" },
-    { title: "Bachelor of Science (BSC)" },
-    { title: "Bachelor of Arts (BA)" },
-    { title: "Bachelor of Busniness Administraion (BBA)" },
-    { title: "Graduate Admission (Master's)" },
-  ];
-  const section = [
-    { title: "Select Section" },
-    { title: "2017-2018" },
-    { title: "2019-2020" },
-    { title: "2021-2022" },
-    { title: "2023-2024" },
-  ];
-  const admissionRequestHendeler = (admissionName: string): void => {
-    const click = admission.filter((classs) => classs.title === admissionName);
-    setSelected(click[0]?.title);
+  const admissionRequestHendeler = (className: string, id: string): void => {
+    setSelected(className);
+    setRoutineId(id);
     SetDataDisplay(true);
   };
   const addRoutineFlied = (): void => {
-    // setRoutine([...routines , routine ])
     const values = [...routines];
     values.push({
-      day: "",
-      firstPeriode: "",
-      secendPeriode: "",
-      thardePeriode: "",
-      forthPeriode: "",
+      date: "",
+      start: "",
+      end: "",
+      subjectCode: "",
+      subject: "",
     });
     setRoutine(values);
   };
 
-  const days = [
-    { title: "Select Day" },
-    { title: "Saturday" },
-    { title: "Sunday" },
-    { title: "Monday" },
-    { title: "Tuesday" },
-    { title: "Wednesday" },
-    { title: "Thursday" },
-  ];
   const changeHendeler = (index: any, event: any) => {
     let values: any = [...routines];
     const updatedValue: any = event.target.name;
@@ -68,17 +63,14 @@ const AddClassRoutine = () => {
     setRoutine(values);
   };
   const submitHendeler = (): void => {
-    const createRoutine = {
-      classs: selected,
-      session: selectedSession,
-      classRoutine: routines,
-    };
-
-    if (selectedSession) {
-      
-      fetch("http://localhost:5000/v1/routine/classRoutine", {
+    if (selectedExamType) {
+      const examRoutine = {
+        examName: selectedExamType,
+        routines,
+      };
+      fetch(`http://localhost:5000/v1/routine/examRoutine/${routineId}`, {
         method: "POST",
-        body: JSON.stringify(createRoutine),
+        body: JSON.stringify(examRoutine),
         headers: {
           "Content-type": "application/json",
         },
@@ -93,14 +85,17 @@ const AddClassRoutine = () => {
               buttons: [false],
             });
           }
-          setErrorMessage("")
+          setErrorMessage("");
           setEdit(true);
         });
+      setErrorMessage("");
     } else {
-      setErrorMessage("Session  is Required");
+      setErrorMessage("ExamType  is Required");
     }
+
+    //   setEdit(true);
+    console.log(routines);
   };
-  console.log(selected);
   const removeFromFlied = (index: any): void => {
     let newFormValues = [...routines];
     newFormValues.splice(index, 1);
@@ -109,59 +104,71 @@ const AddClassRoutine = () => {
   const cancleHendeler = (): void => {
     SetDataDisplay(false);
     setRoutine([routine]);
-    SetSelectedSession("");
+    // SetSelectedSession("");
   };
+  console.log(selectedExamType);
   return (
     <div className="my-10 lg:w-3/4 w-full mx-auto">
-      <div className="  grid  lg:grid-cols-3 grid-cols-2 gap-10">
-        {admission.map((ad: any) => (
-          <div
-            onClick={() => admissionRequestHendeler(ad.title)}
-            key={ad}
-            className={`card  flex justify-center items-center   border h-28 lg:w-80 shadow-md px-2 ${
-              selected == ad.title ? "bg-red-500" : "bg-base-100"
-            } `}
-          >
-            <div>
-              <span
-                className={`text-3xl  ${
-                  selected == ad.title ? "text-white" : "text-red-500"
-                }`}
-              >
-                <BsStopwatch />
-              </span>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className="  grid  lg:grid-cols-3 grid-cols-2 gap-10">
+          {classRotuine?.map((ad: any) => (
+            <div
+              onClick={() => admissionRequestHendeler(ad.classs, ad._id)}
+              key={ad}
+              className={`card  flex justify-center items-center   border h-36 lg:w-80 shadow-md px-2 ${
+                selected == ad.classs ? "bg-red-500" : "bg-base-100"
+              } `}
+            >
+              <div>
+                <span
+                  className={`text-3xl  ${
+                    selected == ad.classs ? "text-white" : "text-red-500"
+                  }`}
+                >
+                  <GiNotebook />
+                </span>
+              </div>
+              <div>
+                <p
+                  className={`font-semibold uppercase mt-1 text-center ${
+                    selected == ad.classs ? "text-white" : "text-black"
+                  }`}
+                >
+                  {ad.classs}
+                </p>
+                <p
+                  className={`font-semibold uppercase mt-1 text-center ${
+                    selected == ad.classs ? "text-white" : "text-black"
+                  }`}
+                >
+                  {ad.session} (session)
+                </p>
+              </div>
             </div>
-            <div>
-              <p
-                className={`font-semibold uppercase mt-1 text-center ${
-                  selected == ad.title ? "text-white" : "text-black"
-                }`}
-              >
-                {ad.title}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {dataDispaly && (
         <div className="card  w-full  bg-base-100 border  shadow-md my-20">
           <div className="p-5 ">
             <h1 className="font-medium  text-gray-800 uppercase text-lg">
-              Add to {selected} Class Routine
+              Add to {selected} Exam Routine
             </h1>
 
             {!edit && (
               <div className=" grid lg:grid-cols-3 col-span-2">
                 <div className="mt-5">
-                  <h1>Session</h1>
+                  <h1>Exam Type</h1>
                   <div className="h-14 mt-2 ">
                     <select
                       className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-4"
                       placeholder="Enter Your Name"
-                      onChange={(e) => SetSelectedSession(e.target.value)}
+                      onChange={(e) => setSelectedExamType(e.target.value)}
                     >
-                      {section.map((sec) => (
+                      {examType.map((sec) => (
                         <option value={sec.title}>{sec.title}</option>
                       ))}
                     </select>
@@ -177,19 +184,16 @@ const AddClassRoutine = () => {
                   <thead>
                     <tr>
                       <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Day
+                        Date
                       </th>
                       <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider ">
-                        first Periode
+                        Time (Start & end)
                       </th>
                       <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        seacend Periode
+                        Subjcet Code
                       </th>
                       <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        tharde Periode
-                      </th>
-                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        forth Periode
+                        Subject
                       </th>
                       {!edit && (
                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -204,27 +208,49 @@ const AddClassRoutine = () => {
                           <tr>
                             <td className="px-2 py-5 border-b border-gray-200 bg-white text-sm">
                               <>
-                                <select
-                                  name="day"
+                                <input
+                                  name="date"
                                   onChange={(event) =>
                                     changeHendeler(index, event)
                                   }
+                                  type="date"
                                   className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
                                   placeholder="Enter Your Name"
-                                >
-                                  {days.map((sec) => (
-                                    <option value={sec.title || ""}>
-                                      {sec.title}
-                                    </option>
-                                  ))}
-                                </select>
+                                />
                               </>
+                            </td>
+                            <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
+                              <div className=" flex items-center">
+                                <input
+                                  name="start"
+                                  value={routine.start || ""}
+                                  onChange={(event) =>
+                                    changeHendeler(index, event)
+                                  }
+                                  type="time"
+                                  className="h-12  border w-full rounded-lg    focus:outline-emerald-100  px-4"
+                                  placeholder="Text"
+                                />
+                                <span className="text-l font-semibold  text-gray-700 px-2">
+                                  To
+                                </span>
+                                <input
+                                  name="end"
+                                  value={routine.end || ""}
+                                  onChange={(event) =>
+                                    changeHendeler(index, event)
+                                  }
+                                  type="time"
+                                  className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
+                                  placeholder="Text"
+                                />
+                              </div>
                             </td>
                             <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
                               <>
                                 <input
-                                  name="firstPeriode"
-                                  value={routine.firstPeriode || ""}
+                                  name="subjectCode"
+                                  value={routine.subjectCode || ""}
                                   onChange={(event) =>
                                     changeHendeler(index, event)
                                   }
@@ -236,8 +262,8 @@ const AddClassRoutine = () => {
                             <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
                               <>
                                 <input
-                                  name="secendPeriode"
-                                  value={routine.secendPeriode || ""}
+                                  name="subject"
+                                  value={routine.subject || ""}
                                   onChange={(event) =>
                                     changeHendeler(index, event)
                                   }
@@ -246,32 +272,7 @@ const AddClassRoutine = () => {
                                 />
                               </>
                             </td>
-                            <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
-                              <>
-                                <input
-                                  name="thardePeriode"
-                                  value={routine.thardePeriode || ""}
-                                  onChange={(event) =>
-                                    changeHendeler(index, event)
-                                  }
-                                  className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
-                                  placeholder="Text"
-                                />
-                              </>
-                            </td>
-                            <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
-                              <>
-                                <input
-                                  name="forthPeriode"
-                                  value={routine?.forthPeriode || ""}
-                                  onChange={(event) =>
-                                    changeHendeler(index, event)
-                                  }
-                                  className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
-                                  placeholder="Text"
-                                />
-                              </>
-                            </td>
+
                             <td className="px-6   border-b py-5    border-gray-200 bg-white text-sm">
                               <span
                                 onClick={() => removeFromFlied(index)}
@@ -286,27 +287,22 @@ const AddClassRoutine = () => {
                           <tr>
                             <td className="px-6 py-5 border-b border-gray-200 bg-white text-sm">
                               <p className="text-gray-900 whitespace-no-wrap">
-                                {routine.day}
+                                {routine.date}
                               </p>
                             </td>
                             <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
                               <p className="text-gray-900 whitespace-no-wrap">
-                                {routine.firstPeriode}
+                                {routine.start} To {routine.end}
                               </p>
                             </td>
                             <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
                               <p className="text-gray-900 whitespace-no-wrap">
-                                {routine.secendPeriode}
+                                {routine.subjectCode}
                               </p>
                             </td>
                             <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
                               <p className="text-gray-900 whitespace-no-wrap">
-                                {routine.thardePeriode}
-                              </p>
-                            </td>
-                            <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
-                              <p className="text-gray-900 whitespace-no-wrap">
-                                {routine.forthPeriode}
+                                {routine.subject}
                               </p>
                             </td>
                           </tr>
@@ -347,4 +343,4 @@ const AddClassRoutine = () => {
   );
 };
 
-export default AddClassRoutine;
+export default AddExamRoutine;

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import SideNav from "./SideNav";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
@@ -12,13 +11,15 @@ const Navber = () => {
     { name: "Admission List", link: "/dashboard/admissionList", icon: MdOutlineDashboard },
     { name: "Student List", link: "/dashboard/studentList", icon: AiOutlineUser },
     { name: "Add Class Routine", link: "/dashboard/classRoutine", icon: FiMessageSquare },
-    { name: "Add Exam Routine", link: "/", icon: TbReportAnalytics, margin: true },
+    { name: "Add Exam Routine", link: "/dashboard/examRoutine", icon: TbReportAnalytics, margin: true },
+    { name: "Exam & Class Routine", link: "/", icon: FiFolder },
+    { name: "Result Published", link: "/", icon: FiFolder },
     { name: "Notices", link: "/", icon: FiFolder },
     { name: "Add Notice", link: "/", icon: FiFolder },
     { name: "Teacher List", link: "/", icon: FiShoppingCart },
     { name: "Events", link: "/", icon: AiOutlineHeart, margin: true },
     { name: "Add Events", link: "/", icon: AiOutlineHeart,},
-    { name: "Result Published", link: "/", icon: AiOutlineHeart,  },
+    // { name: "", link: "/", icon: AiOutlineHeart,  },
     { name: "User List", link: "/", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);
