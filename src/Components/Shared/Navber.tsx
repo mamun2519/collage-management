@@ -12,11 +12,11 @@ const Navber = () => {
     { name: "Student List", link: "/dashboard/studentList", icon: AiOutlineUser },
     { name: "Add Class Routine", link: "/dashboard/classRoutine", icon: FiMessageSquare },
     { name: "Add Exam Routine", link: "/dashboard/examRoutine", icon: TbReportAnalytics, margin: true },
-    { name: "Exam & Class Routine", link: "/", icon: FiFolder },
+    
     { name: "Result Published", link: "/", icon: FiFolder },
     { name: "Notices", link: "/dashboard/notice", icon: FiFolder },
     { name: "Add Notice", link: "/dashboard/addNotice", icon: FiFolder },
-    { name: "Teacher List", link: "/", icon: FiShoppingCart },
+    { name: "Teacher List", link: "/dashboard/teacherList", icon: FiShoppingCart },
     { name: "Add Teacher", link: "/dashboard/addTeacher", icon: FiShoppingCart },
     { name: "Events", link: "/", icon: AiOutlineHeart, margin: true },
     { name: "Add Events", link: "/", icon: AiOutlineHeart,},

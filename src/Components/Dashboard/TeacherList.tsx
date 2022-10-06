@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { GiOpenBook } from "react-icons/gi";
+import { FaChalkboardTeacher } from "react-icons/fa";
 import Loading from "../Shared/Loading";
-import StudentListRow from "./StudentListRow";
+import TeacherRow from "./TeacherRow";
 
-const StudentLIst = () => {
+const TeacherList = () => {
   const [studentList, setStudentList] = useState([]);
   const [loading, isLoading] = useState(false);
   const [selected, setSelected] = useState<any>(false);
@@ -22,7 +22,7 @@ const StudentLIst = () => {
     setSelected(click[0]?.title);
     isLoading(true);
     fetch(
-      `http://localhost:5000/v1/student/deparment/student?department=${admissionName}`
+      `http://localhost:5000/v1/teacher/department?department=${admissionName}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -31,14 +31,18 @@ const StudentLIst = () => {
           isLoading(false);
         } else {
           setStudentList([]);
-          // isLoading(false)
+          //   isLoading(false)
         }
       });
   };
-
+  console.log(studentList);
   return (
     <div className="my-10 lg:w-3/4 w-full mx-auto">
-      <div className="  grid  lg:grid-cols-3 grid-cols-2 gap-10">
+      {/* <div className='h-12 card  flex  justify-center  bg-base-100 border  shadow-md w-80 font-medium text-gray-800 uppercase text-lg'>
+                        <p className='r px-4'>OUR TEACHER LISt</p>
+                  </div> */}
+
+      <div className="grid  lg:grid-cols-3 grid-cols-2 gap-10 ">
         {admission.map((ad: any) => (
           <div
             onClick={() => admissionRequestHendeler(ad.title)}
@@ -53,7 +57,7 @@ const StudentLIst = () => {
                   selected == ad.title ? "text-white" : "text-red-500"
                 }`}
               >
-                <GiOpenBook />
+                <FaChalkboardTeacher />
               </span>
             </div>
             <div>
@@ -76,7 +80,7 @@ const StudentLIst = () => {
           <div className="card  w-full  bg-base-100 border  shadow-md my-20">
             <div className="p-5 ">
               <h1 className="font-medium  text-gray-800 uppercase text-lg">
-                Student at {selected} List
+                Our Teacher at {selected} List
               </h1>
               <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                 <div className="inline-block min-w-full shadow rounded-lg  overflow-x-auto">
@@ -90,26 +94,23 @@ const StudentLIst = () => {
                           Name
                         </th>
                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                          Roll
+                          Collage Role
                         </th>
                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                          Student Verified
+                          email
                         </th>
                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           Details
                         </th>
+                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                          action
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
-                      {studentList?.map(
-                        (student: any) =>
-                          student.verifay && (
-                            <StudentListRow
-                              key={student._id}
-                              student={student}
-                            />
-                          )
-                      )}
+                      {studentList?.map((student: any) => (
+                        <TeacherRow key={student._id} student={student} />
+                      ))}
                     </tbody>
                   </table>
                 </div>
@@ -122,4 +123,4 @@ const StudentLIst = () => {
   );
 };
 
-export default StudentLIst;
+export default TeacherList;
