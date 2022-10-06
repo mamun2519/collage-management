@@ -47,7 +47,7 @@ const Admission = () => {
     
   }, []);
   
-  console.log(allReadyAdmissiom);
+  
   const {
     register,
     reset,
