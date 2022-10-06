@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { AiFillDelete } from "react-icons/ai";
 import { BsStopwatch } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import swal from "sweetalert";
+import Loading from "../Shared/Loading";
 
 const AddClassRoutine = () => {
   const [selected, setSelected] = useState<any>(false);
@@ -11,6 +12,10 @@ const AddClassRoutine = () => {
   const [edit, setEdit] = useState(false);
   const [selectedSession, SetSelectedSession] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [allReadyCreateR, setAllReadyCreateR] = useState(true);
+  const [updateButton, setUpdateButton] = useState(false);
+  const [updateRoutineId , setUpdateRoutineId]=useState("")
+  const [loading , isLoading] = useState(false)
   const routine = {
     day: "",
     firstPeriode: "",
@@ -18,7 +23,28 @@ const AddClassRoutine = () => {
     thardePeriode: "",
     forthPeriode: "",
   };
+
+  console.log(selected);
   const [routines, setRoutine] = useState([routine]);
+  useEffect(() => {
+    isLoading(true)
+    if (selected) {
+      fetch(`http://localhost:5000/v1/routine/chackRoutine?classs=${selected}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            setRoutine(data.routine.classRoutine);
+            setUpdateRoutineId(data.routine._id);
+            setAllReadyCreateR(false);
+            isLoading(false)
+          }
+          else{
+            isLoading(false)
+
+          }
+        });
+    }
+  }, [selected]);
   const admission = [
     { title: "Higer Secondary Admission" },
     { title: "Bachelor of Busniness Studies (BBS)" },
@@ -73,9 +99,8 @@ const AddClassRoutine = () => {
       session: selectedSession,
       classRoutine: routines,
     };
-
+    console.log(createRoutine);
     if (selectedSession) {
-      
       fetch("http://localhost:5000/v1/routine/classRoutine", {
         method: "POST",
         body: JSON.stringify(createRoutine),
@@ -93,14 +118,14 @@ const AddClassRoutine = () => {
               buttons: [false],
             });
           }
-          setErrorMessage("")
+          setErrorMessage("");
           setEdit(true);
         });
     } else {
       setErrorMessage("Session  is Required");
     }
   };
-  console.log(selected);
+
   const removeFromFlied = (index: any): void => {
     let newFormValues = [...routines];
     newFormValues.splice(index, 1);
@@ -110,6 +135,47 @@ const AddClassRoutine = () => {
     SetDataDisplay(false);
     setRoutine([routine]);
     SetSelectedSession("");
+    setAllReadyCreateR(false);
+  };
+  const updateButtonHendler = (): void => {
+    setAllReadyCreateR(true);
+    setEdit(false);
+    setUpdateButton(true);
+  };
+
+  const updateRequestHendeler = (): void => {
+    // request to update database
+    // setAllReadyCreateR(false);
+    const createRoutine = {
+      classs: selected,
+      session: selectedSession,
+      classRoutine: routines,
+    };
+  
+    if (selectedSession && updateRoutineId) {
+      fetch(`http://localhost:5000/v1/routine/department/${updateRoutineId}`, {
+        method: "PUT",
+        body: JSON.stringify(createRoutine),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            swal({
+              title: data.message,
+              text: "Thank You",
+              icon: "success",
+              buttons: [false],
+            });
+          }
+          setErrorMessage("");
+          setEdit(true);
+        });
+    } else {
+      setErrorMessage("Session  is Required");
+    }
   };
   return (
     <div className="my-10 lg:w-3/4 w-full mx-auto">
@@ -144,14 +210,14 @@ const AddClassRoutine = () => {
         ))}
       </div>
 
-      {dataDispaly && (
+      {loading ? <Loading/> : dataDispaly && (
         <div className="card  w-full  bg-base-100 border  shadow-md my-20">
           <div className="p-5 ">
             <h1 className="font-medium  text-gray-800 uppercase text-lg">
               Add to {selected} Class Routine
             </h1>
 
-            {!edit && (
+            {  !edit && allReadyCreateR  && (
               <div className=" grid lg:grid-cols-3 col-span-2">
                 <div className="mt-5">
                   <h1>Session</h1>
@@ -191,7 +257,7 @@ const AddClassRoutine = () => {
                       <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                         forth Periode
                       </th>
-                      {!edit && (
+                      {!edit && allReadyCreateR && (
                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           action
                         </th>
@@ -199,7 +265,7 @@ const AddClassRoutine = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {!edit
+                    {!edit && allReadyCreateR
                       ? routines.map((routine, index) => (
                           <tr>
                             <td className="px-2 py-5 border-b border-gray-200 bg-white text-sm">
@@ -316,7 +382,7 @@ const AddClassRoutine = () => {
               </div>
             </div>
 
-            {!edit && (
+            {!edit && allReadyCreateR && (
               <button
                 onClick={() => addRoutineFlied()}
                 className="bg-red-500 text-white px-8 rounded-lg py-2"
@@ -324,7 +390,7 @@ const AddClassRoutine = () => {
                 Add More
               </button>
             )}
-            {!edit && (
+            {!edit && allReadyCreateR && !updateButton && (
               <div className=" flex gap-5 justify-end mt-20">
                 <button
                   onClick={() => submitHendeler()}
@@ -337,6 +403,38 @@ const AddClassRoutine = () => {
                   className="bg-red-500 text-white px-8 rounded-lg py-2 mt-3"
                 >
                   Cancle
+                </button>
+              </div>
+            )}
+            {!allReadyCreateR && (
+              <div className=" flex gap-5 justify-end mt-20">
+                <button
+                  onClick={() => updateButtonHendler()}
+                  className="bg-red-500 text-white px-8 rounded-lg py-2 mt-3"
+                >
+                  Update
+                </button>
+                <button
+                  onClick={() => cancleHendeler()}
+                  className="bg-red-500 text-white px-8 rounded-lg py-2 mt-3"
+                >
+                  cancle
+                </button>
+              </div>
+            )}
+            {!edit && allReadyCreateR && updateButton && (
+              <div className=" flex gap-5 justify-end mt-20">
+                <button
+                  onClick={() => updateRequestHendeler()}
+                  className="bg-red-500 text-white px-8 rounded-lg py-2 mt-3"
+                >
+                  Confrom Update
+                </button>
+                <button
+                  onClick={() => cancleHendeler()}
+                  className="bg-red-500 text-white px-8 rounded-lg py-2 mt-3"
+                >
+                  cancle
                 </button>
               </div>
             )}

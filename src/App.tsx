@@ -23,6 +23,7 @@ import AdmissionDetails from "./Components/Dashboard/AdmissionDetails";
 import StudentLIst from "./Components/Dashboard/StudentLIst";
 import AddClassRoutine from "./Components/Dashboard/AddClassRoutine";
 import AddExamRoutine from "./Components/Dashboard/AddExamRoutine";
+import AddNotice from "./Components/Dashboard/AddNotice";
 
 function App() {
   return (
@@ -101,6 +102,7 @@ function App() {
           <Route path="/dashboard/studentList" element={<StudentLIst/>} />
           <Route path="/dashboard/classRoutine" element={<AddClassRoutine/>} />
           <Route path="/dashboard/examRoutine" element={<AddExamRoutine/>} />
+          <Route path="/dashboard/addNotice" element={<AddNotice/>} />
         </Route>
       </Routes>
     </div>

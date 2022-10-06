@@ -15,7 +15,7 @@ const Navber = () => {
     { name: "Exam & Class Routine", link: "/", icon: FiFolder },
     { name: "Result Published", link: "/", icon: FiFolder },
     { name: "Notices", link: "/", icon: FiFolder },
-    { name: "Add Notice", link: "/", icon: FiFolder },
+    { name: "Add Notice", link: "/dashboard/addNotice", icon: FiFolder },
     { name: "Teacher List", link: "/", icon: FiShoppingCart },
     { name: "Events", link: "/", icon: AiOutlineHeart, margin: true },
     { name: "Add Events", link: "/", icon: AiOutlineHeart,},

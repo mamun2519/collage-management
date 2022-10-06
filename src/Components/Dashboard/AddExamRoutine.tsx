@@ -23,6 +23,9 @@ const AddExamRoutine = () => {
           setClassRoutine(data.routine);
           isLoading(false);
         }
+        else{
+          isLoading(false);
+        }
       });
   }, []);
   const routine = {
@@ -151,7 +154,7 @@ const AddExamRoutine = () => {
         </div>
       )}
 
-      {dataDispaly && (
+      {loading ? <Loading/> : dataDispaly && (
         <div className="card  w-full  bg-base-100 border  shadow-md my-20">
           <div className="p-5 ">
             <h1 className="font-medium  text-gray-800 uppercase text-lg">
