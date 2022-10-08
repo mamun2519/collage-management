@@ -27,6 +27,8 @@ import AddNotice from "./Components/Dashboard/AddNotice";
 import Notice from "./Components/Dashboard/Notice";
 import AddTeacher from "./Components/Dashboard/AddTeacher";
 import TeacherList from "./Components/Dashboard/TeacherList";
+import AddEvents from "./Components/Dashboard/AddEvents";
+import Events from "./Components/Dashboard/Events";
 
 function App() {
   return (
@@ -110,6 +112,8 @@ function App() {
           <Route path="/dashboard/notice" element={<Notice/>} />
           <Route path="/dashboard/addTeacher" element={<AddTeacher/>} />
           <Route path="/dashboard/teacherList" element={<TeacherList/>} />
+          <Route path="/dashboard/addEvents" element={<AddEvents/>} />
+          <Route path="/dashboard/events" element={<Events/>} />
         </Route>
       </Routes>
     </div>

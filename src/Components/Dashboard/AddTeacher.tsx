@@ -18,9 +18,7 @@ interface Notices {
   images: string;
 }
 
-interface Htmlfor {
-  htmlFor: React.LabelHTMLAttributes<HTMLLabelElement>;
-}
+
 const AddTeacher = () => {
   const [selected, setSelected] = useState<any>(false);
   const [dataDispaly, SetDataDisplay] = useState(false);
@@ -46,26 +44,6 @@ const AddTeacher = () => {
   } = useForm<Notices>();
 
   const onSubmit = async (data: Notices) => {
-    console.log(data);
-    // fetch(`http://localhost:5000/v1/notice`, {
-    //   method: "POST",
-    //   body: JSON.stringify(routine),
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.success) {
-    //       swal({
-    //         title: data.message,
-    //         text: "Thank You",
-    //         icon: "success",
-    //         buttons: [false],
-    //       });
-    //     }
-    //     reset();
-    //   });
     const myForm: any = new FormData();
     myForm.append("name", data.name);
     myForm.append("classs", selected);

@@ -18,8 +18,8 @@ const Navber = () => {
     { name: "Add Notice", link: "/dashboard/addNotice", icon: FiFolder },
     { name: "Teacher List", link: "/dashboard/teacherList", icon: FiShoppingCart },
     { name: "Add Teacher", link: "/dashboard/addTeacher", icon: FiShoppingCart },
-    { name: "Events", link: "/", icon: AiOutlineHeart, margin: true },
-    { name: "Add Events", link: "/", icon: AiOutlineHeart,},
+    { name: "Events", link: "/dashboard/events", icon: AiOutlineHeart, margin: true },
+    { name: "Add Events", link: "/dashboard/addEvents", icon: AiOutlineHeart,},
     // { name: "", link: "/", icon: AiOutlineHeart,  },
     { name: "User List", link: "/", icon: RiSettings4Line },
   ];
