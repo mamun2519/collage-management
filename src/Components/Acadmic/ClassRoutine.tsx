@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
 
 import Loading from "../Shared/Loading";
 import ClassRotuineRow from "./ClassRotuineRow";
-
+import {useReactToPrint} from 'react-to-print'
 const ClassRoutine = () => {
+  const componentRef:any = useRef()
   const [routine, setRoutine] = useState<any>();
   const [disPlay, setDisplay] = useState(false);
   const [loading, isLoading] = useState(false);
@@ -16,7 +17,13 @@ const ClassRoutine = () => {
     examName: string;
     roll: string;
     department: string;
+    
   };
+  const pdfDowenlodeHendeler:any = useReactToPrint({
+    content:()=> componentRef.current,
+   documentTitle: "class-Routine",
+  //  onAfterprint: ()=> alert("downlode")
+  })
   const {
     register,
     reset,
@@ -84,39 +91,8 @@ const ClassRoutine = () => {
                   </div>
 
                   <div className="mt-10 px-5">
-                    <div className="grid  lg:grid-cols-3 gap-10 col-span-1">
-                      <div>
-                        <p>Department</p>
-                        <div className="h-14 mt-2  relative">
-                          <select
-                            {...register("department", {
-                              required: {
-                                value: true,
-                                message: "Department  is Required",
-                              },
-                            })}
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
-                            placeholder="Enter Age"
-                          >
-                            {department.map((depart) => (
-                              <option value={depart.title}>
-                                {depart.title}
-                              </option>
-                            ))}
-                          </select>
-
-                          <div className=" px-1 ">
-                            <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
-                          </div>
-                        </div>
-                        <label className="">
-                          {errors.department?.type === "required" && (
-                            <span className="text-red-500 ">
-                              {errors.department.message}
-                            </span>
-                          )}
-                        </label>
-                      </div>
+                    <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
+                      
                       <div>
                         <p>class Name</p>
                         <div className="h-14 mt-2  relative">
@@ -199,8 +175,8 @@ const ClassRoutine = () => {
         </div>
       ) : (
         <>
-          {routine ? (
-            <div className="card lg:w-3/4 w-full mx-auto bg-base-100 border  shadow-lg">
+          {routine ? <>
+            <div ref={componentRef} className="card lg:w-3/4 w-full mx-auto bg-base-100 border  shadow-lg">
               <div className="p-5 ">
                 <p className="text-2xl font-medium  uppercase text-center">
                   Realwai public Collage,Chittagong
@@ -281,8 +257,11 @@ const ClassRoutine = () => {
               </div>
               <div className="bg-red-400 h-[25px] "></div>
             </div>
-          ) : (
-            <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border pb-5">
+            <div className="my-10 lg:w-3/4 w-full mx-auto flex justify-center">
+            <button onClick={pdfDowenlodeHendeler} className="bg-red-500 text-white px-8 py-1 rounded-lg">Print Now</button>
+            </div>
+           </>: (
+            <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border shadow-lg pb-5">
               <div className="flex justify-center ">
                 <img
                   className="w-[350px]"

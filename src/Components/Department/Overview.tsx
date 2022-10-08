@@ -5,7 +5,7 @@ const Overview = () => {
   // lg:w-9/12
   const { department } = useParams();
   return (
-    <div className="card  w-full  mx-auto bg-base-100 border shadow-md py-8 my-10">
+    <div className="card lg:w-3/4  w-full  mx-auto bg-base-100 border shadow-md py-8 my-10">
       <div className="bg-red-400 h-[25px] "></div>
       <h1 className="text-2xl pb-2  font-medium uppercase px-8">
         Department Profile

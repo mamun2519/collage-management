@@ -5,8 +5,8 @@ interface TeacherInfo {
 }
 const Teacher = ({ teachers }: TeacherInfo) => {
   return (
-    <div className="my-10">
-      <div className="card  w-full mx-auto bg-base-100 border  shadow-lg">
+    <div className="mt-10 mb-20">
+      <div className="card lg:w-3/4 w-full mx-auto bg-base-100 border  shadow-lg m">
         <div className="p-5 ">
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full shadow rounded-lg  overflow-x-auto">

@@ -42,7 +42,7 @@ const SideNav = () => {
           </li>
           <NavLinks />
 
-          <li>
+          {/* <li>
             <NavLink
               style={({ isActive, isPending }) => {
                 return {
@@ -60,7 +60,7 @@ const SideNav = () => {
             >
               Notice
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink
               style={({ isActive, isPending }) => {
@@ -112,7 +112,7 @@ const SideNav = () => {
           </li>
           <NavLinks />
 
-          <li>
+          {/* <li>
             <NavLink
               style={({ isActive, isPending }) => {
                 return {
@@ -130,7 +130,7 @@ const SideNav = () => {
             >
               Notice
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink
               style={({ isActive, isPending }) => {
