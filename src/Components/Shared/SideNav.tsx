@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { BsSun } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
@@ -82,6 +83,7 @@ const SideNav = () => {
           </li>
         </ul>
         <div className="md:block hidden">
+          
           <Button />
         </div>
         {/* Mobile nav */}

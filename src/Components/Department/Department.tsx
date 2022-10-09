@@ -23,29 +23,33 @@ const BBS = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setStudents(data.student);
-          fetch(
-            `http://localhost:5000/v1/teacher/department?department=${department}`
-          )
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.success) {
-                setTeachers(data.student);
-                fetch(
-                  `http://localhost:5000/v1/routine/departments?department=${department}`
-                )
-                  .then((res) => res.json())
-                  .then((data) => {
-                    console.log(data);
-                    if (data.success) {
-                      setRoutine(data.student);
-                      isLoading(false);
-                    }
-                  });
-              }
-            });
+          setStudents(data.student); 
         }
       });
+      fetch(
+        `http://localhost:5000/v1/teacher/department?department=${department}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            setTeachers(data.student);
+          }
+        });
+      fetch(
+        `http://localhost:5000/v1/routine/departments?department=${department}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.success) {
+            setRoutine(data.student);
+            isLoading(false);
+          }
+          else{
+            isLoading(false);
+          }
+        });
+      
   }, [department]);
   console.log(routine);
   const Tabs = [

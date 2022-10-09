@@ -41,7 +41,7 @@ export const links = [
           {
             Head: "Honurs",
             sublink: [
-              { name: "Bachelor of Busniness Administraion(BBA)", link: "/" },
+              { name: "Bachelor of Busniness Administraion(BBA)", link: "/deparmentOf/Bachelor of Busniness Administraion(BBA)" },
               // { name: "Management", link: "/" }
             
             ],
@@ -49,7 +49,7 @@ export const links = [
           {
             Head: "Master's",
             sublink: [
-              { name: "Graduate Admission (Master's)", link: "/" },
+              { name: "Graduate Admission (Master's)", link: "/deparmentOf/Graduate Admission (Master's)" },
               
             ],
           },
@@ -70,7 +70,7 @@ export const links = [
           {
             Head: "Online Service",
             sublink: [
-              { name: "syllabus", link: "/" },
+              // { name: "syllabus", link: "/" },
               { name: "Class Rotine", link: "/routine" },
               { name: "Find Result", link: "/result" },
               { name: "All Department Result", link: "/reslt" },

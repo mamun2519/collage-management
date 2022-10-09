@@ -1,4 +1,4 @@
-import React from "react";
+import React , { createContext , useState} from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Navber from "./Components/Shared/Navber";
@@ -31,10 +31,17 @@ import AddEvents from "./Components/Dashboard/AddEvents";
 import Events from "./Components/Dashboard/Events";
 import Results from "./Components/Dashboard/Result";
 import RasultPublished from "./Components/Dashboard/RasultPublished";
+export const ThemeContext:any = createContext(null);
 function App() {
+  const [theme, setTheme] = useState("dark");
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
   return (
-    <div className="">
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <div className="" id={theme}>
       <SideNav />
+      {/* <button onClick={toggleTheme} >Change</button> */}
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -120,6 +127,7 @@ function App() {
         </Route>
       </Routes>
     </div>
+    </ThemeContext.Provider>
   );
 }
 

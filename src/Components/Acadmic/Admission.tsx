@@ -16,7 +16,7 @@ const Admission = () => {
   const [subjectList, setSubjectList] = useState("");
   const [loading, isLoading] = useState(false);
   const [allReadyAdmissiom, setAllReadyAdmissiom] =
-    useState<AdmissionStudent>();
+    useState<AdmissionStudent | any>();
   type UserSubmitForm = {
     passingAcademy: number;
     passingYear: string;
@@ -40,6 +40,9 @@ const Admission = () => {
         .then((data) => {
           if (data.success) {
             setAllReadyAdmissiom(data?.student);
+            isLoading(false)
+          }
+          else{
             isLoading(false)
           }
         });
@@ -150,7 +153,7 @@ const Admission = () => {
     }
     navigate("/onlineAdmission/personalInfromation");
   };
-  
+  console.log(allReadyAdmissiom);
   return (
     <>
 
@@ -168,11 +171,11 @@ const Admission = () => {
               </div>
               <div className="text-center px-4">
                 <p className="  font-medium text-xl">Dear Student,</p>
-                <p className="text-gray-800">
+                <p className="text-gray-900">
                   {" "}
                   Collage Authoraty Your Roll Number Provide.
                 </p>
-                <p>Now Your Roll Number 988733</p>
+                <p>Now Your Roll Is <span className=" font-semibold">{allReadyAdmissiom?.roll}</span></p>
 
                 <button onClick={()=>navigate("/studentId")} className="bg-red-500 text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold">Check Student Id</button>
 
