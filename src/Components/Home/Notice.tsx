@@ -15,7 +15,12 @@ const Notice = () => {
       }
     })
   },[page , limit , search])
-  console.log(nocties , limit)
+  console.log(nocties)
+  const priviesPage = () =>{
+    if(page > 1){
+      setPage(page -1)
+    }
+  }
   return (
     <div className="my-40 max-w-7xl m-auto ">
       <div className="w-max mx-auto">
@@ -116,15 +121,17 @@ const Notice = () => {
                      
                     </tbody>
                   </table>
-                  <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-                    <span className="text-xs xs:text-sm text-gray-900">
-                      Showing 1 to 4 of 50 Entries
-                    </span>
-                    <div className="inline-flex mt-2 xs:mt-0">
-                      <button className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
+                  <div className="px-5 py-3 bg-white border-t fle text-center        ">
+                    
+                    <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
+                      
+                      <button onClick={()=>priviesPage()} className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg">
                         Prev
                       </button>
-                      <button className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
+                      <span className="text-xs xs:text-sm text-gray-900">
+                      Page No {nocties?.page}
+                    </span>
+                      <button onClick={()=> setPage(page + 1)} className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg">
                         Next
                       </button>
                     </div>

@@ -29,7 +29,8 @@ import AddTeacher from "./Components/Dashboard/AddTeacher";
 import TeacherList from "./Components/Dashboard/TeacherList";
 import AddEvents from "./Components/Dashboard/AddEvents";
 import Events from "./Components/Dashboard/Events";
-
+import Results from "./Components/Dashboard/Result";
+import RasultPublished from "./Components/Dashboard/RasultPublished";
 function App() {
   return (
     <div className="">
@@ -114,6 +115,8 @@ function App() {
           <Route path="/dashboard/teacherList" element={<TeacherList/>} />
           <Route path="/dashboard/addEvents" element={<AddEvents/>} />
           <Route path="/dashboard/events" element={<Events/>} />
+          <Route path="/dashboard/results" element={<Results/>} />
+          <Route path="/dashboard/results/published/:id" element={<RasultPublished/>} />
         </Route>
       </Routes>
     </div>
