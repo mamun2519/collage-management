@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 const RasultPublished = () => {
   const { id } = useParams();
@@ -10,7 +11,8 @@ const RasultPublished = () => {
     subject: "",
     passMark: "33",
     studentMark: "",
-    grade: "",
+    latterGrade: "",
+    gradePoint: "",
   };
   const [routines, setRoutine] = useState([routine]);
   const [edit, setEdit] = useState(false);
@@ -21,8 +23,8 @@ const RasultPublished = () => {
         setStudent(data.student);
       });
   }, []);
-  console.log(student);
-  console.log(routines);
+  // console.log(student);
+  // console.log(routines);
   const examType = [
     { title: "Select examType" },
     { title: "Incourse Exam" },
@@ -37,7 +39,6 @@ const RasultPublished = () => {
     setRoutine(values);
   };
 
-  const submitHendeler = (): void => {};
   const cancleHendeler = (): void => {
     // SetDataDisplay(false);
     setRoutine([routine]);
@@ -49,21 +50,70 @@ const RasultPublished = () => {
       subject: "",
       passMark: "33",
       studentMark: "",
-      grade: "",
+      latterGrade: "",
+      gradePoint: "",
     });
     setRoutine(values);
   };
   const latterGrade = [
-    { grade: "A+", point: "5.00" },
-    { grade: "A ", point: "4.00" },
-    { grade: "-A", point: "3.50" },
-    { grade: "B ", point: "3.00" },
-    { grade: "C ", point: "2.00" },
-    { grade: "D ", point: "1.00" },
-    { grade: "F ", point: "0.00" },
-    { grade: "F ", point: "0.00" },
+    { grade: "A+" },
+    { grade: "A " },
+    { grade: "-A" },
+    { grade: "B " },
+    { grade: "C " },
+    { grade: "D " },
+    { grade: "F " },
+    { grade: "F " },
+  ];
+  const gradePoint = [
+    { point: "5.00" },
+    { point: "4.00" },
+    { point: "3.50" },
+    { point: "3.00" },
+    { point: "2.00" },
+    { point: "1.00" },
+    { point: "0.00" },
+    { point: "0.00" },
   ];
 
+  const submitHendeler = (): void => {
+    const point = routines?.map((point) => parseInt(point.gradePoint));
+    const totalPoint = point.reduce((a: any, b): number => {
+      return a + b;
+    }, 0);
+    const gpa = totalPoint / parseFloat(student?.subject?.length);
+    const result = {
+      resultType: selectedExamType,
+      result: routines,
+      Gpa: gpa,
+    };
+    if (selectedExamType) {
+      fetch(`http://localhost:5000/v1/student/admission/result/${id}`, {
+        method: "POST",
+        body: JSON.stringify(result),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            swal({
+              title: data.message,
+              text: "Thank You",
+              icon: "success",
+              buttons: [false],
+            });
+          }
+          setErrorMessage("");
+          setEdit(true);
+        });
+      setErrorMessage("");
+    } else {
+      setErrorMessage("ExamType  is Required");
+    }
+    console.log(gpa);
+  };
   return (
     <div className="my-20 lg:w-3/4 w-full mx-auto">
       <div className="card  w-full  bg-base-100 border  shadow-md m">
@@ -88,24 +138,26 @@ const RasultPublished = () => {
               </span>
             </div>
           </div>
-          <div className=" grid lg:grid-cols-3 col-span-2 mt-10">
-            <div className="mt-5">
-              <h1>Exam Type</h1>
-              <div className="h-14 mt-2 ">
-                <select
-                  className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-4"
-                  placeholder="Enter Your Name"
-                  onChange={(e) => setSelectedExamType(e.target.value)}
-                >
-                  {examType.map((sec) => (
-                    <option value={sec.title}>{sec.title}</option>
-                  ))}
-                </select>
-                <p className="px-4 text-red-500 ">{errorMessage}</p>
+          {!edit && (
+            <div className=" grid lg:grid-cols-3 col-span-2 mt-10">
+              <div className="mt-5">
+                <h1>Exam Type</h1>
+                <div className="h-14 mt-2 ">
+                  <select
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-4"
+                    placeholder="Enter Your Name"
+                    onChange={(e) => setSelectedExamType(e.target.value)}
+                  >
+                    {examType.map((sec) => (
+                      <option value={sec.title}>{sec.title}</option>
+                    ))}
+                  </select>
+                  <p className="px-4 text-red-500 ">{errorMessage}</p>
+                </div>
               </div>
+              <div></div>
             </div>
-            <div></div>
-          </div>
+          )}
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto mt-2">
             <div className="inline-block min-w-full shadow rounded-lg  overflow-x-auto">
               <table className="min-w-full leading-normal">
@@ -121,7 +173,10 @@ const RasultPublished = () => {
                       Student Mark
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      Grade
+                      Latter Grade
+                    </th>
+                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      Grade Point
                     </th>
                   </tr>
                 </thead>
@@ -133,13 +188,17 @@ const RasultPublished = () => {
                             <select
                               name="subject"
                               onChange={(event) => changeHendeler(index, event)}
-                              value={routine?.subject}
+                              // value={routine?.subject}
                               //     type="text"
                               className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
                               placeholder="Enter Your Name"
                             >
                               {student?.subject?.map((subject: any) => (
-                                <option key={subject} value={subject.title}>
+                                <option
+                                  key={subject}
+                                  value={subject.title}
+                                  selected
+                                >
                                   {subject.title}
                                 </option>
                               ))}
@@ -176,11 +235,11 @@ const RasultPublished = () => {
                           <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
                             <>
                               <select
-                                name="grade"
+                                name="latterGrade"
                                 onChange={(event) =>
                                   changeHendeler(index, event)
                                 }
-                                value={routine?.subject}
+                                // value={routine?.latterGrade}
                                 //     type="text"
                                 className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
                                 placeholder="Enter Your Name"
@@ -188,9 +247,34 @@ const RasultPublished = () => {
                                 {latterGrade?.map((subject: any) => (
                                   <option
                                     key={subject}
-                                    value={`${subject.grade} ${subject.point}`}
+                                    value={subject.grade}
+                                    selected
                                   >
-                                    {`${subject.grade} (${subject.point})`}
+                                    {subject.grade}
+                                  </option>
+                                ))}
+                              </select>
+                            </>
+                          </td>
+                          <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
+                            <>
+                              <select
+                                name="gradePoint"
+                                onChange={(event) =>
+                                  changeHendeler(index, event)
+                                }
+                                // value={routine?.gradePoin}
+                                //     type="text"
+                                className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
+                                placeholder="Enter Your Name"
+                              >
+                                {gradePoint?.map((subject: any) => (
+                                  <option
+                                    key={subject}
+                                    value={subject.point}
+                                    selected
+                                  >
+                                    {subject.point}
                                   </option>
                                 ))}
                               </select>
@@ -226,7 +310,12 @@ const RasultPublished = () => {
                           </td>
                           <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
                             <p className="text-gray-900 whitespace-no-wrap">
-                              {routine.grade}
+                              {routine.latterGrade}
+                            </p>
+                          </td>
+                          <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {routine.gradePoint}
                             </p>
                           </td>
                         </tr>

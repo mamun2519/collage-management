@@ -1,14 +1,17 @@
-import React from "react";
+import React , {useEffect , useState} from "react";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
+import Loading from "../Shared/Loading";
 
 const Result = () => {
+  const [result, setresult] = useState<any>();
+  const [disPlay, setDisplay] = useState(false);
+  const [loading, isLoading] = useState(false);
   type UserSubmitForm = {
     classs: string;
     session: string;
     examName: string;
     roll: string;
-    department: string;
   };
   const {
     register,
@@ -49,8 +52,21 @@ const Result = () => {
     { title: "Final Exam" },
   ];
   return (
+    <>
     <div className="my-10 max-w-7xl m-auto ">
-      <div className="card   w-full mx-auto bg-base-100 border  shadow-lg">
+       
+
+
+
+
+
+
+
+      <div className="my-10 max-w-7xl m-auto ">
+      {loading ? (
+        <Loading />
+      ) : !disPlay ? (
+        <div className="card   w-full mx-auto bg-base-100 border  shadow-lg">
         <div className="p-5 ">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className=" ">
@@ -64,37 +80,8 @@ const Result = () => {
                 </div>
 
                 <div className="mt-10 px-5">
-                  <div className="grid  lg:grid-cols-3 gap-10 col-span-1">
-                    <div>
-                      <p>Department</p>
-                      <div className="h-14 mt-2  relative">
-                        <select
-                          {...register("department", {
-                            required: {
-                              value: true,
-                              message: "Department  is Required",
-                            },
-                          })}
-                          className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
-                          placeholder="Enter Age"
-                        >
-                          {department.map((depart) => (
-                            <option value={depart.title}>{depart.title}</option>
-                          ))}
-                        </select>
-
-                        <div className=" px-1 ">
-                          <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
-                        </div>
-                      </div>
-                      <label className="">
-                        {errors.department?.type === "required" && (
-                          <span className="text-red-500 ">
-                            {errors.department.message}
-                          </span>
-                        )}
-                      </label>
-                    </div>
+                  <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
+                
                     <div>
                       <p>class Name</p>
                       <div className="h-14 mt-2  relative">
@@ -159,8 +146,8 @@ const Result = () => {
                     </div>
                   </div>
                 </div>
-                <div className="mt-5 px-5">
-                  <div className="grid  lg:grid-cols-3 gap-10 col-span-1">
+                <div className="mt-8 px-5">
+                  <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
                     <div>
                       <p>Exam Name</p>
                       <div className="h-14 mt-2  relative">
@@ -236,7 +223,121 @@ const Result = () => {
         </div>
         {/* <div className="bg-red-400 h-[25px] "></div> */}
       </div>
+      ) : (
+        <>
+          {result ? <>
+            <div  className="card lg:w-3/4 w-full mx-auto bg-base-100 border  shadow-lg">
+              <div className="p-5 ">
+                <p className="text-2xl font-medium  uppercase text-center">
+                  Realwai public Collage,Chittagong
+                </p>
+                <p className="text-lg  font-sans text-gray-800 text-center">
+                  {" "}
+                  Education Board
+                </p>
+                <p className="text-lg font-sans text-gray-800 text-center">
+                  {result?.classs}
+                </p>
+                <div>
+                  <p className="text-xl font-sans text-gray-800 text-center">
+                    Class result
+                  </p>
+                </div>
+
+                <div className=" flex justify-between mt-10 text-lg">
+                  <div>
+                    <span>Session:</span>
+                    <span className="px-3">{result?.session}</span>
+                  </div>
+                  <div>
+                    <span>Date:</span>
+                    <span className="px-3">04/22/2022</span>
+                  </div>
+                </div>
+
+                {/* <p className="mt-2">
+         এতদ্বারা সংশ্লিষ্ট সকলের অবগতির জন্য জানানো যাচ্ছে, ২০২০ সালের
+         এক্সাম নেম পরীক্ষা নিম্নোক্ত সময়সূচি অনুযায়ী অনুষ্টিত হবে। বিশেষ
+         প্রয়োজনে কলেজ কর্তৃপক্ষ এ সময়সূচি পরিবর্তন করতে পারবেন।
+       </p> */}
+
+                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                  <div className="inline-block min-w-full shadow rounded-lg  overflow-x-auto">
+                    <table className="min-w-full leading-normal">
+                      <thead>
+                        <tr>
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Day
+                          </th>
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider ">
+                            1st priode
+                          </th>
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            2nd priode
+                          </th>
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            3th priode
+                          </th>
+                          <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            4th priode
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {/* {result?.classresult?.map((result: any) => (
+                          <ClassRotuineRow
+                            key={result._id}
+                            result={result}
+                          />
+                        ))} */}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div className="flex justify-between my-5">
+                    <div></div>
+                    <div className="text-center">
+                      <p>প্রফেসর মামুন ইসলাম </p>
+                      <p>আহবায়ক </p>
+                      <p>আন্তঃ শিক্ষা বোর্ড পরীক্ষা নিয়ন্ত্রণ কমেটি</p>
+                      <p>ও পরিক্ষা নিয়ন্ত্রক শিক্ষা বোড</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="bg-red-400 h-[25px] "></div>
+            </div>
+            {/* <div className="my-10 lg:w-3/4 w-full mx-auto flex justify-center">
+            <button onClick={pdfDowenlodeHendeler} className="bg-red-500 text-white px-8 py-1 rounded-lg">Print Now</button>
+            </div> */}
+           </>: (
+            <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border shadow-lg pb-5">
+              <div className="flex justify-center ">
+                <img
+                  className="w-[350px]"
+                  src="/assets/picture/notfoun.gif"
+                  alt=""
+                />
+              </div>
+              <div className="text-center px-4">
+                <p className="  font-medium text-xl">Dear Student,</p>
+                <p className="text-gray-800"> Class result Not Found</p>
+                <p>Please Valied result information provide.</p>
+
+                <button
+                  onClick={() => setDisplay(false)}
+                  className="bg-red-500 text-white px-4 py-1 rounded-lg mt-2"
+                >
+                  Back
+                </button>
+              </div>
+            </div>
+          )}
+        </>
+      )}
     </div>
+    </div>
+    </>
   );
 };
 
