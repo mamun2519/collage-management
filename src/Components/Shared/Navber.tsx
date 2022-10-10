@@ -21,7 +21,7 @@ const Navber = () => {
     { name: "Events", link: "/dashboard/events", icon: AiOutlineHeart, margin: true },
     { name: "Add Events", link: "/dashboard/addEvents", icon: AiOutlineHeart,},
     // { name: "", link: "/", icon: AiOutlineHeart,  },
-    { name: "User List", link: "/", icon: RiSettings4Line },
+    { name: "User List", link: "/dashboard/userList", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);
   return (

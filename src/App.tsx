@@ -31,11 +31,13 @@ import AddEvents from "./Components/Dashboard/AddEvents";
 import Events from "./Components/Dashboard/Events";
 import Results from "./Components/Dashboard/Result";
 import RasultPublished from "./Components/Dashboard/RasultPublished";
+import UserList from "./Components/Dashboard/UserList";
 export const ThemeContext:any = createContext(null);
 function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
+    
   };
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -123,6 +125,7 @@ function App() {
           <Route path="/dashboard/addEvents" element={<AddEvents/>} />
           <Route path="/dashboard/events" element={<Events/>} />
           <Route path="/dashboard/results" element={<Results/>} />
+          <Route path="/dashboard/userList" element={<UserList/>} />
           <Route path="/dashboard/results/published/:id" element={<RasultPublished/>} />
         </Route>
       </Routes>
