@@ -56,7 +56,7 @@ export const links = [
           {
             Head: "HSC",
             sublink: [
-              { name: "Higer Secondary Admission", link: "/" },
+              { name: "Higer Secondary Admission", link: "/deparmentOf/Higer Secondary Admission" },
               
             ],
           },

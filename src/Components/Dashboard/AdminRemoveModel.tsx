@@ -1,55 +1,52 @@
-import { Dialog, Transition } from '@headlessui/react';
-import React , {useState , useEffect , Fragment} from 'react';
-import { AiOutlineMail } from 'react-icons/ai';
-import { CgProfile } from 'react-icons/cg';
-import swal from 'sweetalert';
+import { Dialog, Transition } from "@headlessui/react";
+import React, { useState, useEffect, Fragment } from "react";
+import { AiOutlineMail } from "react-icons/ai";
+import { CgProfile } from "react-icons/cg";
+import swal from "sweetalert";
 interface Admin {
-      closeModal: any
-      openModal: any
-      isOpen:any
-      id:string
+  closeModal: any;
+  openModal: any;
+  isOpen: any;
+  id: string;
 }
-const AdminRemoveModel = ({ closeModal, openModal, isOpen, id }:Admin) => {
-      const [user, setUser] = useState<any>({});
-      const [role, setRole] = useState("");
-      useEffect(() => {
-  
-            fetch(`http://localhost:5000/v1/user/${id}`)
-            .then((res) => res.json())
-            .then((data) => setUser(data?.user));
-      
-          
-        }, []);
-        console.log(role)
-      const selectUserRole = (e:any) => {
-            setRole(e.target.value);
-          };
-          const removeUserAdminHendeler = (user:any) => {
-            fetch(
-              `http://localhost:5000/v1/user/admin/${user?.email}?roleAction=${role}`,
-              {
-                method: "PUT",
-                headers: {
-                  authorization: `Bearer ${localStorage.getItem("Token")}`,
-                },
-              }
-            )
-              .then((res) => res.json())
-              .then((data) => {
-                  console.log(data);
-                if (data.success) {
-                  swal({
-                        title: `${data?.message}`,
-                        text: "Thank you",
-                        icon: "success",
-                        buttons: [false],
-                      });
-                  closeModal();
-                }
-              });
-          };
-      return (
-            <div>
+const AdminRemoveModel = ({ closeModal, openModal, isOpen, id }: Admin) => {
+  const [user, setUser] = useState<any>({});
+  const [role, setRole] = useState("");
+  useEffect(() => {
+    fetch(`http://localhost:5000/v1/user/${id}`)
+      .then((res) => res.json())
+      .then((data) => setUser(data?.user));
+  }, []);
+  console.log(role);
+  const selectUserRole = (e: any) => {
+    setRole(e.target.value);
+  };
+  const removeUserAdminHendeler = (user: any) => {
+    fetch(
+      `http://localhost:5000/v1/user/admin/${user?.email}?roleAction=${role}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("Token")}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          swal({
+            title: `${data?.message}`,
+            text: "Thank you",
+            icon: "success",
+            buttons: [false],
+          });
+          closeModal();
+        }
+      });
+  };
+  return (
+    <div>
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
@@ -85,7 +82,10 @@ const AdminRemoveModel = ({ closeModal, openModal, isOpen, id }:Admin) => {
                         <div className="border p-2   w-9 rounded absolute top-[32px] left-1 text-[#EC255A]">
                           <CgProfile />
                         </div>
-                        <label htmlFor="username" className="block text-sm text-black">
+                        <label
+                          htmlFor="username"
+                          className="block text-sm text-black"
+                        >
                           Name
                         </label>
 
@@ -119,7 +119,10 @@ const AdminRemoveModel = ({ closeModal, openModal, isOpen, id }:Admin) => {
                       </div>
 
                       <div className="mt-4">
-                        <label htmlFor="role" className="block text-sm text-black ">
+                        <label
+                          htmlFor="role"
+                          className="block text-sm text-black "
+                        >
                           Role
                         </label>
                         <select
@@ -152,7 +155,7 @@ const AdminRemoveModel = ({ closeModal, openModal, isOpen, id }:Admin) => {
         </Dialog>
       </Transition>
     </div>
-      );
+  );
 };
 
 export default AdminRemoveModel;

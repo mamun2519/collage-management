@@ -1,26 +1,30 @@
-import React ,{useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Notice = () => {
-  const [nocties , setNotice] = useState<any>([])
+  const [nocties, setNotice] = useState<any>([]);
   const [page, setPage] = useState(1);
-	const [search, setSearch] = useState("");
-	const [limit, setLimit] = useState<any>(5);
+  const [search, setSearch] = useState("");
+  const [limit, setLimit] = useState<any>(5);
 
-  useEffect(()=>{
-    fetch(`http://localhost:5000/v1/notice?page=${page}&limit=${limit}&search=${search}`)
-    .then(res => res.json())
-    .then(data => {
-      if(data.success){
-        setNotice(data.notice)
-      }
-    })
-  },[page , limit , search])
-  console.log(nocties)
-  const priviesPage = () =>{
-    if(page > 1){
-      setPage(page -1)
+  useEffect(() => {
+    fetch(
+      `http://localhost:5000/v1/notice?page=${page}&limit=${limit}&search=${search}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setNotice(data.notice);
+        }
+      });
+  }, [page, limit, search]);
+  console.log(nocties);
+  const priviesPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
     }
-  }
+  };
+  const navigate = useNavigate();
   return (
     <div className="my-40 max-w-7xl m-auto ">
       <div className="w-max mx-auto">
@@ -38,8 +42,13 @@ const Notice = () => {
               <div className="my-2 flex sm:flex-row flex-col">
                 <div className="flex flex-row mb-1 sm:mb-0">
                   <div className="relative">
-                    <select onChange={(e)=>setLimit(e.target.value)} className="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                      <option value="5" selected>5</option>
+                    <select
+                      onChange={(e) => setLimit(e.target.value)}
+                      className="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    >
+                      <option value="5" selected>
+                        5
+                      </option>
                       <option value="10">10</option>
                       <option value="20">20</option>
                     </select>
@@ -53,7 +62,6 @@ const Notice = () => {
                       </svg>
                     </div>
                   </div>
-                 
                 </div>
                 <div className="block relative">
                   <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
@@ -65,7 +73,7 @@ const Notice = () => {
                     </svg>
                   </span>
                   <input
-                  onChange={(e)=>setSearch(e.target.value)}
+                    onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search"
                     className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                   />
@@ -82,56 +90,61 @@ const Notice = () => {
                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider flex justify-center">
                           Title
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           PDF
-                        </th>
+                        </th> */}
                         <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           Action
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      {nocties?.notice?.map((notice:any) => <tr key={notice?._id}>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <div className="">
-                            <div className=" ">{notice?.date}</div>
-                          </div>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                          {notice?.title}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                      {nocties?.notice?.map((notice: any) => (
+                        <tr key={notice?._id}>
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <div className="">
+                              <div className=" ">{notice?.date}</div>
+                            </div>
+                          </td>
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                              {notice?.title}
+                            </p>
+                          </td>
+                          {/* <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <button className="bg-red-500 text-white px-6 py-1 rounded-lg">
                             Dowenlode PDF
                           </button>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                            <span
-                              aria-hidden
-                              className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-                            ></span>
-                            <span className="relative">View Now</span>
-                          </span>
-                        </td>
-                      </tr>)}
-                      
-                     
+                        </td> */}
+                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <button
+                              onClick={() =>
+                                navigate(`/noticeDetails/${notice?._id}`)
+                              }
+                              className="bg-red-500 text-sm text-white px-4 py-1 rounded-lg"
+                            >
+                              Details
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                   <div className="px-5 py-3 bg-white border-t fle text-center        ">
-                    
                     <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
-                      
-                      <button onClick={()=>priviesPage()} className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg">
+                      <button
+                        onClick={() => priviesPage()}
+                        className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg"
+                      >
                         Prev
                       </button>
                       <span className="text-xs xs:text-sm text-gray-900">
-                      Page No {nocties?.page}
-                    </span>
-                      <button onClick={()=> setPage(page + 1)} className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg">
+                        Page No {nocties?.page}
+                      </span>
+                      <button
+                        onClick={() => setPage(page + 1)}
+                        className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg"
+                      >
                         Next
                       </button>
                     </div>
