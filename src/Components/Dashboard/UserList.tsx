@@ -56,7 +56,7 @@ const UserList = () => {
         <Loading />
       ) : (
         <>
-          <div className="card lg:w-3/4 w-full mx-auto bg-base-100 border  shadow-md my-20">
+          <div className="card lg:w-3/4 w-[280px] mx-auto bg-base-100 border  shadow-md my-20">
             <div className="p-5 ">
               <h1 className="font-medium  text-gray-800 uppercase text-lg">
                 User List List
@@ -131,11 +131,11 @@ const UserList = () => {
                 </div>
               </div>
 
-              <div className="px-5 py-3 bg-white border-t fle text-center">
+              <div className="lg:px-5 py-3 bg-white border-t fle text-center">
                 <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
                   <button
                     onClick={() => priviesPage()}
-                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg"
+                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
                   >
                     Prev
                   </button>
@@ -144,7 +144,7 @@ const UserList = () => {
                   </span>
                   <button
                     onClick={() => setPage(page + 1)}
-                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg"
+                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
                   >
                     Next
                   </button>
@@ -153,7 +153,7 @@ const UserList = () => {
             </div>
           </div>
 
-          <div className="card lg:w-3/4 w-full mx-auto bg-base-100 border  shadow-md my-20">
+          <div className="card lg:w-3/4 w-[280px] mx-auto bg-base-100 border  shadow-md my-20">
             <div className="p-5 ">
               <h1 className="font-medium  text-gray-800 uppercase text-lg">
                 Admin List
@@ -228,11 +228,11 @@ const UserList = () => {
                 </div>
               </div>
 
-              <div className="px-5 py-3 bg-white border-t fle text-center">
+              <div className="lg:px-5 py-3 bg-white border-t fle text-center">
                 <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
                   <button
                     onClick={() => priviesadminPage()}
-                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg"
+                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
                   >
                     Prev
                   </button>
@@ -241,7 +241,7 @@ const UserList = () => {
                   </span>
                   <button
                     onClick={() => setadminPage(page + 1)}
-                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg"
+                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
                   >
                     Next
                   </button>

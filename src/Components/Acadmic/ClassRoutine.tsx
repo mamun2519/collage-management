@@ -73,7 +73,7 @@ const ClassRoutine = () => {
   ];
   console.log(routine);
   return (
-    <div className="my-10 max-w-7xl m-auto ">
+    <div className="my-10 max-w-7xl m-auto  px-3">
       {loading ? (
         <Loading />
       ) : !disPlay ? (
@@ -84,13 +84,13 @@ const ClassRoutine = () => {
                 <div className="pb-5">
                   <div className="w-max mx-auto">
                     <div className="border-b-2 rounded-full border-red-500 ">
-                      <h1 className="text-xl pb-2 text-center mt-10 px-12  font-medium uppercase">
+                      <h1 className="text-xl pb-2 text-center mt-10 px-6 lg:px-12  font-medium uppercase">
                         Search Class Routine
                       </h1>
                     </div>
                   </div>
 
-                  <div className="mt-10 px-5">
+                  <div className="mt-10 lg:px-5">
                     <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
                       
                       <div>
@@ -255,7 +255,7 @@ const ClassRoutine = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-red-400 h-[25px] "></div>
+              {/* <div className="bg-red-400 h-[25px] "></div> */}
             </div>
             <div className="my-10 lg:w-3/4 w-full mx-auto flex justify-center">
             <button onClick={pdfDowenlodeHendeler} className="bg-red-500 text-white px-8 py-1 rounded-lg">Print Now</button>

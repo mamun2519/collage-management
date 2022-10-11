@@ -37,12 +37,12 @@ const Result = () => {
       };
       return (
             <div className="my-10 lg:w-3/4 w-full mx-auto">
-            <div className="  grid  lg:grid-cols-3 grid-cols-2 gap-10">
+            <div className="  grid  lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-3">
               {admission.map((ad: any) => (
                 <div
                   onClick={() => admissionRequestHendeler(ad.title)}
                   key={ad}
-                  className={`card  flex justify-center items-center   border h-28 lg:w-80 shadow-md px-2 ${
+                  className={`card  flex justify-center items-center   border lg:h-28 h-40 lg:w-80 shadow-md px-2 ${
                     selected == ad.title ? "bg-red-500" : "bg-base-100"
                   } `}
                 >
@@ -72,7 +72,7 @@ const Result = () => {
               <Loading/>
             ) : (
               studentList.length !== 0 && (
-                <div className="card  w-full  bg-base-100 border  shadow-md my-20">
+                <div className="card  lg:w-full w-[280px]  bg-base-100 border  shadow-md my-20">
                   <div className="p-5 ">
                     <h1 className="font-medium  text-gray-800 uppercase text-lg">
                       Result Published at {selected}

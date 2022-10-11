@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import auth from "../../firebase.init";
 
 const ConfromMessage = () => {
   const [user] = useAuthState(auth);
-
+  const navigate = useNavigate()
   swal({
     title: "Your Payment Successfull",
     text: "Thank you",
@@ -14,6 +15,7 @@ const ConfromMessage = () => {
     buttons: [false],
   });
   useEffect(() => {
+   
     const admisson: any = localStorage.getItem("admissionInfo");
     const admissionInfo = JSON.parse(admisson);
     const student: any = localStorage.getItem("studentInfo");
@@ -53,6 +55,7 @@ const ConfromMessage = () => {
             identity and tell your roll number.
           </p>
           <p>Thank You.</p>
+          <button onClick={()=>navigate("/")} className="bg-red-500 text-white px-6 py-1 rounded-lg mt-2">Go Home</button>
         </div>
       </div>
     </div>

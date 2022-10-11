@@ -21,7 +21,7 @@ const Events = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="card lg:w-3/4 w-full mx-auto bg-base-100 border  shadow-md my-20">
+        <div className="card lg:w-3/4 w-[280px] mx-auto bg-base-100 border  shadow-md my-20">
           <div className="p-5 ">
             <h1 className="font-medium  text-gray-800 uppercase text-lg">
               All Events

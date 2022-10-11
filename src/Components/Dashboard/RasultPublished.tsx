@@ -116,9 +116,9 @@ const RasultPublished = () => {
   };
   return (
     <div className="my-20 lg:w-3/4 w-full mx-auto">
-      <div className="card  w-full  bg-base-100 border  shadow-md m">
+      <div className="card  lg:w-full w-[280px]  bg-base-100 border  shadow-md m">
         <div className="p-5">
-          <div className="flex justify-between h-14 rounded-lg items-center px-4 border">
+          <div className="lg:flex block  justify-between lg:h-14  rounded-lg items-center px-4 border">
             <div>
               <span>Student Name : </span>
               <span className=" px-2 font-semibold text-gray-900">

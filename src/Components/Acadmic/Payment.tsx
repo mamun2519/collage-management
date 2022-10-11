@@ -45,7 +45,7 @@ const Payment = () => {
         </div>
         <div className="w-max mx-auto">
           <div className="border-b-2 rounded-full border-red-500 ">
-            <h1 className="text-xl pb-2 text-center mt-10 px-12  font-medium uppercase">
+            <h1 className="text-xl pb-2 text-center mt-10 lg:px-12 px-6 font-medium uppercase">
               Payment Now
             </h1>
           </div>

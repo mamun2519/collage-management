@@ -44,34 +44,34 @@ const StudentId = () => {
     <div className="my-10 max-w-7xl m-auto px-3">
       {studentCard && (
         <>
-          <div className=" grid lg:grid-cols-2  col-span-1">
+          <div className=" grid lg:grid-cols-2  col-span-1 ">
             <div
-              className="card lg:w-3/5 w-full  h-[500px] mx-auto bg-base-100 border  shadow-lg"
+              className="card lg:w-3/5 w-full  h-[500px] mx-auto bg-base-100 border  shadow-lg mt-5"
             >
               <div className="bg-red-500 h-[150px] relative rounded-f"></div>
-              <div className="avatar absolute top-28 left-32">
+              <div className="avatar absolute lg:top-28 top-20 lg:left-32 left-28">
                 <div className="w-28 rounded-full ">
                   <img src="https://placeimg.com/192/192/people" />
                 </div>
               </div>
 
               <div className="flex justify-center text-white">
-                <h1 className="text-xl font-medium uppercase  absolute top-10 ">
+                <h1 className="text-xl font-medium uppercase  absolute lg:top-10 top-[20px]">
                   Railway Publice Collage
                 </h1>
-                <p className="absolute top-[70px] font-semibold">
+                <p className="absolute lg:top-[70px] top-[50px] font-semibold">
                   Chittagong,Bangladesh
                 </p>
               </div>
 
-              <div className="absolute top-60  left-24">
+              <div className="absolute lg:top-60 top-[205px] left-24">
                 <button className=" uppercase   bg-red-400 text-white px-6 py-1 rounded-lg">
                   identity Card
                 </button>
               </div>
 
               <div className="mt-[150px] px-5 pb-3">
-                <div className="grid grid-cols-3 gap-20">
+                <div className="grid grid-cols-3 gap-20 ">
                   <div>
                     <p className="uppercase font-semibold   text-gray-600">
                       Name
@@ -105,7 +105,7 @@ const StudentId = () => {
               <div className="bg-red-400 h-[25px] "></div>
             </div>
 
-            <div className="card lg:w-3/5  w-full h-[500px] mx-auto bg-base-100 border = shadow-lg">
+            <div className="card lg:w-3/5  w-full lg:h-[500px] h-[600px] mx-auto bg-base-100 border = shadow-lg mt-5">
               <div className="bg-red-400 h-[25px] "></div>
 
               <div className=" mt-5">
@@ -189,7 +189,7 @@ const StudentId = () => {
                   alt=""
                 />
               </div>
-              <div className="text-center">
+              <div className="text-center px-2">
                 <p className="  font-medium text-xl">Sorry,</p>
                 <p className="text-gray-800">
                   {" "}

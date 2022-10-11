@@ -72,7 +72,7 @@ const AdmissonPreview = () => {
         </div>
         <div className="w-max mx-auto">
           <div className="border-b-2 rounded-full border-red-500 ">
-            <h1 className="text-xl pb-2 text-center mt-10 px-12  font-medium uppercase">
+            <h1 className="text-xl pb-2 text-center mt-10 lg:px-12 px-6 font-medium uppercase">
               Admission Preview
             </h1>
           </div>
@@ -169,7 +169,7 @@ const AdmissonPreview = () => {
             </div>
             <div>
               <div className="card wfull bg-base-100 h-full  shadow-sm border">
-                <div className="bg-red-500 h-12 flex items-center  px-6 text-white uppercase font-semibold">
+                <div className="bg-red-500 lg:h-12 h-16 flex items-center  px-6 text-white uppercase font-semibold">
                   <h1>First Year "{previewInfo?.data?.classs}" Book List</h1>
                   <div></div>
                 </div>

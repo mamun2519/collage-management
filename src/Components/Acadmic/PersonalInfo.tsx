@@ -79,7 +79,7 @@ const PersonalInfo = () => {
           </div>
           <div className="w-max mx-auto">
             <div className="border-b-2 rounded-full border-red-500 ">
-              <h1 className="text-xl pb-2 text-center mt-10 px-12  font-medium uppercase">
+              <h1 className="text-xl pb-2 text-center mt-10 lg:px-12 px-5 font-medium uppercase">
                 Student Information
               </h1>
             </div>
@@ -96,7 +96,7 @@ const PersonalInfo = () => {
                         message: "First Name  is Required",
                       },
                     })}
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                     placeholder="Enter first Your Name"
                     type="text"
                   />
@@ -123,7 +123,7 @@ const PersonalInfo = () => {
                         message: "Last Name is Required",
                       },
                     })}
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                     placeholder="Enter Your Last Name"
                     type="text"
                   />
@@ -150,7 +150,7 @@ const PersonalInfo = () => {
                         message: "Birthday is Required",
                       },
                     })}
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                     placeholder="Enter Your Name"
                     type="date"
                   />
@@ -181,7 +181,7 @@ const PersonalInfo = () => {
                         message: "Age  is Required",
                       },
                     })}
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                     placeholder="Enter Age"
                     type="number"
                   />
@@ -206,7 +206,7 @@ const PersonalInfo = () => {
                         message: "Gender is Required",
                       },
                     })}
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                     placeholder="Enter Your Last Name"
                   >
                     <option>Select One</option>
@@ -236,7 +236,7 @@ const PersonalInfo = () => {
                         message: "Gerdian Name is Required",
                       },
                     })}
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                     placeholder="Enter Gerdian Name"
                     type="text"
                   />
@@ -267,7 +267,7 @@ const PersonalInfo = () => {
                         message: "Number Required",
                       },
                     })}
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                     placeholder="Enter Age"
                     type="number"
                   />
@@ -298,7 +298,7 @@ const PersonalInfo = () => {
                         message: "Address is Required",
                       },
                     })}
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                     placeholder="Enter Age"
                     type="text"
                   />
@@ -327,7 +327,7 @@ const PersonalInfo = () => {
                       },
                     })}
                     type="text"
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                     placeholder="Enter Your Last Name"
                   />
 
@@ -354,7 +354,7 @@ const PersonalInfo = () => {
                       },
                     })}
                     type="text"
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                     placeholder="Enter Your Last Name"
                   />
 

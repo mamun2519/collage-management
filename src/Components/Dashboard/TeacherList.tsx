@@ -42,12 +42,12 @@ const TeacherList = () => {
                         <p className='r px-4'>OUR TEACHER LISt</p>
                   </div> */}
 
-      <div className="grid  lg:grid-cols-3 grid-cols-2 gap-10 ">
+      <div className="grid  lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-3 ">
         {admission.map((ad: any) => (
           <div
             onClick={() => admissionRequestHendeler(ad.title)}
             key={ad}
-            className={`card  flex justify-center items-center   border h-28 lg:w-80 shadow-md px-2 ${
+            className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 shadow-md px-2 ${
               selected == ad.title ? "bg-red-500" : "bg-base-100"
             } `}
           >
@@ -77,7 +77,7 @@ const TeacherList = () => {
         <Loading></Loading>
       ) : (
         studentList.length !== 0 && (
-          <div className="card  w-full  bg-base-100 border  shadow-md my-20">
+          <div className="card  lg:w-full w-[280px]  bg-base-100 border  shadow-md my-20">
             <div className="p-5 ">
               <h1 className="font-medium  text-gray-800 uppercase text-lg">
                 Our Teacher at {selected} List

@@ -115,12 +115,12 @@ const AddExamRoutine = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="  grid  lg:grid-cols-3 grid-cols-2 gap-10">
+        <div className="  grid  lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-3">
           {classRotuine?.map((ad: any) => (
             <div
               onClick={() => admissionRequestHendeler(ad.classs, ad._id)}
               key={ad}
-              className={`card  flex justify-center items-center   border h-36 lg:w-80 shadow-md px-2 ${
+              className={`card  flex justify-center items-center   border h-44 lg:h-36 lg:w-80 shadow-md px-2 ${
                 selected == ad.classs ? "bg-red-500" : "bg-base-100"
               } `}
             >
@@ -155,7 +155,7 @@ const AddExamRoutine = () => {
       )}
 
       {loading ? <Loading/> : dataDispaly && (
-        <div className="card  w-full  bg-base-100 border  shadow-md my-20">
+        <div className="card  lg:w-full w-[280px]  bg-base-100 border  shadow-md my-20">
           <div className="p-5 ">
             <h1 className="font-medium  text-gray-800 uppercase text-lg">
               Add to {selected} Exam Routine

@@ -241,7 +241,7 @@ const Admission = () => {
                               message: "Admission Type is Required",
                             },
                           })}
-                          className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                          className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                           placeholder="Enter Your Name"
                           onChange={(e) => setAdmission(e.target.value)}
                         >
@@ -269,7 +269,7 @@ const Admission = () => {
                   <div className="mt-5">
                     <div className="w-max mx-auto">
                       <div className="border-b-2 rounded-full border-red-500 ">
-                        <h1 className="text-xl pb-2 text-center mt-10 px-12  font-medium uppercase">
+                        <h1 className="lg:text-xl pb-2 text-center mt-10 px-4 lg:px-12  font-medium uppercase">
                           {" "}
                           {admission}
                         </h1>
@@ -288,7 +288,7 @@ const Admission = () => {
                                 message: "Board is Required",
                               },
                             })}
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                             placeholder="Enter Your Name"
                           >
                             {board.map((bor) => (
@@ -318,7 +318,7 @@ const Admission = () => {
                                 message: "Department is Required",
                               },
                             })}
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                             placeholder="Enter Your Name"
                           >
                             {department.map((depart) => (
@@ -355,7 +355,7 @@ const Admission = () => {
                                     message: "Class is Required",
                                   },
                                 })}
-                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                                 placeholder="Enter Your Name"
                                 onChange={(e) => setSubjectList(e.target.value)}
                               >
@@ -390,7 +390,7 @@ const Admission = () => {
                                   },
                                 })}
                                 onChange={(e) => setSubjectList(e.target.value)}
-                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                                 placeholder="Enter Your Name"
                               >
                                 <option value="">Select Class</option>
@@ -424,7 +424,7 @@ const Admission = () => {
                                   },
                                 })}
                                 onChange={(e) => setSubjectList(e.target.value)}
-                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                                 placeholder="Enter Your Name"
                               >
                                 {degree.map((deg) => (
@@ -457,7 +457,7 @@ const Admission = () => {
                                   },
                                 })}
                                 onChange={(e) => setSubjectList(e.target.value)}
-                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                                 placeholder="Enter Your Name"
                               >
                                 {degree.map((deg) => (
@@ -489,7 +489,7 @@ const Admission = () => {
                                 message: "Session is Required",
                               },
                             })}
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                             placeholder="Enter Your Name"
                           >
                             {section.map((sec) => (
@@ -521,7 +521,7 @@ const Admission = () => {
                                 message: "Passing Year is Required",
                               },
                             })}
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                             placeholder="Enter Passing Year"
                             type="number"
                           />
@@ -548,7 +548,7 @@ const Admission = () => {
                                 message: "passing Academy Name is Required",
                               },
                             })}
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                             placeholder="Last Passing Academy Name"
                             type="text"
                           />
@@ -580,7 +580,7 @@ const Admission = () => {
                             })}
                             value={3100}
                             readOnly
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                             placeholder="Enter Your Name"
                             type="number"
                           />
@@ -612,7 +612,7 @@ const Admission = () => {
                             })}
                             value={3900}
                             readOnly
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                             placeholder="Enter Your Name"
                             type="number"
                           />
@@ -644,7 +644,7 @@ const Admission = () => {
                             })}
                             value={5700}
                             readOnly
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                             placeholder="Enter Your Name"
                             type="number"
                           />
@@ -676,7 +676,7 @@ const Admission = () => {
                             })}
                             value={4800}
                             readOnly
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                             placeholder="Enter Your Name"
                             type="number"
                           />
@@ -708,7 +708,7 @@ const Admission = () => {
                             })}
                             value={8900}
                             readOnly
-                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                            className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20 pr-2"
                             placeholder="Enter Your Name"
                             type="number"
                           />
@@ -733,7 +733,7 @@ const Admission = () => {
                         "Bachelor of Busniness Studies (BBS)" && (
                         <>
                           <h1>Your First Year Subject List</h1>{" "}
-                          <div className="flex gap-10 mt-2">
+                          <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
                             {bbsSubject.map((subject) => (
                               <div className="">
                                 <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
@@ -747,7 +747,7 @@ const Admission = () => {
                       {subjectList === "Bachelor of Science (BSC)" && (
                         <>
                           <h1>Your First Year Subject List</h1>{" "}
-                          <div className="flex gap-10 mt-2">
+                          <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
                             {bscSubject.map((subject) => (
                               <div className="">
                                 <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
@@ -761,7 +761,7 @@ const Admission = () => {
                       {subjectList === "Bachelor of Arts (BA)" && (
                         <>
                           <h1>Your First Year Subject List</h1>{" "}
-                          <div className="flex gap-10 mt-2">
+                          <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
                             {baSubject.map((subject) => (
                               <div className="">
                                 <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">

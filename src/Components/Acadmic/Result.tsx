@@ -98,7 +98,7 @@ const Result = () => {
   ];
   return (
     <>
-      <div className="my-10 max-w-7xl m-auto ">
+      <div className="my-10 max-w-7xl m-auto px-3">
         <div className="my-10 max-w-7xl m-auto ">
           {loading ? (
             <Loading />
@@ -116,7 +116,7 @@ const Result = () => {
                         </div>
                       </div>
 
-                      <div className="mt-10 px-5">
+                      <div className="mt-10 lg:px-5">
                         <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
                           <div>
                             <p>class Name</p>
@@ -184,7 +184,7 @@ const Result = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="mt-8 px-5">
+                      <div className="mt-8 lg:px-5">
                         <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
                           <div>
                             <p>Exam Name</p>
@@ -365,7 +365,10 @@ const Result = () => {
                           </table>
                         </div>
 
-                        <div className="flex justify-between my-3 px-8">
+                     
+                      </div>
+                    </div>
+                    <div className="flex justify-between my-3 px-8">
                     <div></div>
                     <div className="text-center">
                       <p className=" text-lg text-gray-700  font-semibold">Principle Signature </p>
@@ -374,7 +377,7 @@ const Result = () => {
                     </div>
                   </div>
 
-                  <div className="mt-5 flex justify-between items-center px-8">
+                  <div className="my-5 flex justify-between items-center px-8">
                     <div>
                     <img className="h-[90px]" src={qr} alt="" />
                     <span className="text-sm mt-1 text-red-500 font-semibold block">Result QR Code</span>
@@ -386,8 +389,6 @@ const Result = () => {
                     </div>
 
                   </div>
-                      </div>
-                    </div>
                     {/* <div className="bg-red-400 h-[25px] "></div> */}
                   </div>
                   {/* <div className="my-10 lg:w-3/4 w-full mx-auto flex justify-center">

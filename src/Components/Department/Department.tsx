@@ -22,6 +22,7 @@ const BBS = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.success) {
           setStudents(data.student); 
         }
@@ -31,6 +32,7 @@ const BBS = () => {
       )
         .then((res) => res.json())
         .then((data) => {
+          console.log(data);
           if (data.success) {
             setTeachers(data.student);
           }
@@ -47,11 +49,12 @@ const BBS = () => {
           }
           else{
             isLoading(false);
+            setRoutine([]);
           }
         });
       
-  }, [department]);
-  console.log(routine);
+  }, [department  ]);
+  // console.log(routine);
   const Tabs = [
     {
       name: "Overview",
@@ -115,7 +118,7 @@ const BBS = () => {
         </p> */}
           </div>
 
-          <div className="my-5 max-w-7xl m-auto ">
+          <div className="my-5 max-w-7xl m-auto px-3">
             <Tab.Group>
               <Tab.List className=" rounded-lg  lg:flex justify-center">
                 {Tabs.map((item, index) => (

@@ -34,27 +34,27 @@ const AdmissionDetails = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="card lg:w-3/4 w-full  mx-auto bg-base-100  my-20">
-          <div className=" grid grid-cols-3">
-            <div className="card w-full   h-[500px] mx-auto bg-base-100 border shadow-md  ">
+        <div className="card lg:w-3/4 w-full  mx-auto bg-base-100  my-10">
+          <div className=" grid lg:grid-cols-3 grid-cols-1 lg:gap-0 gap-5">
+            <div className="card lg:w-full w-[280px]  h-[500px] mx-auto bg-base-100 border shadow-md  ">
               <div className="bg-red-500 h-[150px] relative rounded-f"></div>
-              <div className="avatar absolute top-24 left-[120px]">
+              <div className="avatar absolute lg:top-24 top-20 lg:left-32 left-20">
                 <div className="w-28 rounded-full ">
                   <img src="https://placeimg.com/192/192/people" />
                 </div>
               </div>
 
               <div className="flex justify-center text-white">
-                <h1 className="text-xl font-medium uppercase  absolute top-[20px] ">
+                <h1 className="lg:text-xl  font-medium uppercase  absolute lg:top-[20px] top-[10px]">
                   Railway Publice Collage
                 </h1>
-                <p className="absolute top-[50px] font-semibold">
+                <p className="absolute lg:top-[50px] top-[40px] font-semibold">
                   Chittagong,Bangladesh
                 </p>
               </div>
 
-              <div className="absolute top-[220px]  left-24">
-                <button className=" uppercase   bg-red-400 text-white px-6 py-1 rounded-lg">
+              <div className="absolute lg:top-[220px] top-[200px] left-16 lg:left-24">
+                <button className=" uppercase   bg-red-400 text-white px-2 lg:px-6 py-1 rounded-lg">
                   Student Profile
                 </button>
               </div>
@@ -94,7 +94,7 @@ const AdmissionDetails = () => {
               <div className="bg-red-400 h-[25px] "></div>
             </div>
 
-            <div className=" col-span-2 pl-8 ">
+            <div className=" col-span-2 lg:pl-8 ">
             
             <div className=" w-full">
                   <div className=" shadow-md overflow-hidden border rounded-lg h-[500px]  ">
@@ -193,7 +193,7 @@ const AdmissionDetails = () => {
           </div>
           <div className="mt-10">
             
-          <div className="card w-full bg-base-100  shadow-lg border">
+          <div className="card lg:w-full w-[280px] bg-base-100  shadow-lg border">
             <div className="card-boy">
               <div className=" w-full">
                 <div className=" lg:overflow-hidden overflow-scroll rounded  border-gray-200">

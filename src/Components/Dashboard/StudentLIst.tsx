@@ -55,16 +55,16 @@ const StudentLIst = () => {
 
   return (
     <div className="my-10 lg:w-3/4 w-full mx-auto">
-      <div className="  grid  lg:grid-cols-3 grid-cols-2 gap-10">
+      <div className="  grid  lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-3">
         {admission.map((ad: any) => (
           <div
             onClick={() => admissionRequestHendeler(ad.title)}
             key={ad}
-            className={`card  flex justify-center items-center   border h-28 lg:w-80 shadow-md px-2 ${
+            className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 w-full  shadow-md px-2 ${
               selected == ad.title ? "bg-red-500" : "bg-base-100"
             } `}
           >
-            <div>
+            <div className="px-6 py-4 lg:px-0 lg:py-0">
               <span
                 className={`text-3xl  ${
                   selected == ad.title ? "text-white" : "text-red-500"
@@ -90,7 +90,7 @@ const StudentLIst = () => {
         <Loading></Loading>
       ) : (
         studentList.length !== 0 && (
-          <div className="card  w-full  bg-base-100 border  shadow-md my-20">
+          <div className="card  lg:w-full w-[280px]  bg-base-100 border  shadow-md my-20">
             <div className="p-5 ">
               <h1 className="font-medium  text-gray-800 uppercase text-lg">
                 Student at {selected} List
@@ -174,11 +174,11 @@ const StudentLIst = () => {
                 </div>
               </div>
 
-              <div className="px-5 py-3 bg-white border-t fle text-center">
+              <div className="lg:px-5 py-3 bg-white border-t fle text-center">
                 <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
                   <button
                     onClick={() => priviesPage()}
-                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg"
+                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
                   >
                     Prev
                   </button>
@@ -188,7 +188,7 @@ const StudentLIst = () => {
                   </span>
                   <button
                     onClick={() => setPage(page + 1)}
-                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg"
+                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
                   >
                     Next
                   </button>

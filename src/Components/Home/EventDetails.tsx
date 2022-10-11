@@ -12,18 +12,18 @@ const EventDetails = () => {
   }, []);
 
   return (
-    <div className="my-20 lg:w-3/4 w-full   mx-auto">
+    <div className="my-20 lg:w-3/4 w-full   mx-auto px-3">
       <div
         className="card  w-full  bg-base-100 border
        shadow-md p-5"
       >
-        <div className="car">
+        <div className="car ">
           <figure>
             <img src={event?.picture?.url} alt="car!" />
           </figure>
-          <div className="card-body">
+          <div className="card-bo px-2 mt-5">
             <h2 className="card-title">{event?.title}</h2>
-            <p>{event?.description}</p>
+            <p className="">{event?.description}</p>
           </div>
         </div>
       </div>

@@ -88,12 +88,12 @@ const AddTeacher = () => {
   console.log(picture);
   return (
     <div className="my-10 lg:w-3/4 w-full   mx-auto">
-      <div className="  grid  lg:grid-cols-3 grid-cols-2 gap-10">
+      <div className="  grid  lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-3">
         {notice.map((ad: any) => (
           <div
             onClick={() => admissionRequestHendeler(ad.title)}
             key={ad}
-            className={`card  flex justify-center items-center   border h-36 lg:w-80 shadow-md px-2 ${
+            className={`card  flex justify-center items-center   border h-44 lg:h-36 lg:w-80 shadow-md px-2 ${
               selected == ad.title ? "bg-red-500" : "bg-base-100"
             } `}
           >
@@ -127,7 +127,7 @@ const AddTeacher = () => {
       </div>
 
       {dataDispaly && (
-        <div className="card  w-full  bg-base-100 border shadow-md my-20">
+        <div className="card  lg:w-full w-[280px]  bg-base-100 border shadow-md my-20">
           <div className="p-5 h-full">
             <h1 className="font-medium  text-gray-800 uppercase text-lg">
               Add to {selected} Teacher
@@ -190,9 +190,9 @@ const AddTeacher = () => {
                 </>
               </div>
               <div className="grid  lg:grid-cols-3 grid-cols-1 gap-10 m">
-                <div className="mt-5">
+                <div className="lg:mt-5 mt-0">
                   <h1>Teacher Name</h1>
-                  <div className="h-14 mt-2  relative">
+                  <div className="h-14 lg:mt-2  relative">
                     <input
                       {...register("name", {
                         required: {
@@ -216,9 +216,9 @@ const AddTeacher = () => {
                     )}
                   </label>
                 </div>
-                <div className="mt-5">
+                <div className="lg:mt-5 mt-0">
                   <h1>Email</h1>
-                  <div className="h-14 mt-2  relative">
+                  <div className="h-14 lg:mt-2  relative">
                     <input
                       {...register("email", {
                         required: {

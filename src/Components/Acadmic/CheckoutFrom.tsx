@@ -15,8 +15,13 @@ const CheckoutFrom = () => {
   const [payment, setPayment] = useState(false);
   const [message, setMessage] = useState<any>("");
   const [isLoading, setIsLoading] = useState(false);
+  const [price , setPrice] = useState(0)
 
   useEffect(() => {
+    const admission:any = localStorage.getItem("admissionInfo")
+    const admissionInfo = JSON.parse(admission)
+    setPrice(admissionInfo?.data?.admissionFee);
+
     if (!stripe) {
       return;
     }
@@ -116,7 +121,7 @@ const CheckoutFrom = () => {
                         Lodding..........
                       </div>
                     ) : (
-                      `Pay ${600} BDT`
+                      `Pay ${price} BDT`
                     )}
                   </span>
                 </button>
