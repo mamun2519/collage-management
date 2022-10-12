@@ -14,11 +14,16 @@ const Button = () => {
       console.log(theme)
       
       return (
-            <>
-            {theme === "light" ?
-            <button onClick={()=>toggleTheme()} className='text-2xl px-4 mt-'><BsSun/></button>
+            <div className=' flex'>
+            {theme === "light" ?<>
+            <span className='px-4 border rounded-lg py-1 mt-1'>Light</span>
+            <span onClick={()=>toggleTheme()} className='text-2xl px-3 mt-2'><BsSun/></span>
+            </>
             :
-            <button onClick={()=>toggleTheme()} className='text-2xl px-4 mt-'><MdDarkMode/></button>
+            <>
+            <span className='px-4 border rounded-lg py-1 mt-1'>Dark</span>
+            <span onClick={()=>toggleTheme()} className='text-2xl px-3 mt-2'><MdDarkMode/></span>
+            </>
       }
             
             {!user   ?
@@ -28,7 +33,7 @@ const Button = () => {
           :
          <button className="bg-red-500 text-white   px-6 py-2 rounded-full" onClick={()=>signOut(auth)}>SignOut</button>}
           
-          </>
+          </div>
       );
 };
 

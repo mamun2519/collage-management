@@ -6,7 +6,7 @@ export const links = [
           {
             Head: "History",
             sublink: [
-              { name: "Teachers,", link: "/" },
+              { name: "Teachers", link: "/about/teachers" },
               { name: "Collage History", link: "/" },
               { name: "Gellary", link: "/" },
             ],

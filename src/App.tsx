@@ -34,6 +34,7 @@ import RasultPublished from "./Components/Dashboard/RasultPublished";
 import UserList from "./Components/Dashboard/UserList";
 import EventDetails from "./Components/Home/EventDetails";
 import NoticeDetailss from "./Components/Home/NoticeDetailss";
+import Teachers from "./Components/About/Teachers";
 export const ThemeContext: any = createContext(null);
 function App() {
   const [theme, setTheme] = useState("light");
@@ -49,6 +50,14 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
+          <Route
+            path="/about/teachers"
+            element={
+            
+                <Teachers />
+           
+            }
+          ></Route>
           <Route
             path="/onlineAdmission"
             element={
