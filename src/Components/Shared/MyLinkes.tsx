@@ -7,18 +7,18 @@ export const links = [
             Head: "History",
             sublink: [
               { name: "Teachers", link: "/about/teachers" },
-              { name: "Collage History", link: "/" },
+              { name: "Collage History", link: "/about/history" },
               { name: "Gellary", link: "/" },
             ],
           },
           {
             Head: "Collage information",
             sublink: [
-              { name: "About The Collage", link: "/" },
-              { name: "Mission & Vission", link: "/" },
-              { name: "collage Location", link: "/" },
-              { name: "Google Map", link: "/" },
-              { name: "Contact us", link: "/" },
+              { name: "About The Collage", link: "/about/collage" },
+              { name: "Mission & Vission", link: "/about/mission&Vission" },
+              { name: "collage Location & Goole Maps", link: "/about/collageLocation" },
+             
+              { name: "Contact us", link: "/about/contact" },
             ],
           },
        

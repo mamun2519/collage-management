@@ -4,7 +4,7 @@ import Loading from "../Shared/Loading";
 import StudentListRow from "./StudentListRow";
 
 const StudentLIst = () => {
-  const [studentList, setStudentList] = useState([]);
+  const [studentList, setStudentList] = useState<any>([]);
   const [loading, isLoading] = useState(false);
   const [selected, setSelected] = useState<any>(false);
   const [page, setPage] = useState(1);
@@ -28,18 +28,21 @@ const StudentLIst = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         if (data.success) {
-          setStudentList(data.student);
-          setPageCount(data.page);
+          setStudentList(data);
+          // setPageCount(data.page);
           // setLimit(data.limit)
           console.log(data);
           isLoading(false);
-        } else {
-          setStudentList([]);
-          isLoading(false);
-        }
+        } 
+        // else {
+        //   setStudentList([]);
+        //   isLoading(false);
+        // }
       });
-  }, [admissionName, limit, page, selected]);
+  }, [admissionName, limit, page, selected , search]);
+  
   console.log(admissionName);
   const admissionRequestHendeler = (admissionName: string): void => {
     const click = admission.filter((classs) => classs.title === admissionName);
@@ -86,10 +89,8 @@ const StudentLIst = () => {
         ))}
       </div>
 
-      {loading ? (
-        <Loading></Loading>
-      ) : (
-        studentList.length !== 0 && (
+    
+      {  studentList.length !== 0 ? 
           <div className="card  lg:w-full w-[280px]  bg-base-100 border  shadow-md my-20">
             <div className="p-5 ">
               <h1 className="font-medium  text-gray-800 uppercase text-lg">
@@ -160,7 +161,7 @@ const StudentLIst = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {studentList?.map(
+                      {studentList?.student?.map(
                         (student: any) =>
                           student.verifay && (
                             <StudentListRow
@@ -184,7 +185,7 @@ const StudentLIst = () => {
                   </button>
                   <span className="text-xs xs:text-sm text-gray-900">
                     Page No
-                    {pageCount}
+                    {studentList?.page}
                   </span>
                   <button
                     onClick={() => setPage(page + 1)}
@@ -196,8 +197,31 @@ const StudentLIst = () => {
               </div>
             </div>
           </div>
-        )
-      )}
+          : 
+          selected && <div className="card  w-full mx-auto bg-base-100 border shadow-lg pb-5 mt-10">
+          <div className="flex justify-center ">
+            <img
+              className="w-[350px]"
+              src="/assets/picture/notfoun.gif"
+              alt=""
+            />
+          </div>
+          <div className="text-center px-4">
+            <p className="  font-medium text-xl">Dear Admin,</p>
+            <p className="text-gray-800">There Are No Students In This {selected} Session.</p>
+            {/* <p>Please Valied result information provide.</p> */}
+
+            <button
+              onClick={() => setStudentList([])}
+              className="bg-red-500 text-white px-4 py-1 rounded-lg mt-2"
+            >
+              Back
+            </button>
+          </div>
+        </div>
+          
+        }
+      
     </div>
   );
 };

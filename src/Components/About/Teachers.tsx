@@ -4,12 +4,12 @@ import TeacherRow from "../Department/TeacherRow";
 import Loading from "../Shared/Loading";
 
 const Teachers = () => {
-  const [teacherList, setTeacherList] = useState([]);
+  const [teacherList, setTeacherList] = useState<any>([]);
   const [loading, isLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-  const [limit, setLimit] = useState<any>();
-  const [pageCount, setPageCount] = useState(1);
+  const [limit, setLimit] = useState<any>(5);
+  // const [pageCount, setPageCount] = useState(1);
   console.log(search);
   useEffect(() => {
     isLoading(true);
@@ -19,17 +19,19 @@ const Teachers = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setTeacherList(data.teacher);
-          setPageCount(data.page);
+          setTeacherList(data);
+          // setPageCount(data.page);
           // setLimit(data.limit)
           console.log(data);
           isLoading(false);
-        } else {
-          setTeacherList([]);
-          isLoading(false);
         }
+        // else {
+        //   setTeacherList([]);
+        //   isLoading(false);
+        // }
       });
-  }, [limit, page, search]);
+  }, [page, limit, search]);
+  console.log(teacherList);
   const priviesPage = () => {
     if (page > 1) {
       setPage(page - 1);
@@ -39,8 +41,8 @@ const Teachers = () => {
   return (
     <>
       <div className="bg-gray-700">
-        <div className="h-44   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-between items-center">
-          <h1 className="text-5xl  font-medium text-white up">Teachers</h1>
+        <div className="h-52   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-between items-center">
+          <h1 className="text-4xl  font-medium text-white up">Teachers</h1>
 
           <div className="flex py-2 bg-red-500 text-white px-8 gap-5 rounded-lg  font-medium">
             <div className=" flex gap-2">
@@ -62,8 +64,8 @@ const Teachers = () => {
           </div>
         </div>
       </div>
-  
-  {loading ? <Loading/> : <div className="card lg:w-full max-w-7xl mx-auto px-3  w-full  bg-base-100 border  shadow-md my-20">
+    <div className="px-3">
+    <div className="card lg:w-full max-w-7xl mx-auto px-3  w-full  bg-base-100 border  shadow-md my-20">
         <div className="p-5 ">
           <h1 className="font-medium  text-gray-800 uppercase text-lg">
             Our Teacher List
@@ -134,7 +136,7 @@ const Teachers = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {teacherList?.map((student: any) => (
+                  {teacherList?.teacher?.map((student: any) => (
                     <TeacherRow key={student._id} teacher={student} />
                   ))}
                 </tbody>
@@ -152,7 +154,7 @@ const Teachers = () => {
               </button>
               <span className="text-xs xs:text-sm text-gray-900">
                 Page No
-                {pageCount}
+                {teacherList?.page}
               </span>
               <button
                 onClick={() => setPage(page + 1)}
@@ -163,8 +165,8 @@ const Teachers = () => {
             </div>
           </div>
         </div>
-      </div>}
-      
+      </div>
+    </div>
     </>
   );
 };

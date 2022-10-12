@@ -35,6 +35,11 @@ import UserList from "./Components/Dashboard/UserList";
 import EventDetails from "./Components/Home/EventDetails";
 import NoticeDetailss from "./Components/Home/NoticeDetailss";
 import Teachers from "./Components/About/Teachers";
+import History from "./Components/About/History";
+import About from "./Components/About/About";
+import Mission from "./Components/About/Mission";
+import Location from "./Components/About/Location";
+import Contact from "./Components/About/Contact";
 export const ThemeContext: any = createContext(null);
 function App() {
   const [theme, setTheme] = useState("light");
@@ -50,14 +55,12 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
-          <Route
-            path="/about/teachers"
-            element={
-            
-                <Teachers />
-           
-            }
-          ></Route>
+          <Route path="/about/teachers" element={<Teachers />}></Route>
+          <Route path="/about/history" element={<History />}></Route>
+          <Route path="/about/collage" element={<About />}></Route>
+          <Route path="/about/mission&Vission" element={<Mission />}></Route>
+          <Route path="/about/collageLocation" element={<Location />}></Route>
+          <Route path="/about/contact" element={<Contact />}></Route>
           <Route
             path="/onlineAdmission"
             element={
