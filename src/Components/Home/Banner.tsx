@@ -15,7 +15,7 @@ const Banner = () => {
           <p className="mb-4 text-4xl font-medium">
           Railway Goverment Public Collage
           </p>
-          <button className="bg-red-500 text-white px-8 py-2 rounded-lg font-medium">Get Started Now</button>
+          <button className="bg-[#2374e1] text-white px-8 py-2 rounded-lg font-medium">Get Started Now</button>
         </div>
       </div>
     </div>

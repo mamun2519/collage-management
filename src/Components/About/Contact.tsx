@@ -22,7 +22,7 @@ const Contact = () => {
         <div className="h-52   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-between items-center">
           <h1 className="text-4xl  font-medium text-white up">Contact Us</h1>
 
-          <div className="flex py-2 bg-red-500 text-white px-8 gap-5 rounded-lg  font-medium">
+          <div className="flex py-2 bg-[#2374e1] text-white px-8 gap-5 rounded-lg  font-medium">
             <div className=" flex gap-2">
               {" "}
               <span className="px-0">Home </span>
@@ -38,7 +38,7 @@ const Contact = () => {
               </span>
             </div>
 
-            <span className="text-gray-900  font-semibold">Contact</span>
+            <span className="text-white  font-medium">Contact</span>
           </div>
         </div>
       </div>

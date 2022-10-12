@@ -168,7 +168,7 @@ const StudentId = () => {
 
           <div className=" flex justify-center mt-5">
             <a
-              className="bg-red-500 text-white px-10 rounded-lg py-2"
+              className="bg-[#2374e1] font-semibold text-white px-10 rounded-lg py-2"
               href={qr}
               download="qrcode.png"
             >

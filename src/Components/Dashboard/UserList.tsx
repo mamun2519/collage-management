@@ -135,7 +135,7 @@ const UserList = () => {
                 <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
                   <button
                     onClick={() => priviesPage()}
-                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
+                    className="text-sm bg-[#5195ed] text-white font-semibold py-2 lg:px-8 px-4 rounded-lg"
                   >
                     Prev
                   </button>
@@ -144,7 +144,7 @@ const UserList = () => {
                   </span>
                   <button
                     onClick={() => setPage(page + 1)}
-                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
+                    className="text-sm bg-[#5195ed] text-white font-semibold py-2 lg:px-8 px-4 rounded-lg"
                   >
                     Next
                   </button>
@@ -232,7 +232,7 @@ const UserList = () => {
                 <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
                   <button
                     onClick={() => priviesadminPage()}
-                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
+                    className="text-sm bg-[#5195ed] text-white  font-semibold py-2 lg:px-8 px-4 rounded-lg"
                   >
                     Prev
                   </button>
@@ -241,7 +241,7 @@ const UserList = () => {
                   </span>
                   <button
                     onClick={() => setadminPage(page + 1)}
-                    className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
+                    className="text-sm bg-[#5195ed] text-white font-semibold py-2 lg:px-8 px-4 rounded-lg"
                   >
                     Next
                   </button>

@@ -5,7 +5,7 @@ const AboutUs = () => {
     <div className="my-20 max-w-7xl m-auto px-3 ">
      <div className="w-max mx-auto">
       
-      <div className="border-b-2 rounded-full border-red-500 ">
+      <div className="border-b-[3px] rounded-full border-[#2374e1] ">
       <h1 className="text-4xl pb-2 text-center mt-10 px-12  font-medium uppercase">ABOUT US</h1>
       </div>
 

@@ -109,7 +109,7 @@ const Result = () => {
                   <div className=" ">
                     <div className="pb-5">
                       <div className="w-max mx-auto">
-                        <div className="border-b-2 rounded-full border-red-500 ">
+                        <div className="border-b-[3px] rounded-full border-[#2374e1] ">
                           <h1 className="text-xl pb-2 text-center mt-10 px-12  font-medium uppercase">
                             Search Result
                           </h1>
@@ -250,7 +250,7 @@ const Result = () => {
 
                       <div className=" flex justify-center mt-5">
                         <input
-                          className="bg-red-500 text-white px-6 py-2 rounded-lg"
+                          className="bg-[#2374e1]    font-medium text-white px-6 py-2 rounded-lg"
                           type="submit"
                           value="Submit Result"
                         />
@@ -380,9 +380,9 @@ const Result = () => {
                   <div className="my-5 flex justify-between items-center px-8">
                     <div>
                     <img className="h-[90px]" src={qr} alt="" />
-                    <span className="text-sm mt-1 text-red-500 font-semibold block">Result QR Code</span>
+                    <span className="text-sm mt-1 bg-[#2374e1] font-semibold block">Result QR Code</span>
                     <span className="text-sm mt- text-gray-900 font-semibold block px-10">Or</span>
-                    <button onClick={pdfDowenlodeHendeler} className="bg-red-500 text-white px-8 py-1 rounded-lg mt-1">Print</button>
+                    <button onClick={pdfDowenlodeHendeler} className="bg-[#2374e1] text-white px-8 py-1 rounded-lg mt-1">Print</button>
                     </div>
                     <div>
                     
@@ -411,7 +411,7 @@ const Result = () => {
 
                     <button
                       onClick={() => setDisplay(false)}
-                      className="bg-red-500 text-white px-4 py-1 rounded-lg mt-2"
+                      className="bg-[#2374e1] font-semibold text-white px-4 py-1 rounded-lg mt-2"
                     >
                       Back
                     </button>

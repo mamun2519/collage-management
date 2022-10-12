@@ -22,7 +22,7 @@ const TeacherRow = ({ student }: Student) => {
         <p className="text-red-500 whitespace-no-wrap font-semibold">{email}</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <button className="bg-red-500 text-white px-4 rounded-lg py-1">
+        <button className="bg-[#2374e1] font-semibold text-white px-4 rounded-lg py-1">
           View More
         </button>
       </td>

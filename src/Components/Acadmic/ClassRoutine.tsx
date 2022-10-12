@@ -34,7 +34,7 @@ const ClassRoutine = () => {
     isLoading(true);
 
     fetch(
-      `http://localhost:5000/v1/routine/department?classs=${data.classs}&session=${data.session}`
+      `http://localhost:5000/v1/routine/department?classs=${data?.classs}&session=${data.session}`
     )
       .then((res) => res.json())
       .then((result) => {
@@ -83,7 +83,7 @@ const ClassRoutine = () => {
               <div className=" ">
                 <div className="pb-5">
                   <div className="w-max mx-auto">
-                    <div className="border-b-2 rounded-full border-red-500 ">
+                    <div className="border-b-[3px] rounded-full border-[#2374e1] ">
                       <h1 className="text-xl pb-2 text-center mt-10 px-6 lg:px-12  font-medium uppercase">
                         Search Class Routine
                       </h1>
@@ -162,7 +162,7 @@ const ClassRoutine = () => {
 
                   <div className=" flex justify-center mt-5">
                     <input
-                      className="bg-red-500 text-white px-6 py-2 rounded-lg"
+                      className="bg-[#2374e1] font-medium text-white px-6 py-2 rounded-lg"
                       type="submit"
                       value="Submit Result"
                     />
@@ -258,7 +258,7 @@ const ClassRoutine = () => {
               {/* <div className="bg-red-400 h-[25px] "></div> */}
             </div>
             <div className="my-10 lg:w-3/4 w-full mx-auto flex justify-center">
-            <button onClick={pdfDowenlodeHendeler} className="bg-red-500 text-white px-8 py-1 rounded-lg">Print Now</button>
+            <button onClick={pdfDowenlodeHendeler} className="bg-[#2374e1] text-white px-8 py-1 rounded-lg font-medium">Print Now</button>
             </div>
            </>: (
             <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border shadow-lg pb-5">
@@ -276,7 +276,7 @@ const ClassRoutine = () => {
 
                 <button
                   onClick={() => setDisplay(false)}
-                  className="bg-red-500 text-white px-4 py-1 rounded-lg mt-2"
+                  className="bg-[#2374e1] font-medium text-white px-4 py-1 rounded-lg mt-2"
                 >
                   Back
                 </button>

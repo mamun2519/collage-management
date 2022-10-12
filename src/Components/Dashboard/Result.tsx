@@ -43,7 +43,7 @@ const Result = () => {
                   onClick={() => admissionRequestHendeler(ad.title)}
                   key={ad}
                   className={`card  flex justify-center items-center   border lg:h-28 h-40 lg:w-80 shadow-md px-2 ${
-                    selected == ad.title ? "bg-red-500" : "bg-base-100"
+                    selected == ad.title ? "bg-[#2374e1] font-semibold" : "bg-base-100"
                   } `}
                 >
                   <div>

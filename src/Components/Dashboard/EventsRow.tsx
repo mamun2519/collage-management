@@ -26,7 +26,7 @@ const EventsRow = ({ event }: EventInfo) => {
           onClick={() =>
             navigate(`/dashboard/admissionList/addmissionDetails/${_id}`)
           }
-          className="bg-red-500 text-white px-4 rounded-lg py-1 font-semibold up"
+          className="bg-[#2374e1]  text-white px-4 rounded-lg py-1 font-semibold up"
         >
           View More
         </button>

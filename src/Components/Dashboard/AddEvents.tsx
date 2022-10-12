@@ -212,7 +212,7 @@ const AddEvents = () => {
 
               <div className=" text-center">
                 <input
-                  className="text-white bg-red-500 px-8 py-2 rounded-lg"
+                  className="text-white bg-[#2374e1] font-semibold px-8 py-2 rounded-lg"
                   type="submit"
                   value="Events Post"
                 />

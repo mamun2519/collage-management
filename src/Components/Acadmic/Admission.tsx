@@ -177,7 +177,7 @@ const Admission = () => {
                 </p>
                 <p>Now Your Roll Is <span className=" font-semibold">{allReadyAdmissiom?.roll}</span></p>
 
-                <button onClick={()=>navigate("/studentId")} className="bg-red-500 text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold">Check Student Id</button>
+                <button onClick={()=>navigate("/studentId")} className="bg-[#2374e1] text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold">Check Student Id</button>
 
   
               </div>
@@ -209,7 +209,7 @@ const Admission = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="my-10 max-w-7xl m-auto px-3">
             <div className="card w-full bg-base-100 border pb-5">
-              <div className="bg-red-500 h-16 flex items-center  justify-between px-8">
+              <div className="bg-[#5195ed] h-16 flex items-center  justify-between px-8">
                 <div>
                   <span
                     onClick={() => backHandeler()}
@@ -268,7 +268,7 @@ const Admission = () => {
                 {admission ? (
                   <div className="mt-5">
                     <div className="w-max mx-auto">
-                      <div className="border-b-2 rounded-full border-red-500 ">
+                      <div className="border-b-[3px] rounded-full border-[#2374e1] ">
                         <h1 className="lg:text-xl pb-2 text-center mt-10 px-4 lg:px-12  font-medium uppercase">
                           {" "}
                           {admission}

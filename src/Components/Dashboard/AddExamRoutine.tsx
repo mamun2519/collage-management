@@ -121,7 +121,7 @@ const AddExamRoutine = () => {
               onClick={() => admissionRequestHendeler(ad.classs, ad._id)}
               key={ad}
               className={`card  flex justify-center items-center   border h-44 lg:h-36 lg:w-80 shadow-md px-2 ${
-                selected == ad.classs ? "bg-red-500" : "bg-base-100"
+                selected == ad.classs ? "bg-[#2374e1]" : "bg-base-100"
               } `}
             >
               <div>
@@ -318,7 +318,7 @@ const AddExamRoutine = () => {
             {!edit && (
               <button
                 onClick={() => addRoutineFlied()}
-                className="bg-red-500 text-white px-8 rounded-lg py-2"
+                className="bg-[#2374e1] font-semibold text-white px-8 rounded-lg py-2"
               >
                 Add More
               </button>
@@ -327,13 +327,13 @@ const AddExamRoutine = () => {
               <div className=" flex gap-5 justify-end mt-20">
                 <button
                   onClick={() => submitHendeler()}
-                  className="bg-red-500 text-white px-8 rounded-lg py-2 mt-3"
+                  className="bg-[#2374e1] font-semibold text-white px-8 rounded-lg py-2 mt-3"
                 >
                   Save
                 </button>
                 <button
                   onClick={() => cancleHendeler()}
-                  className="bg-red-500 text-white px-8 rounded-lg py-2 mt-3"
+                  className="bg-white font-semibold text-[#2374e1] border px-8 rounded-lg py-2 mt-3"
                 >
                   Cancle
                 </button>

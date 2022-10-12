@@ -28,7 +28,7 @@ const Notice = () => {
   return (
     <div className="my-40 max-w-7xl m-auto ">
       <div className="w-max mx-auto">
-        <div className="border-b-2 rounded-full border-red-500 ">
+        <div className="border-b-[3px] rounded-full border-[#2374e1] ">
           <h1 className="text-4xl pb-2 text-center mt-10 px-12  font-medium uppercase">
             Notice
           </h1>
@@ -121,7 +121,7 @@ const Notice = () => {
                               onClick={() =>
                                 navigate(`/noticeDetails/${notice?._id}`)
                               }
-                              className="bg-red-500 text-sm text-white px-4 py-1 rounded-lg"
+                              className="bg-[#2374e1] text-sm text-white px-4 py-1 rounded-lg"
                             >
                               Details
                             </button>
@@ -134,7 +134,7 @@ const Notice = () => {
                     <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
                       <button
                         onClick={() => priviesPage()}
-                        className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg"
+                        className="text-sm bg-[#5195ed]   text-white font-semibold py-2 px-8 rounded-lg"
                       >
                         Prev
                       </button>
@@ -143,7 +143,7 @@ const Notice = () => {
                       </span>
                       <button
                         onClick={() => setPage(page + 1)}
-                        className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-8 rounded-lg"
+                        className="text-sm bg-[#5195ed]   text-white font-semibold py-2 px-8 rounded-lg"
                       >
                         Next
                       </button>

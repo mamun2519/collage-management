@@ -17,7 +17,7 @@ const Event = () => {
   return (
     <div className="my-40  max-w-7xl m-auto px-3">
       <div className="w-max mx-auto">
-        <div className="border-b-2 rounded-full border-red-500 ">
+        <div className="border-b-[3px] rounded-full border-[#2374e1]">
           <h1 className="text-4xl pb-2 text-center mt-10 px-12  font-medium uppercase">
             {" "}
             Events
@@ -42,7 +42,7 @@ const Event = () => {
                 </div>
                 <button
                   onClick={() => navigate(`/eventDetails/${event?._id}`)}
-                  className="bg-red-500 mt-3 text-white px-6 py-2 border-none rounded-md"
+                  className="bg-[#2374e1] font-semibold mt-3 text-white px-6 py-2 border-none rounded-md"
                 >
                   Read More
                 </button>

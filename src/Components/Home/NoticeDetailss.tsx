@@ -79,7 +79,7 @@ const NoticeDetailss = () => {
           <div className=" my-20 w-3/4 mx-auto">
             <button
               onClick={() => pdfDowenlodeHendeler()}
-              className="bg-red-500 text-white px-6 py-1 rounded-lg"
+              className="bg-[#2374e1] font-semibold text-white px-6 py-1 rounded-lg"
             >
               Dowenlode PDF
             </button>

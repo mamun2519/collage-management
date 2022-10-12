@@ -44,7 +44,7 @@ const Teachers = () => {
         <div className="h-52   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-between items-center">
           <h1 className="text-4xl  font-medium text-white up">Teachers</h1>
 
-          <div className="flex py-2 bg-red-500 text-white px-8 gap-5 rounded-lg  font-medium">
+          <div className="flex py-2 bg-[#2374e1] text-white px-8 gap-5 rounded-lg  font-medium">
             <div className=" flex gap-2">
               {" "}
               <span className="px-0">Home </span>
@@ -60,7 +60,7 @@ const Teachers = () => {
               </span>
             </div>
 
-            <span className="text-gray-900  font-semibold">Teachers</span>
+            <span className=" text-white font-medium">Teachers</span>
           </div>
         </div>
       </div>
@@ -148,7 +148,7 @@ const Teachers = () => {
             <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
               <button
                 onClick={() => priviesPage()}
-                className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
+                className="text-sm bg-[#5195ed] text-white font-semibold py-2 lg:px-8 px-4 rounded-lg"
               >
                 Prev
               </button>
@@ -158,7 +158,7 @@ const Teachers = () => {
               </span>
               <button
                 onClick={() => setPage(page + 1)}
-                className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 lg:px-8 px-4 rounded-lg"
+                className="text-sm bg-[#5195ed] text-white font-semibold py-2 lg:px-8 px-4 rounded-lg"
               >
                 Next
               </button>

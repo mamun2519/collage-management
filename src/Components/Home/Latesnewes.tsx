@@ -6,7 +6,7 @@ const Latesnewes = () => {
     <div className=" mt-[6px] mb-0 pb-0  ">
       <p className="w-full h-8 relative ">
     
-        <span className="bg-red-500 rounded-r-md text-white lg:px-10 px-4 py-2 font-mediu">
+        <span className="bg-[#2374e1]  font-medium rounded-r-md text-white lg:px-10 px-4 py-2 font-mediu">
           LATEST NEWS{" "}
         </span>
         <span className="absolute top-[-5px] mt-1 ">

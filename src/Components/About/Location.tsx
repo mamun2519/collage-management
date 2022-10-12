@@ -10,7 +10,7 @@ const Location = () => {
             College Location
           </h1>
 
-          <div className="flex py-2 bg-red-500 text-white px-8 gap-5 rounded-lg  font-medium">
+          <div className="flex py-2 bg-[#2374e1] text-white px-8 gap-5 rounded-lg  font-medium">
             <div className=" flex gap-2">
               {" "}
               <span className="px-0">Home </span>
@@ -26,7 +26,7 @@ const Location = () => {
               </span>
             </div>
 
-            <span className="text-gray-900  font-semibold">
+            <span className="text-white font-medium">
               College Location
             </span>
           </div>

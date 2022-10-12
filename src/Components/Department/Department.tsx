@@ -126,7 +126,7 @@ const BBS = () => {
                     key={index}
                     className={({ selected }) =>
                       selected
-                        ? "transition  uppercase duration-500 border-b-2  px-6 border-red-500   text-black rounded-lg  pb-1 text-center     "
+                        ? "transition  uppercase duration-500 border-b-[3px]  px-6 border-[#2374e1]   text-black rounded-lg  pb-1 text-center     "
                         : " py-[5px] px-6 uppercase "
                     }
                   >

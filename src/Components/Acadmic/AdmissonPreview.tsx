@@ -48,7 +48,7 @@ const AdmissonPreview = () => {
   return (
     <div className="my-10 max-w-7xl m-auto px-3">
       <div className="card w-full bg-base-100 border  pb-5">
-        <div className="bg-red-500 h-16 flex items-center  justify-between px-8">
+        <div className="bg-[#5195ed] h-16 flex items-center  justify-between px-8">
           <div>
             <span
               onClick={() => navigate("/onlineAdmission/personalInfromation")}
@@ -71,7 +71,7 @@ const AdmissonPreview = () => {
           </div>
         </div>
         <div className="w-max mx-auto">
-          <div className="border-b-2 rounded-full border-red-500 ">
+          <div className="border-b-[3px] rounded-full border-[#5195ed] ">
             <h1 className="text-xl pb-2 text-center mt-10 lg:px-12 px-6 font-medium uppercase">
               Admission Preview
             </h1>
@@ -86,7 +86,7 @@ const AdmissonPreview = () => {
                 <div className=" w-full">
                   <div className="shadow overflow-hidden rounded  border-gray-200">
                     <table className="min-w-full text-white">
-                      <thead className="bg-red-500 text-white">
+                      <thead className="bg-[#5195ed] text-white">
                         <tr>
                           <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
                             Admisson Info
@@ -169,7 +169,7 @@ const AdmissonPreview = () => {
             </div>
             <div>
               <div className="card wfull bg-base-100 h-full  shadow-sm border">
-                <div className="bg-red-500 lg:h-12 h-16 flex items-center  px-6 text-white uppercase font-semibold">
+                <div className="bg-[#5195ed] lg:h-12 h-16 flex items-center  px-6 text-white uppercase font-semibold">
                   <h1>First Year "{previewInfo?.data?.classs}" Book List</h1>
                   <div></div>
                 </div>
@@ -191,7 +191,7 @@ const AdmissonPreview = () => {
               <div className=" w-full">
                 <div className="shadow  lg:overflow-hidden overflow-scroll rounded  border-gray-200">
                   <table className="min-w-full text-white">
-                    <thead className="bg-red-500 text-white">
+                    <thead className="bg-[#5195ed] text-white">
                       <tr>
                         <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
                           Personal Info

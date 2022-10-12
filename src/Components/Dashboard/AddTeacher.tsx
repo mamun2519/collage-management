@@ -94,7 +94,7 @@ const AddTeacher = () => {
             onClick={() => admissionRequestHendeler(ad.title)}
             key={ad}
             className={`card  flex justify-center items-center   border h-44 lg:h-36 lg:w-80 shadow-md px-2 ${
-              selected == ad.title ? "bg-red-500" : "bg-base-100"
+              selected == ad.title ? "bg-[#2374e1]" : "bg-base-100"
             } `}
           >
             <div>
@@ -363,7 +363,7 @@ const AddTeacher = () => {
 
               <div className=" text-center">
                 <input
-                  className="text-white bg-red-500 px-8 py-2 rounded-lg"
+                  className="text-white bg-[#2374e1]  font-semibold px-8 py-2 rounded-lg"
                   type="submit"
                   value="Notice Post"
                 />

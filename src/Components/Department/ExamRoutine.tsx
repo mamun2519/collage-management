@@ -82,7 +82,7 @@ const ExamRoutine = ({ routine }: RoutineInfo) => {
               </div>
             </div>
           </div>
-          <div className="bg-red-400 h-[25px] "></div>
+          {/* <div className="bg-[#2374e1] h-[25px] "></div> */}
         </div>
       ) : (
         <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border pb-5">
@@ -98,7 +98,7 @@ const ExamRoutine = ({ routine }: RoutineInfo) => {
             <p>Thank You.</p>
             <button
               // onClick={() => navigate("/onlineAdmission")}
-              className="bg-red-500 text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold"
+              className="bg-[#2374e1] text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold"
             >
               Back
             </button>

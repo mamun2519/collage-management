@@ -6,7 +6,7 @@ const Overview = () => {
   const { department } = useParams();
   return (
     <div className="card lg:w-3/4  w-full  mx-auto bg-base-100 border shadow-md py-8 my-10">
-      <div className="bg-red-400 h-[25px] "></div>
+      <div className="bg-[#5195ed] h-[25px] "></div>
       <h1 className="text-2xl pb-2  font-medium uppercase px-8">
         Department Profile
       </h1>
@@ -43,7 +43,7 @@ const Overview = () => {
           sector departments. A few are also well settled as self-employed.
         </p>
 
-        <div className="bg-red-400 h-[25px] mt-8"></div>
+        <div className="bg-[#5195ed] h-[25px] mt-8"></div>
         <h1 className="text-2xl pb-2  font-medium uppercase px-8">OBJECTIVE</h1>
         <p className="leading-relaxed text-xl  text-gray-600 px-8">
           a. The main objective of the department is to provide an opportunity
@@ -62,7 +62,7 @@ const Overview = () => {
         <p className="leading-relaxed text-xl mt-1 text-gray-600 px-8">
           d. To motivate the students for self employment.
         </p>
-        <div className="bg-red-400 h-[25px] mt-8"></div>
+        <div className="bg-[#5195ed] h-[25px] mt-8"></div>
         <h1 className="text-2xl pb-2  font-medium uppercase px-8">MISSION</h1>
         <p className="leading-relaxed text-xl  text-gray-600 px-8">
           We are dedicated to secure and deliver knowledge through teaching,
@@ -73,7 +73,7 @@ const Overview = () => {
           suitable for industry, business and service sector and to equip and
           encourage them to start their own ventures in urban or rural areas.
         </p>
-        <div className="bg-red-400 h-[25px] mt-8"></div>
+        <div className="bg-[#5195ed] h-[25px] mt-8"></div>
         <h1 className="text-2xl pb-2  font-medium uppercase px-8">
           devartpemt Overview
         </h1>

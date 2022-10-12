@@ -33,7 +33,7 @@ const AdminRow = ({ user }: User) => {
         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <button
             onClick={() => removeAdminModal(_id)}
-            className="bg-red-500 text-white px-4 rounded-lg py-1 font-semibold up"
+            className="bg-[#2374e1] text-white px-4 rounded-lg py-1 font-semibold up"
           >
             Remove Admin
           </button>

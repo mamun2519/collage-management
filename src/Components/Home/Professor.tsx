@@ -23,7 +23,7 @@ const Professor = () => {
             প্রতিষ্ঠিত হবে এ আমার প্রত্যাশা।
           </p>
           <div className="mt-5 text-center">
-            <button className="bg-red-500 text-white px-6 py-2 rounded-lg">
+            <button className="bg-[#2374e1]  font-semibold text-white px-6 py-2 rounded-lg">
               Read More
             </button>
           </div>
@@ -65,7 +65,7 @@ const Professor = () => {
             প্রতিষ্ঠিত হবে এ আমার প্রত্যাশা।
           </p>
           <div className="mt-5 text-center">
-            <button className="bg-red-500 text-white px-6 py-2 rounded-lg">
+            <button className="bg-[#2374e1] font-semibold text-white px-6 py-2 rounded-lg">
               Read More
             </button>
           </div>

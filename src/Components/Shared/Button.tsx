@@ -31,7 +31,7 @@ const Button = () => {
             Get Started
           </button>
           :
-         <button className="bg-red-500 text-white   px-6 py-2 rounded-full" onClick={()=>signOut(auth)}>SignOut</button>}
+         <button className="bg-[#2374e1] text-white   px-6 py-2 rounded-full" onClick={()=>signOut(auth)}>SignOut</button>}
           
           </div>
       );
