@@ -1,15 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useState , useContext } from "react";
 import { BsSun } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
 import NavLinks from "./NavLinks";
+import { ThemeContext } from "../../App";
 const SideNav = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="bg-base-200">
+    <nav className={`${theme == "light" ? "bg-base-200": "bg-[#18191a] text-[#e4e6eb]"}`}>
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between">
           {/* <img src="" alt="BanglaDesh Railway School" className="md:cursor-pointer h-9" /> */}

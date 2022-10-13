@@ -48,7 +48,7 @@ const AboutUs = () => {
           </div>
           <div
             tabIndex={0}
-            className={`collapse collapse-plus border  bg-base-100 rounded-box ${theme == "light"? "bg-base-100 border-base-300 ":  "border-[#414343] bg-[#242526] text-[#e4e6eb]"}`}
+            className={`collapse collapse-plus border  rounded-box ${theme == "light"? "bg-base-100 border-base-300 ":  "border-[#414343]  bg-[#242526] text-[#e4e6eb]"}`}
           >
             <div className="collapse-title text-xl font-medium">
               Focus me to see content
@@ -71,7 +71,7 @@ const AboutUs = () => {
           </div>
           <div
             tabIndex={0}
-            className={`collapse collapse-plus border  bg-base-100 rounded-box ${theme == "light"? "bg-base-100 border-base-300 ": "border-[#414343] bg-[#242526] text-[#e4e6eb]"}`}
+            className={`collapse collapse-plus border  rounded-box ${theme == "light"? "bg-base-100 border-base-300 ": "border-[#414343] bg-[#242526] text-[#e4e6eb]"}`}
           >
             <div className="collapse-title text-xl font-medium">
               Focus me to see content
@@ -94,7 +94,7 @@ const AboutUs = () => {
           </div>
           <div
             tabIndex={0}
-            className={`collapse collapse-plus border  bg-base-100 rounded-box ${theme == "light"? "bg-base-100 border-base-300": "bg-[#242526] text-[#e4e6eb] border-[#414343]"}`}
+            className={`collapse collapse-plus border  rounded-box ${theme == "light"? "bg-base-100 border-base-300": "bg-[#242526] text-[#e4e6eb] border-[#414343]"}`}
           >
             <div className="collapse-title text-xl font-medium">
               Focus me to see content
