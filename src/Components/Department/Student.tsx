@@ -11,7 +11,7 @@ const Student = ({ students }: StudentInfo) => {
     <div className="mt-10 mb-20">
       <div
         className={`card lg:w-3/4 w-full mx-auto  border  shadow-lg  ${
-          theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
+          theme == "light" ? "bg-base-100" : "bg-[#242526]  border-[#414343]"
         }`}
       >
         <div className="p-5 ">

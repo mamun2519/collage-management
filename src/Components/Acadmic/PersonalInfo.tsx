@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
@@ -6,7 +6,9 @@ import { MdAddPhotoAlternate } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import { TiDelete } from "react-icons/ti";
+import { ThemeContext } from "../../App";
 const PersonalInfo = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [images, setImages] = useState("");
   const [user] = useAuthState(auth);
   type UserSubmitForm = {
@@ -59,8 +61,12 @@ const PersonalInfo = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="my-10 max-w-7xl m-auto px-3">
-        <div className="card w-full bg-base-100 border pb-5">
-          <div className="bg-red-500 h-16 flex items-center  justify-between px-8">
+        <div
+          className={`card w-full  border pb-5  ${
+            theme == "light" ? "bg-base-100" : "bg-[#242526]  border-[#414343]"
+          }`}
+        >
+          <div className={` h-16 flex items-center  justify-between px-8 ${theme == "light" ? "bg-[#5195ed]": "bg-[#414343]"}`}>
             <div>
               <span
                 onClick={() => navigate("/onlineAdmission")}
@@ -78,8 +84,14 @@ const PersonalInfo = () => {
             </div>
           </div>
           <div className="w-max mx-auto">
-            <div className="border-b-2 rounded-full border-red-500 ">
-              <h1 className="text-xl pb-2 text-center mt-10 lg:px-12 px-5 font-medium uppercase">
+            <div
+              className={`border-b-[3px] rounded-full ${
+                theme == "light"
+                  ? "border-[#2374e1] "
+                  : "border-[#e4e6eb] text-[#e4e6eb]"
+              }`}
+            >
+              <h1 className="text-xl pb-2 text-center mt-10 lg:px-12 px-5 font-medium uppercase ">
                 Student Information
               </h1>
             </div>
@@ -87,7 +99,13 @@ const PersonalInfo = () => {
           <div className="mt-10 px-5">
             <div className="grid  lg:grid-cols-3 gap-10 col-span-1">
               <div>
-                <p>First Name</p>
+                <p
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  First Name
+                </p>
                 <div className="h-14 mt-2  relative">
                   <input
                     {...register("firstName", {
@@ -114,7 +132,13 @@ const PersonalInfo = () => {
                 </label>
               </div>
               <div>
-                <p>Last Name</p>
+                <p
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Last Name
+                </p>
                 <div className="h-14 mt-2  relative">
                   <input
                     {...register("lastName", {
@@ -141,7 +165,13 @@ const PersonalInfo = () => {
                 </label>
               </div>
               <div>
-                <p>Date Of birth</p>
+                <p
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Date Of birth
+                </p>
                 <div className="h-14 mt-2  relative">
                   <input
                     {...register("birthday", {
@@ -172,7 +202,13 @@ const PersonalInfo = () => {
           <div className="mt-5 px-5">
             <div className="grid  lg:grid-cols-3 gap-10 col-span-1">
               <div>
-                <p>Age</p>
+                <p
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Age
+                </p>
                 <div className="h-14 mt-2  relative">
                   <input
                     {...register("age", {
@@ -197,7 +233,13 @@ const PersonalInfo = () => {
                 </label>
               </div>
               <div>
-                <p>Gender</p>
+                <p
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Gender
+                </p>
                 <div className="h-14 mt-2  relative">
                   <select
                     {...register("gender", {
@@ -227,7 +269,13 @@ const PersonalInfo = () => {
                 </label>
               </div>
               <div>
-                <p>Gerdian Name</p>
+                <p
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Gerdian Name
+                </p>
                 <div className="h-14 mt-2  relative">
                   <input
                     {...register("gerdianName", {
@@ -258,7 +306,13 @@ const PersonalInfo = () => {
           <div className="mt-5 px-5">
             <div className="grid  lg:grid-cols-3 gap-10 col-span-1">
               <div>
-                <p>Phone Number</p>
+                <p
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Phone Number
+                </p>
                 <div className="h-14 mt-2  relative">
                   <input
                     {...register("number", {
@@ -289,7 +343,13 @@ const PersonalInfo = () => {
           <div className="mt-5 px-5">
             <div className="grid  lg:grid-cols-3 gap-10 col-span-1">
               <div>
-                <p>Home Address</p>
+                <p
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Home Address
+                </p>
                 <div className="h-14 mt-2  relative">
                   <input
                     {...register("address", {
@@ -317,7 +377,13 @@ const PersonalInfo = () => {
               </div>
 
               <div>
-                <p>Village</p>
+                <p
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Village
+                </p>
                 <div className="h-14 mt-2  relative">
                   <input
                     {...register("village", {
@@ -344,7 +410,13 @@ const PersonalInfo = () => {
                 </label>
               </div>
               <div>
-                <p>Country</p>
+                <p
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Country
+                </p>
                 <div className="h-14 mt-2  relative">
                   <input
                     {...register("country", {
@@ -372,7 +444,6 @@ const PersonalInfo = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </form>

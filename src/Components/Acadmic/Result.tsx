@@ -1,16 +1,18 @@
-import React, { useState , useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
 import Loading from "../Shared/Loading";
 import RasultRow from "./RasultRow";
 import QRCode from "qrcode";
-import {useReactToPrint} from 'react-to-print'
+import { useReactToPrint } from "react-to-print";
+import { ThemeContext } from "../../App";
 const Result = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [result, setresult] = useState<any>();
   const [disPlay, setDisplay] = useState(false);
   const [loading, isLoading] = useState(false);
   const [studentInfo, setStudentInfo] = useState<any>({});
-  const componentRef:any = useRef()
+  const componentRef: any = useRef();
   const [qr, setQr] = useState("");
   type UserSubmitForm = {
     classs: string;
@@ -18,11 +20,11 @@ const Result = () => {
     examName: string;
     roll: string;
   };
-  const pdfDowenlodeHendeler:any = useReactToPrint({
-    content:()=> componentRef.current,
-   documentTitle: "my-result",
-  //  onAfterprint: ()=> alert("downlode")
-  })
+  const pdfDowenlodeHendeler: any = useReactToPrint({
+    content: () => componentRef.current,
+    documentTitle: "my-result",
+    //  onAfterprint: ()=> alert("downlode")
+  });
   const {
     register,
     reset,
@@ -36,7 +38,6 @@ const Result = () => {
     )
       .then((res) => res.json())
       .then((result) => {
-      
         if (result.success) {
           QRCode?.toDataURL(
             `
@@ -65,7 +66,6 @@ const Result = () => {
           setStudentInfo(result?.studentInfo);
           setDisplay(true);
           isLoading(false);
-         
         } else {
           setDisplay(true);
           isLoading(false);
@@ -103,13 +103,25 @@ const Result = () => {
           {loading ? (
             <Loading />
           ) : !disPlay ? (
-            <div className="card   w-full mx-auto bg-base-100 border  shadow-lg">
+            <div
+              className={`card w-full mx-auto  border  shadow-lg  ${
+                theme == "light"
+                  ? "bg-base-100"
+                  : "bg-[#242526] border-[#414343]"
+              }`}
+            >
               <div className="p-5 ">
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className=" ">
                     <div className="pb-5">
                       <div className="w-max mx-auto">
-                        <div className="border-b-[3px] rounded-full border-[#2374e1] ">
+                        <div
+                          className={`border-b-[3px] rounded-full ${
+                            theme == "light"
+                              ? "border-[#2374e1] "
+                              : "border-[#e4e6eb] text-[#e4e6eb]"
+                          }`}
+                        >
                           <h1 className="text-xl pb-2 text-center mt-10 px-12  font-medium uppercase">
                             Search Result
                           </h1>
@@ -119,7 +131,15 @@ const Result = () => {
                       <div className="mt-10 lg:px-5">
                         <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
                           <div>
-                            <p>class Name</p>
+                            <p
+                              className={` ${
+                                theme == "light"
+                                  ? "text-gray-800"
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
+                              class Name
+                            </p>
                             <div className="h-14 mt-2  relative">
                               <select
                                 {...register("classs", {
@@ -128,7 +148,11 @@ const Result = () => {
                                     message: "Gender is Required",
                                   },
                                 })}
-                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 pl-20"
+                                className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                                  theme == "light"
+                                    ? "bg-white text-gray-700"
+                                    : "bg-[#414343] text-[#e4e6eb] border-none"
+                                }`}
                                 placeholder="Enter Your Last Name"
                               >
                                 {clases.map((depart) => (
@@ -151,7 +175,15 @@ const Result = () => {
                             </label>
                           </div>
                           <div>
-                            <p>Session</p>
+                            <p
+                              className={` ${
+                                theme == "light"
+                                  ? "text-gray-800"
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
+                              Session
+                            </p>
                             <div className="h-14 mt-2  relative">
                               <select
                                 {...register("session", {
@@ -160,7 +192,11 @@ const Result = () => {
                                     message: "session is Required",
                                   },
                                 })}
-                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                                className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                                  theme == "light"
+                                    ? "bg-white text-gray-700"
+                                    : "bg-[#414343] text-[#e4e6eb] border-none"
+                                }`}
                                 placeholder="Enter Your Last Name"
                               >
                                 {section.map((depart) => (
@@ -187,7 +223,15 @@ const Result = () => {
                       <div className="mt-8 lg:px-5">
                         <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
                           <div>
-                            <p>Exam Name</p>
+                            <p
+                              className={` ${
+                                theme == "light"
+                                  ? "text-gray-800"
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
+                              Exam Name
+                            </p>
                             <div className="h-14 mt-2  relative">
                               <select
                                 {...register("examName", {
@@ -196,7 +240,11 @@ const Result = () => {
                                     message: "exam Name is Required",
                                   },
                                 })}
-                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                                className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                                  theme == "light"
+                                    ? "bg-white text-gray-700"
+                                    : "bg-[#414343] text-[#e4e6eb] border-none"
+                                }`}
                                 placeholder="Enter Your Last Name"
                               >
                                 {exam.map((depart) => (
@@ -219,7 +267,15 @@ const Result = () => {
                             </label>
                           </div>
                           <div>
-                            <p>Student Roll</p>
+                            <p
+                              className={` ${
+                                theme == "light"
+                                  ? "text-gray-800"
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
+                              Student Roll
+                            </p>
                             <div className="h-14 mt-2  relative">
                               <input
                                 {...register("roll", {
@@ -228,7 +284,11 @@ const Result = () => {
                                     message: "Roll Required",
                                   },
                                 })}
-                                className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                                className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                                  theme == "light"
+                                    ? "bg-white text-gray-700"
+                                    : "bg-[#414343] text-[#e4e6eb] border-none"
+                                }`}
                                 placeholder="Enter Age"
                                 type="number"
                               />
@@ -250,7 +310,9 @@ const Result = () => {
 
                       <div className=" flex justify-center mt-5">
                         <input
-                          className="bg-[#2374e1]    font-medium text-white px-6 py-2 rounded-lg"
+                          className={` font-semibold text-white px-6 mt-2 rounded-lg py-2 ${
+                            theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                          }`}
                           type="submit"
                           value="Submit Result"
                         />
@@ -265,73 +327,111 @@ const Result = () => {
             <>
               {result ? (
                 <>
-                  <div ref={componentRef} className="card lg:w-3/4 w-full mx-auto bg-base-100 border  shadow-lg">
+                  <div
+                    ref={componentRef}
+                    className={`card lg:w-3/4 w-full mx-auto  border  shadow-lg  ${
+                      theme == "light"
+                        ? "bg-base-100"
+                        : "bg-[#242526] text-[#e4e6eb] border-[#414343]"
+                    }`}
+                  >
                     <div className="p-5 ">
                       <p className="text-2xl font-medium  uppercase text-center">
                         Realwai public Collage,Chittagong
                       </p>
-                      <p className="text-lg  font-sans text-gray-800 text-center mt-1">
-                      {studentInfo?.classs}
-                </p>
-                      <p className="text-xl font-sans text-gray-800 text-center mt-">
+                      <p
+                        className={`text-lg  font-sans  text-center ${
+                          theme == "light" ? "text-gray-800 " : "text-[#e4e6eb]"
+                        }`}
+                      >
+                        {studentInfo?.classs}
+                      </p>
+                      <p
+                        className={`text-lg  font-sans  text-center ${
+                          theme == "light" ? "text-gray-800 " : "text-[#e4e6eb]"
+                        }`}
+                      >
                         {result?.resultType} Results
                       </p>
                       <div>
-                        <p className="text-lg font-sans text-gray-800 text-center mt-">
+                        <p
+                          className={`text-lg  font-sans  text-center ${
+                            theme == "light"
+                              ? "text-gray-800 "
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
                           Session ({studentInfo?.session})
                         </p>
                       </div>
 
-                      {/* <div className=" flex justify-between mt-10 text-lg">
-                  <div>
-                    <span>Session:</span>
-                    <span className="px-3">{result?.session}</span>
-                  </div>
-                  <div>
-                    <span>Date:</span>
-                    <span className="px-3">04/22/2022</span>
-                  </div>
-                </div> */}
-                      
-
                       <div className=" w-full lg:w-2/3 mx-auto mt-10 border px-8 py-2 rounded-lg">
-                        <div >
+                        <div>
                           <div className="flex justify-between">
                             <span>Name:</span>
-                            <span className=" font-semibold text-gray-800">
+                            <span
+                              className={`text-lg  font-sans  text-center ${
+                                theme == "light"
+                                  ? "text-gray-800 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {studentInfo?.name}
                             </span>
                           </div>
 
                           <div className=" flex justify-between mt-1">
                             <span>Gerdian Name:</span>
-                            <span className=" font-semibold text-gray-800">
+                            <span
+                              className={`text-lg  font-sans  text-center ${
+                                theme == "light"
+                                  ? "text-gray-800 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {studentInfo?.gerdianName}
                             </span>
                           </div>
 
                           <div className=" flex justify-between mt-1">
                             <span>Date Of Birth:</span>
-                            <span className=" font-semibold text-gray-800">
+                            <span
+                              className={`text-lg  font-sans  text-center ${
+                                theme == "light"
+                                  ? "text-gray-800 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {studentInfo?.birthday}
                             </span>
                           </div>
                           <div className=" flex justify-between mt-1">
                             <span>Class Roll:</span>
-                            <span className=" font-semibold text-gray-800">
+                            <span
+                              className={`text-lg  font-sans  text-center ${
+                                theme == "light"
+                                  ? "text-gray-800 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {studentInfo?.roll}
                             </span>
                           </div>
                           <div className=" flex justify-between mt-1">
                             <span>Result:</span>
                             <span className=" font-semibold text-red-500">
-                             { result.Gpa > 1.0 ? "Pass" : "Fail"}
-                            
+                              {result.Gpa > 1.0 ? "Pass" : "Fail"}
                             </span>
                           </div>
                           <div className=" flex justify-between mt-1">
                             <span>Point (GPA)</span>
-                            <span className=" font-semibold text-gray-800">
+                            <span
+                              className={`text-lg  font-sans  text-center ${
+                                theme == "light"
+                                  ? "text-gray-800 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {result.Gpa}
                             </span>
                           </div>
@@ -343,16 +443,40 @@ const Result = () => {
                           <table className="min-w-full leading-normal">
                             <thead>
                               <tr>
-                                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
+                                <th
+                                  className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                                    theme == "light"
+                                      ? "bg-gray-100 text-gray-600 border-gray-200"
+                                      : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
                                   Subject
                                 </th>
-                                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider ">
+                                <th
+                                  className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                                    theme == "light"
+                                      ? "bg-gray-100 text-gray-600 border-gray-200"
+                                      : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
                                   Total Number
                                 </th>
-                                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
+                                <th
+                                  className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                                    theme == "light"
+                                      ? "bg-gray-100 text-gray-600 border-gray-200"
+                                      : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
                                   latter Grade
                                 </th>
-                                <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-900 uppercase tracking-wider">
+                                <th
+                                  className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                                    theme == "light"
+                                      ? "bg-gray-100 text-gray-600 border-gray-200"
+                                      : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
                                   Grade Point
                                 </th>
                               </tr>
@@ -364,31 +488,58 @@ const Result = () => {
                             </tbody>
                           </table>
                         </div>
-
-                     
                       </div>
                     </div>
                     <div className="flex justify-between my-3 px-8">
-                    <div></div>
-                    <div className="text-center">
-                      <p className=" text-lg text-gray-700  font-semibold">Principle Signature </p>
-                      <span className=" text-sm text-gray-600 mt-0">Mohammad Mamun</span>
-                      
+                      <div></div>
+                      <div className="text-center">
+                        <p
+                          className={` text-lg mt- font-semibold block px-10  ${
+                            theme == "light"
+                              ? "text-gray-900 "
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Principle Signature{" "}
+                        </p>
+                        <span
+                          className={` text-sm mt- font-semibold block px-10  ${
+                            theme == "light"
+                              ? "text-gray-900 "
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Mohammad Mamun
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="my-5 flex justify-between items-center px-8">
-                    <div>
-                    <img className="h-[90px]" src={qr} alt="" />
-                    <span className="text-sm mt-1 bg-[#2374e1] font-semibold block">Result QR Code</span>
-                    <span className="text-sm mt- text-gray-900 font-semibold block px-10">Or</span>
-                    <button onClick={pdfDowenlodeHendeler} className="bg-[#2374e1] text-white px-8 py-1 rounded-lg mt-1">Print</button>
+                    <div className="my-5 flex justify-between items-center px-8">
+                      <div>
+                        <img className="h-[90px]" src={qr} alt="" />
+                        <span className="text-sm mt-1  font-semibold block">
+                          Result QR Code
+                        </span>
+                        <span
+                          className={` text-sm mt- font-semibold block px-10  ${
+                            theme == "light"
+                              ? "text-gray-900 "
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Or
+                        </span>
+                        <button
+                          onClick={pdfDowenlodeHendeler}
+                          className={` font-semibold text-white px-4 rounded-lg py-1 ${
+                            theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                          }`}
+                        >
+                          Print
+                        </button>
+                      </div>
+                      <div></div>
                     </div>
-                    <div>
-                    
-                    </div>
-
-                  </div>
                     {/* <div className="bg-red-400 h-[25px] "></div> */}
                   </div>
                   {/* <div className="my-10 lg:w-3/4 w-full mx-auto flex justify-center">

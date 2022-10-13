@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
+import { ThemeContext } from "../../App";
 interface AdmissionStudent {
   student: string;
   verifay: string;
 }
 const Admission = () => {
-  const [user ] = useAuthState(auth);
+  const [user] = useAuthState(auth);
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const navigate = useNavigate();
   const [admission, setAdmission] = useState("");
   const [subjectList, setSubjectList] = useState("");
   const [loading, isLoading] = useState(false);
-  const [allReadyAdmissiom, setAllReadyAdmissiom] =
-    useState<AdmissionStudent | any>();
+  const [allReadyAdmissiom, setAllReadyAdmissiom] = useState<
+    AdmissionStudent | any
+  >();
   type UserSubmitForm = {
     passingAcademy: number;
     passingYear: string;
@@ -27,12 +30,10 @@ const Admission = () => {
     session: string;
     admissionFee: string;
   };
-  
-  
-  
+
   useEffect(() => {
-    isLoading(true)
-    if(user?.email){
+    isLoading(true);
+    if (user?.email) {
       fetch(
         `http://localhost:5000/v1/student/chackadmission?email=${user?.email}`
       )
@@ -40,17 +41,14 @@ const Admission = () => {
         .then((data) => {
           if (data.success) {
             setAllReadyAdmissiom(data?.student);
-            isLoading(false)
-          }
-          else{
-            isLoading(false)
+            isLoading(false);
+          } else {
+            isLoading(false);
           }
         });
     }
-    
   }, []);
-  
-  
+
   const {
     register,
     reset,
@@ -156,35 +154,43 @@ const Admission = () => {
   console.log(allReadyAdmissiom);
   return (
     <>
-
-      {loading ? <Loading/> :  allReadyAdmissiom ? (
+      {loading ? (
+        <Loading />
+      ) : allReadyAdmissiom ? (
         <div className="my-10 max-w-7xl m-auto px-3">
           {allReadyAdmissiom?.verifay ? (
             <>
-            <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border pb-5">
-              <div className="flex justify-center ">
-                <img
-                  className="w-[350px]"
-                  src="/assets/picture/stoudentId.gif"
-                  alt=""
-                />
-              </div>
-              <div className="text-center px-4">
-                <p className="  font-medium text-xl">Dear Student,</p>
-                <p className="text-gray-900">
-                  {" "}
-                  Collage Authoraty Your Roll Number Provide.
-                </p>
-                <p>Now Your Roll Is <span className=" font-semibold">{allReadyAdmissiom?.roll}</span></p>
+              <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border pb-5">
+                <div className="flex justify-center ">
+                  <img
+                    className="w-[350px]"
+                    src="/assets/picture/stoudentId.gif"
+                    alt=""
+                  />
+                </div>
+                <div className="text-center px-4">
+                  <p className="  font-medium text-xl">Dear Student,</p>
+                  <p className="text-gray-900">
+                    {" "}
+                    Collage Authoraty Your Roll Number Provide.
+                  </p>
+                  <p>
+                    Now Your Roll Is{" "}
+                    <span className=" font-semibold">
+                      {allReadyAdmissiom?.roll}
+                    </span>
+                  </p>
 
-                <button onClick={()=>navigate("/studentId")} className="bg-[#2374e1] text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold">Check Student Id</button>
-
-  
+                  <button
+                    onClick={() => navigate("/studentId")}
+                    className="bg-[#2374e1] text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold"
+                  >
+                    Check Student Id
+                  </button>
+                </div>
               </div>
-            </div>
             </>
           ) : (
-            
             <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border pb-5">
               <div className="flex justify-center ">
                 <img
@@ -208,8 +214,14 @@ const Admission = () => {
       ) : (
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="my-10 max-w-7xl m-auto px-3">
-            <div className="card w-full bg-base-100 border pb-5">
-              <div className="bg-[#5195ed] h-16 flex items-center  justify-between px-8">
+            <div
+              className={`card w-full  border pb-5  ${
+                theme == "light"
+                  ? "bg-base-100"
+                  : "bg-[#242526]  border-[#414343]"
+              }`}
+            >
+              <div className={` h-16 flex items-center  justify-between px-8 ${theme == "light" ? "bg-[#5195ed]": "bg-[#414343]"}`}>
                 <div>
                   <span
                     onClick={() => backHandeler()}
@@ -229,7 +241,13 @@ const Admission = () => {
 
               <div className="p-5">
                 <div className={admission ? " hidden" : ""}>
-                  <h1 className="text-xl">Admission Type</h1>
+                  <h1
+                    className={`text-xl ${
+                      theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                    }`}
+                  >
+                    Admission Type
+                  </h1>
                   <div className="grid  lg:grid-cols-2 gap-10 col-span-1">
                     <div>
                       {" "}
@@ -268,7 +286,13 @@ const Admission = () => {
                 {admission ? (
                   <div className="mt-5">
                     <div className="w-max mx-auto">
-                      <div className="border-b-[3px] rounded-full border-[#2374e1] ">
+                      <div
+                        className={`border-b-[3px] rounded-full ${
+                          theme == "light"
+                            ? "border-[#2374e1] "
+                            : "border-[#e4e6eb] text-[#e4e6eb]"
+                        }`}
+                      >
                         <h1 className="lg:text-xl pb-2 text-center mt-10 px-4 lg:px-12  font-medium uppercase">
                           {" "}
                           {admission}
@@ -278,7 +302,15 @@ const Admission = () => {
                     {/* <h1 className=" uppercase">{admission}</h1> */}
                     <div className="grid  lg:grid-cols-2 grid-cols-1 gap-10 mt-5">
                       <div className="mt-5">
-                        <h1>Board</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Board
+                        </h1>
 
                         <div className="h-14 mt-2  relative">
                           <select
@@ -309,7 +341,15 @@ const Admission = () => {
                         </label>
                       </div>
                       <div className="mt-5">
-                        <h1>Department</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Department
+                        </h1>
                         <div className="h-14 mt-2  relative">
                           <select
                             {...register("department", {
@@ -343,7 +383,15 @@ const Admission = () => {
                     </div>
                     <div className="grid  lg:grid-cols-2 grid-cols-1  gap-10">
                       <div className="mt-5">
-                        <h1>Class</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Class
+                        </h1>
                         {admission == "Higer Secondary Admission" && (
                           <>
                             {" "}
@@ -480,7 +528,15 @@ const Admission = () => {
                         )}
                       </div>
                       <div className="mt-5">
-                        <h1>Session</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Session
+                        </h1>
                         <div className="h-14 mt-2  relative">
                           <select
                             {...register("session", {
@@ -512,7 +568,15 @@ const Admission = () => {
                     </div>
                     <div className="grid  lg:grid-cols-2 grid-cols-1 gap-10">
                       <div className="mt-5">
-                        <h1>Last Passing Year</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Last Passing Year
+                        </h1>
                         <div className="h-14 mt-2  relative">
                           <input
                             {...register("passingYear", {
@@ -539,7 +603,15 @@ const Admission = () => {
                         </label>
                       </div>
                       <div className="mt-5">
-                        <h1>Last Passing Academy Name</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Last Passing Academy Name
+                        </h1>
                         <div className="h-14 mt-2  relative">
                           <input
                             {...register("passingAcademy", {
@@ -568,7 +640,15 @@ const Admission = () => {
                     {/* degree admission fre  */}
                     {admission === "Higer Secondary Admission" && (
                       <div className="mt-5">
-                        <h1>Admission Fee</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Admission Fee
+                        </h1>
 
                         <div className="h-14 mt-2  relative">
                           <input
@@ -600,7 +680,15 @@ const Admission = () => {
                     )}
                     {admission === "Degree Admission" && (
                       <div className="mt-5">
-                        <h1>Admission Fee</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Admission Fee
+                        </h1>
 
                         <div className="h-14 mt-2  relative">
                           <input
@@ -632,7 +720,15 @@ const Admission = () => {
                     )}
                     {admission === "Degree Private Admission" && (
                       <div className="mt-5">
-                        <h1>Admission Fee</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Admission Fee
+                        </h1>
 
                         <div className="h-14 mt-2  relative">
                           <input
@@ -664,7 +760,15 @@ const Admission = () => {
                     )}
                     {admission === "Under graduate Admission (honours)" && (
                       <div className="mt-5">
-                        <h1>Admission Fee</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Admission Fee
+                        </h1>
 
                         <div className="h-14 mt-2  relative">
                           <input
@@ -696,7 +800,15 @@ const Admission = () => {
                     )}
                     {admission === "Graduate Admission (Master's)" && (
                       <div className="mt-5">
-                        <h1>Admission Fee</h1>
+                        <h1
+                          className={` ${
+                            theme == "light"
+                              ? "text-gray-800"
+                              : "text-[#e4e6eb]"
+                          }`}
+                        >
+                          Admission Fee
+                        </h1>
 
                         <div className="h-14 mt-2  relative">
                           <input
@@ -746,7 +858,15 @@ const Admission = () => {
                       )}
                       {subjectList === "Bachelor of Science (BSC)" && (
                         <>
-                          <h1>Your First Year Subject List</h1>{" "}
+                          <h1
+                            className={` ${
+                              theme == "light"
+                                ? "text-gray-800"
+                                : "text-[#e4e6eb]"
+                            }`}
+                          >
+                            Your First Year Subject List
+                          </h1>{" "}
                           <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
                             {bscSubject.map((subject) => (
                               <div className="">

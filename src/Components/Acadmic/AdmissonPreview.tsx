@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../App";
 import auth from "../../firebase.init";
 interface Person {
   data: {
@@ -33,6 +34,7 @@ interface Student {
   village: string;
 }
 const AdmissonPreview = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   const [previewInfo, setPreview] = useState<Person>();
@@ -47,8 +49,12 @@ const AdmissonPreview = () => {
 
   return (
     <div className="my-10 max-w-7xl m-auto px-3">
-      <div className="card w-full bg-base-100 border  pb-5">
-        <div className="bg-[#5195ed] h-16 flex items-center  justify-between px-8">
+      <div
+        className={`card w-full  border pb-5  ${
+          theme == "light" ? "bg-base-100" : "bg-[#242526]  border-[#414343]"
+        }`}
+      >
+        <div className={` h-16 flex items-center  justify-between px-8 ${theme == "light" ? "bg-[#5195ed]": "bg-[#414343]"}`}>
           <div>
             <span
               onClick={() => navigate("/onlineAdmission/personalInfromation")}
@@ -71,7 +77,13 @@ const AdmissonPreview = () => {
           </div>
         </div>
         <div className="w-max mx-auto">
-          <div className="border-b-[3px] rounded-full border-[#5195ed] ">
+          <div
+            className={`border-b-[3px] rounded-full ${
+              theme == "light"
+                ? "border-[#2374e1] "
+                : "border-[#e4e6eb] text-[#e4e6eb]"
+            }`}
+          >
             <h1 className="text-xl pb-2 text-center mt-10 lg:px-12 px-6 font-medium uppercase">
               Admission Preview
             </h1>
@@ -86,7 +98,7 @@ const AdmissonPreview = () => {
                 <div className=" w-full">
                   <div className="shadow overflow-hidden rounded  border-gray-200">
                     <table className="min-w-full text-white">
-                      <thead className="bg-[#5195ed] text-white">
+                      <thead className={` ${theme == "light"? "bg-[#5195ed] text-white": "text-[#e4e6eb] bg-[#414343]"} border-none `}>
                         <tr>
                           <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
                             Admisson Info
@@ -169,7 +181,7 @@ const AdmissonPreview = () => {
             </div>
             <div>
               <div className="card wfull bg-base-100 h-full  shadow-sm border">
-                <div className="bg-[#5195ed] lg:h-12 h-16 flex items-center  px-6 text-white uppercase font-semibold">
+                <div className={` lg:h-12 h-16 flex items-center  px-6  uppercase font-semibold ${theme == "light"? "bg-[#5195ed] text-white": "text-[#e4e6eb] bg-[#414343]"} border-none `}>
                   <h1>First Year "{previewInfo?.data?.classs}" Book List</h1>
                   <div></div>
                 </div>
@@ -191,7 +203,7 @@ const AdmissonPreview = () => {
               <div className=" w-full">
                 <div className="shadow  lg:overflow-hidden overflow-scroll rounded  border-gray-200">
                   <table className="min-w-full text-white">
-                    <thead className="bg-[#5195ed] text-white">
+                    <thead className={` ${theme == "light"? "bg-[#5195ed] text-white": "text-[#e4e6eb] bg-[#414343]"} border-none `}>
                       <tr>
                         <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
                           Personal Info

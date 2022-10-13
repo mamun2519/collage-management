@@ -55,14 +55,14 @@ const StudentRow = ({ student }: StudentInfo) => {
         </p>
       </td>
       <td
-        className={`px-5 py-5 border-b border-gray-200 bg-white text-sm flex justify-center ${
+        className={`px-5 py-5 border-b  text-sm ${
           theme == "light"
             ? "border-gray-200 bg-white "
             : "text-[#e4e6eb] bg-[#242526] border-[#414343]"
         }`}
       >
         <button
-          className={` font-semibold text-white px-4 rounded-lg py-1 ${
+          className={`font-semibold text-white px-4 rounded-lg py-1 ${
             theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
           }`}
         >
