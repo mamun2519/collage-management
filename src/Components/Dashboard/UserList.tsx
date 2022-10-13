@@ -59,7 +59,7 @@ const UserList = () => {
         <>
           <div
             className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
-              theme == "light" ? "bg-base-100" : "bg-[#242526]"
+              theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
             }`}
           >
             <div className="p-5 ">
@@ -174,7 +174,7 @@ const UserList = () => {
 
               <div
                 className={`lg:px-5 py-3 border-t fle text-center ${
-                  theme == "light" ? "bg-white " : ""
+                  theme == "light" ? "bg-white " : "border-[#414343]"
                 }`}
               >
                 <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
@@ -208,13 +208,13 @@ const UserList = () => {
 
           <div
             className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
-              theme == "light" ? "bg-base-100" : "bg-[#242526]"
+              theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
             }`}
           >
             <div className="p-5 ">
               <h1
                 className={`font-medium   uppercase text-lg ${
-                  theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  theme == "light" ? "text-gray-800" : "text-[#e4e6eb] "
                 }`}
               >
                 Admin List
@@ -323,7 +323,7 @@ const UserList = () => {
 
               <div
                 className={`lg:px-5 py-3 border-t fle text-center ${
-                  theme == "light" ? "bg-white " : ""
+                  theme == "light" ? "bg-white " : "border-[#414343]"
                 }`}
               >
                 <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">

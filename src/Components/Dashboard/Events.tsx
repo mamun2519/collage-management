@@ -24,7 +24,7 @@ const Events = () => {
       ) : (
         <div
           className={`card  lg:w-3/4 w-[280px] mx-auto border  shadow-md my-20 ${
-            theme == "light" ? "bg-base-100" : "bg-[#242526]"
+            theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
           }`}
         >
           <div className="p-5 ">

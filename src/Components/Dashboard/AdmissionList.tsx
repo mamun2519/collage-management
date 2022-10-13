@@ -31,7 +31,7 @@ const AdmissionList = () => {
     <div>
      
     <div className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
-            theme == "light" ? "bg-base-100" : "bg-[#242526]"
+            theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
           }`}>
         <div className="p-5 ">
             <h1 className="font-medium  text-gray-800 uppercase lg:text-lg">Student Admission List</h1>
@@ -137,7 +137,7 @@ const AdmissionList = () => {
 
 
           <div className={`lg:px-5 py-3 border-t fle text-center ${
-                theme == "light" ? "bg-white " : ""
+                theme == "light" ? "bg-white " : "border-[#414343]"
               }`}>
                 <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
                   <button

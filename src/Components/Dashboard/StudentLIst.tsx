@@ -70,7 +70,7 @@ const StudentLIst = () => {
                   : "bg-base-100"
                 : selected == ad.title
                 ? "bg-[#414343]"
-                : "bg-[#242526]"
+                : "bg-[#242526] border-[#414343]"
             } `}
           >
             <div className="px-6 py-4 lg:px-0 lg:py-0">
@@ -110,7 +110,7 @@ const StudentLIst = () => {
       {studentList.length !== 0 ? (
         <div
           className={`card  lg:w-full w-[280px]  border  shadow-md my-20 ${
-            theme == "light" ? "bg-base-100" : "bg-[#242526]"
+            theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
           }`}
         >
           <div className="p-5 ">
@@ -237,7 +237,7 @@ const StudentLIst = () => {
 
             <div
               className={`lg:px-5 py-3 border-t fle text-center ${
-                theme == "light" ? "bg-white " : ""
+                theme == "light" ? "bg-white " : "border-[#414343]"
               }`}
             >
               <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">

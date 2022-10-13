@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { ThemeContext } from "../../App";
 const Notice = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
+
   const [nocties, setNotice] = useState<any>([]);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -28,7 +30,13 @@ const Notice = () => {
   return (
     <div className="my-40 max-w-7xl m-auto ">
       <div className="w-max mx-auto">
-        <div className="border-b-[3px] rounded-full border-[#2374e1] ">
+        <div
+          className={`border-b-[3px] rounded-full ${
+            theme == "light"
+              ? "border-[#2374e1] "
+              : "border-[#e4e6eb] text-[#e4e6eb]"
+          }`}
+        >
           <h1 className="text-4xl pb-2 text-center mt-10 px-12  font-medium uppercase">
             Notice
           </h1>
@@ -44,7 +52,11 @@ const Notice = () => {
                   <div className="relative">
                     <select
                       onChange={(e) => setLimit(e.target.value)}
-                      className="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className={`appearance-none h-full rounded-l border block appearance-none w-full  border-gray-400  py-2 px-4 pr-8 leading-tight focus:outline-none  focus:border-gray-500 ${
+                        theme == "light"
+                          ? "bg-white text-gray-700"
+                          : "bg-[#414343] text-[#e4e6eb] outline-none"
+                      }`}
                     >
                       <option value="5" selected>
                         5
@@ -75,7 +87,11 @@ const Notice = () => {
                   <input
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search"
-                    className="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+                    className={`appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full  text-sm   focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none ${
+                      theme == "light"
+                        ? "bg-white placeholder-gray-400 text-gray-700 "
+                        : "bg-[#414343]  text-[#e4e6eb]  placeholder-[#e4e6eb]"
+                    }`}
                   />
                 </div>
               </div>
@@ -84,16 +100,34 @@ const Notice = () => {
                   <table className="min-w-full leading-normal">
                     <thead>
                       <tr>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           Date
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider flex justify-center">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           Title
                         </th>
                         {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                           PDF
                         </th> */}
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           Action
                         </th>
                       </tr>
@@ -101,13 +135,39 @@ const Notice = () => {
                     <tbody>
                       {nocties?.notice?.map((notice: any) => (
                         <tr key={notice?._id}>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <td
+                            className={`px-5 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
                             <div className="">
-                              <div className=" ">{notice?.date}</div>
+                              <p
+                                className={`whitespace-no-wrap ${
+                                  theme == "light"
+                                    ? "text-gray-900 "
+                                    : "text-[#e4e6eb]"
+                                }`}
+                              >
+                                {notice?.date}
+                              </p>
                             </div>
                           </td>
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
+                          <td
+                            className={`px-5 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            <p
+                              className={`whitespace-no-wrap ${
+                                theme == "light"
+                                  ? "text-gray-900 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {notice?.title}
                             </p>
                           </td>
@@ -116,12 +176,22 @@ const Notice = () => {
                             Dowenlode PDF
                           </button>
                         </td> */}
-                          <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <td
+                            className={`px-5 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
                             <button
                               onClick={() =>
                                 navigate(`/noticeDetails/${notice?._id}`)
                               }
-                              className="bg-[#2374e1] text-sm text-white px-4 py-1 rounded-lg"
+                              className={` font-semibold text-white px-4 rounded-lg py-1 ${
+                                theme == "light"
+                                  ? "bg-[#2374e1]"
+                                  : "bg-[#414343]"
+                              }`}
                             >
                               Details
                             </button>
@@ -130,20 +200,34 @@ const Notice = () => {
                       ))}
                     </tbody>
                   </table>
-                  <div className="px-5 py-3 bg-white border-t fle text-center        ">
+                  <div
+                    className={`lg:px-5 py-3 border-t fle text-center ${
+                      theme == "light"
+                        ? "bg-white "
+                        : "border border-[#414343] rounded"
+                    }`}
+                  >
                     <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
                       <button
                         onClick={() => priviesPage()}
-                        className="text-sm bg-[#5195ed]   text-white font-semibold py-2 px-8 rounded-lg"
+                        className={`text-sm   text-white font-semibold py-2 lg:px-8 px-4 rounded-lg ${
+                          theme == "light" ? "bg-[#5195ed]" : "bg-[#414343]"
+                        } `}
                       >
                         Prev
                       </button>
-                      <span className="text-xs xs:text-sm text-gray-900">
+                      <span
+                        className={`text-xs xs:text-sm  ${
+                          theme == "light" ? "text-gray-900" : "text-[#e4e6eb]"
+                        }`}
+                      >
                         Page No {nocties?.page}
                       </span>
                       <button
                         onClick={() => setPage(page + 1)}
-                        className="text-sm bg-[#5195ed]   text-white font-semibold py-2 px-8 rounded-lg"
+                        className={`text-sm   text-white font-semibold py-2 lg:px-8 px-4 rounded-lg ${
+                          theme == "light" ? "bg-[#5195ed]" : "bg-[#414343]"
+                        } `}
                       >
                         Next
                       </button>

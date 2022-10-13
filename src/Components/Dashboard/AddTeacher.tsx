@@ -101,7 +101,7 @@ const AddTeacher = () => {
                   : "bg-base-100"
                 : selected == ad.title
                 ? "bg-[#414343]"
-                : "bg-[#242526]"
+                : "bg-[#242526] border-[#414343]"
             } `}
           >
             <div>
@@ -148,7 +148,7 @@ const AddTeacher = () => {
       {dataDispaly && (
         <div
           className={`card  lg:w-full w-[280px]  border  shadow-md my-20 ${
-            theme == "light" ? "bg-base-100" : "bg-[#242526]"
+            theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
           }`}
         >
           <div className="p-5 h-full">

@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef , useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import Loading from "../Shared/Loading";
-
+import { ThemeContext } from "../../App";
 const NoticeDetailss = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [notice, setNotice] = useState<any>({});
   const [loading, isLoading] = useState(false);
   const { id } = useParams();
@@ -34,7 +35,9 @@ const NoticeDetailss = () => {
         <>
           <div ref={componentRef} className="my-10 max-w-7xl m-auto px-4">
             <>
-              <div className="card lg:w-3/4 w-full mx-auto bg-base-100 border  shadow-lg">
+              <div className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
+            theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343] text-[#e4e6eb]"}`}
+          >
                 <div className="p-5 ">
                   <p className="text-2xl font-medium  uppercase text-center">
                     Realwai public Collage,Chittagong
@@ -79,7 +82,9 @@ const NoticeDetailss = () => {
           <div className=" my-20 w-3/4 mx-auto">
             <button
               onClick={() => pdfDowenlodeHendeler()}
-              className="bg-[#2374e1] font-semibold text-white px-6 py-1 rounded-lg"
+              className={` font-semibold text-white px-6 py-1 rounded-lg ${
+                theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+              }`}
             >
               Dowenlode PDF
             </button>

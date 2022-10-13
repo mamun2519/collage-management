@@ -1,28 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../../App";
 import RoutineRow from "./RoutineRow";
 interface RoutineInfo {
   routine: any;
 }
 const ClassRoutine = ({ routine }: RoutineInfo) => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   console.log(routine[0]?.classRoutine);
   return (
     <div>
       {routine[0]?.classRoutine?.length !== 0 ? (
         <div className="my-10">
-          <div className="card lg:w-3/4 w-full mx-auto bg-base-100 border  shadow-lg">
+          <div
+            className={`card lg:w-3/4 w-full mx-auto  border  shadow-lg  ${
+              theme == "light"
+                ? "bg-base-100"
+                : "bg-[#242526]  text-[#e4e6eb] border-[#414343]"
+            }`}
+          >
             <div className="p-5 ">
               <p className="text-2xl font-medium  uppercase text-center">
                 Realwai public Collage,Chittagong
               </p>
-              <p className="text-lg  font-sans text-gray-800 text-center">
+              <p
+                className={`text-lg  font-sans  text-center ${
+                  theme == "light" ? "text-gray-800 " : "text-[#e4e6eb]"
+                }`}
+              >
                 {" "}
                 Education Board
               </p>
-              <p className="text-lg font-sans text-gray-800 text-center">
+              <p
+                className={`text-lg  font-sans  text-center backdrop:${
+                  theme == "light" ? "text-gray-800 " : "text-[#e4e6eb]"
+                }`}
+              >
                 {routine[0]?.classs}
               </p>
               <div>
-                <p className="text-xl font-sans text-gray-800 text-center">
+                <p
+                  className={`text-lg  font-sans  text-center ${
+                    theme == "light" ? "text-gray-800 " : "text-[#e4e6eb]"
+                  }`}
+                >
                   Class Routine
                 </p>
               </div>
@@ -49,19 +69,49 @@ const ClassRoutine = ({ routine }: RoutineInfo) => {
                   <table className="min-w-full leading-normal">
                     <thead>
                       <tr>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           Day
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider ">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           1st priode
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           2nd priode
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           3th priode
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           4th priode
                         </th>
                       </tr>

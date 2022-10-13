@@ -1,12 +1,13 @@
 import { Tab } from "@headlessui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AllEvent from "./EventDetails";
 import InstiuteEvent from "./InstiuteEvent";
 import NationalEvent from "./NoticeDetailss";
-
+import { ThemeContext } from "../../App";
 const Event = () => {
   const [event, setEvent] = useState([]);
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const navigate = useNavigate();
   useEffect(() => {
     fetch("http://localhost:5000/v1/event")
@@ -17,7 +18,7 @@ const Event = () => {
   return (
     <div className="my-40  max-w-7xl m-auto px-3">
       <div className="w-max mx-auto">
-        <div className="border-b-[3px] rounded-full border-[#2374e1]">
+        <div className={`border-b-[3px] rounded-full ${theme == "light"? "border-[#2374e1] ": "border-[#e4e6eb] text-[#e4e6eb]"}`}>
           <h1 className="text-4xl pb-2 text-center mt-10 px-12  font-medium uppercase">
             {" "}
             Events
@@ -38,11 +39,13 @@ const Event = () => {
                   />
                 </figure>
                 <div className="p-4  ">
-                  <h2 className="card-title">{event?.title}</h2>
+                  <h2 className={`card-title ${theme == "light"? "border-[#2374e1] ": "border-[#e4e6eb] text-[#e4e6eb]"}`}>{event?.title}</h2>
                 </div>
                 <button
                   onClick={() => navigate(`/eventDetails/${event?._id}`)}
-                  className="bg-[#2374e1] font-semibold mt-3 text-white px-6 py-2 border-none rounded-md"
+                  className={` font-semibold mt-3  px-6 py-2 border-none rounded-md ${
+                    theme == "light" ? "bg-[#2374e1] text-white" : "text-[#e4e6eb] bg-[#414343]"
+                  }`}
                 >
                   Read More
                 </button>

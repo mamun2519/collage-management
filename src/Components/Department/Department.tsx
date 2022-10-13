@@ -1,5 +1,5 @@
 import { Tab } from "@headlessui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Marquee from "react-fast-marquee";
 import { useParams } from "react-router-dom";
 import Loading from "../Shared/Loading";
@@ -8,8 +8,9 @@ import ExamRoutine from "./ExamRoutine";
 import Overview from "./Overview";
 import Student from "./Student";
 import Teacher from "./Teacher";
-
+import { ThemeContext } from "../../App";
 const BBS = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const { department } = useParams();
   const [students, setStudents] = useState([]);
   const [teachers, setTeachers] = useState([]);
@@ -24,36 +25,34 @@ const BBS = () => {
       .then((data) => {
         console.log(data);
         if (data.success) {
-          setStudents(data.student); 
+          setStudents(data.student);
         }
       });
-      fetch(
-        `http://localhost:5000/v1/teacher/department?department=${department}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.success) {
-            setTeachers(data.student);
-          }
-        });
-      fetch(
-        `http://localhost:5000/v1/routine/departments?department=${department}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.success) {
-            setRoutine(data.student);
-            isLoading(false);
-          }
-          else{
-            isLoading(false);
-            setRoutine([]);
-          }
-        });
-      
-  }, [department  ]);
+    fetch(
+      `http://localhost:5000/v1/teacher/department?department=${department}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          setTeachers(data.student);
+        }
+      });
+    fetch(
+      `http://localhost:5000/v1/routine/departments?department=${department}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          setRoutine(data.student);
+          isLoading(false);
+        } else {
+          isLoading(false);
+          setRoutine([]);
+        }
+      });
+  }, [department]);
   // console.log(routine);
   const Tabs = [
     {
@@ -126,8 +125,14 @@ const BBS = () => {
                     key={index}
                     className={({ selected }) =>
                       selected
-                        ? "transition  uppercase duration-500 border-b-[3px]  px-6 border-[#2374e1]   text-black rounded-lg  pb-1 text-center     "
-                        : " py-[5px] px-6 uppercase "
+                        ? `transition  uppercase duration-500 border-b-[3px]  px-6 ${
+                            theme == "light"
+                              ? "border-[#2374e1] text-black"
+                              : "border-[#e4e6eb] text-[#e4e6eb]"
+                          }   rounded-lg  pb-1 text-center `
+                        : ` py-[5px] px-6 uppercase  ${
+                            theme == "light" ? "text-black" : "text-[#e4e6eb]"
+                          } `
                     }
                   >
                     {index < Tabs.length - 1 && (
@@ -148,40 +153,6 @@ const BBS = () => {
           </div>
         </>
       )}
-      {/* <div className="my-20 max-w-7xl m-auto">
-                  <Marquee gradient={false} speed={30}>
-                  <div className=' grid grid-cols-4 gap-10 px-4 py-4'>
-                        <div className='w-[350px] border p-2 rounded-lg shadow-md'>
-                              <img className='h-[300px] rounded-md' src="/assets/picture/gallery2.png" alt="" />
-                        </div>
-                        <div className='w-[350px] p-2 rounded-lg shadow-md'>
-                        <img className='h-[300px] rounded-md'  src="/assets/picture/gallery3.png" alt="" />
-                        </div>
-                        <div className='w-[350px] p-2 rounded-lg shadow-md'>
-                        <img className='h-[300px] rounded-md' src="/assets/picture/gallery4.png" alt="" />
-                        </div>
-                        <div className='w-[350px] p-2 rounded-lg shadow-md'>
-                        <img className='h-[300px] rounded-md' src="/assets/picture/gallery5.png" alt="" />
-                        </div>
-                  </div>
-                  <div className=' grid grid-cols-4 gap-10 px-4 py-4'>
-                        <div className='w-[350px] border p-2 rounded-lg shadow-md'>
-                              <img className='h-[300px] rounded-md' src="/assets/picture/gallery2.png" alt="" />
-                        </div>
-                        <div className='w-[350px] p-2 rounded-lg shadow-md'>
-                        <img className='h-[300px] rounded-md'  src="/assets/picture/gallery3.png" alt="" />
-                        </div>
-                        <div className='w-[350px] p-2 rounded-lg shadow-md'>
-                        <img className='h-[300px] rounded-md' src="/assets/picture/gallery4.png" alt="" />
-                        </div>
-                        <div className='w-[350px] p-2 rounded-lg shadow-md'>
-                        <img className='h-[300px] rounded-md' src="/assets/picture/gallery5.png" alt="" />
-                        </div>
-                  </div>
-                  
-                  </Marquee>
-
-                  </div> */}
     </div>
   );
 };

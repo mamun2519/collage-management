@@ -65,7 +65,7 @@ const AddEvents = () => {
   return (
     <div
       className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
-        theme == "light" ? "bg-base-100" : "bg-[#242526]"
+        theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
       }`}
     >
       <div className="p-5 h-full">

@@ -1,15 +1,26 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { ThemeContext } from "../../App";
 const Professor = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   return (
     <div className="my-40 max-w-7xl m-auto px-3">
       <div className=" grid lg:grid-cols-3 grid-cols-1  gap-5">
-        <div className=" border col-span-2 px-2 py-4 rounded-md">
+        <div
+          className={` col-span-2 px-2 py-4 rounded-md ${
+            theme == "light"
+              ? "border"
+              : "border border-[#414343] bg-[#242526] text-[#e4e6eb]"
+          }`}
+        >
           <h1 className=" font-medium text-xl mt-3 text-center">
             প্রফেসর আলাউদ্দিন আল আজাদ
           </h1>
           <p className="mt-3 text-center">উপাধ্যক্ষ</p>
-          <p className="mt-3 leading-loose text-gray-700 px-4 flex justify-center">
+          <p
+            className={`mt-3 leading-loose  px-4 flex justify-center ${
+              theme == "light" ? "text-gray-700" : "text-[#e4e6eb]"
+            }`}
+          >
             বিশ্ব আজ দ্রুত পরিবর্তনের ধারায় ধাবমান। এই পরিবর্তনকে মানিয়ে নিতে
             আমাদেরকেও সামনের দিকে এগিয়ে যেতে হবে। বিশ্বায়নের চ্যালেঞ্জকে মাথায়
             নিয়ে বর্তমান সরকারের 'রূপকল্প ২০২১' বাস্তবায়নের পর সবাইকে সমান তালে
@@ -23,13 +34,23 @@ const Professor = () => {
             প্রতিষ্ঠিত হবে এ আমার প্রত্যাশা।
           </p>
           <div className="mt-5 text-center">
-            <button className="bg-[#2374e1]  font-semibold text-white px-6 py-2 rounded-lg">
+            <button
+              className={` font-semibold text-white px-6 rounded-lg py-2 ${
+                theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+              }`}
+            >
               Read More
             </button>
           </div>
         </div>
         <div className="flex justify-end">
-          <div className="w-[370px]  h-full border p-2 rounded">
+          <div
+            className={`w-[370px]  h-full  p-2 rounded ${
+              theme == "light"
+                ? "border"
+                : "border border-[#414343] bg-[#242526] text-[#e4e6eb]"
+            }`}
+          >
             <img
               src="https://gcom.edu.bd/wp-content/uploads/2022/09/Gcom_VP-1382x1536.png"
               alt=""
@@ -39,19 +60,35 @@ const Professor = () => {
       </div>
       <div className="grid lg:grid-cols-3 grid-cols-1  gap-5 mt-20">
         <div className="flex justify-start">
-          <div className="w-[370px] border p-2 rounded">
+          <div
+            className={`w-[370px]  h-full  p-2 rounded ${
+              theme == "light"
+                ? "border"
+                : "border border-[#414343] bg-[#242526] text-[#e4e6eb]"
+            }`}
+          >
             <img
               src="https://gcom.edu.bd/wp-content/uploads/2022/09/Gcom_VP-1382x1536.png"
               alt=""
             />
           </div>
         </div>
-        <div className=" border col-span-2 px-2 py-4 rounded-md">
+        <div
+          className={` col-span-2 px-2 py-4 rounded-md ${
+            theme == "light"
+              ? "border"
+              : "border border-[#414343] bg-[#242526] text-[#e4e6eb]"
+          }`}
+        >
           <h1 className=" font-medium text-xl mt-3 text-center">
             প্রফেসর আলাউদ্দিন আল আজাদ
           </h1>
           <p className="mt-3 text-center">উপাধ্যক্ষ</p>
-          <p className="mt-3 leading-loose text-gray-700 px-4 flex justify-center">
+          <p
+            className={`mt-3 leading-loose  px-4 flex justify-center ${
+              theme == "light" ? "text-gray-700" : "text-[#e4e6eb]"
+            }`}
+          >
             বিশ্ব আজ দ্রুত পরিবর্তনের ধারায় ধাবমান। এই পরিবর্তনকে মানিয়ে নিতে
             আমাদেরকেও সামনের দিকে এগিয়ে যেতে হবে। বিশ্বায়নের চ্যালেঞ্জকে মাথায়
             নিয়ে বর্তমান সরকারের 'রূপকল্প ২০২১' বাস্তবায়নের পর সবাইকে সমান তালে
@@ -65,7 +102,11 @@ const Professor = () => {
             প্রতিষ্ঠিত হবে এ আমার প্রত্যাশা।
           </p>
           <div className="mt-5 text-center">
-            <button className="bg-[#2374e1] font-semibold text-white px-6 py-2 rounded-lg">
+            <button
+              className={` font-semibold text-white px-6 rounded-lg py-2 ${
+                theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+              }`}
+            >
               Read More
             </button>
           </div>

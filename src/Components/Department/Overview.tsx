@@ -1,18 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-
+import { ThemeContext } from "../../App";
 const Overview = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   // lg:w-9/12
   const { department } = useParams();
   return (
-    <div className="card lg:w-3/4  w-full  mx-auto bg-base-100 border shadow-md py-8 my-10">
-      <div className="bg-[#5195ed] h-[25px] "></div>
-      <h1 className="text-2xl pb-2  font-medium uppercase px-8">
+    <div
+      className={`card lg:w-3/4  w-full  mx-auto border shadow-md py-8 my-10  ${
+        theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
+      }`}
+    >
+      <div
+        className={`h-[25px] ${
+          theme == "light" ? "bg-[#5195ed] " : "bg-[#414343]"
+        }`}
+      ></div>
+      <h1
+        className={`text-2xl pb-2   mt-2 font-medium uppercase px-8  ${
+          theme == "light" ? "text-black " : "text-[#e4e6eb]"
+        }`}
+      >
         Department Profile
       </h1>
 
       <div className="">
-        <p className=" leading-relaxed text-xl mt-3 text-gray-600 px-8">
+        <p
+          className={`leading-relaxed text-xl   px-8 ${
+            theme == "light" ? "text-gray-600 " : "text-[#e4e6eb]"
+          }`}
+        >
           On 4th September 1972, the Lakhimpur Commerce College was established
           with the object of imparting Commerce education in the North Bank
           corner of river Brahmaputra. Initially the pre-university (Now called
@@ -43,18 +60,40 @@ const Overview = () => {
           sector departments. A few are also well settled as self-employed.
         </p>
 
-        <div className="bg-[#5195ed] h-[25px] mt-8"></div>
-        <h1 className="text-2xl pb-2  font-medium uppercase px-8">OBJECTIVE</h1>
-        <p className="leading-relaxed text-xl  text-gray-600 px-8">
+        <div
+          className={`h-[25px] mt-8 ${
+            theme == "light" ? "bg-[#5195ed] " : "bg-[#414343]"
+          }`}
+        ></div>
+        <h1
+          className={`text-2xl pb-2   mt-2 font-medium uppercase px-8  ${
+            theme == "light" ? "text-black " : "text-[#e4e6eb]"
+          }`}
+        >
+          OBJECTIVE
+        </h1>
+        <p
+          className={`leading-relaxed text-xl   px-8 ${
+            theme == "light" ? "text-gray-600 " : "text-[#e4e6eb]"
+          }`}
+        >
           a. The main objective of the department is to provide an opportunity
           to the student community to study Accountancy as a discipline in
           Major/Honours at degree level under Dibrugarh University syllabus.
         </p>
-        <p className="leading-relaxed text-xl mt-1 text-gray-600 px-8">
+        <p
+          className={`leading-relaxed text-xl   px-8 ${
+            theme == "light" ? "text-gray-600 " : "text-[#e4e6eb]"
+          }`}
+        >
           b. To prepare the students with handling of practical problems and
           solutions of financial matters.
         </p>
-        <p className="leading-relaxed text-xl mt-1 text-gray-600 px-8">
+        <p
+          className={`leading-relaxed text-xl   px-8 ${
+            theme == "light" ? "text-gray-600 " : "text-[#e4e6eb]"
+          }`}
+        >
           c. To motivate and generate social consciousness among the students of
           the college in general and of the department in particulars.
         </p>
@@ -62,9 +101,23 @@ const Overview = () => {
         <p className="leading-relaxed text-xl mt-1 text-gray-600 px-8">
           d. To motivate the students for self employment.
         </p>
-        <div className="bg-[#5195ed] h-[25px] mt-8"></div>
-        <h1 className="text-2xl pb-2  font-medium uppercase px-8">MISSION</h1>
-        <p className="leading-relaxed text-xl  text-gray-600 px-8">
+        <div
+          className={`h-[25px] mt-8 ${
+            theme == "light" ? "bg-[#5195ed] " : "bg-[#414343]"
+          }`}
+        ></div>
+        <h1
+          className={`text-2xl pb-2   mt-2 font-medium uppercase px-8  ${
+            theme == "light" ? "text-black " : "text-[#e4e6eb]"
+          }`}
+        >
+          MISSION
+        </h1>
+        <p
+          className={`leading-relaxed text-xl   px-8 ${
+            theme == "light" ? "text-gray-600 " : "text-[#e4e6eb]"
+          }`}
+        >
           We are dedicated to secure and deliver knowledge through teaching,
           research and extension; and to seek continuous improvement in the
           quality of education to remain globally competitive. The Department is
@@ -73,14 +126,30 @@ const Overview = () => {
           suitable for industry, business and service sector and to equip and
           encourage them to start their own ventures in urban or rural areas.
         </p>
-        <div className="bg-[#5195ed] h-[25px] mt-8"></div>
-        <h1 className="text-2xl pb-2  font-medium uppercase px-8">
+        <div
+          className={`h-[25px] mt-8 ${
+            theme == "light" ? "bg-[#5195ed] " : "bg-[#414343]"
+          }`}
+        ></div>
+        <h1
+          className={`text-2xl pb-2   mt-2 font-medium uppercase px-8  ${
+            theme == "light" ? "text-black " : "text-[#e4e6eb]"
+          }`}
+        >
           devartpemt Overview
         </h1>
-        <p className="leading-relaxed text-xl  text-gray-600 px-8">
+        <p
+          className={`leading-relaxed text-xl   px-8 ${
+            theme == "light" ? "text-gray-600 " : "text-[#e4e6eb]"
+          }`}
+        >
           Depatment Of Student 250 People
         </p>
-        <p className="leading-relaxed text-xl  text-gray-600 px-8">
+        <p
+          className={`leading-relaxed text-xl   px-8 ${
+            theme == "light" ? "text-gray-600 " : "text-[#e4e6eb]"
+          }`}
+        >
           Depatment Of Teacher 250 People
         </p>
       </div>
