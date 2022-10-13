@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
-
+import { ThemeContext } from "../../App";
 const RasultPublished = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const { id } = useParams();
   const [student, setStudent] = useState<any>({});
   const [selectedExamType, setSelectedExamType] = useState("");
@@ -116,24 +117,46 @@ const RasultPublished = () => {
   };
   return (
     <div className="my-20 lg:w-3/4 w-full mx-auto">
-      <div className="card  lg:w-full w-[280px]  bg-base-100 border  shadow-md m">
+      <div
+        className={`card  lg:w-full w-[280px]  border  shadow-md my-20 ${
+          theme == "light" ? "bg-base-100" : "bg-[#242526]"
+        }`}
+      >
         <div className="p-5">
-          <div className="lg:flex block  justify-between lg:h-14  rounded-lg items-center px-4 border">
+          <div
+            className={`lg:flex block  justify-between lg:h-14  rounded-lg items-center px-4 border ${
+              theme == "light"
+                ? "bg-white placeholder-gray-400 text-gray-700 "
+                : "bg-[#414343] text-[#e4e6eb]  placeholder-[#e4e6eb]"
+            }`}
+          >
             <div>
               <span>Student Name : </span>
-              <span className=" px-2 font-semibold text-gray-900">
+              <span
+                className={` px-2 font-semibold  ${
+                  theme == "light" ? "text-gray-900" : "text-[#e4e6eb]"
+                }`}
+              >
                 {student?.name}
               </span>
             </div>
             <div>
               <span>DOP:</span>
-              <span className=" px-2 font-semibold text-gray-900">
+              <span
+                className={` px-2 font-semibold  ${
+                  theme == "light" ? "text-gray-900" : "text-[#e4e6eb]"
+                }`}
+              >
                 {student?.birthday}
               </span>
             </div>
             <div>
               <span>Roll: </span>
-              <span className=" px-2 font-semibold text-gray-900">
+              <span
+                className={` px-2 font-semibold  ${
+                  theme == "light" ? "text-gray-900" : "text-[#e4e6eb]"
+                }`}
+              >
                 {student?.roll}
               </span>
             </div>
@@ -141,10 +164,20 @@ const RasultPublished = () => {
           {!edit && (
             <div className=" grid lg:grid-cols-3 col-span-2 mt-10">
               <div className="mt-5">
-                <h1>Exam Type</h1>
+                <h1
+                  className={`     ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Exam Type
+                </h1>
                 <div className="h-14 mt-2 ">
                   <select
-                    className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-4"
+                    className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-4 ${
+                      theme == "light"
+                        ? "bg-white placeholder-gray-400 text-gray-700 "
+                        : "bg-[#414343] text-[#e4e6eb]  placeholder-[#e4e6eb]"
+                    }`}
                     placeholder="Enter Your Name"
                     onChange={(e) => setSelectedExamType(e.target.value)}
                   >
@@ -163,19 +196,49 @@ const RasultPublished = () => {
               <table className="min-w-full leading-normal">
                 <thead>
                   <tr>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    <th
+                      className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                        theme == "light"
+                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                      }`}
+                    >
                       Subject
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider ">
+                    <th
+                      className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                        theme == "light"
+                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                      }`}
+                    >
                       Pash Marks
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    <th
+                      className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                        theme == "light"
+                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                      }`}
+                    >
                       Student Mark
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    <th
+                      className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                        theme == "light"
+                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                      }`}
+                    >
                       Latter Grade
                     </th>
-                    <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    <th
+                      className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                        theme == "light"
+                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                      }`}
+                    >
                       Grade Point
                     </th>
                   </tr>
@@ -184,13 +247,23 @@ const RasultPublished = () => {
                   {!edit
                     ? routines?.map((routine: any, index: any) => (
                         <tr>
-                          <td className="px-2 py-5 border-b border-gray-200 bg-white text-sm">
+                          <td
+                            className={`px-5 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
                             <select
                               name="subject"
                               onChange={(event) => changeHendeler(index, event)}
                               // value={routine?.subject}
                               //     type="text"
-                              className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
+                              className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                theme == "light"
+                                  ? "border"
+                                  : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                              } `}
                               placeholder="Enter Your Name"
                             >
                               {student?.subject?.map((subject: any) => (
@@ -204,7 +277,13 @@ const RasultPublished = () => {
                               ))}
                             </select>
                           </td>
-                          <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
+                          <td
+                            className={`px-5 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
                             <div className=" flex items-center">
                               <input
                                 name="passMark"
@@ -213,12 +292,22 @@ const RasultPublished = () => {
                                   changeHendeler(index, event)
                                 }
                                 type="number"
-                                className="h-12  border w-full rounded-lg    focus:outline-emerald-100  px-4"
+                                className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                  theme == "light"
+                                    ? "border"
+                                    : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                } `}
                                 placeholder="Text"
                               />
                             </div>
                           </td>
-                          <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
+                          <td
+                            className={`px-5 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
                             <>
                               <input
                                 name="studentMark"
@@ -227,12 +316,22 @@ const RasultPublished = () => {
                                   changeHendeler(index, event)
                                 }
                                 type="number"
-                                className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
+                                className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                  theme == "light"
+                                    ? "border"
+                                    : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                } `}
                                 placeholder="Text"
                               />
                             </>
                           </td>
-                          <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
+                          <td
+                            className={`px-5 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
                             <>
                               <select
                                 name="latterGrade"
@@ -241,7 +340,11 @@ const RasultPublished = () => {
                                 }
                                 // value={routine?.latterGrade}
                                 //     type="text"
-                                className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
+                                className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                  theme == "light"
+                                    ? "border"
+                                    : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                } `}
                                 placeholder="Enter Your Name"
                               >
                                 {latterGrade?.map((subject: any) => (
@@ -256,7 +359,13 @@ const RasultPublished = () => {
                               </select>
                             </>
                           </td>
-                          <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
+                          <td
+                            className={`px-5 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
                             <>
                               <select
                                 name="gradePoint"
@@ -265,7 +374,11 @@ const RasultPublished = () => {
                                 }
                                 // value={routine?.gradePoin}
                                 //     type="text"
-                                className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
+                                className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                  theme == "light"
+                                    ? "border"
+                                    : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                } `}
                                 placeholder="Enter Your Name"
                               >
                                 {gradePoint?.map((subject: any) => (
@@ -293,28 +406,88 @@ const RasultPublished = () => {
                       ))
                     : routines.map((routine, index) => (
                         <tr>
-                          <td className="px-6 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
+                          <td
+                            className={`px-6 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            <p
+                              className={`whitespace-no-wrap ${
+                                theme == "light"
+                                  ? "text-gray-900 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {routine?.subject}
                             </p>
                           </td>
-                          <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
+                          <td
+                            className={`px-6 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            <p
+                              className={`whitespace-no-wrap ${
+                                theme == "light"
+                                  ? "text-gray-900 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {routine?.passMark}
                             </p>
                           </td>
-                          <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
+                          <td
+                            className={`px-6 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            <p
+                              className={`whitespace-no-wrap ${
+                                theme == "light"
+                                  ? "text-gray-900 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {routine.studentMark}
                             </p>
                           </td>
-                          <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
+                          <td
+                            className={`px-6 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            <p
+                              className={`whitespace-no-wrap ${
+                                theme == "light"
+                                  ? "text-gray-900 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {routine.latterGrade}
                             </p>
                           </td>
-                          <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
-                            <p className="text-gray-900 whitespace-no-wrap">
+                          <td
+                            className={`px-6 py-5 border-b  text-sm ${
+                              theme == "light"
+                                ? "border-gray-200 bg-white "
+                                : "text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            <p
+                              className={`whitespace-no-wrap ${
+                                theme == "light"
+                                  ? "text-gray-900 "
+                                  : "text-[#e4e6eb]"
+                              }`}
+                            >
                               {routine.gradePoint}
                             </p>
                           </td>
@@ -327,7 +500,11 @@ const RasultPublished = () => {
           {!edit && (
             <button
               onClick={() => addRoutineFlied()}
-              className="bg-red-500 text-white px-8 rounded-lg py-2"
+              className={`font-semibold  px-8 rounded-lg py-2 ${
+                theme == "light"
+                  ? "bg-[#2374e1] text-white"
+                  : "bg-[#414343] text-[#e4e6eb]"
+              }`}
             >
               Add More
             </button>
@@ -336,13 +513,17 @@ const RasultPublished = () => {
             <div className=" flex gap-5 justify-end mt-20">
               <button
                 onClick={() => submitHendeler()}
-                className="bg-red-500 text-white px-8 rounded-lg py-2 mt-3"
+                className={`font-semibold  px-8 rounded-lg py-2 ${
+                  theme == "light"
+                    ? "bg-[#2374e1] text-white"
+                    : "bg-[#414343] text-[#e4e6eb]"
+                }`}
               >
                 Save
               </button>
               <button
                 onClick={() => cancleHendeler()}
-                className="bg-red-500 text-white px-8 rounded-lg py-2 mt-3"
+                className="bg-white font-semibold text-[#2374e1] border px-8 rounded-lg py-2 mt-3"
               >
                 Cancle
               </button>

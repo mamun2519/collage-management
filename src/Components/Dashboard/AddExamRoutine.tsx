@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BsStopwatch } from "react-icons/bs";
 import { GiNotebook } from "react-icons/gi";
 import swal from "sweetalert";
 import Loading from "../Shared/Loading";
-
+import { ThemeContext } from "../../App";
 const AddExamRoutine = () => {
   const [classRotuine, setClassRoutine] = useState([]);
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [routineId, setRoutineId] = useState("");
   const [selected, setSelected] = useState<any>(false);
   const [loading, isLoading] = useState(false);
@@ -22,8 +23,7 @@ const AddExamRoutine = () => {
         if (data.success) {
           setClassRoutine(data.routine);
           isLoading(false);
-        }
-        else{
+        } else {
           isLoading(false);
         }
       });
@@ -154,193 +154,345 @@ const AddExamRoutine = () => {
         </div>
       )}
 
-      {loading ? <Loading/> : dataDispaly && (
-        <div className="card  lg:w-full w-[280px]  bg-base-100 border  shadow-md my-20">
-          <div className="p-5 ">
-            <h1 className="font-medium  text-gray-800 uppercase text-lg">
-              Add to {selected} Exam Routine
-            </h1>
-
-            {!edit && (
-              <div className=" grid lg:grid-cols-3 col-span-2">
-                <div className="mt-5">
-                  <h1>Exam Type</h1>
-                  <div className="h-14 mt-2 ">
-                    <select
-                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-4"
-                      placeholder="Enter Your Name"
-                      onChange={(e) => setSelectedExamType(e.target.value)}
-                    >
-                      {examType.map((sec) => (
-                        <option value={sec.title}>{sec.title}</option>
-                      ))}
-                    </select>
-                    <p className="px-4 text-red-500 ">{errorMessage}</p>
-                  </div>
-                </div>
-                <div></div>
-              </div>
-            )}
-            <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto mt-2">
-              <div className="inline-block min-w-full shadow rounded-lg  overflow-x-auto">
-                <table className="min-w-full leading-normal">
-                  <thead>
-                    <tr>
-                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Date
-                      </th>
-                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider ">
-                        Time (Start & end)
-                      </th>
-                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Subjcet Code
-                      </th>
-                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Subject
-                      </th>
-                      {!edit && (
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                          action
-                        </th>
-                      )}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {!edit
-                      ? routines.map((routine, index) => (
-                          <tr>
-                            <td className="px-2 py-5 border-b border-gray-200 bg-white text-sm">
-                              <>
-                                <input
-                                  name="date"
-                                  onChange={(event) =>
-                                    changeHendeler(index, event)
-                                  }
-                                  type="date"
-                                  className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
-                                  placeholder="Enter Your Name"
-                                />
-                              </>
-                            </td>
-                            <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
-                              <div className=" flex items-center">
-                                <input
-                                  name="start"
-                                  value={routine.start || ""}
-                                  onChange={(event) =>
-                                    changeHendeler(index, event)
-                                  }
-                                  type="time"
-                                  className="h-12  border w-full rounded-lg    focus:outline-emerald-100  px-4"
-                                  placeholder="Text"
-                                />
-                                <span className="text-l font-semibold  text-gray-700 px-2">
-                                  To
-                                </span>
-                                <input
-                                  name="end"
-                                  value={routine.end || ""}
-                                  onChange={(event) =>
-                                    changeHendeler(index, event)
-                                  }
-                                  type="time"
-                                  className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
-                                  placeholder="Text"
-                                />
-                              </div>
-                            </td>
-                            <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
-                              <>
-                                <input
-                                  name="subjectCode"
-                                  value={routine.subjectCode || ""}
-                                  onChange={(event) =>
-                                    changeHendeler(index, event)
-                                  }
-                                  className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
-                                  placeholder="Text"
-                                />
-                              </>
-                            </td>
-                            <td className="px-2  py-5 border-b border-gray-200 bg-white text-sm">
-                              <>
-                                <input
-                                  name="subject"
-                                  value={routine.subject || ""}
-                                  onChange={(event) =>
-                                    changeHendeler(index, event)
-                                  }
-                                  className="h-12  border w-full rounded-lg    focus:outline-emerald-100 px-4"
-                                  placeholder="Text"
-                                />
-                              </>
-                            </td>
-
-                            <td className="px-6   border-b py-5    border-gray-200 bg-white text-sm">
-                              <span
-                                onClick={() => removeFromFlied(index)}
-                                className=" text-2xl text-red-500 px-2"
-                              >
-                                <AiFillDelete />
-                              </span>
-                            </td>
-                          </tr>
-                        ))
-                      : routines.map((routine, index) => (
-                          <tr>
-                            <td className="px-6 py-5 border-b border-gray-200 bg-white text-sm">
-                              <p className="text-gray-900 whitespace-no-wrap">
-                                {routine.date}
-                              </p>
-                            </td>
-                            <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
-                              <p className="text-gray-900 whitespace-no-wrap">
-                                {routine.start} To {routine.end}
-                              </p>
-                            </td>
-                            <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
-                              <p className="text-gray-900 whitespace-no-wrap">
-                                {routine.subjectCode}
-                              </p>
-                            </td>
-                            <td className="px-6  py-5 border-b border-gray-200 bg-white text-sm">
-                              <p className="text-gray-900 whitespace-no-wrap">
-                                {routine.subject}
-                              </p>
-                            </td>
-                          </tr>
-                        ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {!edit && (
-              <button
-                onClick={() => addRoutineFlied()}
-                className="bg-[#2374e1] font-semibold text-white px-8 rounded-lg py-2"
+      {loading ? (
+        <Loading />
+      ) : (
+        dataDispaly && (
+          <div
+            className={`card  lg:w-full w-[280px]  border  shadow-md my-20 ${
+              theme == "light" ? "bg-base-100" : "bg-[#242526]"
+            }`}
+          >
+            <div className="p-5 ">
+              <h1
+                className={`font-medium   uppercase text-lg ${
+                  theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                }`}
               >
-                Add More
-              </button>
-            )}
-            {!edit && (
-              <div className=" flex gap-5 justify-end mt-20">
-                <button
-                  onClick={() => submitHendeler()}
-                  className="bg-[#2374e1] font-semibold text-white px-8 rounded-lg py-2 mt-3"
-                >
-                  Save
-                </button>
-                <button
-                  onClick={() => cancleHendeler()}
-                  className="bg-white font-semibold text-[#2374e1] border px-8 rounded-lg py-2 mt-3"
-                >
-                  Cancle
-                </button>
+                Add to {selected} Exam Routine
+              </h1>
+
+              {!edit && (
+                <div className=" grid lg:grid-cols-3 col-span-2">
+                  <div className="mt-5">
+                    <h1>Exam Type</h1>
+                    <div className="h-14 mt-2 ">
+                      <select
+                        className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-4 ${
+                          theme == "light"
+                            ? "bg-white text-gray-700"
+                            : "bg-[#414343] text-[#e4e6eb] outline-none"
+                        }`}
+                        placeholder="Enter Your Name"
+                        onChange={(e) => setSelectedExamType(e.target.value)}
+                      >
+                        {examType.map((sec) => (
+                          <option value={sec.title}>{sec.title}</option>
+                        ))}
+                      </select>
+                      <p className="px-4 text-red-500 ">{errorMessage}</p>
+                    </div>
+                  </div>
+                  <div></div>
+                </div>
+              )}
+              <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto mt-2">
+                <div className="inline-block min-w-full shadow rounded-lg  overflow-x-auto">
+                  <table className="min-w-full leading-normal">
+                    <thead>
+                      <tr>
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
+                          Date
+                        </th>
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
+                          Time (Start & end)
+                        </th>
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
+                          Subjcet Code
+                        </th>
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
+                          Subject
+                        </th>
+                        {!edit && (
+                          <th
+                            className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                              theme == "light"
+                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            action
+                          </th>
+                        )}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {!edit
+                        ? routines.map((routine, index) => (
+                            <tr>
+                              <td
+                                className={`px-5 py-5 border-b  text-sm ${
+                                  theme == "light"
+                                    ? "border-gray-200 bg-white "
+                                    : "text-[#e4e6eb] border-[#414343]"
+                                }`}
+                              >
+                                <>
+                                  <input
+                                    name="date"
+                                    onChange={(event) =>
+                                      changeHendeler(index, event)
+                                    }
+                                    type="date"
+                                    className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                      theme == "light"
+                                        ? "border"
+                                        : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                    } `}
+                                    placeholder="Enter Your Name"
+                                  />
+                                </>
+                              </td>
+                              <td
+                                className={`px-5 py-5 border-b  text-sm ${
+                                  theme == "light"
+                                    ? "border-gray-200 bg-white "
+                                    : "text-[#e4e6eb] border-[#414343]"
+                                }`}
+                              >
+                                <div className=" flex items-center">
+                                  <input
+                                    name="start"
+                                    value={routine.start || ""}
+                                    onChange={(event) =>
+                                      changeHendeler(index, event)
+                                    }
+                                    type="time"
+                                    className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                      theme == "light"
+                                        ? "border"
+                                        : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                    } `}
+                                    placeholder="Text"
+                                  />
+                                  <span className="text-l font-semibold  text-gray-700 px-2">
+                                    To
+                                  </span>
+                                  <input
+                                    name="end"
+                                    value={routine.end || ""}
+                                    onChange={(event) =>
+                                      changeHendeler(index, event)
+                                    }
+                                    type="time"
+                                    className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                      theme == "light"
+                                        ? "border"
+                                        : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                    } `}
+                                    placeholder="Text"
+                                  />
+                                </div>
+                              </td>
+                              <td
+                                className={`px-5 py-5 border-b  text-sm ${
+                                  theme == "light"
+                                    ? "border-gray-200 bg-white "
+                                    : "text-[#e4e6eb] border-[#414343]"
+                                }`}
+                              >
+                                <>
+                                  <input
+                                    name="subjectCode"
+                                    value={routine.subjectCode || ""}
+                                    onChange={(event) =>
+                                      changeHendeler(index, event)
+                                    }
+                                    className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                      theme == "light"
+                                        ? "border"
+                                        : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                    } `}
+                                    placeholder="Text"
+                                  />
+                                </>
+                              </td>
+                              <td
+                                className={`px-5 py-5 border-b  text-sm ${
+                                  theme == "light"
+                                    ? "border-gray-200 bg-white "
+                                    : "text-[#e4e6eb] border-[#414343]"
+                                }`}
+                              >
+                                <>
+                                  <input
+                                    name="subject"
+                                    value={routine.subject || ""}
+                                    onChange={(event) =>
+                                      changeHendeler(index, event)
+                                    }
+                                    className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                      theme == "light"
+                                        ? "border"
+                                        : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                    } `}
+                                    placeholder="Text"
+                                  />
+                                </>
+                              </td>
+
+                              <td
+                                className={`px-5 py-5 border-b  text-sm ${
+                                  theme == "light"
+                                    ? "border-gray-200 bg-white "
+                                    : "text-[#e4e6eb] border-[#414343]"
+                                }`}
+                              >
+                                <span
+                                  onClick={() => removeFromFlied(index)}
+                                  className=" text-2xl text-red-500 px-2"
+                                >
+                                  <AiFillDelete />
+                                </span>
+                              </td>
+                            </tr>
+                          ))
+                        : routines.map((routine, index) => (
+                            <tr>
+                              <td
+                                className={`px-6 py-5 border-b  text-sm ${
+                                  theme == "light"
+                                    ? "border-gray-200 bg-white "
+                                    : "text-[#e4e6eb] border-[#414343]"
+                                }`}
+                              >
+                                <p
+                                  className={`whitespace-no-wrap ${
+                                    theme == "light"
+                                      ? "text-gray-900 "
+                                      : "text-[#e4e6eb]"
+                                  }`}
+                                >
+                                  {routine.date}
+                                </p>
+                              </td>
+                              <td
+                                className={`px-6 py-5 border-b  text-sm ${
+                                  theme == "light"
+                                    ? "border-gray-200 bg-white "
+                                    : "text-[#e4e6eb] border-[#414343]"
+                                }`}
+                              >
+                                <p
+                                  className={`whitespace-no-wrap ${
+                                    theme == "light"
+                                      ? "text-gray-900 "
+                                      : "text-[#e4e6eb]"
+                                  }`}
+                                >
+                                  {routine.start} To {routine.end}
+                                </p>
+                              </td>
+                              <td
+                                className={`px-6 py-5 border-b  text-sm ${
+                                  theme == "light"
+                                    ? "border-gray-200 bg-white "
+                                    : "text-[#e4e6eb] border-[#414343]"
+                                }`}
+                              >
+                                <p
+                                  className={`whitespace-no-wrap ${
+                                    theme == "light"
+                                      ? "text-gray-900 "
+                                      : "text-[#e4e6eb]"
+                                  }`}
+                                >
+                                  {routine.subjectCode}
+                                </p>
+                              </td>
+                              <td
+                                className={`px-6 py-5 border-b  text-sm ${
+                                  theme == "light"
+                                    ? "border-gray-200 bg-white "
+                                    : "text-[#e4e6eb] border-[#414343]"
+                                }`}
+                              >
+                                <p
+                                  className={`whitespace-no-wrap ${
+                                    theme == "light"
+                                      ? "text-gray-900 "
+                                      : "text-[#e4e6eb]"
+                                  }`}
+                                >
+                                  {routine.subject}
+                                </p>
+                              </td>
+                            </tr>
+                          ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            )}
+
+              {!edit && (
+                <button
+                  onClick={() => addRoutineFlied()}
+                  className={`font-semibold  px-8 rounded-lg py-2 ${
+                    theme == "light"
+                      ? "bg-[#2374e1] text-white"
+                      : "bg-[#414343] text-[#e4e6eb]"
+                  }`}
+                >
+                  Add More
+                </button>
+              )}
+              {!edit && (
+                <div className=" flex gap-5 justify-end mt-20">
+                  <button
+                    onClick={() => submitHendeler()}
+                    className={`font-semibold  px-8 rounded-lg py-2 ${
+                      theme == "light"
+                        ? "bg-[#2374e1] text-white"
+                        : "bg-[#414343] text-[#e4e6eb]"
+                    }`}
+                  >
+                    Save
+                  </button>
+                  <button
+                    onClick={() => cancleHendeler()}
+                    className="bg-white font-semibold text-[#2374e1] border px-8 rounded-lg py-2 mt-3"
+                  >
+                    Cancle
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        )
       )}
     </div>
   );

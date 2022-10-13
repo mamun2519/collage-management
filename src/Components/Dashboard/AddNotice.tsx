@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BsStopwatch } from "react-icons/bs";
 import { CgNotes, CgProfile } from "react-icons/cg";
+import { ThemeContext } from "../../App";
 import swal from "sweetalert";
 interface Notices {
   title: number;
@@ -9,6 +10,7 @@ interface Notices {
   date: string;
 }
 const AddNotice = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [selected, setSelected] = useState<any>(false);
   const [dataDispaly, SetDataDisplay] = useState(false);
   const notice = [
@@ -65,14 +67,26 @@ const AddNotice = () => {
           <div
             onClick={() => admissionRequestHendeler(ad.title)}
             key={ad}
-            className={`card  flex justify-center items-center   border h-44 lg:h-36 lg:w-80 shadow-md px-2 ${
-              selected == ad.title ? "bg-[#2374e1]" : "bg-base-100"
+            className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 w-full  shadow-md px-2 ${
+              theme == "light"
+                ? selected == ad.title
+                  ? "bg-[#2374e1]"
+                  : "bg-base-100"
+                : selected == ad.title
+                ? "bg-[#414343]"
+                : "bg-[#242526]"
             } `}
           >
             <div>
               <span
                 className={`text-3xl  ${
-                  selected == ad.title ? "text-white" : "text-red-500"
+                  theme == "light"
+                    ? selected == ad.title
+                      ? "text-white"
+                      : "text-red-500"
+                    : selected == ad.title
+                    ? "text-white"
+                    : "text-white"
                 }`}
               >
                 <CgNotes />
@@ -81,33 +95,53 @@ const AddNotice = () => {
             <div>
               <p
                 className={`font-semibold uppercase mt-1 text-center ${
-                  selected == ad.title ? "text-white" : "text-black"
+                  theme == "light"
+                    ? selected == ad.title
+                      ? "text-white"
+                      : "text-black"
+                    : selected == ad.title
+                    ? "text-white"
+                    : "text-[#e4e6eb]"
                 }`}
               >
                 {ad.title}
               </p>
-              <p
+              {/* <p
                 className={`font-semibold text-sm mt-1 text-center ${
                   selected == ad.title ? "text-white" : "text-black"
                 }`}
               >
                 (Notce)
-              </p>
+              </p> */}
             </div>
           </div>
         ))}
       </div>
 
       {dataDispaly && (
-        <div className="card  w-full  bg-base-100 border shadow-md my-20">
+        <div
+          className={`card  lg:w-full w-[280px]  border  shadow-md my-20 ${
+            theme == "light" ? "bg-base-100" : "bg-[#242526]"
+          }`}
+        >
           <div className="p-5 h-full">
-            <h1 className="font-medium  text-gray-800 uppercase text-lg">
+            <h1
+              className={`font-medium   uppercase text-lg ${
+                theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+              }`}
+            >
               Add to {selected} Notice
             </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="grid  lg:grid-cols-2 grid-cols-1 gap-10 mt-10">
                 <div className="mt-5">
-                  <h1>Date</h1>
+                  <h1
+                    className={` ${
+                      theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                    }`}
+                  >
+                    Date
+                  </h1>
                   <div className="h-14 mt-2  relative">
                     <input
                       {...register("date", {
@@ -116,7 +150,11 @@ const AddNotice = () => {
                           message: "Date is Required",
                         },
                       })}
-                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                        theme == "light"
+                          ? "bg-white text-gray-700"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      }`}
                       placeholder="Enter Passing Year"
                       type="date"
                     />
@@ -134,7 +172,13 @@ const AddNotice = () => {
                   </label>
                 </div>
                 <div className="mt-5">
-                  <h1>Title</h1>
+                  <h1
+                    className={` ${
+                      theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                    }`}
+                  >
+                    Title
+                  </h1>
                   <div className="h-14 mt-2  relative">
                     <input
                       {...register("title", {
@@ -143,7 +187,11 @@ const AddNotice = () => {
                           message: "title is Required",
                         },
                       })}
-                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                        theme == "light"
+                          ? "bg-white text-gray-700"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      }`}
                       placeholder="Enter Title"
                       type="text"
                     />
@@ -162,7 +210,13 @@ const AddNotice = () => {
               </div>
 
               <div className="mt-5">
-                <h1>Description</h1>
+                <h1
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Description
+                </h1>
                 <div className=" mt-2  relative">
                   <textarea
                     {...register("description", {
@@ -171,7 +225,11 @@ const AddNotice = () => {
                         message: "description is Required",
                       },
                     })}
-                    className=" h-32 pt-2 text-xl border w-full  rounded-lg   focus:outline-emerald-100 px-20"
+                    className={` h-32 pt-2 text-xl border w-full  rounded-lg   focus:outline-emerald-100 px-20 ${
+                      theme == "light"
+                        ? "bg-white text-gray-700"
+                        : "bg-[#414343] text-[#e4e6eb]"
+                    }`}
                     placeholder="Enter Description"
                   />
 
@@ -190,7 +248,9 @@ const AddNotice = () => {
 
               <div className=" text-center">
                 <input
-                  className="text-white bg-[#2374e1] font-semibold px-8 py-2 rounded-lg"
+                  className={` font-semibold text-white px-6 mt-2 rounded-lg py-2 ${
+                    theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                  }`}
                   type="submit"
                   value="Notice Post"
                 />

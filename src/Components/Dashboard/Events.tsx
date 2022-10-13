@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Loading from "../Shared/Loading";
 import EventsRow from "./EventsRow";
-
+import { ThemeContext } from "../../App";
 const Events = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [events, setEvents] = useState([]);
   const [loading, isLoading] = useState(false);
   useEffect(() => {
@@ -21,9 +22,17 @@ const Events = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="card lg:w-3/4 w-[280px] mx-auto bg-base-100 border  shadow-md my-20">
+        <div
+          className={`card  lg:w-3/4 w-[280px] mx-auto border  shadow-md my-20 ${
+            theme == "light" ? "bg-base-100" : "bg-[#242526]"
+          }`}
+        >
           <div className="p-5 ">
-            <h1 className="font-medium  text-gray-800 uppercase text-lg">
+            <h1
+              className={`font-medium   uppercase text-lg ${
+                theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+              }`}
+            >
               All Events
             </h1>
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -31,16 +40,40 @@ const Events = () => {
                 <table className="min-w-full leading-normal">
                   <thead>
                     <tr>
-                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th
+                        className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                          theme == "light"
+                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                        }`}
+                      >
                         Picure
                       </th>
-                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider ">
+                      <th
+                        className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                          theme == "light"
+                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                        }`}
+                      >
                         title
                       </th>
-                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th
+                        className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                          theme == "light"
+                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                        }`}
+                      >
                         Details
                       </th>
-                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th
+                        className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                          theme == "light"
+                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                        }`}
+                      >
                         Action
                       </th>
                     </tr>

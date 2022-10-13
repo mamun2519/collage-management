@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import AdminRemoveModel from "./AdminRemoveModel";
+import { ThemeContext } from "../../App";
 interface User {
   user: any;
   key: string;
 }
 const AdminRow = ({ user }: User) => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const { name, role, _id } = user;
   const [isOpen, setIsOpen] = useState(false);
   const [userId, setUserId] = useState("");
@@ -23,22 +25,60 @@ const AdminRow = ({ user }: User) => {
   return (
     <>
       <tr>
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p className="text-gray-900 whitespace-no-wrap">{name}</p>
+        <td
+          className={`px-5 py-5 border-b  text-sm ${
+            theme == "light"
+              ? "border-gray-200 bg-white "
+              : "text-[#e4e6eb] border-[#414343]"
+          }`}
+        >
+          <p
+            className={`whitespace-no-wrap ${
+              theme == "light" ? "text-gray-900 " : "text-[#e4e6eb]"
+            }`}
+          >
+            {name}
+          </p>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p className="text-gray-900 whitespace-no-wrap up">{role}</p>
+        <td
+          className={`px-5 py-5 border-b  text-sm ${
+            theme == "light"
+              ? "border-gray-200 bg-white "
+              : "text-[#e4e6eb] border-[#414343]"
+          }`}
+        >
+          <p
+            className={`whitespace-no-wrap ${
+              theme == "light" ? "text-gray-900 " : "text-[#e4e6eb]"
+            }`}
+          >
+            {role}
+          </p>
         </td>
 
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <td
+          className={`px-5 py-5 border-b  text-sm ${
+            theme == "light"
+              ? "border-gray-200 bg-white "
+              : "text-[#e4e6eb] border-[#414343]"
+          }`}
+        >
           <button
             onClick={() => removeAdminModal(_id)}
-            className="bg-[#2374e1] text-white px-4 rounded-lg py-1 font-semibold up"
+            className={` font-semibold text-white px-4 rounded-lg py-1 ${
+              theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+            }`}
           >
             Remove Admin
           </button>
         </td>
-        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <td
+          className={`px-5 py-5 border-b  text-sm ${
+            theme == "light"
+              ? "border-gray-200 bg-white "
+              : "text-[#e4e6eb] border-[#414343]"
+          }`}
+        >
           <button className="text-red-500 text-2xl px-4 rounded-lg py-1 font-semibold up">
             <AiFillDelete />
           </button>

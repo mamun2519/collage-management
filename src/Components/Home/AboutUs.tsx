@@ -1,11 +1,13 @@
-import React from "react";
-
+import React , {useContext} from "react";
+import { ThemeContext } from "../../App";
 const AboutUs = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   return (
+    
     <div className="my-20 max-w-7xl m-auto px-3 ">
      <div className="w-max mx-auto">
       
-      <div className="border-b-[3px] rounded-full border-[#2374e1] ">
+      <div className={`border-b-[3px] rounded-full ${theme == "light"? "border-[#2374e1] ": "border-[#e4e6eb] text-[#e4e6eb]"}`}>
       <h1 className="text-4xl pb-2 text-center mt-10 px-12  font-medium uppercase">ABOUT US</h1>
       </div>
 
@@ -23,7 +25,7 @@ const AboutUs = () => {
         <div className="w-full px-4 ">
           <div
             tabIndex={0}
-            className="collapse collapse-open border border-base-300 bg-base-100 rounded-box"
+            className={`collapse collapse-open border  rounded-box ${theme == "light"? "bg-base-100 border-base-300 ": "bg-[#242526] border-[#414343] text-[#e4e6eb]"}`}
           >
             <div className="collapse-title text-xl font-medium">
               Focus me to see content
@@ -46,7 +48,7 @@ const AboutUs = () => {
           </div>
           <div
             tabIndex={0}
-            className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            className={`collapse collapse-plus border  bg-base-100 rounded-box ${theme == "light"? "bg-base-100 border-base-300 ":  "border-[#414343] bg-[#242526] text-[#e4e6eb]"}`}
           >
             <div className="collapse-title text-xl font-medium">
               Focus me to see content
@@ -69,7 +71,7 @@ const AboutUs = () => {
           </div>
           <div
             tabIndex={0}
-            className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            className={`collapse collapse-plus border  bg-base-100 rounded-box ${theme == "light"? "bg-base-100 border-base-300 ": "border-[#414343] bg-[#242526] text-[#e4e6eb]"}`}
           >
             <div className="collapse-title text-xl font-medium">
               Focus me to see content
@@ -92,7 +94,7 @@ const AboutUs = () => {
           </div>
           <div
             tabIndex={0}
-            className="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
+            className={`collapse collapse-plus border  bg-base-100 rounded-box ${theme == "light"? "bg-base-100 border-base-300": "bg-[#242526] text-[#e4e6eb] border-[#414343]"}`}
           >
             <div className="collapse-title text-xl font-medium">
               Focus me to see content

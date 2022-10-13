@@ -1,11 +1,12 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { CgNotes, CgProfile } from "react-icons/cg";
 import { GiTeacher } from "react-icons/gi";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
 import swal from "sweetalert";
+import { ThemeContext } from "../../App";
 interface Notices {
   name: string;
   classs: string;
@@ -18,8 +19,8 @@ interface Notices {
   images: string;
 }
 
-
 const AddTeacher = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [selected, setSelected] = useState<any>(false);
   const [dataDispaly, SetDataDisplay] = useState(false);
   const [picture, setPicture] = useState<any>("");
@@ -93,14 +94,26 @@ const AddTeacher = () => {
           <div
             onClick={() => admissionRequestHendeler(ad.title)}
             key={ad}
-            className={`card  flex justify-center items-center   border h-44 lg:h-36 lg:w-80 shadow-md px-2 ${
-              selected == ad.title ? "bg-[#2374e1]" : "bg-base-100"
+            className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 w-full  shadow-md px-2 ${
+              theme == "light"
+                ? selected == ad.title
+                  ? "bg-[#2374e1]"
+                  : "bg-base-100"
+                : selected == ad.title
+                ? "bg-[#414343]"
+                : "bg-[#242526]"
             } `}
           >
             <div>
               <span
                 className={`text-3xl  ${
-                  selected == ad.title ? "text-white" : "text-red-500"
+                  theme == "light"
+                    ? selected == ad.title
+                      ? "text-white"
+                      : "text-red-500"
+                    : selected == ad.title
+                    ? "text-white"
+                    : "text-white"
                 }`}
               >
                 <GiTeacher />
@@ -109,27 +122,41 @@ const AddTeacher = () => {
             <div>
               <p
                 className={`font-semibold uppercase mt-1 text-center ${
-                  selected == ad.title ? "text-white" : "text-black"
+                  theme == "light"
+                    ? selected == ad.title
+                      ? "text-white"
+                      : "text-black"
+                    : selected == ad.title
+                    ? "text-white"
+                    : "text-[#e4e6eb]"
                 }`}
               >
                 {ad.title}
               </p>
-              <p
+              {/* <p
                 className={`font-semibold text-sm mt-1 text-center ${
                   selected == ad.title ? "text-white" : "text-black"
                 }`}
               >
                 (Teacher)
-              </p>
+              </p> */}
             </div>
           </div>
         ))}
       </div>
 
       {dataDispaly && (
-        <div className="card  lg:w-full w-[280px]  bg-base-100 border shadow-md my-20">
+        <div
+          className={`card  lg:w-full w-[280px]  border  shadow-md my-20 ${
+            theme == "light" ? "bg-base-100" : "bg-[#242526]"
+          }`}
+        >
           <div className="p-5 h-full">
-            <h1 className="font-medium  text-gray-800 uppercase text-lg">
+            <h1
+              className={`font-medium   uppercase text-lg ${
+                theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+              }`}
+            >
               Add to {selected} Teacher
             </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -191,7 +218,13 @@ const AddTeacher = () => {
               </div>
               <div className="grid  lg:grid-cols-3 grid-cols-1 gap-10 m">
                 <div className="lg:mt-5 mt-0">
-                  <h1>Teacher Name</h1>
+                  <h1
+                    className={` ${
+                      theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                    }`}
+                  >
+                    Teacher Name
+                  </h1>
                   <div className="h-14 lg:mt-2  relative">
                     <input
                       {...register("name", {
@@ -200,7 +233,11 @@ const AddTeacher = () => {
                           message: "name is Required",
                         },
                       })}
-                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                        theme == "light"
+                          ? "bg-white text-gray-700"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      }`}
                       placeholder="Enter Name"
                       type="text"
                     />
@@ -217,7 +254,13 @@ const AddTeacher = () => {
                   </label>
                 </div>
                 <div className="lg:mt-5 mt-0">
-                  <h1>Email</h1>
+                  <h1
+                    className={` ${
+                      theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                    }`}
+                  >
+                    Email
+                  </h1>
                   <div className="h-14 lg:mt-2  relative">
                     <input
                       {...register("email", {
@@ -226,7 +269,11 @@ const AddTeacher = () => {
                           message: "email is Required",
                         },
                       })}
-                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                        theme == "light"
+                          ? "bg-white text-gray-700"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      }`}
                       placeholder="Enter Email"
                       type="text"
                     />
@@ -243,7 +290,13 @@ const AddTeacher = () => {
                   </label>
                 </div>
                 <div className="mt-5">
-                  <h1>Number</h1>
+                  <h1
+                    className={` ${
+                      theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                    }`}
+                  >
+                    Number
+                  </h1>
                   <div className="h-14 mt-2  relative">
                     <input
                       {...register("number", {
@@ -252,7 +305,11 @@ const AddTeacher = () => {
                           message: "Number is Required",
                         },
                       })}
-                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                        theme == "light"
+                          ? "bg-white text-gray-700"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      }`}
                       placeholder="Enter Number"
                       type="text"
                     />
@@ -271,7 +328,13 @@ const AddTeacher = () => {
               </div>
               <div className="grid  lg:grid-cols-3 grid-cols-1 gap-10 mt-5">
                 <div className="mt-5">
-                  <h1>Educational Qualification</h1>
+                  <h1
+                    className={` ${
+                      theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                    }`}
+                  >
+                    Educational Qualification
+                  </h1>
                   <div className="h-14 mt-2  relative">
                     <input
                       {...register("educationalQualification", {
@@ -280,7 +343,11 @@ const AddTeacher = () => {
                           message: "Educational Qualification is Required",
                         },
                       })}
-                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                        theme == "light"
+                          ? "bg-white text-gray-700"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      }`}
                       placeholder="Enter Name"
                       type="text"
                     />
@@ -297,7 +364,13 @@ const AddTeacher = () => {
                   </label>
                 </div>
                 <div className="mt-5">
-                  <h1>collage Role</h1>
+                  <h1
+                    className={` ${
+                      theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                    }`}
+                  >
+                    collage Role
+                  </h1>
                   <div className="h-14 mt-2  relative">
                     <input
                       {...register("collageRole", {
@@ -306,7 +379,11 @@ const AddTeacher = () => {
                           message: "collageRole is Required",
                         },
                       })}
-                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                        theme == "light"
+                          ? "bg-white text-gray-700"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      }`}
                       placeholder="Enter Collage Role"
                       type="text"
                     />
@@ -323,11 +400,21 @@ const AddTeacher = () => {
                   </label>
                 </div>
                 <div className="mt-5">
-                  <h1>Facebook Id (optional)</h1>
+                  <h1
+                    className={` ${
+                      theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                    }`}
+                  >
+                    Facebook Id (optional)
+                  </h1>
                   <div className="h-14 mt-2  relative">
                     <input
                       {...register("facebooId", {})}
-                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                        theme == "light"
+                          ? "bg-white text-gray-700"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      }`}
                       placeholder="Enter Facebook Id Link"
                       type="text"
                     />
@@ -339,11 +426,21 @@ const AddTeacher = () => {
               </div>
               <div className="grid  lg:grid-cols-3 grid-cols-1 gap-10 mt-5">
                 <div className="mt-5">
-                  <h1>linkedin Id(optional)</h1>
+                  <h1
+                    className={` ${
+                      theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                    }`}
+                  >
+                    linkedin Id(optional)
+                  </h1>
                   <div className="h-14 mt-2  relative">
                     <input
                       {...register("linkedinId", {})}
-                      className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
+                      className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                        theme == "light"
+                          ? "bg-white text-gray-700"
+                          : "bg-[#414343] text-[#e4e6eb] outline-none"
+                      }`}
                       placeholder="Enter linkedin Id Link"
                       type="text"
                     />
@@ -363,7 +460,9 @@ const AddTeacher = () => {
 
               <div className=" text-center">
                 <input
-                  className="text-white bg-[#2374e1]  font-semibold px-8 py-2 rounded-lg"
+                  className={` font-semibold text-white px-6 mt-2 rounded-lg py-2 ${
+                    theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                  }`}
                   type="submit"
                   value="Notice Post"
                 />

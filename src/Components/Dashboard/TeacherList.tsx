@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import Loading from "../Shared/Loading";
 import TeacherRow from "./TeacherRow";
-
+import { ThemeContext } from "../../App";
 const TeacherList = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [studentList, setStudentList] = useState([]);
   const [loading, isLoading] = useState(false);
   const [selected, setSelected] = useState<any>(false);
@@ -49,14 +50,26 @@ const TeacherList = () => {
           <div
             onClick={() => admissionRequestHendeler(ad.title)}
             key={ad}
-            className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 shadow-md px-2 ${
-              selected == ad.title ? "bg-[#2374e1]" : "bg-base-100"
+            className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 w-full  shadow-md px-2 ${
+              theme == "light"
+                ? selected == ad.title
+                  ? "bg-[#2374e1]"
+                  : "bg-base-100"
+                : selected == ad.title
+                ? "bg-[#414343]"
+                : "bg-[#242526]"
             } `}
           >
             <div>
               <span
                 className={`text-3xl  ${
-                  selected == ad.title ? "text-white" : "text-red-500"
+                  theme == "light"
+                    ? selected == ad.title
+                      ? "text-white"
+                      : "text-red-500"
+                    : selected == ad.title
+                    ? "text-white"
+                    : "text-white"
                 }`}
               >
                 <FaChalkboardTeacher />
@@ -65,7 +78,13 @@ const TeacherList = () => {
             <div>
               <p
                 className={`font-semibold uppercase mt-1 text-center ${
-                  selected == ad.title ? "text-white" : "text-black"
+                  theme == "light"
+                    ? selected == ad.title
+                      ? "text-white"
+                      : "text-black"
+                    : selected == ad.title
+                    ? "text-white"
+                    : "text-[#e4e6eb]"
                 }`}
               >
                 {ad.title}
@@ -79,9 +98,17 @@ const TeacherList = () => {
         <Loading></Loading>
       ) : (
         studentList.length !== 0 && (
-          <div className="card  lg:w-full w-[280px]  bg-base-100 border  shadow-md my-20">
+          <div
+            className={`card  lg:w-full w-[280px]  border  shadow-md my-20 ${
+              theme == "light" ? "bg-base-100" : "bg-[#242526]"
+            }`}
+          >
             <div className="p-5 ">
-              <h1 className="font-medium  text-gray-800 uppercase text-lg">
+              <h1
+                className={`font-medium   uppercase text-lg ${
+                  theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                }`}
+              >
                 Our Teacher at {selected} List
               </h1>
 
@@ -90,22 +117,58 @@ const TeacherList = () => {
                   <table className="min-w-full leading-normal">
                     <thead>
                       <tr>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           Student Piture
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider ">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           Name
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           Collage Role
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           email
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           Details
                         </th>
-                        <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <th
+                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                            theme == "light"
+                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                          }`}
+                        >
                           action
                         </th>
                       </tr>
