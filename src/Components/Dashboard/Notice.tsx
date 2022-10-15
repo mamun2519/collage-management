@@ -3,6 +3,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { CgNotes } from "react-icons/cg";
 import Loading from "../Shared/Loading";
 import { ThemeContext } from "../../App";
+import { MdKeyboardArrowRight } from "react-icons/md";
 const Notice = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [selected, setSelected] = useState<any>(false);
@@ -52,6 +53,37 @@ const Notice = () => {
     }
   };
   return (
+    <>
+    <div className="mt-10  w-full lg:w-3/4 mx-auto  grid grid-cols-1 lg:flex justify-between items-center">
+    <h1 className="text-4xl  font-medium text-white up">
+    {/* STUDENT ADMISSION LIST */}
+    </h1>
+
+    <div
+      className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
+        theme == "light"
+          ? "bg-[#2374e1] text-white"
+          : "bg-[#242526] text-[#e4e6eb]"
+      }`}
+    >
+      <div className=" flex gap-2">
+        {" "}
+        <span className="px-0">Home </span>
+        <span className="mt-1 text-xl text-white">
+          <MdKeyboardArrowRight />
+        </span>
+      </div>
+      <div className="flex gap-2">
+        {" "}
+        <span className="px-0">Dashboard</span>
+        <span className="mt-1 text-xl text-white">
+          <MdKeyboardArrowRight />
+        </span>
+      </div>
+
+      <span className="text-white  font-medium">Notice</span>
+    </div>
+  </div>
     <div className="my-10 lg:w-3/4 w-full  mx-auto">
       <div className="  grid  lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-3">
         {notice.map((ad: any) => (
@@ -327,6 +359,7 @@ const Notice = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

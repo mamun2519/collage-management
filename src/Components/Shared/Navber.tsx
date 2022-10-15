@@ -27,7 +27,7 @@ const Navber = () => {
   return (
     <section className="flex ">
       <div
-        className={`bg-red-400 min-h-screen ${
+        className={`bg-[#242526]  min-h-screen ${
           open ? "w-72" : "w-16"
         } duration-500 text-gray-100 px-4`}
       >

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { CgProfile } from "react-icons/cg";
-import { MdAddPhotoAlternate } from "react-icons/md";
+import { MdAddPhotoAlternate, MdKeyboardArrowRight } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
 import { ThemeContext } from "../../App";
 import swal from "sweetalert";
@@ -63,6 +63,38 @@ const AddEvents = () => {
     reader.readAsDataURL(e.target.files[0]);
   };
   return (
+    <>
+    <div className="mt-10  w-full lg:w-3/4 mx-auto  grid grid-cols-1 lg:flex justify-between items-center">
+    <h1 className="text-4xl  font-medium text-white up">
+    {/* STUDENT ADMISSION LIST */}
+    </h1>
+
+    <div
+      className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
+        theme == "light"
+          ? "bg-[#2374e1] text-white"
+          : "bg-[#242526] text-[#e4e6eb]"
+      }`}
+    >
+      <div className=" flex gap-2">
+        {" "}
+        <span className="px-0">Home </span>
+        <span className="mt-1 text-xl text-white">
+          <MdKeyboardArrowRight />
+        </span>
+      </div>
+      <div className="flex gap-2">
+        {" "}
+        <span className="px-0">Dashboard</span>
+        <span className="mt-1 text-xl text-white">
+          <MdKeyboardArrowRight />
+        </span>
+      </div>
+
+      <span className="text-white  font-medium">Add Events</span>
+    </div>
+  </div>
+    
     <div
       className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
         theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
@@ -256,6 +288,7 @@ const AddEvents = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

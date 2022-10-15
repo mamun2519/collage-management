@@ -3,6 +3,7 @@ import Loading from "../Shared/Loading";
 import AdminRow from "./AdminRow";
 import UserRow from "./UserRow";
 import { ThemeContext } from "../../App";
+import { MdKeyboardArrowRight } from "react-icons/md";
 const UserList = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [users, setUser] = useState([]);
@@ -52,6 +53,38 @@ const UserList = () => {
   };
   console.log(pageCount);
   return (
+    <>
+    <div className="mt-10  w-full lg:w-3/4 mx-auto  grid grid-cols-1 lg:flex justify-between items-center">
+    <h1 className="text-4xl  font-medium text-white up">
+    {/* STUDENT ADMISSION LIST */}
+    </h1>
+
+    <div
+      className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
+        theme == "light"
+          ? "bg-[#2374e1] text-white"
+          : "bg-[#242526] text-[#e4e6eb]"
+      }`}
+    >
+      <div className=" flex gap-2">
+        {" "}
+        <span className="px-0">Home </span>
+        <span className="mt-1 text-xl text-white">
+          <MdKeyboardArrowRight />
+        </span>
+      </div>
+      <div className="flex gap-2">
+        {" "}
+        <span className="px-0">Dashboard</span>
+        <span className="mt-1 text-xl text-white">
+          <MdKeyboardArrowRight />
+        </span>
+      </div>
+
+      <span className="text-white  font-medium">User List</span>
+    </div>
+  </div>
+    
     <div>
       {loading ? (
         <Loading />
@@ -357,6 +390,7 @@ const UserList = () => {
         </>
       )}
     </div>
+    </>
   );
 };
 

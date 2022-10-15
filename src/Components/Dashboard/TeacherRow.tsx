@@ -1,5 +1,6 @@
 import React , {useContext} from "react";
 import { AiFillDelete } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../App";
 interface Student {
   student: any;
@@ -7,8 +8,8 @@ interface Student {
 }
 const TeacherRow = ({ student }: Student) => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
-  const { name, email, collageRole } = student;
-  console.log(student);
+  const { name, email, collageRole , _id} = student;
+ const navigate = useNavigate()
   return (
     <tr>
       <td className={`px-5 py-5 border-b  text-sm ${
@@ -50,7 +51,7 @@ const TeacherRow = ({ student }: Student) => {
             ? "border-gray-200 bg-white "
             : "text-[#e4e6eb] border-[#414343]"
         }`}>
-        <button className={` font-semibold text-white px-4 rounded-lg py-1 ${
+        <button onClick={()=>navigate(`/teacherDetails/${_id}`)} className={` font-semibold text-white px-4 rounded-lg py-1 ${
             theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
           }`}>
           View More

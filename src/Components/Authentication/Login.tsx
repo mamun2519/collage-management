@@ -36,7 +36,7 @@ const Login = () => {
         email: data.email,
       })
       .then((res: any): void => {
-        console.log(res);
+    
         localStorage.setItem("Token", res?.data?.token);
       })
       .catch(function (error) {

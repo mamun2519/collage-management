@@ -11,7 +11,7 @@ const Button = () => {
       const [user, loadings, error] = useAuthState(auth);
       const navigate = useNavigate()
       const {theme , toggleTheme} = useContext<any>(ThemeContext)
-      console.log(theme)
+      
       
       return (
             <div className=' flex'>
@@ -27,11 +27,15 @@ const Button = () => {
       }
             
             {!user   ?
-            <button onClick={()=>navigate('/login')} className="bg-red-500 text-white   px-6 py-2 rounded-full">
+            <button onClick={()=>navigate('/login')} className={`font-semibold text-white px-6 rounded-full py-2 ${
+                  theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                }`}>
             Get Started
           </button>
           :
-         <button className="bg-[#2374e1] text-white   px-6 py-2 rounded-full" onClick={()=>signOut(auth)}>SignOut</button>}
+         <button className={`font-semibold text-white px-6 rounded-full py-2 ${
+            theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+          }`} onClick={()=>signOut(auth)}>SignOut</button>}
           
           </div>
       );

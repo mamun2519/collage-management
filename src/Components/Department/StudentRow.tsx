@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../App";
 interface StudentInfo {
   student: any;
   key: string;
 }
 const StudentRow = ({ student }: StudentInfo) => {
-  const { theme, toggleTheme } = useContext<any>(ThemeContext);
-  const { name, roll } = student;
+  const { theme, toggleTheme , } = useContext<any>(ThemeContext);
+  const { name, roll ,_id } = student;
+  const navigate = useNavigate()
   return (
     <tr>
       <td
@@ -55,6 +57,7 @@ const StudentRow = ({ student }: StudentInfo) => {
         </p>
       </td>
       <td
+      onClick={()=>navigate(`/studentDetails/${_id}`)}
         className={`px-5 py-5 border-b  text-sm ${
           theme == "light"
             ? "border-gray-200 bg-white "

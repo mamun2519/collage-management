@@ -3,6 +3,7 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import Loading from "../Shared/Loading";
 import TeacherRow from "./TeacherRow";
 import { ThemeContext } from "../../App";
+import { MdKeyboardArrowRight } from "react-icons/md";
 const TeacherList = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [studentList, setStudentList] = useState([]);
@@ -38,8 +39,39 @@ const TeacherList = () => {
         }
       });
   };
-  console.log(studentList);
+  
   return (
+    <>
+    <div className="mt-10  w-full lg:w-3/4 mx-auto  grid grid-cols-1 lg:flex justify-between items-center">
+    <h1 className="text-4xl  font-medium text-white up">
+    {/* STUDENT ADMISSION LIST */}
+    </h1>
+
+    <div
+      className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
+        theme == "light"
+          ? "bg-[#2374e1] text-white"
+          : "bg-[#242526] text-[#e4e6eb]"
+      }`}
+    >
+      <div className=" flex gap-2">
+        {" "}
+        <span className="px-0">Home </span>
+        <span className="mt-1 text-xl text-white">
+          <MdKeyboardArrowRight />
+        </span>
+      </div>
+      <div className="flex gap-2">
+        {" "}
+        <span className="px-0">Dashboard</span>
+        <span className="mt-1 text-xl text-white">
+          <MdKeyboardArrowRight />
+        </span>
+      </div>
+
+      <span className="text-white  font-medium">Teacher List</span>
+    </div>
+  </div>
     <div className="my-10 lg:w-3/4 w-full mx-auto">
       {/* <div className='h-12 card  flex  justify-center  bg-base-100 border  shadow-md w-80 font-medium text-gray-800 uppercase text-lg'>
                         <p className='r px-4'>OUR TEACHER LISt</p>
@@ -186,6 +218,7 @@ const TeacherList = () => {
         )
       )}
     </div>
+    </>
   );
 };
 

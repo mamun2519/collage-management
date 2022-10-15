@@ -51,7 +51,7 @@ const NavLinks = () => {
                               to={slink.link}
                               style={({ isActive, isPending }) => {
                                 return {
-                                  color: isActive ? "red" : "inherit",
+                                  color: isActive ? "blue" : "inherit",
                                 };
                               }}
                               className={({ isActive, isPending }) => {

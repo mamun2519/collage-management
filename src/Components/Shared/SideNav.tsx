@@ -1,17 +1,27 @@
 import React from "react";
-import { useState , useContext } from "react";
+import { useState, useContext } from "react";
 import { BsSun } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
 import NavLinks from "./NavLinks";
 import { ThemeContext } from "../../App";
+import { useAuthState } from "react-firebase-hooks/auth";
+import useAdmin from "../Authentication/useAdmin";
+import auth from "../../firebase.init";
 const SideNav = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [open, setOpen] = useState(false);
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
+  console.log(admin);
 
   return (
-    <nav className={`${theme == "light" ? "bg-base-200": "bg-[#18191a] text-[#e4e6eb]"}`}>
+    <nav
+      className={`${
+        theme == "light" ? "bg-base-200" : "bg-[#18191a] text-[#e4e6eb]"
+      }`}
+    >
       <div className="flex items-center font-medium justify-around">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between">
           {/* <img src="" alt="BanglaDesh Railway School" className="md:cursor-pointer h-9" /> */}
@@ -28,7 +38,7 @@ const SideNav = () => {
             <NavLink
               style={({ isActive, isPending }) => {
                 return {
-                  color: isActive ? "red" : "inherit",
+                  color: isActive ? "blue" : "inherit",
                 };
               }}
               className={({ isActive, isPending }) => {
@@ -44,48 +54,49 @@ const SideNav = () => {
             </NavLink>
           </li>
           <NavLinks />
-
-          {/* <li>
-            <NavLink
-              style={({ isActive, isPending }) => {
-                return {
-                  color: isActive ? "red" : "inherit",
-                };
-              }}
-              className={({ isActive, isPending }) => {
-                return isActive
-                  ? "active py-7 px-3 inline-block"
-                  : isPending
-                  ? "pending py-7 px-3 inline-block"
-                  : "";
-              }}
-              to="/"
-            >
-              Notice
-            </NavLink>
-          </li> */}
           <li>
-            <NavLink
-              style={({ isActive, isPending }) => {
-                return {
-                  color: isActive ? "red" : "inherit",
-                };
-              }}
-              className={({ isActive, isPending }) => {
-                return isActive
-                  ? "active py-7 px-3 inline-block"
-                  : isPending
-                  ? "pending py-7 px-3 inline-block"
-                  : "";
-              }}
-              to="/dashboard"
-            >
-              Dashboard
-            </NavLink>
-          </li>
+              <NavLink
+                style={({ isActive, isPending }) => {
+                  return {
+                    color: isActive ? "blue" : "inherit",
+                  };
+                }}
+                className={({ isActive, isPending }) => {
+                  return isActive
+                    ? "active py-7 px-3 inline-block"
+                    : isPending
+                    ? "pending py-7 px-3 inline-block"
+                    : "";
+                }}
+                to="/Notice"
+              >
+                Notices
+              </NavLink>
+            </li>
+
+          {admin && (
+            <li>
+              <NavLink
+                style={({ isActive, isPending }) => {
+                  return {
+                    color: isActive ? "blue" : "inherit",
+                  };
+                }}
+                className={({ isActive, isPending }) => {
+                  return isActive
+                    ? "active py-7 px-3 inline-block"
+                    : isPending
+                    ? "pending py-7 px-3 inline-block"
+                    : "";
+                }}
+                to="/dashboard"
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
         </ul>
         <div className="md:block hidden">
-          
           <Button />
         </div>
         {/* Mobile nav */}
@@ -99,7 +110,7 @@ const SideNav = () => {
             <NavLink
               style={({ isActive, isPending }) => {
                 return {
-                  color: isActive ? "red" : "inherit",
+                  color: isActive ? "blue" : "inherit",
                 };
               }}
               className={({ isActive, isPending }) => {
@@ -115,45 +126,47 @@ const SideNav = () => {
             </NavLink>
           </li>
           <NavLinks />
-
-          {/* <li>
-            <NavLink
-              style={({ isActive, isPending }) => {
-                return {
-                  color: isActive ? "red" : "inherit",
-                };
-              }}
-              className={({ isActive, isPending }) => {
-                return isActive
-                  ? "active py-7 px-3 inline-block"
-                  : isPending
-                  ? "pending py-7 px-3 inline-block"
-                  : "";
-              }}
-              to="/"
-            >
-              Notice
-            </NavLink>
-          </li> */}
           <li>
-            <NavLink
-              style={({ isActive, isPending }) => {
-                return {
-                  color: isActive ? "red" : "inherit",
-                };
-              }}
-              className={({ isActive, isPending }) => {
-                return isActive
-                  ? "active py-7 px-3 inline-block"
-                  : isPending
-                  ? "pending py-7 px-3 inline-block"
-                  : "";
-              }}
-              to="/dashboard"
-            >
-             Dashboard
-            </NavLink>
-          </li>
+              <NavLink
+                style={({ isActive, isPending }) => {
+                  return {
+                    color: isActive ? "blue" : "inherit",
+                  };
+                }}
+                className={({ isActive, isPending }) => {
+                  return isActive
+                    ? "active py-7 px-3 inline-block"
+                    : isPending
+                    ? "pending py-7 px-3 inline-block"
+                    : "";
+                }}
+                to="/Notice"
+              >
+                Notices
+              </NavLink>
+            </li>
+
+          {admin && (
+            <li>
+              <NavLink
+                style={({ isActive, isPending }) => {
+                  return {
+                    color: isActive ? "blue" : "inherit",
+                  };
+                }}
+                className={({ isActive, isPending }) => {
+                  return isActive
+                    ? "active py-7 px-3 inline-block"
+                    : isPending
+                    ? "pending py-7 px-3 inline-block"
+                    : "";
+                }}
+                to="/dashboard"
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
           <div className="py-5">
             <Button />
           </div>
