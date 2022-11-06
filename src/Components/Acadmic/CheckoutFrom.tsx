@@ -71,7 +71,7 @@ const CheckoutFrom = () => {
       confirmParams: {
         // Make sure to change this to your payment completion page
         return_url:
-          "http://localhost:3000/onlineAdmission/personalInfromation/admissionPreview/payment/paymentConfrom",
+          "https://collage-management-ca2fc.web.app/onlineAdmission/personalInfromation/admissionPreview/payment/paymentConfrom",
         // receipt_email: email,
       },
     });
