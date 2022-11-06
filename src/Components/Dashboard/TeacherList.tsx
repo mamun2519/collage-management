@@ -26,7 +26,7 @@ const TeacherList = () => {
     setSelected(click[0]?.title);
     isLoading(true);
     fetch(
-      `http://localhost:5000/v1/teacher/department?department=${admissionName}`
+      `https://thawing-temple-32150.herokuapp.com/v1/teacher/department?department=${admissionName}`
     )
       .then((res) => res.json())
       .then((data) => {

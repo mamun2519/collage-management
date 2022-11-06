@@ -9,7 +9,7 @@ const Events = () => {
   const [loading, isLoading] = useState(false);
   useEffect(() => {
     isLoading(true);
-    fetch("http://localhost:5000/v1/event")
+    fetch("https://thawing-temple-32150.herokuapp.com/v1/event")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

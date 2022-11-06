@@ -6,7 +6,7 @@ const useAdmin = (user: any) => {
   const email = user?.email;
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/v1/user/chackAdmin/${email}`, {
+      fetch(`https://thawing-temple-32150.herokuapp.com/v1/user/chackAdmin/${email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("Token")}`,
@@ -14,7 +14,7 @@ const useAdmin = (user: any) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+      
           setAdmin(data.admin);
           setAdminLoading(false);
         });

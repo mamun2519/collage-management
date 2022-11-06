@@ -31,7 +31,7 @@ const AddClassRoutine = () => {
   useEffect(() => {
     isLoading(true);
     if (selected) {
-      fetch(`http://localhost:5000/v1/routine/chackRoutine?classs=${selected}`)
+      fetch(`https://thawing-temple-32150.herokuapp.com/v1/routine/chackRoutine?classs=${selected}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
@@ -101,7 +101,7 @@ const AddClassRoutine = () => {
     };
     console.log(createRoutine);
     if (selectedSession) {
-      fetch("http://localhost:5000/v1/routine/classRoutine", {
+      fetch("https://thawing-temple-32150.herokuapp.com/v1/routine/classRoutine", {
         method: "POST",
         body: JSON.stringify(createRoutine),
         headers: {
@@ -153,7 +153,7 @@ const AddClassRoutine = () => {
     };
 
     if (selectedSession && updateRoutineId) {
-      fetch(`http://localhost:5000/v1/routine/department/${updateRoutineId}`, {
+      fetch(`https://thawing-temple-32150.herokuapp.com/v1/routine/department/${updateRoutineId}`, {
         method: "PUT",
         body: JSON.stringify(createRoutine),
         headers: {

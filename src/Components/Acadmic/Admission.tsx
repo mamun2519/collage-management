@@ -35,7 +35,7 @@ const Admission = () => {
     isLoading(true);
     if (user?.email) {
       fetch(
-        `http://localhost:5000/v1/student/chackadmission?email=${user?.email}`
+        `https://thawing-temple-32150.herokuapp.com/v1/student/chackadmission?email=${user?.email}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -61,7 +61,7 @@ const Admission = () => {
     { title: "Degree Admission" },
     { title: "Degree Private Admission" },
     { title: "Under graduate Admission (honours)" },
-    { title: "Graduate Admission (Master's)" },
+    // { title: "Graduate Admission (Master's)" },
   ];
   const board = [
     { title: "  Select Board" },
@@ -117,6 +117,18 @@ const Admission = () => {
     { title: "Philosophy" },
     { title: "Psychology" },
   ];
+  const hscSubject = [
+    { title: "Bangla" },
+    { title: "English" },
+    { title: "Math" },
+    { title: "Scaince" },
+    { title: "Islam" },
+  ];
+  const masterSubject = [
+    { title: "Accounting" },
+   
+  ];
+
   const backHandeler = (): void => {
     setAdmission("");
   };
@@ -841,6 +853,36 @@ const Admission = () => {
 
                     <div className="mt-6">
                       {/* degree book list  */}
+                      {subjectList ===
+                        "Bachelor of Busniness Administraion(BBA)" && (
+                        <>
+                          <h1>Your First Year Subject List</h1>{" "}
+                          <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
+                            {masterSubject?.map((subject) => (
+                              <div className="">
+                                <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
+                                  {subject.title}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                      {subjectList ===
+                        "Higer Secondary Admission(hsc)" && (
+                        <>
+                          <h1>Your First Year Subject List</h1>{" "}
+                          <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
+                            {hscSubject?.map((subject) => (
+                              <div className="">
+                                <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
+                                  {subject.title}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
                       {subjectList ===
                         "Bachelor of Busniness Studies (BBS)" && (
                         <>

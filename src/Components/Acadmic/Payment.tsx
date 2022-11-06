@@ -10,7 +10,7 @@ const Payment = () => {
   const [clientSecret, setStripeClientSecret] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/v1/payment/create-payment-intent", {
+    fetch("https://thawing-temple-32150.herokuapp.com/v1/payment/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

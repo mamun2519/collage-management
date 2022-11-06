@@ -32,7 +32,7 @@ const Login = () => {
   const onSubmit = (data: UserSubmitForm) => {
     signInWithEmailAndPassword(data.email, data.password);
     axios
-      .post("http://localhost:5000/v1/user", {
+      .post("https://thawing-temple-32150.herokuapp.com/v1/user", {
         email: data.email,
       })
       .then((res: any): void => {
@@ -56,7 +56,7 @@ const Login = () => {
   }
   if (Guser) {
     axios
-      .post("http://localhost:5000/v1/user", {
+      .post("https://thawing-temple-32150.herokuapp.com/v1/user", {
         name: user?.displayName,
         email: user?.email,
       })

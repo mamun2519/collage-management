@@ -10,7 +10,7 @@ const NoticeDetailss = () => {
   const { id } = useParams();
   useEffect(() => {
     isLoading(true);
-    fetch(`http://localhost:5000/v1/notice/${id}`)
+    fetch(`https://thawing-temple-32150.herokuapp.com/v1/notice/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

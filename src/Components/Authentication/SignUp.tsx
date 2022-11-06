@@ -40,7 +40,7 @@ const SignUp: React.FC = () => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
     axios
-      .post("http://localhost:5000/v1/user", {
+      .post("https://thawing-temple-32150.herokuapp.com/v1/user", {
         name: data.name,
         email: data.email,
       })
@@ -65,7 +65,7 @@ const SignUp: React.FC = () => {
   }
   if (Guser) {
     axios
-      .post("http://localhost:5000/v1/user", {
+      .post("https://thawing-temple-32150.herokuapp.com/v1/user", {
         name: user?.displayName,
         email: user?.email,
       })

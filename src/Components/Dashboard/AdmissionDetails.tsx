@@ -19,7 +19,7 @@ const AdmissionDetails = () => {
   }
   useEffect(() => {
     isLoading(true);
-    fetch(`http://localhost:5000/v1/student/admission/${id}`)
+    fetch(`https://thawing-temple-32150.herokuapp.com/v1/student/admission/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

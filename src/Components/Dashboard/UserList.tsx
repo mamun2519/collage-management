@@ -19,7 +19,7 @@ const UserList = () => {
   const [adminlimit, setadminLimit] = useState<any>();
   useEffect(() => {
     fetch(
-      `http://localhost:5000/v1/user?page=${page}&limit=${limit}&search=${search}`
+      `https://thawing-temple-32150.herokuapp.com/v1/user?page=${page}&limit=${limit}&search=${search}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -31,7 +31,7 @@ const UserList = () => {
   }, [users]);
   useEffect(() => {
     fetch(
-      `http://localhost:5000/v1/user/admin?page=${adminpage}&limit=${adminlimit}&search=${adminsearch}`
+      `https://thawing-temple-32150.herokuapp.com/v1/user/admin?page=${adminpage}&limit=${adminlimit}&search=${adminsearch}`
     )
       .then((res) => res.json())
       .then((data) => {

@@ -7,7 +7,7 @@ const EventDetails = () => {
 
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:5000/v1/event/${id}`)
+    fetch(`https://thawing-temple-32150.herokuapp.com/v1/event/${id}`)
       .then((res) => res.json())
       .then((data) => setEvent(data.event));
   }, []);

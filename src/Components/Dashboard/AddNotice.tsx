@@ -41,7 +41,7 @@ const AddNotice = () => {
       date: data.date,
       description: data.description,
     };
-    fetch(`http://localhost:5000/v1/notice`, {
+    fetch(`https://thawing-temple-32150.herokuapp.com/v1/notice`, {
       method: "POST",
       body: JSON.stringify(routine),
       headers: {

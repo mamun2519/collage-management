@@ -34,7 +34,7 @@ const Result = () => {
   const onSubmit = (data: UserSubmitForm) => {
     isLoading(true);
     fetch(
-      `http://localhost:5000/v1/student/result?session=${data?.session}&roll=${data?.roll}&examName=${data?.examName}&classs=${data?.classs}`
+      `https://thawing-temple-32150.herokuapp.com/v1/student/result?session=${data?.session}&roll=${data?.roll}&examName=${data?.examName}&classs=${data?.classs}`
     )
       .then((res) => res.json())
       .then((result) => {

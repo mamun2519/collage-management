@@ -19,7 +19,7 @@ const BBS = () => {
   useEffect(() => {
     isLoading(true);
     fetch(
-      `http://localhost:5000/v1/student/deparment/student?department=${department}`
+      `https://thawing-temple-32150.herokuapp.com/v1/student/deparment/student?department=${department}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -29,7 +29,7 @@ const BBS = () => {
         }
       });
     fetch(
-      `http://localhost:5000/v1/teacher/department?department=${department}`
+      `https://thawing-temple-32150.herokuapp.com/v1/teacher/department?department=${department}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -39,7 +39,7 @@ const BBS = () => {
         }
       });
     fetch(
-      `http://localhost:5000/v1/routine/departments?department=${department}`
+      `https://thawing-temple-32150.herokuapp.com/v1/routine/departments?department=${department}`
     )
       .then((res) => res.json())
       .then((data) => {

@@ -12,7 +12,7 @@ const AdmissionList = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   useEffect(()=>{
     isLoading(true)
-    fetch(`http://localhost:5000/v1/student/admission/?page=${page}&limit=${limit}&search=${search}`)
+    fetch(`https://thawing-temple-32150.herokuapp.com/v1/student/admission/?page=${page}&limit=${limit}&search=${search}`)
     .then(res => res.json())
     .then(data => {
       if(data.success){

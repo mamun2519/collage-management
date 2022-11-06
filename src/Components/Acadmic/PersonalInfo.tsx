@@ -10,6 +10,7 @@ import { ThemeContext } from "../../App";
 const PersonalInfo = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [images, setImages] = useState("");
+  const [picture, setPicture] = useState<any>("");
   const [user] = useAuthState(auth);
   type UserSubmitForm = {
     country: string;
@@ -22,6 +23,7 @@ const PersonalInfo = () => {
     birthday: string;
     firstName: string;
     lastName: string;
+    images: string;
   };
   const navigate = useNavigate();
 
@@ -32,7 +34,7 @@ const PersonalInfo = () => {
     handleSubmit,
   } = useForm<UserSubmitForm>();
   const onSubmit = (data: UserSubmitForm) => {
-    console.log(data);
+   
     const studentInfo = {
       name: `${data.firstName} ${data.lastName}`,
       country: data.country,
@@ -43,15 +45,16 @@ const PersonalInfo = () => {
       gender: data.gender,
       age: data.age,
       birthday: data.birthday,
+      // images: picture
     };
-    localStorage.setItem("studentInfo", JSON.stringify(studentInfo));
+    localStorage?.setItem("studentInfo", JSON.stringify(studentInfo));
     navigate("/onlineAdmission/personalInfromation/admissionPreview");
   };
-  const imagesPitureHendeler = (e: any) => {
-    const reader: any = new FileReader();
+  const teacherPictureHendeler = (e: any): void => {
+    const reader = new FileReader();
     reader.onload = () => {
       if (reader.readyState === 2) {
-        setImages(reader?.result);
+        setPicture(reader.result);
       }
     };
     reader.readAsDataURL(e.target.files[0]);
@@ -338,6 +341,67 @@ const PersonalInfo = () => {
                   )}
                 </label>
               </div>
+              <div>
+              <p
+                  className={` mb-2 ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Picture
+                </p>
+                  <input
+                    {...register("images", {
+                      required: {
+                        value: true,
+                        message: "images is Required",
+                      },
+                    })}
+                    onChange={(e) => teacherPictureHendeler(e)}
+                    type="file"
+                    name="image-uplode"
+                    id="product-img"
+                    hidden
+                    placeholder="Enter seller name"
+                    //   class="block w-full px-4 py-2 mt-2 pl-12  bg-white border rounded-md   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                  />
+                  <label htmlFor={"product-img"} className=" ">
+                    <div>
+                      {!picture && (
+                        <div className="h-32 lg:w-44 w-52 border rounded-lg flex justify-center  items-center">
+                          <div className=" ">
+                            <span className="text-6xl text-[#EC255A]">
+                              <MdAddPhotoAlternate />
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                      {picture && (
+                        <div className="h-32 w-44 border rounded-md flex justify-center  items-center">
+                          <div className="h-32 w-44 relative">
+                            <img
+                              className="h-32 w-44 p-1 rounded-lg"
+                              src={picture}
+                              alt="productPicure"
+                            />
+                            <span
+                              onClick={() => setPicture("")}
+                              className=" absolute text-2xl top-[5px] text-red-500 right-[5px] cursor-pointer"
+                            >
+                              <TiDelete />
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <label className="label">
+                      {errors.images?.type === "required" && (
+                        <span className="text-red-500">
+                          {errors.images.message}
+                        </span>
+                      )}
+                    </label>
+                  </label>
+                </div>
             </div>
           </div>
           <div className="mt-5 px-5">

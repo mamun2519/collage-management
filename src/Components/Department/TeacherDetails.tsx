@@ -12,7 +12,7 @@ const TeacherDetails = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [teacher, setTeacher] = useState<any>({});
   useEffect(() => {
-    fetch(`http://localhost:5000/v1/teacher/department/${id}`)
+    fetch(`https://thawing-temple-32150.herokuapp.com/v1/teacher/department/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

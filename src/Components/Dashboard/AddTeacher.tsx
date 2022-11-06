@@ -55,10 +55,10 @@ const AddTeacher = () => {
     myForm.append("facebooId", data.facebooId);
     myForm.append("linkedinId", data.linkedinId);
     myForm.append("images", picture);
-    console.log(myForm);
+ 
     await axios({
       method: "POST",
-      url: "http://localhost:5000/v1/teacher/add",
+      url: "https://thawing-temple-32150.herokuapp.com/v1/teacher/add",
       data: myForm,
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -86,7 +86,7 @@ const AddTeacher = () => {
     };
     reader.readAsDataURL(e.target.files[0]);
   };
-  console.log(picture);
+
   return (
     <>
     <div className="mt-10  w-full lg:w-3/4 mx-auto  grid grid-cols-1 lg:flex justify-between items-center">

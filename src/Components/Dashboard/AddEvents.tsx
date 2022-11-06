@@ -33,7 +33,7 @@ const AddEvents = () => {
     console.log(myForm);
     await axios({
       method: "POST",
-      url: "http://localhost:5000/v1/event",
+      url: "https://thawing-temple-32150.herokuapp.com/v1/event",
       data: myForm,
       headers: { "Content-Type": "multipart/form-data" },
     })

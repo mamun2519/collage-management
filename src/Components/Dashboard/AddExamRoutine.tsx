@@ -18,7 +18,7 @@ const AddExamRoutine = () => {
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     isLoading(true);
-    fetch("http://localhost:5000/v1/routine/classRoutine")
+    fetch("https://thawing-temple-32150.herokuapp.com/v1/routine/classRoutine")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -72,7 +72,7 @@ const AddExamRoutine = () => {
         examName: selectedExamType,
         routines,
       };
-      fetch(`http://localhost:5000/v1/routine/examRoutine/${routineId}`, {
+      fetch(`https://thawing-temple-32150.herokuapp.com/v1/routine/examRoutine/${routineId}`, {
         method: "POST",
         body: JSON.stringify(examRoutine),
         headers: {

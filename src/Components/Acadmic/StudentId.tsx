@@ -13,7 +13,7 @@ const StudentId = () => {
     console.log("helo");
     if (user?.email) {
       fetch(
-        `http://localhost:5000/v1/student/chackadmission?email=${user?.email}`
+        `https://thawing-temple-32150.herokuapp.com/v1/student/chackadmission?email=${user?.email}`
       )
         .then((res) => res.json())
         .then((data) => {
