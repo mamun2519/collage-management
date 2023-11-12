@@ -85,9 +85,9 @@ export const links = [
         Head: "Online Service",
         sublink: [
           // { name: "syllabus", link: "/" },
-          { name: "Class Rotine", link: "/routine" },
+          { name: "Class Routine", link: "/routine" },
           { name: "Find Result", link: "/result" },
-          { name: "All Department Result", link: "/reslt" },
+          // { name: "All Department Result", link: "/reslt" },
           { name: "Student Id card", link: "/studentId" },
           { name: "Online Admission", link: "/onlineAdmission" },
         ],

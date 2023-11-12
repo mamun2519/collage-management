@@ -21,7 +21,7 @@ const Student = ({ students }: StudentInfo) => {
                 <thead>
                   <tr>
                     <th
-                      className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                      className={`px-5 py-3 border-b-2 w-72   text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
                           ? "bg-gray-100 text-gray-600 border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
@@ -30,7 +30,7 @@ const Student = ({ students }: StudentInfo) => {
                       Name
                     </th>
                     <th
-                      className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                      className={`px-5 py-3 border-b-2 w-72   text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
                           ? "bg-gray-100 text-gray-600 border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
@@ -39,7 +39,7 @@ const Student = ({ students }: StudentInfo) => {
                       Roll
                     </th>
                     <th
-                      className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                      className={`px-5 py-3 border-b-2 w-72  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
                           ? "bg-gray-100 text-gray-600 border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
@@ -48,7 +48,7 @@ const Student = ({ students }: StudentInfo) => {
                       Reg
                     </th>
                     <th
-                      className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                      className={`px-5 py-3 border-b-2 w-60  text-left text-xs font-semibold   uppercase tracking-wider ${
                         theme == "light"
                           ? "bg-gray-100 text-gray-600 border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"

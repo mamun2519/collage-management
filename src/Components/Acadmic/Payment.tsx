@@ -33,7 +33,7 @@ const Payment = () => {
   return (
     <div className="my-10 max-w-7xl m-auto px-3">
       <div className="card w-full bg-base-100 border  pb-5">
-        <div className="bg-red-500 h-16 flex items-center  justify-between px-8">
+        <div className="bg-[#2374e1] h-16 flex items-center  justify-between px-8">
           <div>
             <span
               onClick={() => navigate("/onlineAdmission/personalInfromation")}
@@ -44,7 +44,7 @@ const Payment = () => {
           </div>
         </div>
         <div className="w-max mx-auto">
-          <div className="border-b-2 rounded-full border-red-500 ">
+          <div className="border-b-2 rounded-full border-[#2374e1] ">
             <h1 className="text-xl pb-2 text-center mt-10 lg:px-12 px-6 font-medium uppercase">
               Payment Now
             </h1>

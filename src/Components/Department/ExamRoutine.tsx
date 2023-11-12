@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../App";
 import ExamRoutineRow from "./ExamRoutineRow";
+import { useNavigate } from "react-router-dom";
 interface RoutineInfo {
   routine: any;
 }
 const ExamRoutine = ({ routine }: RoutineInfo) => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
+  const navigate = useNavigate();
   return (
     <div className="my-10">
-      {routine[0]?.examRoutine?.length !== 0 ? (
+      {routine?.length !== 0 ? (
         <div
           className={`card lg:w-3/4 w-full mx-auto  border  shadow-lg  ${
             theme == "light"
@@ -18,7 +20,7 @@ const ExamRoutine = ({ routine }: RoutineInfo) => {
         >
           <div className="p-5 ">
             <p className="text-2xl font-medium  uppercase text-center">
-              Realwai public Collage,Chittagong
+              Government Public Collage,Chittagong
             </p>
             <p
               className={`text-lg  font-sans  text-center ${
@@ -141,7 +143,7 @@ const ExamRoutine = ({ routine }: RoutineInfo) => {
             </p>
             <p>Thank You.</p>
             <button
-              // onClick={() => navigate("/onlineAdmission")}
+              onClick={() => navigate("/")}
               className="bg-[#2374e1] text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold"
             >
               Back

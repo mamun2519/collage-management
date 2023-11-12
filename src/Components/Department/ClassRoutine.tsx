@@ -1,15 +1,16 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../App";
 import RoutineRow from "./RoutineRow";
+import { useNavigate } from "react-router-dom";
 interface RoutineInfo {
   routine: any;
 }
 const ClassRoutine = ({ routine }: RoutineInfo) => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
-  console.log(routine[0]?.classRoutine);
+  const navigate = useNavigate();
   return (
     <div>
-      {routine[0]?.classRoutine?.length !== 0 ? (
+      {routine.length !== 0 ? (
         <div className="my-10">
           <div
             className={`card lg:w-3/4 w-full mx-auto  border  shadow-lg  ${
@@ -20,7 +21,7 @@ const ClassRoutine = ({ routine }: RoutineInfo) => {
           >
             <div className="p-5 ">
               <p className="text-2xl font-medium  uppercase text-center">
-                Realwai public Collage,Chittagong
+                Government Public Collage,Chittagong
               </p>
               <p
                 className={`text-lg  font-sans  text-center ${
@@ -85,7 +86,7 @@ const ClassRoutine = ({ routine }: RoutineInfo) => {
                               : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                           }`}
                         >
-                          1st priode
+                          1st Period
                         </th>
                         <th
                           className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
@@ -94,7 +95,7 @@ const ClassRoutine = ({ routine }: RoutineInfo) => {
                               : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                           }`}
                         >
-                          2nd priode
+                          2nd Period
                         </th>
                         <th
                           className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
@@ -103,7 +104,7 @@ const ClassRoutine = ({ routine }: RoutineInfo) => {
                               : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                           }`}
                         >
-                          3th priode
+                          3th Period
                         </th>
                         <th
                           className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
@@ -112,7 +113,7 @@ const ClassRoutine = ({ routine }: RoutineInfo) => {
                               : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                           }`}
                         >
-                          4th priode
+                          4th Period
                         </th>
                       </tr>
                     </thead>
@@ -139,19 +140,23 @@ const ClassRoutine = ({ routine }: RoutineInfo) => {
           </div>
         </div>
       ) : (
-        <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border pb-5">
+        <div className="card lg:w-9/12 w-full mx-auto bg-base-100 border pb-5 mt-10">
           <div className="flex justify-center ">
-            <img className="w-[350px]" src="/assets/picture/sorry.gif" alt="" />
+            <img
+              className="w-[350px] "
+              src="/assets/picture/sorry.gif"
+              alt=""
+            />
           </div>
           <div className="text-center">
             <p className="  font-medium text-xl">Sorry,</p>
             <p className="text-gray-800 mt-1">
               {" "}
-              Collage Authority Class Routine Dont Published.
+              Collage Authority Class Routine Don't Published.
             </p>
             <p>Thank You.</p>
             <button
-              // onClick={() => navigate("/onlineAdmission")}
+              onClick={() => navigate("/")}
               className="bg-red-500 text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold"
             >
               Back

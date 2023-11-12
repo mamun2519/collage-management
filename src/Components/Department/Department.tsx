@@ -9,12 +9,14 @@ import Overview from "./Overview";
 import Student from "./Student";
 import Teacher from "./Teacher";
 import { ThemeContext } from "../../App";
+import { MdKeyboardArrowRight } from "react-icons/md";
 const BBS = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const { department } = useParams();
   const [students, setStudents] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [routine, setRoutine] = useState([]);
+  console.log(routine);
   const [loading, isLoading] = useState(false);
   useEffect(() => {
     isLoading(true);
@@ -65,7 +67,7 @@ const BBS = () => {
     },
 
     {
-      name: "Student infromatio",
+      name: "Department Of Student",
       content: (
         <div data-aos="fade-right" data-aos-duration="1000">
           <Student students={students} />
@@ -73,7 +75,7 @@ const BBS = () => {
       ),
     },
     {
-      name: "Teacher infromation ",
+      name: "Department Of Teacher ",
       content: (
         <div data-aos="fade-right" data-aos-duration="1000">
           <Teacher teachers={teachers} />
@@ -104,20 +106,47 @@ const BBS = () => {
         <Loading></Loading>
       ) : (
         <>
-          <div className="h-[450px] relative">
+          {/* <div className="h-[450px] relative">
             <img
               className="lg:h-[450px] h-[250px] w-full "
               src="https://upload.wikimedia.org/wikipedia/commons/6/68/Rajshahi_College_Campus_01.jpg"
               alt="Shoes"
             />
-          </div>
-          <div className="absolute lg:top-[270px] lg:left-[150px] top-[170px] left-[60px]">
-            {/* <p className="lg:text-5xl text-3xl uppercase font-medium  text-black">
-          Department of {department}
-        </p> */}
+          </div> */}
+          <div className="bg-gray-700">
+            <div className="h-60   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-center items-center">
+              <h1 className="text-4xl  font-medium text-white up uppercase ">
+                department Of {department}
+              </h1>
+
+              {/* <div
+                className={`flex py-2 ]  px-8 gap-5 rounded-lg  font-medium ${
+                  theme == "light"
+                    ? "bg-[#2374e1] text-white"
+                    : "bg-[#242526] text-[#e4e6eb]"
+                }`}
+              >
+                <div className=" flex gap-2">
+                  {" "}
+                  <span className="px-0">Home </span>
+                  <span className="mt-1 text-xl text-white">
+                    <MdKeyboardArrowRight />
+                  </span>
+                </div>
+                <div className="flex gap-2">
+                  {" "}
+                  <span className="px-0">About</span>
+                  <span className="mt-1 text-xl text-white">
+                    <MdKeyboardArrowRight />
+                  </span>
+                </div>
+
+                <span className="text-white  font-medium">About Collage</span>
+              </div> */}
+            </div>
           </div>
 
-          <div className="my-5 max-w-7xl m-auto px-3">
+          <div className="my-5 max-w-7xl m-auto px-3 mt-10">
             <Tab.Group>
               <Tab.List className=" rounded-lg  lg:flex justify-center">
                 {Tabs.map((item, index) => (
@@ -144,7 +173,7 @@ const BBS = () => {
                   </Tab>
                 ))}
               </Tab.List>
-              <Tab.Panels className="pt-5">
+              <Tab.Panels className="pt-2">
                 {Tabs.map((item, index) => (
                   <Tab.Panel>{item.content}</Tab.Panel>
                 ))}
