@@ -44,6 +44,7 @@ import RequreAdmin from "./Components/Authentication/RequreAdmin";
 import HomeNotice from "./Components/Home/HomeNotice";
 import TeacherDetails from "./Components/Department/TeacherDetails";
 import StudentDetails from "./Components/Department/StudentDetails";
+import GalleryPage from "./Components/About/Galery";
 export const ThemeContext: any = createContext(null);
 function App() {
   const [theme, setTheme] = useState("light");
@@ -58,13 +59,20 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/notice" element={<HomeNotice />}></Route>
-          <Route path="/teacherDetails/:id" element={<TeacherDetails />}></Route>
-          <Route path="/studentDetails/:id" element={<StudentDetails />}></Route>
+          <Route
+            path="/teacherDetails/:id"
+            element={<TeacherDetails />}
+          ></Route>
+          <Route
+            path="/studentDetails/:id"
+            element={<StudentDetails />}
+          ></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
           <Route path="/about/teachers" element={<Teachers />}></Route>
           <Route path="/about/history" element={<History />}></Route>
           <Route path="/about/collage" element={<About />}></Route>
+          <Route path="/about/gallery" element={<GalleryPage />}></Route>
           <Route path="/about/mission&Vission" element={<Mission />}></Route>
           <Route path="/about/collageLocation" element={<Location />}></Route>
           <Route path="/about/contact" element={<Contact />}></Route>
@@ -121,91 +129,156 @@ function App() {
           <Route path="/eventDetails/:id" element={<EventDetails />}></Route>
           <Route path="/noticeDetails/:id" element={<NoticeDetailss />}></Route>
           <Route path="/routine" element={<ClassRoutine />}></Route>
-          <Route path="/dashboard" element={<RequreAuth><RequreAdmin>
-            <Dashboard />
-            </RequreAdmin></RequreAuth>}>
+          <Route
+            path="/dashboard"
+            element={
+              <RequreAuth>
+                <RequreAdmin>
+                  <Dashboard />
+                </RequreAdmin>
+              </RequreAuth>
+            }
+          >
             <Route
               path="/dashboard/admissionList"
-              element={<RequreAuth>
-                <RequreAdmin><AdmissionList /></RequreAdmin>
-              </RequreAuth>}
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <AdmissionList />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
             />
             <Route
               path="/dashboard/admissionList/addmissionDetails/:id"
-              element={<RequreAuth>
-              <RequreAdmin><AdmissionDetails /></RequreAdmin>
-              </RequreAuth>}
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <AdmissionDetails />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
             />
-            <Route path="/dashboard/studentList" element={<RequreAuth><RequreAdmin>
-              <StudentLIst /></RequreAdmin></RequreAuth>} />
+            <Route
+              path="/dashboard/studentList"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <StudentLIst />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
             <Route
               path="/dashboard/classRoutine"
-              element={<RequreAuth>
-                <RequreAdmin><AddClassRoutine /></RequreAdmin>
-              </RequreAuth>}
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <AddClassRoutine />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
             />
-            <Route path="/dashboard/examRoutine" element={<RequreAuth>
-              <RequreAdmin><AddExamRoutine /></RequreAdmin>
-            </RequreAuth>} />
-            <Route path="/dashboard/addNotice" element={
-              <RequreAuth>
-              <RequreAdmin>
-              <AddNotice />
-              </RequreAdmin>
-              </RequreAuth>
-            
-            } />
-            <Route path="/dashboard/notice" element={
-              <RequreAuth>
-              <RequreAdmin>
-              <Notice />
-              </RequreAdmin>
-              </RequreAuth>
-           } />
-            <Route path="/dashboard/notice" element={
-              <RequreAuth>
-              <RequreAdmin>
-              <Notice />
-              </RequreAdmin>
-              </RequreAuth>
-            } />
-            <Route path="/dashboard/addTeacher" element={
-               <RequreAuth>
-               <RequreAdmin>
-               <AddTeacher />
-               </RequreAdmin>
-              </RequreAuth>
-           } />
-            <Route path="/dashboard/teacherList" element={
-              <RequreAuth>
-              <RequreAdmin>
-            <TeacherList />
-            </RequreAdmin>
-              </RequreAuth>} />
-            <Route path="/dashboard/addEvents" element={
+            <Route
+              path="/dashboard/examRoutine"
+              element={
                 <RequreAuth>
-                <RequreAdmin>
-            <AddEvents />
-            </RequreAdmin>
-              </RequreAuth>} />
-            <Route path="/dashboard/events" element={
+                  <RequreAdmin>
+                    <AddExamRoutine />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
+            <Route
+              path="/dashboard/addNotice"
+              element={
                 <RequreAuth>
-                <RequreAdmin>
-            <Events />
-            </RequreAdmin>
-              </RequreAuth>} />
-            <Route path="/dashboard/results" element={
-              <RequreAuth>
-              <RequreAdmin>
-            <Results />
-            </RequreAdmin>
-              </RequreAuth>} />
-            <Route path="/dashboard/userList" element={
-               <RequreAuth>
-               <RequreAdmin>
-            <UserList />
-            </RequreAdmin>
-              </RequreAuth>} />
+                  <RequreAdmin>
+                    <AddNotice />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
+            <Route
+              path="/dashboard/notice"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <Notice />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
+            <Route
+              path="/dashboard/notice"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <Notice />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
+            <Route
+              path="/dashboard/addTeacher"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <AddTeacher />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
+            <Route
+              path="/dashboard/teacherList"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <TeacherList />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
+            <Route
+              path="/dashboard/addEvents"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <AddEvents />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
+            <Route
+              path="/dashboard/events"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <Events />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
+            <Route
+              path="/dashboard/results"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <Results />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
+            <Route
+              path="/dashboard/userList"
+              element={
+                <RequreAuth>
+                  <RequreAdmin>
+                    <UserList />
+                  </RequreAdmin>
+                </RequreAuth>
+              }
+            />
             <Route
               path="/dashboard/results/published/:id"
               element={<RasultPublished />}

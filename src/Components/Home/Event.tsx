@@ -15,6 +15,8 @@ const Event = () => {
       .then((data) => setEvent(data.events));
   }, []);
 
+  console.log(event);
+
   return (
     <div className="my-40  max-w-7xl m-auto px-3">
       <div className="w-max mx-auto">
@@ -32,11 +34,11 @@ const Event = () => {
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-20">
         <div className=" grid lg:grid-cols-3 grid-cols-1 gap-10 mt-10">
           {event?.map((event: any) => (
             <div key={event?._id} className="allEvent">
-              <div className="card  glass lg:h-76 h-full relative">
+              <div className="card  glass lg:h-76 h-full relative  border shadow">
                 <figure>
                   <img
                     className="w-full h-[250px]"

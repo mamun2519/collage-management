@@ -6,7 +6,7 @@ const Location = () => {
   return (
     <>
       <div className="bg-gray-700">
-        <div className="h-52   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-between items-center">
+        <div className="h-52   max-w-7xl m-auto p-5 grid grid-cols-1 lg:flex justify-between items-center">
           <h1 className="text-4xl  font-medium text-white up">
             College Location
           </h1>

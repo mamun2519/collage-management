@@ -40,7 +40,7 @@ const About = () => {
 
       <div className="px-3">
         <div
-          className={`card  lg:w-full w-[280px] max-w-7xl mx-auto px-3 border  shadow-md my-20 ${
+          className={`card  lg:w-full w-[280px] max-w-7xl mx-auto p-5 border  shadow-md my-20 ${
             theme == "light"
               ? "bg-base-100"
               : "bg-[#242526] text-[#e4e6eb] border-[#414343]"

@@ -44,7 +44,7 @@ const NoticeDetailss = () => {
               >
                 <div className="p-5 ">
                   <p className="text-2xl font-medium  uppercase text-center">
-                    Realwai public Collage,Chittagong
+                    Government Public Collage
                   </p>
                   <p className="text-lg  font-sans text-gray-800 text-center mt-1">
                     {notice?.classs}
@@ -90,7 +90,7 @@ const NoticeDetailss = () => {
                 theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
               }`}
             >
-              Dowenlode PDF
+              Downloads PDF
             </button>
           </div>
         </>

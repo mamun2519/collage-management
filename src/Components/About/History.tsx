@@ -8,7 +8,7 @@ const History = () => {
       <div className="bg-gray-700">
         <div className="h-52   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-between items-center">
           <h1 className="text-4xl  font-medium text-white up">
-            Hisory of Collage
+            History of Collage
           </h1>
 
           <div
@@ -40,7 +40,7 @@ const History = () => {
 
       <div className="px-3">
         <div
-          className={`card  lg:w-full w-[280px] max-w-7xl mx-auto px-3 border  shadow-md my-20 ${
+          className={`card  lg:w-full w-[280px] max-w-7xl mx-auto p-5 border  shadow-md my-20 ${
             theme == "light"
               ? "bg-base-100"
               : "bg-[#242526] text-[#e4e6eb] border-[#414343]"

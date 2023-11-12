@@ -124,7 +124,7 @@ const Contact = () => {
                       {...register("date", {
                         required: {
                           value: true,
-                          message: "Dubject is Required",
+                          message: "subject is Required",
                         },
                       })}
                       className="h-12  border w-full rounded-full   focus:outline-emerald-100 px-20"
@@ -200,18 +200,20 @@ const Contact = () => {
               </div>
 
               <div className=" text-center mt-5">
-                <input
-                  className={` font-semibold text-white px-4 rounded-lg py-1 ${
+                <button
+                  className={` font-semibold text-white px-4 rounded-lg py-2 ${
                     theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
                   }`}
                   type="submit"
                   value="Send Your Message"
-                />
+                >
+                  Send Message
+                </button>
               </div>
             </form>
           </div>
           <div className="p-5">
-            <div className=" flex justify-center items-center h-32 bg-red-500  rounded-lg">
+            <div className=" flex pl-8 items-center h-32 bg-[#2374e1] text-white  rounded-lg">
               <div>
                 <p className="text-xl  font-medium text-white">
                   OUR CONTACT NUMBER
@@ -219,17 +221,17 @@ const Contact = () => {
                 <p className="text-lg text-white mt-1">031-636051</p>
               </div>
             </div>
-            <div className=" flex justify-center items-center h-32 bg-red-500  rounded-lg mt-5">
+            <div className=" flex pl-8 items-center h-32 bg-[#2374e1] text-white  rounded-lg mt-5">
               <div>
                 <p className="text-xl  font-medium text-white">
                   OUR OFFICE LOCATION
                 </p>
                 <p className="text-lg text-white mt-1">
-                  Government City College, Chattogram
+                  Government City College, Chittagong
                 </p>
               </div>
             </div>
-            <div className=" flex justify-center items-center h-32 bg-red-500  rounded-lg mt-5">
+            <div className=" flex  items-center h-32 bg-[#2374e1] text-white  rounded-lg mt-5 pl-8">
               <div>
                 <p className="text-xl  font-medium text-white">
                   OUR CONTACT E-MAIL
