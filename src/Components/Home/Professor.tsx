@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../App";
+import Teacher1 from "../../assets/tacher1.png";
+import Teacher2 from "../../assets/teacher2.png";
 const Professor = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   return (
@@ -51,10 +53,7 @@ const Professor = () => {
                 : "border border-[#414343] bg-[#242526] text-[#e4e6eb]"
             }`}
           >
-            <img
-              src="https://gcom.edu.bd/wp-content/uploads/2022/09/Gcom_VP-1382x1536.png"
-              alt=""
-            />
+            <img src={Teacher1} alt="" />
           </div>
         </div>
       </div>
@@ -67,10 +66,7 @@ const Professor = () => {
                 : "border border-[#414343] bg-[#242526] text-[#e4e6eb]"
             }`}
           >
-            <img
-              src="https://gcom.edu.bd/wp-content/uploads/2022/09/Gcom_VP-1382x1536.png"
-              alt=""
-            />
+            <img src={Teacher2} alt="" />
           </div>
         </div>
         <div

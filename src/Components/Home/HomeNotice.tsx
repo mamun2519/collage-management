@@ -20,7 +20,7 @@ const HomeNotice = () => {
         }
       });
   }, [page, limit, search]);
-  console.log(nocties);
+
   const priviesPage = () => {
     if (page > 1) {
       setPage(page - 1);

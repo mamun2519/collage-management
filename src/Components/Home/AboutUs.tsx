@@ -1,34 +1,39 @@
-import React , {useContext} from "react";
+import React, { useContext } from "react";
 import { ThemeContext } from "../../App";
+import AboutUsPic from "../../assets/About us page-cuate.svg";
 const AboutUs = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   return (
-    
-    <div className="my-20 max-w-7xl m-auto px-3 ">
-     <div className="w-max mx-auto">
-      
-      <div className={`border-b-[3px] rounded-full ${theme == "light"? "border-[#2374e1] ": "border-[#e4e6eb] text-[#e4e6eb]"}`}>
-      <h1 className="text-4xl pb-2 text-center mt-10 px-12  font-medium uppercase">ABOUT US</h1>
+    <div className="my-40 max-w-7xl m-auto px-3 ">
+      <div className="w-max mx-auto ">
+        <div
+          className={`border-b-[3px] rounded-full ${
+            theme == "light"
+              ? "border-[#2374e1] "
+              : "border-[#e4e6eb] text-[#e4e6eb]"
+          }`}
+        >
+          <h1 className="text-4xl pb-2 text-center mt-10 px-12  font-medium uppercase">
+            ABOUT US
+          </h1>
+        </div>
       </div>
 
-      </div>
-  
-   
-      <div className=" grid lg:grid-cols-2 grid-cols-1 gap-5  mt-10">
+      <div className=" grid lg:grid-cols-2 grid-cols-1 gap-5  mt-20">
         <div className=" flex  items-center">
-          <img
-            className="w-[450px]"
-            src="assets/picture/104879-kids.gif"
-            alt=""
-          />
+          <img className="w-full h-full" src={AboutUsPic} alt="" />
         </div>
         <div className="w-full px-4 ">
           <div
             tabIndex={0}
-            className={`collapse collapse-open border  rounded-box ${theme == "light"? "bg-base-100 border-base-300 ": "bg-[#242526] border-[#414343] text-[#e4e6eb]"}`}
+            className={`collapse collapse-open border  rounded-box ${
+              theme == "light"
+                ? "bg-base-100 border-base-300 "
+                : "bg-[#242526] border-[#414343] text-[#e4e6eb]"
+            }`}
           >
             <div className="collapse-title text-xl font-medium">
-              Focus me to see content
+              Our Collage Details
             </div>
             <div className="collapse-content">
               <p>
@@ -48,10 +53,14 @@ const AboutUs = () => {
           </div>
           <div
             tabIndex={0}
-            className={`collapse collapse-plus border  rounded-box ${theme == "light"? "bg-base-100 border-base-300 ":  "border-[#414343]  bg-[#242526] text-[#e4e6eb]"}`}
+            className={`collapse collapse-plus border  rounded-box ${
+              theme == "light"
+                ? "bg-base-100 border-base-300 "
+                : "border-[#414343]  bg-[#242526] text-[#e4e6eb]"
+            }`}
           >
             <div className="collapse-title text-xl font-medium">
-              Focus me to see content
+              Our Total Teacher
             </div>
             <div className="collapse-content">
               <p>
@@ -71,10 +80,14 @@ const AboutUs = () => {
           </div>
           <div
             tabIndex={0}
-            className={`collapse collapse-plus border  rounded-box ${theme == "light"? "bg-base-100 border-base-300 ": "border-[#414343] bg-[#242526] text-[#e4e6eb]"}`}
+            className={`collapse collapse-plus border  rounded-box ${
+              theme == "light"
+                ? "bg-base-100 border-base-300 "
+                : "border-[#414343] bg-[#242526] text-[#e4e6eb]"
+            }`}
           >
             <div className="collapse-title text-xl font-medium">
-              Focus me to see content
+              Section, Notice Or event Details
             </div>
             <div className="collapse-content">
               <p>
@@ -94,10 +107,14 @@ const AboutUs = () => {
           </div>
           <div
             tabIndex={0}
-            className={`collapse collapse-plus border  rounded-box ${theme == "light"? "bg-base-100 border-base-300": "bg-[#242526] text-[#e4e6eb] border-[#414343]"}`}
+            className={`collapse collapse-plus border  rounded-box ${
+              theme == "light"
+                ? "bg-base-100 border-base-300"
+                : "bg-[#242526] text-[#e4e6eb] border-[#414343]"
+            }`}
           >
             <div className="collapse-title text-xl font-medium">
-              Focus me to see content
+              Collage Information
             </div>
             <div className="collapse-content">
               <p>

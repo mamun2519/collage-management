@@ -4,10 +4,10 @@ import { ThemeContext } from "../../App";
 const Latesnewes = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   return (
-    <div className=" mt-[6px] mb-0 pb-0  ">
-      <p className="w-full h-8 relative ">
+    <div className=" mt-[2px] mb-0 pb-0  ">
+      <p className="w-full h-12 relative ">
         <span
-          className={`  font-medium rounded-r-md text-white lg:px-10 px-4 py-2 font-mediu ${
+          className={`  font-medium rounded-r-md text-white lg:px-10 px-4 py-2  h-full font-mediu ${
             theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
           }`}
         >

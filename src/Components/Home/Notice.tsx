@@ -44,7 +44,7 @@ const Notice = () => {
       </div>
       <div>
         {/* <!-- component --> */}
-        <body className="antialiased font-sans ">
+        <body className="antialiased font-sans mt-10">
           <div className="container mx-auto px-4 sm:px-8">
             <div className="py-8">
               <div className="my-2 flex sm:flex-row flex-col">
