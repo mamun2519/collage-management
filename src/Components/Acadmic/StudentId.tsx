@@ -13,7 +13,7 @@ const StudentId = () => {
     console.log("helo");
     if (user?.email) {
       fetch(
-        `https://thawing-temple-32150.herokuapp.com/v1/student/chackadmission?email=${user?.email}`
+        `http://localhost:5000/v1/student/chackadmission?email=${user?.email}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -45,9 +45,7 @@ const StudentId = () => {
       {studentCard && (
         <>
           <div className=" grid lg:grid-cols-2  col-span-1 ">
-            <div
-              className="card lg:w-3/5 w-full  h-[500px] mx-auto bg-base-100 border  shadow-lg mt-5"
-            >
+            <div className="card lg:w-3/5 w-full  h-[500px] mx-auto bg-base-100 border  shadow-lg mt-5">
               <div className="bg-red-500 h-[150px] relative rounded-f"></div>
               <div className="avatar absolute lg:top-28 top-20 lg:left-32 left-28">
                 <div className="w-28 rounded-full ">

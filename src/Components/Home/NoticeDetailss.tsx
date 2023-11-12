@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef , useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import Loading from "../Shared/Loading";
@@ -10,7 +10,7 @@ const NoticeDetailss = () => {
   const { id } = useParams();
   useEffect(() => {
     isLoading(true);
-    fetch(`https://thawing-temple-32150.herokuapp.com/v1/notice/${id}`)
+    fetch(`http://localhost:5000/v1/notice/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -35,9 +35,13 @@ const NoticeDetailss = () => {
         <>
           <div ref={componentRef} className="my-10 max-w-7xl m-auto px-4">
             <>
-              <div className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
-            theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343] text-[#e4e6eb]"}`}
-          >
+              <div
+                className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
+                  theme == "light"
+                    ? "bg-base-100"
+                    : "bg-[#242526] border-[#414343] text-[#e4e6eb]"
+                }`}
+              >
                 <div className="p-5 ">
                   <p className="text-2xl font-medium  uppercase text-center">
                     Realwai public Collage,Chittagong

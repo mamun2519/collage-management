@@ -34,7 +34,7 @@ const ClassRoutine = () => {
     isLoading(true);
 
     fetch(
-      `https://thawing-temple-32150.herokuapp.com/v1/routine/department?classs=${data?.classs}&session=${data.session}`
+      `http://localhost:5000/v1/routine/department?classs=${data?.classs}&session=${data.session}`
     )
       .then((res) => res.json())
       .then((result) => {

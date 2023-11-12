@@ -32,11 +32,10 @@ const Login = () => {
   const onSubmit = (data: UserSubmitForm) => {
     signInWithEmailAndPassword(data.email, data.password);
     axios
-      .post("https://thawing-temple-32150.herokuapp.com/v1/user", {
+      .post("http://localhost:5000/v1/user", {
         email: data.email,
       })
       .then((res: any): void => {
-    
         localStorage.setItem("Token", res?.data?.token);
       })
       .catch(function (error) {
@@ -56,7 +55,7 @@ const Login = () => {
   }
   if (Guser) {
     axios
-      .post("https://thawing-temple-32150.herokuapp.com/v1/user", {
+      .post("http://localhost:5000/v1/user", {
         name: user?.displayName,
         email: user?.email,
       })

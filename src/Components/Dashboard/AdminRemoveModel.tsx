@@ -13,7 +13,7 @@ const AdminRemoveModel = ({ closeModal, openModal, isOpen, id }: Admin) => {
   const [user, setUser] = useState<any>({});
   const [role, setRole] = useState("");
   useEffect(() => {
-    fetch(`https://thawing-temple-32150.herokuapp.com/v1/user/${id}`)
+    fetch(`http://localhost:5000/v1/user/${id}`)
       .then((res) => res.json())
       .then((data) => setUser(data?.user));
   }, []);
@@ -23,7 +23,7 @@ const AdminRemoveModel = ({ closeModal, openModal, isOpen, id }: Admin) => {
   };
   const removeUserAdminHendeler = (user: any) => {
     fetch(
-      `https://thawing-temple-32150.herokuapp.com/v1/user/admin/${user?.email}?roleAction=${role}`,
+      `http://localhost:5000/v1/user/admin/${user?.email}?roleAction=${role}`,
       {
         method: "PUT",
         headers: {

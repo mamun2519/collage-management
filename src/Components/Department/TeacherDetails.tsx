@@ -12,7 +12,7 @@ const TeacherDetails = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [teacher, setTeacher] = useState<any>({});
   useEffect(() => {
-    fetch(`https://thawing-temple-32150.herokuapp.com/v1/teacher/department/${id}`)
+    fetch(`http://localhost:5000/v1/teacher/department/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -21,11 +21,12 @@ const TeacherDetails = () => {
       });
   }, []);
 
-
   return (
     <div
       className={`card max-w-7xl m-auto h-[500px]    lg:w-full w-[280px]  border  shadow-md my-20 ${
-        theme == "light" ? "bg-base-100" : "bg-[#242526] text-[#e4e6eb] border-[#414343]"
+        theme == "light"
+          ? "bg-base-100"
+          : "bg-[#242526] text-[#e4e6eb] border-[#414343]"
       }`}
     >
       {" "}
@@ -42,7 +43,10 @@ const TeacherDetails = () => {
                 <p className="text-xl font-medium">{teacher?.name}</p>
                 <div className="">
                   <div className="flex justify-center gap-5 mt-3">
-                    <a href={teacher?.linkedinId || ""} className="text-xl border p-2 w-10 rounded-lg text-red-500">
+                    <a
+                      href={teacher?.linkedinId || ""}
+                      className="text-xl border p-2 w-10 rounded-lg text-red-500"
+                    >
                       <BsFacebook />
                     </a>
                     <span className="text-xl border p-2 w-10  rounded-lg text-red-500">
@@ -51,7 +55,10 @@ const TeacherDetails = () => {
                     <span className="text-xl border p-2 w-10  rounded-lg text-red-500">
                       <AiOutlineInstagram />
                     </span>
-                    <a href={teacher?.linkedinId || ""} className="text-xl border p-2 w-10  rounded-lg text-red-500">
+                    <a
+                      href={teacher?.linkedinId || ""}
+                      className="text-xl border p-2 w-10  rounded-lg text-red-500"
+                    >
                       <AiFillLinkedin />
                     </a>
                   </div>
@@ -75,9 +82,7 @@ const TeacherDetails = () => {
               <p className=" font-semibold text-lg text-red-500">
                 {teacher?.educationalQualification}
               </p>
-              <p className=" font-semibold text-lg mt-3">
-                Collage Role
-              </p>
+              <p className=" font-semibold text-lg mt-3">Collage Role</p>
               <p className=" font-semibold text-lg text-red-500">
                 {teacher?.collageRole}
               </p>
@@ -87,9 +92,7 @@ const TeacherDetails = () => {
               <p className=" font-semibold text-lg text-red-500">
                 {teacher?.email}
               </p>
-              <p className=" font-semibold text-lg mt-3">
-                Join Date
-              </p>
+              <p className=" font-semibold text-lg mt-3">Join Date</p>
               <p className=" font-semibold text-lg text-red-500">
                 {teacher?.joinDate}
               </p>
@@ -97,7 +100,6 @@ const TeacherDetails = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

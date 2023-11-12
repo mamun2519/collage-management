@@ -7,9 +7,9 @@ interface Modal {
   isOpen: boolean;
   closeModal: any;
   id?: string;
-  setAgain: any
+  setAgain: any;
 }
-const AdmissonAModel = ({ isOpen, closeModal, id , setAgain}: Modal) => {
+const AdmissonAModel = ({ isOpen, closeModal, id, setAgain }: Modal) => {
   type UserSubmitForm = {
     name: string;
     roll: string;
@@ -19,11 +19,11 @@ const AdmissonAModel = ({ isOpen, closeModal, id , setAgain}: Modal) => {
 
   const { name } = student;
   useEffect(() => {
-    fetch(`https://thawing-temple-32150.herokuapp.com/v1/student/admission/${id}`)
+    fetch(`http://localhost:5000/v1/student/admission/${id}`)
       .then((res) => res.json())
       .then((data) => {
-       
-        setStudent(data.student)});
+        setStudent(data.student);
+      });
   }, []);
 
   const {
@@ -42,7 +42,7 @@ const AdmissonAModel = ({ isOpen, closeModal, id , setAgain}: Modal) => {
       roll: data.roll,
       verifay: true,
     };
-    fetch(`https://thawing-temple-32150.herokuapp.com/v1/student/admission/${id}`, {
+    fetch(`http://localhost:5000/v1/student/admission/${id}`, {
       method: "PUT",
       body: JSON.stringify(verifay),
       headers: {
@@ -53,7 +53,7 @@ const AdmissonAModel = ({ isOpen, closeModal, id , setAgain}: Modal) => {
       .then((data) => {
         if (data.success) {
           console.log(data.student.roll);
-          setAgain(true)
+          setAgain(true);
           closeModal();
           swal({
             title: "Student Verified Successfull",

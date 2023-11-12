@@ -1,4 +1,4 @@
-import react, { useState, useEffect , useContext} from "react";
+import react, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ThemeContext } from "../../App";
 const EventDetails = () => {
@@ -7,7 +7,7 @@ const EventDetails = () => {
 
   const { id } = useParams();
   useEffect(() => {
-    fetch(`https://thawing-temple-32150.herokuapp.com/v1/event/${id}`)
+    fetch(`http://localhost:5000/v1/event/${id}`)
       .then((res) => res.json())
       .then((data) => setEvent(data.event));
   }, []);
@@ -16,7 +16,10 @@ const EventDetails = () => {
     <div className="my-20 lg:w-3/4 w-full   mx-auto px-3">
       <div
         className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
-          theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343] text-[#e4e6eb]"}`}
+          theme == "light"
+            ? "bg-base-100"
+            : "bg-[#242526] border-[#414343] text-[#e4e6eb]"
+        }`}
       >
         <div className="car ">
           <figure>

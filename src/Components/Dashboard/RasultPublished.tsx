@@ -18,7 +18,7 @@ const RasultPublished = () => {
   const [routines, setRoutine] = useState([routine]);
   const [edit, setEdit] = useState(false);
   useEffect(() => {
-    fetch(`https://thawing-temple-32150.herokuapp.com/v1/student/admission/${id}`)
+    fetch(`http://localhost:5000/v1/student/admission/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setStudent(data.student);
@@ -89,7 +89,7 @@ const RasultPublished = () => {
       Gpa: gpa,
     };
     if (selectedExamType) {
-      fetch(`https://thawing-temple-32150.herokuapp.com/v1/student/admission/result/${id}`, {
+      fetch(`http://localhost:5000/v1/student/admission/result/${id}`, {
         method: "POST",
         body: JSON.stringify(result),
         headers: {

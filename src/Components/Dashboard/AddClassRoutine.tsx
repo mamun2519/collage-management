@@ -31,7 +31,7 @@ const AddClassRoutine = () => {
   useEffect(() => {
     isLoading(true);
     if (selected) {
-      fetch(`https://thawing-temple-32150.herokuapp.com/v1/routine/chackRoutine?classs=${selected}`)
+      fetch(`http://localhost:5000/v1/routine/chackRoutine?classs=${selected}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
@@ -101,7 +101,7 @@ const AddClassRoutine = () => {
     };
     console.log(createRoutine);
     if (selectedSession) {
-      fetch("https://thawing-temple-32150.herokuapp.com/v1/routine/classRoutine", {
+      fetch("http://localhost:5000/v1/routine/classRoutine", {
         method: "POST",
         body: JSON.stringify(createRoutine),
         headers: {
@@ -153,7 +153,7 @@ const AddClassRoutine = () => {
     };
 
     if (selectedSession && updateRoutineId) {
-      fetch(`https://thawing-temple-32150.herokuapp.com/v1/routine/department/${updateRoutineId}`, {
+      fetch(`http://localhost:5000/v1/routine/department/${updateRoutineId}`, {
         method: "PUT",
         body: JSON.stringify(createRoutine),
         headers: {
@@ -178,179 +178,136 @@ const AddClassRoutine = () => {
     }
   };
   return (
-    <><div className="mt-10  w-full lg:w-3/4 mx-auto  grid grid-cols-1 lg:flex justify-between items-center">
-    <h1 className="text-4xl  font-medium text-white up">
-    {/* STUDENT ADMISSION LIST */}
-    </h1>
+    <>
+      <div className="mt-10  w-full lg:w-3/4 mx-auto  grid grid-cols-1 lg:flex justify-between items-center">
+        <h1 className="text-4xl  font-medium text-white up">
+          {/* STUDENT ADMISSION LIST */}
+        </h1>
 
-    <div
-      className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
-        theme == "light"
-          ? "bg-[#2374e1] text-white"
-          : "bg-[#242526] text-[#e4e6eb]"
-      }`}
-    >
-      <div className=" flex gap-2">
-        {" "}
-        <span className="px-0">Home </span>
-        <span className="mt-1 text-xl text-white">
-          <MdKeyboardArrowRight />
-        </span>
-      </div>
-      <div className="flex gap-2">
-        {" "}
-        <span className="px-0">Dashboard</span>
-        <span className="mt-1 text-xl text-white">
-          <MdKeyboardArrowRight />
-        </span>
-      </div>
-
-      <span className="text-white  font-medium">Class Routine</span>
-    </div>
-  </div>
-    <div className="my-10 lg:w-3/4 w-full mx-auto">
-      <div className="  grid  lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-3">
-        {admission.map((ad: any) => (
-          <div
-            onClick={() => admissionRequestHendeler(ad.title)}
-            key={ad}
-            className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 w-full  shadow-md px-2 ${
-              theme == "light"
-                ? selected == ad.title
-                  ? "bg-[#2374e1]"
-                  : "bg-base-100"
-                : selected == ad.title
-                ? "bg-[#414343]"
-                : "bg-[#242526] border-[#414343]"
-            } `}
-          >
-            <div>
-              <span
-                className={`text-3xl  ${
-                  theme == "light"
-                    ? selected == ad.title
-                      ? "text-white"
-                      : "text-red-500"
-                    : selected == ad.title
-                    ? "text-white"
-                    : "text-white"
-                }`}
-              >
-                <BsStopwatch />
-              </span>
-            </div>
-            <div>
-              <p
-                className={`font-semibold uppercase mt-1 text-center ${
-                  theme == "light"
-                    ? selected == ad.title
-                      ? "text-white"
-                      : "text-black"
-                    : selected == ad.title
-                    ? "text-white"
-                    : "text-[#e4e6eb]"
-                }`}
-              >
-                {ad.title}
-              </p>
-            </div>
+        <div
+          className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
+            theme == "light"
+              ? "bg-[#2374e1] text-white"
+              : "bg-[#242526] text-[#e4e6eb]"
+          }`}
+        >
+          <div className=" flex gap-2">
+            {" "}
+            <span className="px-0">Home </span>
+            <span className="mt-1 text-xl text-white">
+              <MdKeyboardArrowRight />
+            </span>
           </div>
-        ))}
+          <div className="flex gap-2">
+            {" "}
+            <span className="px-0">Dashboard</span>
+            <span className="mt-1 text-xl text-white">
+              <MdKeyboardArrowRight />
+            </span>
+          </div>
+
+          <span className="text-white  font-medium">Class Routine</span>
+        </div>
       </div>
+      <div className="my-10 lg:w-3/4 w-full mx-auto">
+        <div className="  grid  lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-3">
+          {admission.map((ad: any) => (
+            <div
+              onClick={() => admissionRequestHendeler(ad.title)}
+              key={ad}
+              className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 w-full  shadow-md px-2 ${
+                theme == "light"
+                  ? selected == ad.title
+                    ? "bg-[#2374e1]"
+                    : "bg-base-100"
+                  : selected == ad.title
+                  ? "bg-[#414343]"
+                  : "bg-[#242526] border-[#414343]"
+              } `}
+            >
+              <div>
+                <span
+                  className={`text-3xl  ${
+                    theme == "light"
+                      ? selected == ad.title
+                        ? "text-white"
+                        : "text-red-500"
+                      : selected == ad.title
+                      ? "text-white"
+                      : "text-white"
+                  }`}
+                >
+                  <BsStopwatch />
+                </span>
+              </div>
+              <div>
+                <p
+                  className={`font-semibold uppercase mt-1 text-center ${
+                    theme == "light"
+                      ? selected == ad.title
+                        ? "text-white"
+                        : "text-black"
+                      : selected == ad.title
+                      ? "text-white"
+                      : "text-[#e4e6eb]"
+                  }`}
+                >
+                  {ad.title}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-      {loading ? (
-        <Loading />
-      ) : (
-        dataDispaly && (
-          <div
-            className={`card  lg:w-full w-[280px]  border  shadow-md my-20 ${
-              theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
-            }`}
-          >
-            <div className="p-5 ">
-              <h1
-                className={`font-medium   uppercase text-lg ${
-                  theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
-                }`}
-              >
-                Add to {selected} Class Routine
-              </h1>
+        {loading ? (
+          <Loading />
+        ) : (
+          dataDispaly && (
+            <div
+              className={`card  lg:w-full w-[280px]  border  shadow-md my-20 ${
+                theme == "light"
+                  ? "bg-base-100"
+                  : "bg-[#242526] border-[#414343]"
+              }`}
+            >
+              <div className="p-5 ">
+                <h1
+                  className={`font-medium   uppercase text-lg ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Add to {selected} Class Routine
+                </h1>
 
-              {!edit && allReadyCreateR && (
-                <div className=" grid lg:grid-cols-3 col-span-2">
-                  <div className="mt-5">
-                    <h1>Session</h1>
-                    <div className="h-14 mt-2 ">
-                      <select
-                        className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-4 ${
-                          theme == "light"
-                            ? "bg-white text-gray-700"
-                            : "bg-[#414343] text-[#e4e6eb] outline-none"
-                        }`}
-                        placeholder="Enter Your Name"
-                        onChange={(e) => SetSelectedSession(e.target.value)}
-                      >
-                        {section.map((sec) => (
-                          <option value={sec.title}>{sec.title}</option>
-                        ))}
-                      </select>
-                      <p className="px-4 text-red-500 ">{errorMessage}</p>
+                {!edit && allReadyCreateR && (
+                  <div className=" grid lg:grid-cols-3 col-span-2">
+                    <div className="mt-5">
+                      <h1>Session</h1>
+                      <div className="h-14 mt-2 ">
+                        <select
+                          className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-4 ${
+                            theme == "light"
+                              ? "bg-white text-gray-700"
+                              : "bg-[#414343] text-[#e4e6eb] outline-none"
+                          }`}
+                          placeholder="Enter Your Name"
+                          onChange={(e) => SetSelectedSession(e.target.value)}
+                        >
+                          {section.map((sec) => (
+                            <option value={sec.title}>{sec.title}</option>
+                          ))}
+                        </select>
+                        <p className="px-4 text-red-500 ">{errorMessage}</p>
+                      </div>
                     </div>
+                    <div></div>
                   </div>
-                  <div></div>
-                </div>
-              )}
-              <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto mt-2">
-                <div className="inline-block min-w-full shadow rounded-lg  overflow-x-auto">
-                  <table className="min-w-full leading-normal">
-                    <thead>
-                      <tr>
-                        <th
-                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
-                            theme == "light"
-                              ? "bg-gray-100 text-gray-600 border-gray-200"
-                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
-                          }`}
-                        >
-                          Day
-                        </th>
-                        <th
-                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
-                            theme == "light"
-                              ? "bg-gray-100 text-gray-600 border-gray-200"
-                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
-                          }`}
-                        >
-                          first Periode
-                        </th>
-                        <th
-                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
-                            theme == "light"
-                              ? "bg-gray-100 text-gray-600 border-gray-200"
-                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
-                          }`}
-                        >
-                          seacend Periode
-                        </th>
-                        <th
-                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
-                            theme == "light"
-                              ? "bg-gray-100 text-gray-600 border-gray-200"
-                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
-                          }`}
-                        >
-                          tharde Periode
-                        </th>
-                        <th
-                          className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
-                            theme == "light"
-                              ? "bg-gray-100 text-gray-600 border-gray-200"
-                              : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
-                          }`}
-                        >
-                          forth Periode
-                        </th>
-                        {!edit && allReadyCreateR && (
+                )}
+                <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto mt-2">
+                  <div className="inline-block min-w-full shadow rounded-lg  overflow-x-auto">
+                    <table className="min-w-full leading-normal">
+                      <thead>
+                        <tr>
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
@@ -358,322 +315,368 @@ const AddClassRoutine = () => {
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
-                            action
+                            Day
                           </th>
-                        )}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {!edit && allReadyCreateR
-                        ? routines.map((routine, index) => (
-                            <tr>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb] border-[#414343]"
-                                }`}
-                              >
-                                <>
-                                  <select
-                                    name="day"
-                                    onChange={(event) =>
-                                      changeHendeler(index, event)
-                                    }
-                                    className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
-                                      theme == "light"
-                                        ? "border"
-                                        : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
-                                    } `}
-                                    placeholder="Enter Your Name"
+                          <th
+                            className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                              theme == "light"
+                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            first Periode
+                          </th>
+                          <th
+                            className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                              theme == "light"
+                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            seacend Periode
+                          </th>
+                          <th
+                            className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                              theme == "light"
+                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            tharde Periode
+                          </th>
+                          <th
+                            className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                              theme == "light"
+                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                            }`}
+                          >
+                            forth Periode
+                          </th>
+                          {!edit && allReadyCreateR && (
+                            <th
+                              className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
+                                theme == "light"
+                                  ? "bg-gray-100 text-gray-600 border-gray-200"
+                                  : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
+                              }`}
+                            >
+                              action
+                            </th>
+                          )}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {!edit && allReadyCreateR
+                          ? routines.map((routine, index) => (
+                              <tr>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
+                                    theme == "light"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
+                                  <>
+                                    <select
+                                      name="day"
+                                      onChange={(event) =>
+                                        changeHendeler(index, event)
+                                      }
+                                      className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                        theme == "light"
+                                          ? "border"
+                                          : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                      } `}
+                                      placeholder="Enter Your Name"
+                                    >
+                                      {days.map((sec) => (
+                                        <option value={sec.title || ""}>
+                                          {sec.title}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </>
+                                </td>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
+                                    theme == "light"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb]  border-[#414343]"
+                                  }`}
+                                >
+                                  <>
+                                    <input
+                                      name="firstPeriode"
+                                      value={routine.firstPeriode || ""}
+                                      onChange={(event) =>
+                                        changeHendeler(index, event)
+                                      }
+                                      className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                        theme == "light"
+                                          ? "border"
+                                          : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                      } `}
+                                      placeholder="Text"
+                                    />
+                                  </>
+                                </td>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
+                                    theme == "light"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb]  border-[#414343]"
+                                  }`}
+                                >
+                                  <>
+                                    <input
+                                      name="secendPeriode"
+                                      value={routine.secendPeriode || ""}
+                                      onChange={(event) =>
+                                        changeHendeler(index, event)
+                                      }
+                                      className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                        theme == "light"
+                                          ? "border"
+                                          : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                      } `}
+                                      placeholder="Text"
+                                    />
+                                  </>
+                                </td>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
+                                    theme == "light"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
+                                  <>
+                                    <input
+                                      name="thardePeriode"
+                                      value={routine.thardePeriode || ""}
+                                      onChange={(event) =>
+                                        changeHendeler(index, event)
+                                      }
+                                      className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                        theme == "light"
+                                          ? "border"
+                                          : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                      } `}
+                                      placeholder="Text"
+                                    />
+                                  </>
+                                </td>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
+                                    theme == "light"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
+                                  <>
+                                    <input
+                                      name="forthPeriode"
+                                      value={routine?.forthPeriode || ""}
+                                      onChange={(event) =>
+                                        changeHendeler(index, event)
+                                      }
+                                      className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                        theme == "light"
+                                          ? "border"
+                                          : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
+                                      } `}
+                                      placeholder="Text"
+                                    />
+                                  </>
+                                </td>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
+                                    theme == "light"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
+                                  <span
+                                    onClick={() => removeFromFlied(index)}
+                                    className=" text-2xl text-red-500 px-2"
                                   >
-                                    {days.map((sec) => (
-                                      <option value={sec.title || ""}>
-                                        {sec.title}
-                                      </option>
-                                    ))}
-                                  </select>
-                                </>
-                              </td>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb]  border-[#414343]"
-                                }`}
-                              >
-                                <>
-                                  <input
-                                    name="firstPeriode"
-                                    value={routine.firstPeriode || ""}
-                                    onChange={(event) =>
-                                      changeHendeler(index, event)
-                                    }
-                                    className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                    <AiFillDelete />
+                                  </span>
+                                </td>
+                              </tr>
+                            ))
+                          : routines.map((routine, index) => (
+                              <tr>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
+                                    theme == "light"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
+                                  <p
+                                    className={`whitespace-no-wrap ${
                                       theme == "light"
-                                        ? "border"
-                                        : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
-                                    } `}
-                                    placeholder="Text"
-                                  />
-                                </>
-                              </td>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb]  border-[#414343]"
-                                }`}
-                              >
-                                <>
-                                  <input
-                                    name="secendPeriode"
-                                    value={routine.secendPeriode || ""}
-                                    onChange={(event) =>
-                                      changeHendeler(index, event)
-                                    }
-                                    className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                        ? "text-gray-900 "
+                                        : "text-[#e4e6eb]"
+                                    }`}
+                                  >
+                                    {routine.day}
+                                  </p>
+                                </td>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
+                                    theme == "light"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
+                                  <p
+                                    className={`whitespace-no-wrap ${
                                       theme == "light"
-                                        ? "border"
-                                        : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
-                                    } `}
-                                    placeholder="Text"
-                                  />
-                                </>
-                              </td>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb] border-[#414343]"
-                                }`}
-                              >
-                                <>
-                                  <input
-                                    name="thardePeriode"
-                                    value={routine.thardePeriode || ""}
-                                    onChange={(event) =>
-                                      changeHendeler(index, event)
-                                    }
-                                    className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                        ? "text-gray-900 "
+                                        : "text-[#e4e6eb]"
+                                    }`}
+                                  >
+                                    {routine.firstPeriode}
+                                  </p>
+                                </td>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
+                                    theme == "light"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
+                                  <p
+                                    className={`whitespace-no-wrap ${
                                       theme == "light"
-                                        ? "border"
-                                        : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
-                                    } `}
-                                    placeholder="Text"
-                                  />
-                                </>
-                              </td>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb] border-[#414343]"
-                                }`}
-                              >
-                                <>
-                                  <input
-                                    name="forthPeriode"
-                                    value={routine?.forthPeriode || ""}
-                                    onChange={(event) =>
-                                      changeHendeler(index, event)
-                                    }
-                                    className={`h-12   w-full rounded-lg    focus:outline-emerald-100 px-4 ${
+                                        ? "text-gray-900 "
+                                        : "text-[#e4e6eb]"
+                                    }`}
+                                  >
+                                    {routine.secendPeriode}
+                                  </p>
+                                </td>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
+                                    theme == "light"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb] border-[#414343]"
+                                  }`}
+                                >
+                                  <p
+                                    className={`whitespace-no-wrap ${
                                       theme == "light"
-                                        ? "border"
-                                        : "text-[#e4e6eb] bg-[#414343] border-[#414343]"
-                                    } `}
-                                    placeholder="Text"
-                                  />
-                                </>
-                              </td>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb] border-[#414343]"
-                                }`}
-                              >
-                                <span
-                                  onClick={() => removeFromFlied(index)}
-                                  className=" text-2xl text-red-500 px-2"
-                                >
-                                  <AiFillDelete />
-                                </span>
-                              </td>
-                            </tr>
-                          ))
-                        : routines.map((routine, index) => (
-                            <tr>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb] border-[#414343]"
-                                }`}
-                              >
-                                <p
-                                  className={`whitespace-no-wrap ${
+                                        ? "text-gray-900 "
+                                        : "text-[#e4e6eb]"
+                                    }`}
+                                  >
+                                    {routine.thardePeriode}
+                                  </p>
+                                </td>
+                                <td
+                                  className={`px-5 py-5 border-b  text-sm ${
                                     theme == "light"
-                                      ? "text-gray-900 "
-                                      : "text-[#e4e6eb]"
+                                      ? "border-gray-200 bg-white "
+                                      : "text-[#e4e6eb] border-[#414343]"
                                   }`}
                                 >
-                                  {routine.day}
-                                </p>
-                              </td>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb] border-[#414343]"
-                                }`}
-                              >
-                                <p
-                                  className={`whitespace-no-wrap ${
-                                    theme == "light"
-                                      ? "text-gray-900 "
-                                      : "text-[#e4e6eb]"
-                                  }`}
-                                >
-                                  {routine.firstPeriode}
-                                </p>
-                              </td>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb] border-[#414343]"
-                                }`}
-                              >
-                                <p
-                                  className={`whitespace-no-wrap ${
-                                    theme == "light"
-                                      ? "text-gray-900 "
-                                      : "text-[#e4e6eb]"
-                                  }`}
-                                >
-                                  {routine.secendPeriode}
-                                </p>
-                              </td>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb] border-[#414343]"
-                                }`}
-                              >
-                                <p
-                                  className={`whitespace-no-wrap ${
-                                    theme == "light"
-                                      ? "text-gray-900 "
-                                      : "text-[#e4e6eb]"
-                                  }`}
-                                >
-                                  {routine.thardePeriode}
-                                </p>
-                              </td>
-                              <td
-                                className={`px-5 py-5 border-b  text-sm ${
-                                  theme == "light"
-                                    ? "border-gray-200 bg-white "
-                                    : "text-[#e4e6eb] border-[#414343]"
-                                }`}
-                              >
-                                <p
-                                  className={`whitespace-no-wrap ${
-                                    theme == "light"
-                                      ? "text-gray-900 "
-                                      : "text-[#e4e6eb]"
-                                  }`}
-                                >
-                                  {routine.forthPeriode}
-                                </p>
-                              </td>
-                            </tr>
-                          ))}
-                    </tbody>
-                  </table>
+                                  <p
+                                    className={`whitespace-no-wrap ${
+                                      theme == "light"
+                                        ? "text-gray-900 "
+                                        : "text-[#e4e6eb]"
+                                    }`}
+                                  >
+                                    {routine.forthPeriode}
+                                  </p>
+                                </td>
+                              </tr>
+                            ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              </div>
 
-              {!edit && allReadyCreateR && (
-                <button
-                  onClick={() => addRoutineFlied()}
-                  className={`font-semibold  px-8 rounded-lg py-2 ${
-                    theme == "light"
-                      ? "bg-[#2374e1] text-white"
-                      : "bg-[#414343] text-[#e4e6eb]"
-                  }`}
-                >
-                  Add More
-                </button>
-              )}
-              {!edit && allReadyCreateR && !updateButton && (
-                <div className=" flex gap-5 justify-end mt-20">
+                {!edit && allReadyCreateR && (
                   <button
-                    onClick={() => submitHendeler()}
-                    className={`font-semibold  px-8 rounded-lg py-2 mt-3 ${
+                    onClick={() => addRoutineFlied()}
+                    className={`font-semibold  px-8 rounded-lg py-2 ${
                       theme == "light"
                         ? "bg-[#2374e1] text-white"
                         : "bg-[#414343] text-[#e4e6eb]"
-                    } `}
+                    }`}
                   >
-                    Save
+                    Add More
                   </button>
-                  <button
-                    onClick={() => cancleHendeler()}
-                    className="bg-white font-semibold text-[#2374e1] border  px-8 rounded-lg py-2 mt-3"
-                  >
-                    Cancle
-                  </button>
-                </div>
-              )}
-              {!allReadyCreateR && (
-                <div className=" flex gap-5 justify-end mt-20">
-                  <button
-                    onClick={() => updateButtonHendler()}
-                    className={`font-semibold  px-8 rounded-lg py-2 mt-3 ${
-                      theme == "light"
-                        ? "bg-[#2374e1] text-white"
-                        : "bg-[#414343] text-[#e4e6eb]"
-                    } `}
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => cancleHendeler()}
-                    className="bg-white font-semibold text-[#2374e1] border text-white px-8 rounded-lg py-2 mt-3"
-                  >
-                    cancle
-                  </button>
-                </div>
-              )}
-              {!edit && allReadyCreateR && updateButton && (
-                <div className=" flex gap-5 justify-end mt-20">
-                  <button
-                    onClick={() => updateRequestHendeler()}
-                    className={`font-semibold  px-8 rounded-lg py-2 mt-3 ${
-                      theme == "light"
-                        ? "bg-[#2374e1] text-white"
-                        : "bg-[#414343] text-[#e4e6eb]"
-                    } `}
-                  >
-                    Confrom Update
-                  </button>
-                  <button
-                    onClick={() => cancleHendeler()}
-                    className="bg-white font-semibold text-[#2374e1] border px-8 rounded-lg py-2 mt-3"
-                  >
-                    cancle
-                  </button>
-                </div>
-              )}
+                )}
+                {!edit && allReadyCreateR && !updateButton && (
+                  <div className=" flex gap-5 justify-end mt-20">
+                    <button
+                      onClick={() => submitHendeler()}
+                      className={`font-semibold  px-8 rounded-lg py-2 mt-3 ${
+                        theme == "light"
+                          ? "bg-[#2374e1] text-white"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      } `}
+                    >
+                      Save
+                    </button>
+                    <button
+                      onClick={() => cancleHendeler()}
+                      className="bg-white font-semibold text-[#2374e1] border  px-8 rounded-lg py-2 mt-3"
+                    >
+                      Cancle
+                    </button>
+                  </div>
+                )}
+                {!allReadyCreateR && (
+                  <div className=" flex gap-5 justify-end mt-20">
+                    <button
+                      onClick={() => updateButtonHendler()}
+                      className={`font-semibold  px-8 rounded-lg py-2 mt-3 ${
+                        theme == "light"
+                          ? "bg-[#2374e1] text-white"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      } `}
+                    >
+                      Update
+                    </button>
+                    <button
+                      onClick={() => cancleHendeler()}
+                      className="bg-white font-semibold text-[#2374e1] border text-white px-8 rounded-lg py-2 mt-3"
+                    >
+                      cancle
+                    </button>
+                  </div>
+                )}
+                {!edit && allReadyCreateR && updateButton && (
+                  <div className=" flex gap-5 justify-end mt-20">
+                    <button
+                      onClick={() => updateRequestHendeler()}
+                      className={`font-semibold  px-8 rounded-lg py-2 mt-3 ${
+                        theme == "light"
+                          ? "bg-[#2374e1] text-white"
+                          : "bg-[#414343] text-[#e4e6eb]"
+                      } `}
+                    >
+                      Confrom Update
+                    </button>
+                    <button
+                      onClick={() => cancleHendeler()}
+                      className="bg-white font-semibold text-[#2374e1] border px-8 rounded-lg py-2 mt-3"
+                    >
+                      cancle
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        )
-      )}
-    </div>
+          )
+        )}
+      </div>
     </>
   );
 };

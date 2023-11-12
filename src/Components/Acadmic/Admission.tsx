@@ -35,7 +35,7 @@ const Admission = () => {
     isLoading(true);
     if (user?.email) {
       fetch(
-        `https://thawing-temple-32150.herokuapp.com/v1/student/chackadmission?email=${user?.email}`
+        `http://localhost:5000/v1/student/chackadmission?email=${user?.email}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -124,10 +124,7 @@ const Admission = () => {
     { title: "Scaince" },
     { title: "Islam" },
   ];
-  const masterSubject = [
-    { title: "Accounting" },
-   
-  ];
+  const masterSubject = [{ title: "Accounting" }];
 
   const backHandeler = (): void => {
     setAdmission("");
@@ -233,7 +230,11 @@ const Admission = () => {
                   : "bg-[#242526]  border-[#414343]"
               }`}
             >
-              <div className={` h-16 flex items-center  justify-between px-8 ${theme == "light" ? "bg-[#5195ed]": "bg-[#414343]"}`}>
+              <div
+                className={` h-16 flex items-center  justify-between px-8 ${
+                  theme == "light" ? "bg-[#5195ed]" : "bg-[#414343]"
+                }`}
+              >
                 <div>
                   <span
                     onClick={() => backHandeler()}
@@ -868,8 +869,7 @@ const Admission = () => {
                           </div>
                         </>
                       )}
-                      {subjectList ===
-                        "Higer Secondary Admission(hsc)" && (
+                      {subjectList === "Higer Secondary Admission(hsc)" && (
                         <>
                           <h1>Your First Year Subject List</h1>{" "}
                           <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">

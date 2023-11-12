@@ -33,7 +33,7 @@ const AddEvents = () => {
     console.log(myForm);
     await axios({
       method: "POST",
-      url: "https://thawing-temple-32150.herokuapp.com/v1/event",
+      url: "http://localhost:5000/v1/event",
       data: myForm,
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -64,230 +64,232 @@ const AddEvents = () => {
   };
   return (
     <>
-    <div className="mt-10  w-full lg:w-3/4 mx-auto  grid grid-cols-1 lg:flex justify-between items-center">
-    <h1 className="text-4xl  font-medium text-white up">
-    {/* STUDENT ADMISSION LIST */}
-    </h1>
+      <div className="mt-10  w-full lg:w-3/4 mx-auto  grid grid-cols-1 lg:flex justify-between items-center">
+        <h1 className="text-4xl  font-medium text-white up">
+          {/* STUDENT ADMISSION LIST */}
+        </h1>
 
-    <div
-      className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
-        theme == "light"
-          ? "bg-[#2374e1] text-white"
-          : "bg-[#242526] text-[#e4e6eb]"
-      }`}
-    >
-      <div className=" flex gap-2">
-        {" "}
-        <span className="px-0">Home </span>
-        <span className="mt-1 text-xl text-white">
-          <MdKeyboardArrowRight />
-        </span>
-      </div>
-      <div className="flex gap-2">
-        {" "}
-        <span className="px-0">Dashboard</span>
-        <span className="mt-1 text-xl text-white">
-          <MdKeyboardArrowRight />
-        </span>
-      </div>
-
-      <span className="text-white  font-medium">Add Events</span>
-    </div>
-  </div>
-    
-    <div
-      className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
-        theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
-      }`}
-    >
-      <div className="p-5 h-full">
-        <h1
-          className={`font-medium   uppercase text-lg ${
-            theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+        <div
+          className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
+            theme == "light"
+              ? "bg-[#2374e1] text-white"
+              : "bg-[#242526] text-[#e4e6eb]"
           }`}
         >
-          Add Collage Event
-        </h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className=" mt-20 flex justify-center">
-            <>
-              <input
-                {...register("images", {
-                  required: {
-                    value: true,
-                    message: "images is Required",
-                  },
-                })}
-                onChange={(e) => teacherPictureHendeler(e)}
-                type="file"
-                name="image-uplode"
-                id="product-img"
-                hidden
-                placeholder="Enter seller name"
-              />
-              <label htmlFor={"product-img"} className=" ">
-                <div>
-                  {!picture && (
-                    <div className="h-32 lg:w-44 w-52 border rounded-lg flex justify-center  items-center">
-                      <div className=" ">
-                        <span className="text-6xl text-[#EC255A]">
-                          <MdAddPhotoAlternate />
-                        </span>
+          <div className=" flex gap-2">
+            {" "}
+            <span className="px-0">Home </span>
+            <span className="mt-1 text-xl text-white">
+              <MdKeyboardArrowRight />
+            </span>
+          </div>
+          <div className="flex gap-2">
+            {" "}
+            <span className="px-0">Dashboard</span>
+            <span className="mt-1 text-xl text-white">
+              <MdKeyboardArrowRight />
+            </span>
+          </div>
+
+          <span className="text-white  font-medium">Add Events</span>
+        </div>
+      </div>
+
+      <div
+        className={`card  lg:w-3/4 mx-auto w-[280px]  border  shadow-md my-20 ${
+          theme == "light" ? "bg-base-100" : "bg-[#242526] border-[#414343]"
+        }`}
+      >
+        <div className="p-5 h-full">
+          <h1
+            className={`font-medium   uppercase text-lg ${
+              theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+            }`}
+          >
+            Add Collage Event
+          </h1>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className=" mt-20 flex justify-center">
+              <>
+                <input
+                  {...register("images", {
+                    required: {
+                      value: true,
+                      message: "images is Required",
+                    },
+                  })}
+                  onChange={(e) => teacherPictureHendeler(e)}
+                  type="file"
+                  name="image-uplode"
+                  id="product-img"
+                  hidden
+                  placeholder="Enter seller name"
+                />
+                <label htmlFor={"product-img"} className=" ">
+                  <div>
+                    {!picture && (
+                      <div className="h-32 lg:w-44 w-52 border rounded-lg flex justify-center  items-center">
+                        <div className=" ">
+                          <span className="text-6xl text-[#EC255A]">
+                            <MdAddPhotoAlternate />
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  )}
-                  {picture && (
-                    <div className="h-32 w-44 border rounded-md flex justify-center  items-center">
-                      <div className="h-32 w-44 relative">
-                        <img
-                          className="h-32 w-44 p-1 rounded-lg"
-                          src={picture}
-                          alt="productPicure"
-                        />
-                        <span
-                          onClick={() => setPicture("")}
-                          className=" absolute text-2xl top-[5px] text-red-500 right-[5px] cursor-pointer"
-                        >
-                          <TiDelete />
-                        </span>
+                    )}
+                    {picture && (
+                      <div className="h-32 w-44 border rounded-md flex justify-center  items-center">
+                        <div className="h-32 w-44 relative">
+                          <img
+                            className="h-32 w-44 p-1 rounded-lg"
+                            src={picture}
+                            alt="productPicure"
+                          />
+                          <span
+                            onClick={() => setPicture("")}
+                            className=" absolute text-2xl top-[5px] text-red-500 right-[5px] cursor-pointer"
+                          >
+                            <TiDelete />
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
+                  <label className="label">
+                    {errors.images?.type === "required" && (
+                      <span className="text-red-500">
+                        {errors.images.message}
+                      </span>
+                    )}
+                  </label>
+                </label>
+              </>
+            </div>
+            <div className="grid  lg:grid-cols-2 grid-cols-1 gap-10 m">
+              <div className="mt-5">
+                <h1
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Event Type
+                </h1>
+                <div className="h-14 mt-2  relative">
+                  <select
+                    {...register("evenType", {
+                      required: {
+                        value: true,
+                        message: "name is Required",
+                      },
+                    })}
+                    className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                      theme == "light"
+                        ? "bg-white text-gray-700"
+                        : "bg-[#414343] text-[#e4e6eb] outline-none"
+                    }`}
+                    placeholder="Enter Event Type"
+                  >
+                    <option value="Select Event Type">Select Event Type</option>
+                    <option value="National Day">National Day</option>
+                    <option value="Instutional Day">Instutional Day</option>
+                  </select>
+                  <div className=" px-1 ">
+                    <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                  </div>
                 </div>
-                <label className="label">
-                  {errors.images?.type === "required" && (
-                    <span className="text-red-500">
-                      {errors.images.message}
+                <label className="">
+                  {errors.evenType?.type === "required" && (
+                    <span className="text-red-500 ">
+                      {errors.evenType.message}
                     </span>
                   )}
                 </label>
-              </label>
-            </>
-          </div>
-          <div className="grid  lg:grid-cols-2 grid-cols-1 gap-10 m">
+              </div>
+              <div className="mt-5">
+                <h1
+                  className={` ${
+                    theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+                  }`}
+                >
+                  Title
+                </h1>
+                <div className="h-14 mt-2  relative">
+                  <input
+                    {...register("title", {
+                      required: {
+                        value: true,
+                        message: "Title is Required",
+                      },
+                    })}
+                    className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                      theme == "light"
+                        ? "bg-white text-gray-700"
+                        : "bg-[#414343] text-[#e4e6eb] outline-none"
+                    }`}
+                    placeholder="Enter title"
+                    type="text"
+                  />
+                  <div className=" px-1 ">
+                    <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
+                  </div>
+                </div>
+                <label className="">
+                  {errors.title?.type === "required" && (
+                    <span className="text-red-500 ">
+                      {errors.title.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+            </div>
             <div className="mt-5">
               <h1
                 className={` ${
                   theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
                 }`}
               >
-                Event Type
+                Description
               </h1>
-              <div className="h-14 mt-2  relative">
-                <select
-                  {...register("evenType", {
+              <div className=" mt-2  relative">
+                <textarea
+                  {...register("description", {
                     required: {
                       value: true,
-                      message: "name is Required",
+                      message: "description is Required",
                     },
                   })}
-                  className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
+                  className={` h-32 pt-2 text-xl border w-full  rounded-lg   focus:outline-emerald-100 px-20 ${
                     theme == "light"
                       ? "bg-white text-gray-700"
-                      : "bg-[#414343] text-[#e4e6eb] outline-none"
+                      : "bg-[#414343] text-[#e4e6eb]"
                   }`}
-                  placeholder="Enter Event Type"
-                >
-                  <option value="Select Event Type">Select Event Type</option>
-                  <option value="National Day">National Day</option>
-                  <option value="Instutional Day">Instutional Day</option>
-                </select>
+                  placeholder="Enter Description"
+                />
+
                 <div className=" px-1 ">
                   <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
                 </div>
               </div>
               <label className="">
-                {errors.evenType?.type === "required" && (
+                {errors.description?.type === "required" && (
                   <span className="text-red-500 ">
-                    {errors.evenType.message}
+                    {errors.description.message}
                   </span>
                 )}
               </label>
             </div>
-            <div className="mt-5">
-              <h1
-                className={` ${
-                  theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
+
+            <div className=" text-center">
+              <input
+                className={` font-semibold text-white px-6 mt-2 rounded-lg py-2 ${
+                  theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
                 }`}
-              >
-                Title
-              </h1>
-              <div className="h-14 mt-2  relative">
-                <input
-                  {...register("title", {
-                    required: {
-                      value: true,
-                      message: "Title is Required",
-                    },
-                  })}
-                  className={`h-12  border w-full rounded-full   focus:outline-emerald-100 px-20 ${
-                    theme == "light"
-                      ? "bg-white text-gray-700"
-                      : "bg-[#414343] text-[#e4e6eb] outline-none"
-                  }`}
-                  placeholder="Enter title"
-                  type="text"
-                />
-                <div className=" px-1 ">
-                  <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
-                </div>
-              </div>
-              <label className="">
-                {errors.title?.type === "required" && (
-                  <span className="text-red-500 ">{errors.title.message}</span>
-                )}
-              </label>
-            </div>
-          </div>
-          <div className="mt-5">
-            <h1
-              className={` ${
-                theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
-              }`}
-            >
-              Description
-            </h1>
-            <div className=" mt-2  relative">
-              <textarea
-                {...register("description", {
-                  required: {
-                    value: true,
-                    message: "description is Required",
-                  },
-                })}
-                className={` h-32 pt-2 text-xl border w-full  rounded-lg   focus:outline-emerald-100 px-20 ${
-                  theme == "light"
-                    ? "bg-white text-gray-700"
-                    : "bg-[#414343] text-[#e4e6eb]"
-                }`}
-                placeholder="Enter Description"
+                type="submit"
+                value="Events Post"
               />
-
-              <div className=" px-1 ">
-                <CgProfile className=" px-4 border absolute top-[4px]  w-16 flex justify-center h-10 text-gray-500 rounded-full  " />
-              </div>
             </div>
-            <label className="">
-              {errors.description?.type === "required" && (
-                <span className="text-red-500 ">
-                  {errors.description.message}
-                </span>
-              )}
-            </label>
-          </div>
-
-          <div className=" text-center">
-            <input
-              className={` font-semibold text-white px-6 mt-2 rounded-lg py-2 ${
-                theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
-              }`}
-              type="submit"
-              value="Events Post"
-            />
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
     </>
   );
 };
