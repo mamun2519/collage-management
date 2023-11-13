@@ -8,7 +8,7 @@ interface User {
 }
 const AdminRow = ({ user }: User) => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
-  const { name, role, _id } = user;
+  const { name, role, _id, email } = user;
   const [isOpen, setIsOpen] = useState(false);
   const [userId, setUserId] = useState("");
   const removeAdminModal = (id: string): void => {
@@ -38,6 +38,21 @@ const AdminRow = ({ user }: User) => {
             }`}
           >
             {name}
+          </p>
+        </td>
+        <td
+          className={`px-5 py-5 border-b  text-sm ${
+            theme == "light"
+              ? "border-gray-200 bg-white "
+              : "text-[#e4e6eb] border-[#414343]"
+          }`}
+        >
+          <p
+            className={`whitespace-no-wrap ${
+              theme == "light" ? "text-gray-900 " : "text-[#e4e6eb]"
+            }`}
+          >
+            {email}
           </p>
         </td>
         <td

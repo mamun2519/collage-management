@@ -12,18 +12,18 @@ const SocalLogin: React.FC<Props> = ({ signInWithGoogle }) => {
         Or Login With
       </p>
       <div className=" flex gap-7 justify-center mt-5">
-        <div className="text-4xl border  text-blue-600  w-16 items-center flex justify-center   rounded-full">
+        {/* <div className="text-4xl border  text-blue-600  w-16 items-center flex justify-center   rounded-full">
           <BsFacebook />
-        </div>
+        </div> */}
         <div
           onClick={() => signInWithGoogle()}
-          className="text-4xl border  items-center  py-3  w-16 flex justify-center   rounded-full"
+          className="text-4xl border  items-center  py-3  w-16 flex justify-center   rounded-full  cursor-pointer"
         >
           <FcGoogle />
         </div>
-        <div className="text-4xl border items-center py-3 text-blue-600 w-16 flex justify-center   rounded-full">
+        {/* <div className="text-4xl border items-center py-3 text-blue-600 w-16 flex justify-center   rounded-full">
           <FaLinkedinIn />
-        </div>
+        </div> */}
       </div>
     </div>
   );

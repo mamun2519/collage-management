@@ -190,7 +190,7 @@ const SignUp: React.FC = () => {
                 <p className="text-center text-sm mt-3">
                   All Ready Sing up?{" "}
                   <span
-                    className="text-blue-500"
+                    className="text-blue-500 cursor-pointer"
                     onClick={() => navigate("/login")}
                   >
                     Please Sing in

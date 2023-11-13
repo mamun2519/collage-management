@@ -55,24 +55,24 @@ const SideNav = () => {
           </li>
           <NavLinks />
           <li>
-              <NavLink
-                style={({ isActive, isPending }) => {
-                  return {
-                    color: isActive ? "blue" : "inherit",
-                  };
-                }}
-                className={({ isActive, isPending }) => {
-                  return isActive
-                    ? "active py-7 px-3 inline-block"
-                    : isPending
-                    ? "pending py-7 px-3 inline-block"
-                    : "";
-                }}
-                to="/Notice"
-              >
-                Notices
-              </NavLink>
-            </li>
+            <NavLink
+              style={({ isActive, isPending }) => {
+                return {
+                  color: isActive ? "blue" : "inherit",
+                };
+              }}
+              className={({ isActive, isPending }) => {
+                return isActive
+                  ? "active py-7 px-3 inline-block"
+                  : isPending
+                  ? "pending py-7 px-3 inline-block"
+                  : "";
+              }}
+              to="/Notice"
+            >
+              Notices
+            </NavLink>
+          </li>
 
           {admin && (
             <li>
@@ -127,24 +127,24 @@ const SideNav = () => {
           </li>
           <NavLinks />
           <li>
-              <NavLink
-                style={({ isActive, isPending }) => {
-                  return {
-                    color: isActive ? "blue" : "inherit",
-                  };
-                }}
-                className={({ isActive, isPending }) => {
-                  return isActive
-                    ? "active py-7 px-3 inline-block"
-                    : isPending
-                    ? "pending py-7 px-3 inline-block"
-                    : "";
-                }}
-                to="/Notice"
-              >
-                Notices
-              </NavLink>
-            </li>
+            <NavLink
+              style={({ isActive, isPending }) => {
+                return {
+                  color: isActive ? "blue" : "inherit",
+                };
+              }}
+              className={({ isActive, isPending }) => {
+                return isActive
+                  ? "active py-7 px-3 inline-block"
+                  : isPending
+                  ? "pending py-7 px-3 inline-block"
+                  : "";
+              }}
+              to="/Notice"
+            >
+              Notices
+            </NavLink>
+          </li>
 
           {admin && (
             <li>

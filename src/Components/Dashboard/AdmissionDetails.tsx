@@ -37,7 +37,7 @@ const AdmissionDetails = () => {
         <div className="card lg:w-3/4 w-full  mx-auto bg-base-100  my-10">
           <div className=" grid lg:grid-cols-3 grid-cols-1 lg:gap-0 gap-5">
             <div className="card lg:w-full w-[280px]  h-[500px] mx-auto bg-base-100 border shadow-md  ">
-              <div className="bg-red-500 h-[150px] relative rounded-f"></div>
+              <div className="bg-[#2374e1] h-[150px] relative rounded-f"></div>
               <div className="avatar absolute lg:top-24 top-20 lg:left-32 left-20">
                 <div className="w-28 rounded-full ">
                   <img src="https://placeimg.com/192/192/people" />
@@ -54,7 +54,7 @@ const AdmissionDetails = () => {
               </div>
 
               <div className="absolute lg:top-[220px] top-[200px] left-16 lg:left-24">
-                <button className=" uppercase   bg-red-400 text-white px-2 lg:px-6 py-1 rounded-lg">
+                <button className=" uppercase   bg-[#2374e1] text-white px-2 lg:px-6 py-1 rounded-lg">
                   Student Profile
                 </button>
               </div>
@@ -91,14 +91,14 @@ const AdmissionDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-red-400 h-[25px] "></div>
+              <div className="bg-[#2374e1] h-[25px] "></div>
             </div>
 
             <div className=" col-span-2 lg:pl-8 ">
               <div className=" w-full">
                 <div className=" shadow-md overflow-hidden border rounded-lg h-[500px]  ">
                   <table className="min-w-full text-white">
-                    <thead className="bg-red-500 text-white">
+                    <thead className="bg-[#2374e1] text-white">
                       <tr>
                         <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
                           Admisson Info
@@ -183,7 +183,7 @@ const AdmissionDetails = () => {
                       </tr>
                     </tbody>
                   </table>
-                  <div className="bg-red-400 h-[25px] "></div>
+                  <div className="bg-[#2374e1] h-[25px] "></div>
                 </div>
               </div>
             </div>
@@ -194,7 +194,7 @@ const AdmissionDetails = () => {
                 <div className=" w-full">
                   <div className=" lg:overflow-hidden overflow-scroll rounded  border-gray-200">
                     <table className="min-w-full text-white">
-                      <thead className="bg-red-500 text-white">
+                      <thead className="bg-[#2374e1] text-white">
                         <tr>
                           <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
                             Personal Info
@@ -292,7 +292,7 @@ const AdmissionDetails = () => {
           <div className=" flex justify-center mt-10">
             <button
               onClick={() => openModal()}
-              className="bg-red-500 font-semibold text-white px-8 rounded-lg py-2"
+              className="bg-[#2374e1] font-semibold text-white px-8 rounded-lg py-2"
             >
               Admission Accpect Now
             </button>

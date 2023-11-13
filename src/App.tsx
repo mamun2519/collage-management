@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Navber from "./Components/Shared/Navber";
@@ -47,7 +47,13 @@ import StudentDetails from "./Components/Department/StudentDetails";
 import GalleryPage from "./Components/About/Galery";
 export const ThemeContext: any = createContext(null);
 function App() {
-  const [theme, setTheme] = useState("light");
+  const storedTheme = localStorage.getItem("theme");
+  const [theme, setTheme] = useState(storedTheme || "light");
+
+  // Update local storage when the theme changes
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   };

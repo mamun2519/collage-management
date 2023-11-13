@@ -52,7 +52,7 @@ const ConfromMessage = () => {
           <p className="  font-medium text-xl">Dear Student,</p>
           <p className="text-gray-800">
             {" "}
-            Please Wait 24 to 72 hours. The collage authority will verifay your
+            Please Wait 24 to 72 hours. The collage authority will verify your
             identity and tell your roll number.
           </p>
           <p>Thank You.</p>

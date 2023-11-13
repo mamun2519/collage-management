@@ -157,7 +157,7 @@ const Login = () => {
                 <p className="text-center text-sm mt-3">
                   Are You new?{" "}
                   <span
-                    className="text-blue-500"
+                    className="text-blue-500  cursor-pointer"
                     onClick={() => navigate("/signup")}
                   >
                     Please Sing up
