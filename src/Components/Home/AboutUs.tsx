@@ -9,7 +9,7 @@ const AboutUs = () => {
         <div
           className={`border-b-[3px] rounded-full ${
             theme == "light"
-              ? "border-[#2374e1] "
+              ? "border-[#166364]  "
               : "border-[#e4e6eb] text-[#e4e6eb]"
           }`}
         >
@@ -28,7 +28,7 @@ const AboutUs = () => {
             tabIndex={0}
             className={`collapse collapse-open border  rounded-box ${
               theme == "light"
-                ? "bg-base-100 border-base-300 "
+                ? "bg-[#166364]  border-base-300  text-white"
                 : "bg-[#242526] border-[#414343] text-[#e4e6eb]"
             }`}
           >

@@ -12,7 +12,7 @@ const CollageInformation = () => {
         <div
           className={` ${
             theme === "light"
-              ? " bg-[#262582]"
+              ? " bg-[#166364] "
               : " bg-[#242526] border-[#414343]"
           }  py-4 md:py-8 text-white shadow-sm rounded-md`}
         >
@@ -29,7 +29,7 @@ const CollageInformation = () => {
         <div
           className={` ${
             theme === "light"
-              ? " bg-[#262582]"
+              ? " bg-[#166364] "
               : " bg-[#242526] border-[#414343]"
           }  py-4 md:py-8 text-white shadow-sm rounded-md`}
         >
@@ -46,7 +46,7 @@ const CollageInformation = () => {
         </div>
         <div
           className={` ${
-            theme === "light" ? " bg-[#262582]" : " bg-[#242526]"
+            theme === "light" ? " bg-[#166364] " : " bg-[#242526]"
           }  py-4 md:py-8 text-white shadow-sm rounded-md`}
         >
           <div className="flex justify-center items-center gap-3 ">
@@ -62,7 +62,7 @@ const CollageInformation = () => {
         </div>
         <div
           className={` ${
-            theme === "light" ? " bg-[#262582]" : " bg-[#242526]"
+            theme === "light" ? " bg-[#166364] " : " bg-[#242526]"
           }  py-4 md:py-8 text-white shadow-sm rounded-md`}
         >
           <div className="flex justify-center items-center gap-3 ">

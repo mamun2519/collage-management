@@ -19,7 +19,9 @@ const SideNav = () => {
   return (
     <nav
       className={`${
-        theme == "light" ? "bg-base-200" : "bg-[#18191a] text-[#e4e6eb]"
+        theme == "light"
+          ? " bg-[#166364]  text-white"
+          : "bg-[#18191a] text-[#e4e6eb]"
       } `}
     >
       <div className="flex items-center font-medium  justify-between container mx-auto  p-5 lg:p-0">
@@ -38,7 +40,7 @@ const SideNav = () => {
             <NavLink
               style={({ isActive, isPending }) => {
                 return {
-                  color: isActive ? "blue" : "inherit",
+                  color: isActive ? "#0b0825" : "inherit",
                 };
               }}
               className={({ isActive, isPending }) => {
@@ -58,7 +60,7 @@ const SideNav = () => {
             <NavLink
               style={({ isActive, isPending }) => {
                 return {
-                  color: isActive ? "blue" : "inherit",
+                  color: isActive ? "text-[#0b0825]" : "inherit",
                 };
               }}
               className={({ isActive, isPending }) => {
@@ -79,7 +81,7 @@ const SideNav = () => {
               <NavLink
                 style={({ isActive, isPending }) => {
                   return {
-                    color: isActive ? "blue" : "inherit",
+                    color: isActive ? "text-[#0b0825]" : "inherit",
                   };
                 }}
                 className={({ isActive, isPending }) => {

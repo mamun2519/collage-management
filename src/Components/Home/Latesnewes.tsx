@@ -8,7 +8,7 @@ const LatesNews = () => {
       <p className="w-full h-18 relative ">
         <span
           className={`  font-medium rounded-r-md text-white lg:px-10 px-4 py-3  h-18 h-full font-mediu ${
-            theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+            theme == "light" ? "bg-[#166364]  text-white" : "bg-[#414343]"
           }`}
         >
           LATEST NEWS{" "}
