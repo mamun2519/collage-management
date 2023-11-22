@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { MdBorderColor } from "react-icons/md";
 import {
   BsChevronCompactLeft,
@@ -10,7 +10,9 @@ import { GrUserAdmin } from "react-icons/gr";
 import { AiFillWindows } from "react-icons/ai";
 import { FcBusinessman, FcDepartment } from "react-icons/fc";
 import { GiTeacher } from "react-icons/gi";
+import { ThemeContext } from "../../App";
 const Banner = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const slides = [
     {
       url: "https://www.rangamaticollege.gov.bd/midea/slider/photo2023-05-06-07-15-00_6455fe74a5ddf.jpg",
@@ -67,7 +69,11 @@ const Banner = () => {
     setCurrentIndex(slideIndex);
   };
   return (
-    <div className="lg:h-[430px] bg-base-200 container mx-auto rounded mt-10">
+    <div
+      className={`${
+        theme === "light" ? " bg-base-200 " : "bg-[#242526]  border-[#414343]"
+      }lg:h-[430px]  container mx-auto rounded mt-10`}
+    >
       <div className=" p-5 grid lg:grid-cols-2 gap-5 grid-cols-1">
         <div className="h-[300px] md:h-[500] lg:h-[380px] w-full m-auto px-4 relative group">
           <div
@@ -96,33 +102,45 @@ const Banner = () => {
         <div>
           <div className=" grid  grid-cols-3  lg:gap-5 gap-3 lg:mt-">
             <div
-              className=" lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 border rounded-lg bg-white
-            flex justify-center items-center "
+              className={`${
+                theme === "light"
+                  ? "bg-white border text-[#262582]"
+                  : "bg-[#414343] text-white"
+              } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
+              flex justify-center items-center `}
             >
               <div>
-                <span className=" text-2xl  flex justify-center mb-2 text-[#262582]">
+                <span className=" text-2xl  flex justify-center mb-2 ">
                   <MdBorderColor />
                 </span>
-                <h3 className=" uppercase">Notice</h3>
+                <h3 className=" uppercase ">Notice</h3>
               </div>
             </div>
             <div
-              className="lg:w-full xl:w-full sm:w-[105px] md:w-60   h-28 border rounded-lg bg-white
-            flex justify-center items-center "
+              className={`${
+                theme === "light"
+                  ? "bg-white border text-[#262582]"
+                  : "bg-[#414343] text-white"
+              } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
+              flex justify-center items-center `}
             >
               <div className=" ">
-                <span className=" text-2xl  flex justify-center mb-2 text-[#262582]">
+                <span className=" text-2xl  flex justify-center mb-2 ">
                   <BsTextareaResize />
                 </span>
                 <h3 className=" uppercase">RESULT</h3>
               </div>
             </div>
             <div
-              className=" lg:w-full xl:w-full sm:w-[105px] md:w-60   h-28 border rounded-lg bg-white
-            flex justify-center items-center "
+              className={`${
+                theme === "light"
+                  ? "bg-white border text-[#262582]"
+                  : "bg-[#414343] text-white"
+              } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
+              flex justify-center items-center `}
             >
               <div className=" ">
-                <span className=" text-2xl  flex justify-center mb-2 text-[#262582]">
+                <span className=" text-2xl  flex justify-center mb-2 ">
                   <BsNewspaper />
                 </span>
                 <h3 className=" uppercase">NEWS</h3>
@@ -131,33 +149,45 @@ const Banner = () => {
           </div>
           <div className=" grid  grid-cols-3  lg:gap-5 gap-3 mt-5">
             <div
-              className=" lg:w-full xl:w-full sm:w-[105px] md:w-60   h-28 border rounded-lg bg-white
-            flex justify-center items-center "
+              className={`${
+                theme === "light"
+                  ? "bg-white border text-[#262582]"
+                  : "bg-[#414343] text-white"
+              } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
+              flex justify-center items-center `}
             >
               <div className=" ">
-                <span className=" text-2xl  flex justify-center mb-2 text-[#262582]">
+                <span className=" text-2xl  flex justify-center mb-2 ">
                   <GrUserAdmin />
                 </span>
                 <h3 className=" uppercase text-center">EXAM ROUTINE</h3>
               </div>
             </div>
             <div
-              className=" lg:w-full xl:w-full sm:w-[105px] md:w-60   h-28 border rounded-lg bg-white
-            flex justify-center items-center "
+              className={`${
+                theme === "light"
+                  ? "bg-white border text-[#262582]"
+                  : "bg-[#414343] text-white"
+              } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
+              flex justify-center items-center `}
             >
               <div className=" ">
-                <span className=" text-2xl  flex justify-center mb-2 text-[#262582]">
+                <span className=" text-2xl  flex justify-center mb-2 ">
                   <GrUserAdmin />
                 </span>
                 <h3 className=" uppercase">ADMISSION</h3>
               </div>
             </div>
             <div
-              className=" lg:w-full xl:w-full sm:w-[105px] md:w-60   h-28 border rounded-lg bg-white
-            flex justify-center items-center "
+              className={`${
+                theme === "light"
+                  ? "bg-white border text-[#262582]"
+                  : "bg-[#414343] text-white"
+              } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
+              flex justify-center items-center `}
             >
               <div className=" ">
-                <span className=" text-2xl  flex justify-center mb-2 text-[#262582]">
+                <span className=" text-2xl  flex justify-center mb-2 ">
                   <AiFillWindows />
                 </span>
                 <h3 className=" uppercase text-center">CLASS ROUTINE</h3>
@@ -166,11 +196,15 @@ const Banner = () => {
           </div>
           <div className=" grid  grid-cols-3 lg:gap-5 gap-3 mt-5">
             <div
-              className=" lg:w-full xl:w-full sm:w-[105px]   md:w-60  h-28 border rounded-lg bg-white
-            flex justify-center items-center  "
+              className={`${
+                theme === "light"
+                  ? "bg-white border text-[#262582]"
+                  : "bg-[#414343] text-white"
+              } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
+              flex justify-center items-center `}
             >
               <div className=" ">
-                <span className=" text-2xl  flex justify-center mb-2 text-[#262582] ">
+                <span className=" text-2xl  flex justify-center mb-2 ">
                   <FcDepartment />
                 </span>
                 <h3 className=" uppercase lg:text-[17px] text-[14px]">
@@ -179,22 +213,30 @@ const Banner = () => {
               </div>
             </div>
             <div
-              className=" lg:w-full xl:w-full sm:w-[105px] md:w-60   h-28 border rounded-lg bg-white
-            flex justify-center items-center "
+              className={`${
+                theme === "light"
+                  ? "bg-white border "
+                  : "bg-[#414343] text-white"
+              } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
+              flex justify-center items-center `}
             >
               <div className=" ">
-                <span className=" text-2xl  flex justify-center mb-2 text-[#262582]">
+                <span className=" text-2xl  flex justify-center mb-2 ">
                   <GiTeacher />
                 </span>
                 <h3 className=" uppercase">TEACHERS</h3>
               </div>
             </div>
             <div
-              className=" lg:w-full xl:w-full sm:w-[105px] md:w-60   h-28 border rounded-lg bg-white
-            flex justify-center items-center "
+              className={`${
+                theme === "light"
+                  ? "bg-white border text-[#262582]"
+                  : "bg-[#414343] text-white"
+              } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
+              flex justify-center items-center `}
             >
               <div className=" ">
-                <span className=" text-2xl  flex justify-center mb-2 text-[#262582]">
+                <span className=" text-2xl  flex justify-center mb-2 ">
                   <FcBusinessman />
                 </span>
                 <h3 className=" uppercase">STUDENTS</h3>

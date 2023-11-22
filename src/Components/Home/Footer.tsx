@@ -9,16 +9,16 @@ import { ThemeContext } from "../../App";
 const Footer = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   return (
-    <div className={`${theme == "light" ? "bg-[#18191a]" : "bg-base-100"}`}>
+    <div className={`${theme == "light" ? "bg-[#18191a]" : "bg-[#242526]"}`}>
       <footer
         className={`footer p-10  max-w-7xl m-auto px-3 ${
-          theme == "light" ? "text-[#e4e6eb]" : "text-[#18191a]"
+          theme == "light" ? "text-[#e4e6eb]" : "text-white"
         }`}
       >
         <div>
           <span
             className={`font-medium pb-3 text-xl  ${
-              theme == "light" ? "text-[#e4e6eb]" : "text-[#18191a]"
+              theme == "light" ? "text-[#e4e6eb]" : "text-white"
             }`}
           >
             Useful Links
@@ -32,7 +32,7 @@ const Footer = () => {
         <div>
           <span
             className={`font-medium pb-3 text-xl  ${
-              theme == "light" ? "text-[#e4e6eb]" : "text-[#18191a]"
+              theme == "light" ? "text-[#e4e6eb]" : "text-white"
             }`}
           >
             Academic Links
@@ -46,7 +46,7 @@ const Footer = () => {
         <div>
           <span
             className={`font-medium pb-3 text-xl  ${
-              theme == "light" ? "text-[#e4e6eb]" : "text-[#18191a]"
+              theme == "light" ? "text-[#e4e6eb]" : "text-white"
             }`}
           >
             Important Links
@@ -62,7 +62,7 @@ const Footer = () => {
         className={`footer  py-4 border-t   border-base-300  max-w-7xl m-auto px-3 ${
           theme == "light"
             ? "bg-[#18191a] text-[#e4e6eb]"
-            : "bg-base-100 text-[#18191a]"
+            : "bg-[#242526] text-white"
         }`}
       >
         <div className="items-center grid-flow-col">
@@ -73,16 +73,40 @@ const Footer = () => {
         </div>
         <div className="md:place-self-center md:justify-self-end">
           <div className="grid grid-flow-col gap-4">
-            <span className="text-xl border p-2 rounded-lg text-red-500">
+            <span
+              className={`${
+                theme == "light"
+                  ? "text-red-500 border"
+                  : " text-[#18191a] border-[#18191a] bg-white"
+              } text-xl  p-2 rounded-lg `}
+            >
               <BsFacebook />
             </span>
-            <span className="text-xl border p-2 rounded-lg text-red-500">
+            <span
+              className={`${
+                theme == "light"
+                  ? "text-red-500 border"
+                  : " text-[#18191a] border-[#18191a] bg-white"
+              } text-xl  p-2 rounded-lg `}
+            >
               <AiFillTwitterCircle />
             </span>
-            <span className="text-xl border p-2 rounded-lg text-red-500">
+            <span
+              className={`${
+                theme == "light"
+                  ? "text-red-500 border"
+                  : " text-[#18191a] border-[#18191a] bg-white"
+              } text-xl  p-2 rounded-lg `}
+            >
               <AiOutlineInstagram />
             </span>
-            <span className="text-xl border p-2 rounded-lg text-red-500">
+            <span
+              className={`${
+                theme == "light"
+                  ? "text-red-500 border"
+                  : " text-[#18191a] border-[#18191a] bg-white"
+              } text-xl  p-2 rounded-lg `}
+            >
               <AiFillLinkedin />
             </span>
           </div>

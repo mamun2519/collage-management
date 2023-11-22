@@ -1,12 +1,21 @@
 import { FaBookOpen } from "react-icons/fa";
 import { BsPlusLg } from "react-icons/bs";
 import { FaUniversity, FaUserGraduate, FaUserTie } from "react-icons/fa";
+import { useContext } from "react";
+import { ThemeContext } from "../../App";
 
 const CollageInformation = () => {
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
   return (
     <div className="md:container md:mx-auto mx-5 my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:mx-5 lg:mx-0">
-        <div className="bg-[#262582] py-4 md:py-8 text-white shadow-sm rounded-md">
+        <div
+          className={` ${
+            theme === "light"
+              ? " bg-[#262582]"
+              : " bg-[#242526] border-[#414343]"
+          }  py-4 md:py-8 text-white shadow-sm rounded-md`}
+        >
           <div className="flex justify-center items-center gap-3 ">
             <FaUniversity className="text-4xl md:text-6xl" />
             <div className="text-lg md:text-xl">
@@ -17,7 +26,13 @@ const CollageInformation = () => {
             </div>
           </div>
         </div>
-        <div className="bg-[#262582] py-4 md:py-8 text-white shadow-sm rounded-md">
+        <div
+          className={` ${
+            theme === "light"
+              ? " bg-[#262582]"
+              : " bg-[#242526] border-[#414343]"
+          }  py-4 md:py-8 text-white shadow-sm rounded-md`}
+        >
           <div className="flex justify-center items-center gap-3 ">
             <FaUserTie className="text-4xl md:text-6xl" />
             <div className="text-xl">
@@ -29,7 +44,11 @@ const CollageInformation = () => {
             </div>
           </div>
         </div>
-        <div className="bg-[#262582] py-4 md:py-8 text-white shadow-sm rounded-md">
+        <div
+          className={` ${
+            theme === "light" ? " bg-[#262582]" : " bg-[#242526]"
+          }  py-4 md:py-8 text-white shadow-sm rounded-md`}
+        >
           <div className="flex justify-center items-center gap-3 ">
             <FaBookOpen className="text-4xl md:text-6xl" />
             <div className="text-xl">
@@ -41,7 +60,11 @@ const CollageInformation = () => {
             </div>
           </div>
         </div>
-        <div className="bg-[#262582] py-4 md:py-8 text-white shadow-sm rounded-md">
+        <div
+          className={` ${
+            theme === "light" ? " bg-[#262582]" : " bg-[#242526]"
+          }  py-4 md:py-8 text-white shadow-sm rounded-md`}
+        >
           <div className="flex justify-center items-center gap-3 ">
             <FaUserGraduate className="text-4xl md:text-6xl" />
             <div className="text-xl">
