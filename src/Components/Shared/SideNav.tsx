@@ -20,10 +20,10 @@ const SideNav = () => {
     <nav
       className={`${
         theme == "light" ? "bg-base-200" : "bg-[#18191a] text-[#e4e6eb]"
-      }`}
+      } `}
     >
-      <div className="flex items-center font-medium justify-around">
-        <div className="z-50 p-5 md:w-auto w-full flex justify-between">
+      <div className="flex items-center font-medium  justify-between container mx-auto  p-5 lg:p-0">
+        <div className="z-50 md:w-auto w-full flex justify-between">
           {/* <img src="" alt="BanglaDesh Railway School" className="md:cursor-pointer h-9" /> */}
 
           <span className="uppercase ">GOVT PUBLIC COLLAGE</span>

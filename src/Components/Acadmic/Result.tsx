@@ -45,7 +45,7 @@ const Result = () => {
             Class Roll: ${studentInfo?.roll} ,
             Student Name: ${studentInfo?.name} ,
             class Name: ${studentInfo?.classs} ,
-             Rasult Name: ${result?.resultType},
+             Result Name: ${result?.resultType},
              Session : ${studentInfo?.session},
              Result : ${result?.Gpa},
             
