@@ -13,7 +13,7 @@ const Overview = () => {
     >
       <div
         className={`h-[25px] ${
-          theme == "light" ? "bg-[#5195ed] " : "bg-[#414343]"
+          theme == "light" ? "bg-[#166364] " : "bg-[#414343]"
         }`}
       ></div>
       <h1
@@ -62,7 +62,7 @@ const Overview = () => {
 
         <div
           className={`h-[25px] mt-8 ${
-            theme == "light" ? "bg-[#5195ed] " : "bg-[#414343]"
+            theme == "light" ? "bg-[#166364] " : "bg-[#414343]"
           }`}
         ></div>
         <h1
@@ -103,7 +103,7 @@ const Overview = () => {
         </p>
         <div
           className={`h-[25px] mt-8 ${
-            theme == "light" ? "bg-[#5195ed] " : "bg-[#414343]"
+            theme == "light" ? "bg-[#166364]  " : "bg-[#414343]"
           }`}
         ></div>
         <h1
@@ -128,7 +128,7 @@ const Overview = () => {
         </p>
         <div
           className={`h-[25px] mt-8 ${
-            theme == "light" ? "bg-[#5195ed] " : "bg-[#414343]"
+            theme == "light" ? "bg-[#166364] " : "bg-[#414343]"
           }`}
         ></div>
         <h1

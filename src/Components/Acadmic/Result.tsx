@@ -118,7 +118,7 @@ const Result = () => {
                         <div
                           className={`border-b-[3px] rounded-full ${
                             theme == "light"
-                              ? "border-[#2374e1] "
+                              ? "border-[#166364] "
                               : "border-[#e4e6eb] text-[#e4e6eb]"
                           }`}
                         >
@@ -311,7 +311,7 @@ const Result = () => {
                       <div className=" flex justify-center mt-5">
                         <input
                           className={` font-semibold text-white px-6 mt-2 rounded-lg py-2 ${
-                            theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                            theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
                           }`}
                           type="submit"
                           value="Submit Result"
@@ -446,7 +446,7 @@ const Result = () => {
                                 <th
                                   className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                                     theme == "light"
-                                      ? "bg-gray-100 text-gray-600 border-gray-200"
+                                      ? "bg-[#166364] text-white border-gray-200"
                                       : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                                   }`}
                                 >
@@ -455,7 +455,7 @@ const Result = () => {
                                 <th
                                   className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                                     theme == "light"
-                                      ? "bg-gray-100 text-gray-600 border-gray-200"
+                                      ? "bg-[#166364] text-white border-gray-200"
                                       : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                                   }`}
                                 >
@@ -464,7 +464,7 @@ const Result = () => {
                                 <th
                                   className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                                     theme == "light"
-                                      ? "bg-gray-100 text-gray-600 border-gray-200"
+                                      ? "bg-[#166364] text-white border-gray-200"
                                       : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                                   }`}
                                 >
@@ -473,7 +473,7 @@ const Result = () => {
                                 <th
                                   className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                                     theme == "light"
-                                      ? "bg-gray-100 text-gray-600 border-gray-200"
+                                      ? "bg-[#166364] text-white border-gray-200"
                                       : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                                   }`}
                                 >

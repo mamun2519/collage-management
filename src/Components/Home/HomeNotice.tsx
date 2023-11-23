@@ -94,7 +94,7 @@ const HomeNotice = () => {
                         <th
                           className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                             theme == "light"
-                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              ? "bg-[#166364] text-white border-gray-200"
                               : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                           }`}
                         >
@@ -103,7 +103,7 @@ const HomeNotice = () => {
                         <th
                           className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                             theme == "light"
-                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              ? "bg-[#166364] text-white border-gray-200"
                               : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                           }`}
                         >
@@ -115,7 +115,7 @@ const HomeNotice = () => {
                         <th
                           className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                             theme == "light"
-                              ? "bg-gray-100 text-gray-600 border-gray-200"
+                              ? "bg-[#166364] text-white border-gray-200"
                               : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                           }`}
                         >
@@ -180,7 +180,7 @@ const HomeNotice = () => {
                               }
                               className={` font-semibold text-white px-4 rounded-lg py-1 ${
                                 theme == "light"
-                                  ? "bg-[#2374e1]"
+                                  ? "bg-[#23395b]"
                                   : "bg-[#414343]"
                               }`}
                             >
@@ -194,7 +194,7 @@ const HomeNotice = () => {
                   <div
                     className={`lg:px-5 py-3 border-t fle text-center ${
                       theme == "light"
-                        ? "bg-white "
+                        ? "bg-[#166364] text-white rounded-2xl "
                         : "border border-[#414343] rounded"
                     }`}
                   >
@@ -202,14 +202,14 @@ const HomeNotice = () => {
                       <button
                         onClick={() => priviesPage()}
                         className={`text-sm   text-white font-semibold py-2 lg:px-8 px-4 rounded-lg ${
-                          theme == "light" ? "bg-[#5195ed]" : "bg-[#414343]"
+                          theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
                         } `}
                       >
                         Prev
                       </button>
                       <span
                         className={`text-xs xs:text-sm  ${
-                          theme == "light" ? "text-gray-900" : "text-[#e4e6eb]"
+                          theme == "light" ? "text-white" : "text-[#e4e6eb]"
                         }`}
                       >
                         Page No {nocties?.page}
@@ -217,7 +217,7 @@ const HomeNotice = () => {
                       <button
                         onClick={() => setPage(page + 1)}
                         className={`text-sm   text-white font-semibold py-2 lg:px-8 px-4 rounded-lg ${
-                          theme == "light" ? "bg-[#5195ed]" : "bg-[#414343]"
+                          theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
                         } `}
                       >
                         Next

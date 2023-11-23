@@ -34,7 +34,6 @@ const PersonalInfo = () => {
     handleSubmit,
   } = useForm<UserSubmitForm>();
   const onSubmit = (data: UserSubmitForm) => {
-   
     const studentInfo = {
       name: `${data.firstName} ${data.lastName}`,
       country: data.country,
@@ -69,7 +68,11 @@ const PersonalInfo = () => {
             theme == "light" ? "bg-base-100" : "bg-[#242526]  border-[#414343]"
           }`}
         >
-          <div className={` h-16 flex items-center  justify-between px-8 ${theme == "light" ? "bg-[#5195ed]": "bg-[#414343]"}`}>
+          <div
+            className={` h-16 flex items-center  justify-between px-8 ${
+              theme == "light" ? "bg-[#166364]" : "bg-[#414343]"
+            }`}
+          >
             <div>
               <span
                 onClick={() => navigate("/onlineAdmission")}
@@ -90,7 +93,7 @@ const PersonalInfo = () => {
             <div
               className={`border-b-[3px] rounded-full ${
                 theme == "light"
-                  ? "border-[#2374e1] "
+                  ? "border-[#166364]"
                   : "border-[#e4e6eb] text-[#e4e6eb]"
               }`}
             >
@@ -342,66 +345,66 @@ const PersonalInfo = () => {
                 </label>
               </div>
               <div>
-              <p
+                <p
                   className={` mb-2 ${
                     theme == "light" ? "text-gray-800" : "text-[#e4e6eb]"
                   }`}
                 >
                   Picture
                 </p>
-                  <input
-                    {...register("images", {
-                      required: {
-                        value: true,
-                        message: "images is Required",
-                      },
-                    })}
-                    onChange={(e) => teacherPictureHendeler(e)}
-                    type="file"
-                    name="image-uplode"
-                    id="product-img"
-                    hidden
-                    placeholder="Enter seller name"
-                    //   class="block w-full px-4 py-2 mt-2 pl-12  bg-white border rounded-md   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
-                  />
-                  <label htmlFor={"product-img"} className=" ">
-                    <div>
-                      {!picture && (
-                        <div className="h-32 lg:w-44 w-52 border rounded-lg flex justify-center  items-center">
-                          <div className=" ">
-                            <span className="text-6xl text-[#EC255A]">
-                              <MdAddPhotoAlternate />
-                            </span>
-                          </div>
+                <input
+                  {...register("images", {
+                    required: {
+                      value: true,
+                      message: "images is Required",
+                    },
+                  })}
+                  onChange={(e) => teacherPictureHendeler(e)}
+                  type="file"
+                  name="image-uplode"
+                  id="product-img"
+                  hidden
+                  placeholder="Enter seller name"
+                  //   class="block w-full px-4 py-2 mt-2 pl-12  bg-white border rounded-md   focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                />
+                <label htmlFor={"product-img"} className=" ">
+                  <div>
+                    {!picture && (
+                      <div className="h-32 lg:w-44 w-52 border rounded-lg flex justify-center  items-center">
+                        <div className=" ">
+                          <span className="text-6xl text-[#EC255A]">
+                            <MdAddPhotoAlternate />
+                          </span>
                         </div>
-                      )}
-                      {picture && (
-                        <div className="h-32 w-44 border rounded-md flex justify-center  items-center">
-                          <div className="h-32 w-44 relative">
-                            <img
-                              className="h-32 w-44 p-1 rounded-lg"
-                              src={picture}
-                              alt="productPicure"
-                            />
-                            <span
-                              onClick={() => setPicture("")}
-                              className=" absolute text-2xl top-[5px] text-red-500 right-[5px] cursor-pointer"
-                            >
-                              <TiDelete />
-                            </span>
-                          </div>
+                      </div>
+                    )}
+                    {picture && (
+                      <div className="h-32 w-44 border rounded-md flex justify-center  items-center">
+                        <div className="h-32 w-44 relative">
+                          <img
+                            className="h-32 w-44 p-1 rounded-lg"
+                            src={picture}
+                            alt="productPicure"
+                          />
+                          <span
+                            onClick={() => setPicture("")}
+                            className=" absolute text-2xl top-[5px] text-red-500 right-[5px] cursor-pointer"
+                          >
+                            <TiDelete />
+                          </span>
                         </div>
-                      )}
-                    </div>
-                    <label className="label">
-                      {errors.images?.type === "required" && (
-                        <span className="text-red-500">
-                          {errors.images.message}
-                        </span>
-                      )}
-                    </label>
+                      </div>
+                    )}
+                  </div>
+                  <label className="label">
+                    {errors.images?.type === "required" && (
+                      <span className="text-red-500">
+                        {errors.images.message}
+                      </span>
+                    )}
                   </label>
-                </div>
+                </label>
+              </div>
             </div>
           </div>
           <div className="mt-5 px-5">

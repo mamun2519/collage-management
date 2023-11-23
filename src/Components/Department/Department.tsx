@@ -113,7 +113,13 @@ const BBS = () => {
               alt="Shoes"
             />
           </div> */}
-          <div className="bg-gray-700">
+          <div
+            className={`${
+              theme === "light"
+                ? "bg-[#166364]  border-t border-[#e4e6eb]"
+                : "bg-gray-700"
+            }`}
+          >
             <div className="h-60   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-center items-center">
               <h1 className="text-4xl  font-medium text-white up uppercase ">
                 department Of {department}
@@ -156,7 +162,7 @@ const BBS = () => {
                       selected
                         ? `transition  uppercase duration-500 border-b-[3px]  px-6 ${
                             theme == "light"
-                              ? "border-[#2374e1] text-black"
+                              ? "border-[#166364] text-black"
                               : "border-[#e4e6eb] text-[#e4e6eb]"
                           }   rounded-lg  pb-1 text-center `
                         : ` py-[5px] px-6 uppercase  ${

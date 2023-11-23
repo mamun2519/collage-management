@@ -6,9 +6,9 @@ interface StudentInfo {
   key: string;
 }
 const StudentRow = ({ student }: StudentInfo) => {
-  const { theme, toggleTheme , } = useContext<any>(ThemeContext);
-  const { name, roll ,_id } = student;
-  const navigate = useNavigate()
+  const { theme, toggleTheme } = useContext<any>(ThemeContext);
+  const { name, roll, _id } = student;
+  const navigate = useNavigate();
   return (
     <tr>
       <td
@@ -57,7 +57,7 @@ const StudentRow = ({ student }: StudentInfo) => {
         </p>
       </td>
       <td
-      onClick={()=>navigate(`/studentDetails/${_id}`)}
+        onClick={() => navigate(`/studentDetails/${_id}`)}
         className={`px-5 py-5 border-b  text-sm ${
           theme == "light"
             ? "border-gray-200 bg-white "
@@ -66,7 +66,7 @@ const StudentRow = ({ student }: StudentInfo) => {
       >
         <button
           className={`font-semibold text-white px-4 rounded-lg py-1 ${
-            theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+            theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
           }`}
         >
           View Now

@@ -72,7 +72,7 @@ const ExamRoutine = ({ routine }: RoutineInfo) => {
                       <th
                         className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                           theme == "light"
-                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            ? "bg-[#166364] text-white border-gray-200"
                             : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                         }`}
                       >
@@ -81,7 +81,7 @@ const ExamRoutine = ({ routine }: RoutineInfo) => {
                       <th
                         className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                           theme == "light"
-                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            ? "bg-[#166364] text-white border-gray-200"
                             : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                         }`}
                       >
@@ -90,7 +90,7 @@ const ExamRoutine = ({ routine }: RoutineInfo) => {
                       <th
                         className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                           theme == "light"
-                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            ? "bg-[#166364] text-white border-gray-200"
                             : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                         }`}
                       >
@@ -99,7 +99,7 @@ const ExamRoutine = ({ routine }: RoutineInfo) => {
                       <th
                         className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                           theme == "light"
-                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            ? "bg-[#166364] text-white border-gray-200"
                             : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                         }`}
                       >

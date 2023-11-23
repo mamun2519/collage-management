@@ -10,7 +10,6 @@ const StudentId = () => {
   const [studentCard, setStudentCard] = useState<any>("");
   const navigate = useNavigate();
   useEffect(() => {
-    console.log("helo");
     if (user?.email) {
       fetch(
         `http://localhost:5000/v1/student/chackadmission?email=${user?.email}`
@@ -46,7 +45,7 @@ const StudentId = () => {
         <>
           <div className=" grid lg:grid-cols-2  col-span-1 ">
             <div className="card lg:w-3/5 w-full  h-[500px] mx-auto bg-base-100 border  shadow-lg mt-5">
-              <div className="bg-red-500 h-[150px] relative rounded-f"></div>
+              <div className="bg-[#166364] h-[150px] relative rounded-f"></div>
               <div className="avatar absolute lg:top-28 top-20 lg:left-32 left-28">
                 <div className="w-28 rounded-full ">
                   <img src="https://placeimg.com/192/192/people" />
@@ -63,7 +62,7 @@ const StudentId = () => {
               </div>
 
               <div className="absolute lg:top-60 top-[205px] left-24">
-                <button className=" uppercase   bg-red-400 text-white px-6 py-1 rounded-lg">
+                <button className=" uppercase   bg-[#166364] text-white px-6 py-1 rounded-lg">
                   identity Card
                 </button>
               </div>
@@ -100,16 +99,16 @@ const StudentId = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-red-400 h-[25px] "></div>
+              <div className="bg-[#166364] h-[25px] "></div>
             </div>
 
             <div className="card lg:w-3/5  w-full lg:h-[500px] h-[600px] mx-auto bg-base-100 border = shadow-lg mt-5">
-              <div className="bg-red-400 h-[25px] "></div>
+              <div className="bg-[#166364] h-[25px] "></div>
 
               <div className=" mt-5">
                 <div className="flex justify-center">
-                  <button className=" uppercase    bg-red-400 text-white px-6 py-2 rounded-lg">
-                    Trems And Conditions
+                  <button className=" uppercase    bg-[#166364] text-white px-6 py-2 rounded-lg">
+                    Terms And Conditions
                   </button>
                 </div>
                 <div className="px-5 mt-3">
@@ -152,7 +151,7 @@ const StudentId = () => {
                   </div>
                 </div>
 
-                <div className="bg-red-500 h-full mt-5  grid grid-cols-2 gap-10 px-5">
+                <div className="bg-[#166364] h-full mt-5  grid grid-cols-2 gap-10 px-5">
                   <div className=" mt-4 text-white uppercase font-semibold ">
                     <p>Student Qr Code</p>
                   </div>
@@ -196,7 +195,7 @@ const StudentId = () => {
                 <p>Thank You.</p>
                 <button
                   onClick={() => navigate("/onlineAdmission")}
-                  className="bg-red-500 text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold"
+                  className="bg-[#166364] text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold"
                 >
                   enroll Now
                 </button>

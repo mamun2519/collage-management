@@ -118,7 +118,7 @@ const CheckoutFrom = () => {
                   <span id="button-text">
                     {isLoading ? (
                       <div className="spinner" id="spinner">
-                        Lodding..........
+                        Loading..........
                       </div>
                     ) : (
                       `Pay ${price} BDT`

@@ -54,7 +54,11 @@ const AdmissonPreview = () => {
           theme == "light" ? "bg-base-100" : "bg-[#242526]  border-[#414343]"
         }`}
       >
-        <div className={` h-16 flex items-center  justify-between px-8 ${theme == "light" ? "bg-[#5195ed]": "bg-[#414343]"}`}>
+        <div
+          className={` h-16 flex items-center  justify-between px-8 ${
+            theme == "light" ? "bg-[#166364]" : "bg-[#414343]"
+          }`}
+        >
           <div>
             <span
               onClick={() => navigate("/onlineAdmission/personalInfromation")}
@@ -80,7 +84,7 @@ const AdmissonPreview = () => {
           <div
             className={`border-b-[3px] rounded-full ${
               theme == "light"
-                ? "border-[#2374e1] "
+                ? "border-[#166364] "
                 : "border-[#e4e6eb] text-[#e4e6eb]"
             }`}
           >
@@ -98,10 +102,16 @@ const AdmissonPreview = () => {
                 <div className=" w-full">
                   <div className="shadow overflow-hidden rounded  border-gray-200">
                     <table className="min-w-full text-white">
-                      <thead className={` ${theme == "light"? "bg-[#5195ed] text-white": "text-[#e4e6eb] bg-[#414343]"} border-none `}>
+                      <thead
+                        className={` ${
+                          theme == "light"
+                            ? "bg-[#166364] text-white"
+                            : "text-[#e4e6eb] bg-[#414343]"
+                        } border-none `}
+                      >
                         <tr>
                           <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
-                            Admisson Info
+                            Admission Info
                           </th>
                           <td className="w-1/3 text-left py-3 px-6 uppercase font-semibold ">
                             Details
@@ -181,7 +191,13 @@ const AdmissonPreview = () => {
             </div>
             <div>
               <div className="card wfull bg-base-100 h-full  shadow-sm border">
-                <div className={` lg:h-12 h-16 flex items-center  px-6  uppercase font-semibold ${theme == "light"? "bg-[#5195ed] text-white": "text-[#e4e6eb] bg-[#414343]"} border-none `}>
+                <div
+                  className={` lg:h-12 h-16 flex items-center  px-6  uppercase font-semibold ${
+                    theme == "light"
+                      ? "bg-[#166364] text-white"
+                      : "text-[#e4e6eb] bg-[#414343]"
+                  } border-none `}
+                >
                   <h1>First Year "{previewInfo?.data?.classs}" Book List</h1>
                   <div></div>
                 </div>
@@ -203,7 +219,13 @@ const AdmissonPreview = () => {
               <div className=" w-full">
                 <div className="shadow  lg:overflow-hidden overflow-scroll rounded  border-gray-200">
                   <table className="min-w-full text-white">
-                    <thead className={` ${theme == "light"? "bg-[#5195ed] text-white": "text-[#e4e6eb] bg-[#414343]"} border-none `}>
+                    <thead
+                      className={` ${
+                        theme == "light"
+                          ? "bg-[#166364] text-white"
+                          : "text-[#e4e6eb] bg-[#414343]"
+                      } border-none `}
+                    >
                       <tr>
                         <th className="w-1/3 text-left py-3 px-6 uppercase font-semibold text-sm">
                           Personal Info

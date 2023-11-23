@@ -20,14 +20,20 @@ const Contact = () => {
   const onSubmit = (data: Notices) => {};
   return (
     <>
-      <div className="bg-gray-700">
+      <div
+        className={`${
+          theme === "light"
+            ? "bg-[#166364]  border-t border-[#e4e6eb]"
+            : "bg-gray-700"
+        }`}
+      >
         <div className="h-52   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-between items-center">
           <h1 className="text-4xl  font-medium text-white up">Contact Us</h1>
 
           <div
             className={`flex py-2 ]  px-8 gap-5 rounded-lg  font-medium ${
               theme == "light"
-                ? "bg-[#2374e1] text-white"
+                ? "bg-[#23395b] text-white"
                 : "bg-[#242526] text-[#e4e6eb]"
             }`}
           >
@@ -202,7 +208,7 @@ const Contact = () => {
               <div className=" text-center mt-5">
                 <button
                   className={` font-semibold text-white px-4 rounded-lg py-2 ${
-                    theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                    theme == "light" ? "bg-[#166364]" : "bg-[#414343]"
                   }`}
                   type="submit"
                   value="Send Your Message"
@@ -213,7 +219,7 @@ const Contact = () => {
             </form>
           </div>
           <div className="p-5">
-            <div className=" flex pl-8 items-center h-32 bg-[#2374e1] text-white  rounded-lg">
+            <div className=" flex pl-8 items-center h-32 bg-[#166364] text-white  rounded-lg">
               <div>
                 <p className="text-xl  font-medium text-white">
                   OUR CONTACT NUMBER
@@ -221,7 +227,7 @@ const Contact = () => {
                 <p className="text-lg text-white mt-1">031-636051</p>
               </div>
             </div>
-            <div className=" flex pl-8 items-center h-32 bg-[#2374e1] text-white  rounded-lg mt-5">
+            <div className=" flex pl-8 items-center h-32 bg-[#166364] text-white  rounded-lg mt-5">
               <div>
                 <p className="text-xl  font-medium text-white">
                   OUR OFFICE LOCATION
@@ -231,7 +237,7 @@ const Contact = () => {
                 </p>
               </div>
             </div>
-            <div className=" flex  items-center h-32 bg-[#2374e1] text-white  rounded-lg mt-5 pl-8">
+            <div className=" flex  items-center h-32 bg-[#166364] text-white  rounded-lg mt-5 pl-8">
               <div>
                 <p className="text-xl  font-medium text-white">
                   OUR CONTACT E-MAIL

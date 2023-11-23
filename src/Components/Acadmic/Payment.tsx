@@ -33,7 +33,7 @@ const Payment = () => {
   return (
     <div className="my-10 max-w-7xl m-auto px-3">
       <div className="card w-full bg-base-100 border  pb-5">
-        <div className="bg-[#2374e1] h-16 flex items-center  justify-between px-8">
+        <div className="bg-[#166364] h-16 flex items-center  justify-between px-8">
           <div>
             <span
               onClick={() => navigate("/onlineAdmission/personalInfromation")}

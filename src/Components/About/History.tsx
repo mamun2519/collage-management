@@ -5,7 +5,13 @@ const History = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   return (
     <>
-      <div className="bg-gray-700">
+      <div
+        className={`${
+          theme === "light"
+            ? "bg-[#166364]  border-t border-[#e4e6eb]"
+            : "bg-gray-700"
+        }`}
+      >
         <div className="h-52   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-between items-center">
           <h1 className="text-4xl  font-medium text-white up">
             History of Collage
@@ -14,7 +20,7 @@ const History = () => {
           <div
             className={`flex py-2 ]  px-8 gap-5 rounded-lg  font-medium ${
               theme == "light"
-                ? "bg-[#2374e1] text-white"
+                ? "bg-[#23395b] text-white"
                 : "bg-[#242526] text-[#e4e6eb]"
             }`}
           >

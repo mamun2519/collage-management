@@ -181,7 +181,7 @@ const Admission = () => {
                   <p className="  font-medium text-xl">Dear Student,</p>
                   <p className="text-gray-900">
                     {" "}
-                    Collage Authoraty Your Roll Number Provide.
+                    Collage Authority Your Roll Number Provide.
                   </p>
                   <p>
                     Now Your Roll Is{" "}
@@ -192,7 +192,7 @@ const Admission = () => {
 
                   <button
                     onClick={() => navigate("/studentId")}
-                    className="bg-[#2374e1] text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold"
+                    className="bg-[#166364] text-white px-4 py-1 rounded-lg my-2 uppercase font-semibold"
                   >
                     Check Student Id
                   </button>
@@ -232,20 +232,20 @@ const Admission = () => {
             >
               <div
                 className={` h-16 flex items-center  justify-between px-8 ${
-                  theme == "light" ? "bg-[#5195ed]" : "bg-[#414343]"
+                  theme == "light" ? "bg-[#166364]" : "bg-[#414343]"
                 }`}
               >
                 <div>
                   <span
                     onClick={() => backHandeler()}
-                    className="bg-white text-black px-6 py-1  rounded-lg"
+                    className="bg-[#23395b] text-white px-6 py-1  rounded-lg"
                   >
                     Back
                   </span>
                 </div>
                 <div>
                   <input
-                    className="bg-white text-black px-6 py-1  rounded-lg"
+                    className="bg-[#23395b] text-white px-6 py-1  rounded-lg"
                     type="submit"
                     value=" Next"
                   />
@@ -861,7 +861,7 @@ const Admission = () => {
                           <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
                             {masterSubject?.map((subject) => (
                               <div className="">
-                                <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
+                                <span className="bg-[#166364] px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
                                   {subject.title}
                                 </span>
                               </div>
@@ -875,7 +875,7 @@ const Admission = () => {
                           <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
                             {hscSubject?.map((subject) => (
                               <div className="">
-                                <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
+                                <span className="bg-[#166364] px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
                                   {subject.title}
                                 </span>
                               </div>
@@ -890,7 +890,7 @@ const Admission = () => {
                           <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
                             {bbsSubject.map((subject) => (
                               <div className="">
-                                <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
+                                <span className="bg-[#166364] px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
                                   {subject.title}
                                 </span>
                               </div>
@@ -912,7 +912,7 @@ const Admission = () => {
                           <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
                             {bscSubject.map((subject) => (
                               <div className="">
-                                <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
+                                <span className="bg-[#166364] px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
                                   {subject.title}
                                 </span>
                               </div>
@@ -926,7 +926,7 @@ const Admission = () => {
                           <div className="lg:flex grid grid-cols-1 lg:gap-10 gap-3 mt-2">
                             {baSubject.map((subject) => (
                               <div className="">
-                                <span className="bg-red-400 px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
+                                <span className="bg-[#166364] px-6 rounded-full text-white outline-none border-none  p-1 flex items-center">
                                   {subject.title}
                                 </span>
                               </div>
