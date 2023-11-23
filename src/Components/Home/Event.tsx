@@ -23,7 +23,7 @@ const Event = () => {
         <div
           className={`border-b-[3px] rounded-full ${
             theme == "light"
-              ? "border-[#2374e1] "
+              ? "border-[#166364] "
               : "border-[#e4e6eb] text-[#e4e6eb]"
           }`}
         >
@@ -38,7 +38,7 @@ const Event = () => {
         <div className=" grid lg:grid-cols-3 grid-cols-1 gap-10 mt-10">
           {event?.map((event: any) => (
             <div key={event?._id} className="allEvent">
-              <div className="card  glass lg:h-76 h-full relative  border shadow">
+              <div className="card  glass lg:h-76 h-full relative  border shadow  ">
                 <figure>
                   <img
                     className="w-full h-[250px]"
@@ -61,7 +61,7 @@ const Event = () => {
                   onClick={() => navigate(`/eventDetails/${event?._id}`)}
                   className={` font-semibold mt-3  px-6 py-2 border-none rounded-md ${
                     theme == "light"
-                      ? "bg-[#2374e1] text-white"
+                      ? "bg-[#23395b] border-green-900 text-white"
                       : "text-[#e4e6eb] bg-[#414343]"
                   }`}
                 >

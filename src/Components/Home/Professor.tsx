@@ -10,7 +10,7 @@ const Professor = () => {
         <div
           className={` col-span-2 px-2 py-4 rounded-md ${
             theme == "light"
-              ? "border"
+              ? "border bg-[#166364]  text-white"
               : "border border-[#414343] bg-[#242526] text-[#e4e6eb]"
           }`}
         >
@@ -20,7 +20,7 @@ const Professor = () => {
           <p className="mt-3 text-center">উপাধ্যক্ষ</p>
           <p
             className={`mt-3 leading-loose  px-4 flex justify-center ${
-              theme == "light" ? "text-gray-700" : "text-[#e4e6eb]"
+              theme == "light" ? "text-[#e4e6eb] " : "text-[#e4e6eb] "
             }`}
           >
             বিশ্ব আজ দ্রুত পরিবর্তনের ধারায় ধাবমান। এই পরিবর্তনকে মানিয়ে নিতে
@@ -38,7 +38,9 @@ const Professor = () => {
           <div className="mt-5 text-center">
             <button
               className={` font-semibold text-white px-6 rounded-lg py-2 ${
-                theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                theme == "light"
+                  ? "bg-[#23395b] border-green-900 text-white"
+                  : "bg-[#414343]"
               }`}
             >
               Read More
@@ -62,7 +64,7 @@ const Professor = () => {
           <div
             className={`w-[370px]  h-full  p-2 rounded ${
               theme == "light"
-                ? "border"
+                ? "border "
                 : "border border-[#414343] bg-[#242526] text-[#e4e6eb]"
             }`}
           >
@@ -72,7 +74,7 @@ const Professor = () => {
         <div
           className={` col-span-2 px-2 py-4 rounded-md ${
             theme == "light"
-              ? "border"
+              ? "border bg-[#166364] text-white"
               : "border border-[#414343] bg-[#242526] text-[#e4e6eb]"
           }`}
         >
@@ -82,7 +84,7 @@ const Professor = () => {
           <p className="mt-3 text-center">উপাধ্যক্ষ</p>
           <p
             className={`mt-3 leading-loose  px-4 flex justify-center ${
-              theme == "light" ? "text-gray-700" : "text-[#e4e6eb]"
+              theme == "light" ? "text-[#e4e6eb]" : "text-[#e4e6eb]"
             }`}
           >
             বিশ্ব আজ দ্রুত পরিবর্তনের ধারায় ধাবমান। এই পরিবর্তনকে মানিয়ে নিতে
@@ -100,7 +102,9 @@ const Professor = () => {
           <div className="mt-5 text-center">
             <button
               className={` font-semibold text-white px-6 rounded-lg py-2 ${
-                theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                theme == "light"
+                  ? "bg-[#23395b] border-green-900 text-white"
+                  : "bg-[#414343]"
               }`}
             >
               Read More

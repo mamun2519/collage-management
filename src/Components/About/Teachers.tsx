@@ -11,7 +11,7 @@ const Teachers = () => {
   const [search, setSearch] = useState("");
   const [limit, setLimit] = useState<any>(5);
   // const [pageCount, setPageCount] = useState(1);
-  console.log(search);
+
   useEffect(() => {
     isLoading(true);
     fetch(
@@ -32,7 +32,7 @@ const Teachers = () => {
         // }
       });
   }, [page, limit, search]);
-  console.log(teacherList);
+
   const priviesPage = () => {
     if (page > 1) {
       setPage(page - 1);
@@ -41,14 +41,14 @@ const Teachers = () => {
   console.log(teacherList);
   return (
     <>
-      <div className="bg-gray-700">
+      <div className="bg-[#166364]  border-t border-[#e4e6eb]">
         <div className="h-52   max-w-7xl m-auto px-3 grid grid-cols-1 lg:flex justify-between items-center">
           <h1 className="text-4xl  font-medium text-white up">Teachers</h1>
 
           <div
             className={`flex py-2 ]  px-8 gap-5 rounded-lg  font-medium ${
               theme == "light"
-                ? "bg-[#2374e1] text-white"
+                ? "bg-[#23395b] text-white"
                 : "bg-[#242526] text-[#e4e6eb]"
             }`}
           >
@@ -143,7 +143,7 @@ const Teachers = () => {
                       <th
                         className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                           theme == "light"
-                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            ? "bg-[#166364]  text-white border-gray-200"
                             : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                         }`}
                       >
@@ -152,7 +152,7 @@ const Teachers = () => {
                       <th
                         className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                           theme == "light"
-                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            ? "bg-[#166364]  text-white border-gray-200"
                             : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                         }`}
                       >
@@ -161,7 +161,7 @@ const Teachers = () => {
                       <th
                         className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                           theme == "light"
-                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            ? "bg-[#166364]  text-white border-gray-200"
                             : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                         }`}
                       >
@@ -171,7 +171,7 @@ const Teachers = () => {
                       <th
                         className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                           theme == "light"
-                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            ? "bg-[#166364]  text-white border-gray-200"
                             : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                         }`}
                       >
@@ -180,7 +180,7 @@ const Teachers = () => {
                       <th
                         className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                           theme == "light"
-                            ? "bg-gray-100 text-gray-600 border-gray-200"
+                            ? "bg-[#166364]  text-white border-gray-200"
                             : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                         }`}
                       >
@@ -199,14 +199,16 @@ const Teachers = () => {
 
             <div
               className={`lg:px-5 py-3 border-t fle text-center ${
-                theme == "light" ? "bg-white " : "border-[#414343]"
+                theme == "light"
+                  ? "bg-[#166364]  text-white rounded-2xl "
+                  : "border-[#414343]"
               }`}
             >
               <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
                 <button
                   onClick={() => priviesPage()}
                   className={`text-sm   text-white font-semibold py-2 lg:px-8 px-4 rounded-lg ${
-                    theme == "light" ? "bg-[#5195ed]" : "bg-[#414343]"
+                    theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
                   } `}
                 >
                   Prev
@@ -222,7 +224,7 @@ const Teachers = () => {
                 <button
                   onClick={() => setPage(page + 1)}
                   className={`text-sm   text-white font-semibold py-2 lg:px-8 px-4 rounded-lg ${
-                    theme == "light" ? "bg-[#5195ed]" : "bg-[#414343]"
+                    theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
                   } `}
                 >
                   Next

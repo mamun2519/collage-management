@@ -40,7 +40,7 @@ const Button = () => {
         <button
           onClick={() => navigate("/login")}
           className={`font-semibold text-white px-6 rounded-full py-2 ${
-            theme == "light" ? "bg-[#0b0825]" : "bg-[#414343]"
+            theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
           }`}
         >
           Get Started
@@ -48,7 +48,7 @@ const Button = () => {
       ) : (
         <button
           className={`font-semibold text-white px-6 rounded-full py-2 ${
-            theme == "light" ? "bg-[#0b0825]" : "bg-[#414343]"
+            theme == "light" ? "bg-[#23395b] border-gray-50" : "bg-[#414343]"
           }`}
           onClick={() => signOut(auth)}
         >

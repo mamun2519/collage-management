@@ -55,7 +55,7 @@ const AboutUs = () => {
             tabIndex={0}
             className={`collapse collapse-plus border  rounded-box ${
               theme == "light"
-                ? "bg-base-100 border-base-300 "
+                ? "bg-[#166364]  border-base-300  text-white "
                 : "border-[#414343]  bg-[#242526] text-[#e4e6eb]"
             }`}
           >
@@ -82,7 +82,7 @@ const AboutUs = () => {
             tabIndex={0}
             className={`collapse collapse-plus border  rounded-box ${
               theme == "light"
-                ? "bg-base-100 border-base-300 "
+                ? "bg-[#166364]  border-base-300  text-white "
                 : "border-[#414343] bg-[#242526] text-[#e4e6eb]"
             }`}
           >
@@ -109,7 +109,7 @@ const AboutUs = () => {
             tabIndex={0}
             className={`collapse collapse-plus border  rounded-box ${
               theme == "light"
-                ? "bg-base-100 border-base-300"
+                ? "bg-[#166364]  border-base-300  text-white"
                 : "bg-[#242526] text-[#e4e6eb] border-[#414343]"
             }`}
           >

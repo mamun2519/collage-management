@@ -12,7 +12,7 @@ const Contact = () => {
           <div
             className={`border-b-[3px] rounded-full ${
               theme == "light"
-                ? "border-[#2374e1] "
+                ? "border-[#166364] "
                 : "border-[#e4e6eb] text-[#e4e6eb]"
             }`}
           >
@@ -35,7 +35,9 @@ const Contact = () => {
           <div className="flex flex-col gap-5 md:-ml-16 m-5 md:m-0">
             <div
               className={`${
-                theme == "light" ? "glass " : "bg-[#242526] text-white"
+                theme == "light"
+                  ? "glass bg-[#166364] text-white"
+                  : "bg-[#242526] text-white"
               } flex items-center gap-5 p-5 lg:pl-12 rounded-md`}
             >
               <BsFillBuildingsFill className="text-7xl md:text-4xl md:mr-6" />
@@ -47,7 +49,9 @@ const Contact = () => {
 
             <div
               className={`${
-                theme == "light" ? "glass " : "bg-[#242526] text-white"
+                theme == "light"
+                  ? "glass  bg-[#166364] text-white"
+                  : "bg-[#242526] text-white"
               } flex items-center gap-5 p-5 lg:pl-12 rounded-md`}
             >
               <MdEmail className="text-5xl md:text-4xl md:mr-6" />
@@ -59,7 +63,9 @@ const Contact = () => {
 
             <div
               className={`${
-                theme == "light" ? "glass " : "bg-[#242526] text-white"
+                theme == "light"
+                  ? "glass bg-[#166364] text-white"
+                  : "bg-[#242526] text-white"
               } flex items-center gap-5 p-5 lg:pl-12 rounded-md`}
             >
               <MdPhoneInTalk className="text-5xl md:text-4xl md:mr-6" />
