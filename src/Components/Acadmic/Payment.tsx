@@ -10,14 +10,17 @@ const Payment = () => {
   const [clientSecret, setStripeClientSecret] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/v1/payment/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("UserToken")}`,
-      },
-      body: JSON.stringify({ price: 500 }),
-    })
+    fetch(
+      "https://collage-management-backend.vercel.app/v1/payment/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("UserToken")}`,
+        },
+        body: JSON.stringify({ price: 500 }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setStripeClientSecret(data.clientSecrets));
   }, []);

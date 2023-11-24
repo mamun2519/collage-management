@@ -7,12 +7,15 @@ const useAdmin = (user: any) => {
   console.log(user);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/v1/user/chackAdmin/${email}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("Token")}`,
-        },
-      })
+      fetch(
+        `https://collage-management-backend.vercel.app/v1/user/chackAdmin/${email}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("Token")}`,
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

@@ -38,7 +38,7 @@ const Contact = () => {
                 theme == "light"
                   ? "glass bg-[#166364] text-white"
                   : "bg-[#242526] text-white"
-              } flex items-center gap-5 p-5 lg:pl-12 rounded-md`}
+              } flex items-center gap-5 p-5 lg:pl-12 rounded-md hover:bg-[#166364]`}
             >
               <BsFillBuildingsFill className="text-7xl md:text-4xl md:mr-6" />
               <div>
@@ -52,7 +52,7 @@ const Contact = () => {
                 theme == "light"
                   ? "glass  bg-[#166364] text-white"
                   : "bg-[#242526] text-white"
-              } flex items-center gap-5 p-5 lg:pl-12 rounded-md`}
+              } flex items-center gap-5 p-5 lg:pl-12 rounded-md hover:bg-[#166364]`}
             >
               <MdEmail className="text-5xl md:text-4xl md:mr-6" />
               <div>
@@ -66,7 +66,7 @@ const Contact = () => {
                 theme == "light"
                   ? "glass bg-[#166364] text-white"
                   : "bg-[#242526] text-white"
-              } flex items-center gap-5 p-5 lg:pl-12 rounded-md`}
+              } flex items-center gap-5 p-5 lg:pl-12 rounded-md hover:bg-[#166364]`}
             >
               <MdPhoneInTalk className="text-5xl md:text-4xl md:mr-6" />
               <div>

@@ -33,7 +33,7 @@ const AddEvents = () => {
     console.log(myForm);
     await axios({
       method: "POST",
-      url: "http://localhost:5000/v1/event",
+      url: "https://collage-management-backend.vercel.app/v1/event",
       data: myForm,
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -72,7 +72,7 @@ const AddEvents = () => {
         <div
           className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
             theme == "light"
-              ? "bg-[#2374e1] text-white"
+              ? "bg-[#23395b] text-white"
               : "bg-[#242526] text-[#e4e6eb]"
           }`}
         >
@@ -281,7 +281,7 @@ const AddEvents = () => {
             <div className=" text-center">
               <input
                 className={` font-semibold text-white px-6 mt-2 rounded-lg py-2 ${
-                  theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                  theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
                 }`}
                 type="submit"
                 value="Events Post"

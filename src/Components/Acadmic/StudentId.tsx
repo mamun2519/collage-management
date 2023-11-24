@@ -12,7 +12,7 @@ const StudentId = () => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `http://localhost:5000/v1/student/chackadmission?email=${user?.email}`
+        `https://collage-management-backend.vercel.app/v1/student/chackadmission?email=${user?.email}`
       )
         .then((res) => res.json())
         .then((data) => {

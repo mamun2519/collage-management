@@ -13,7 +13,7 @@ const AdmissionList = () => {
   useEffect(() => {
     isLoading(true);
     fetch(
-      `http://localhost:5000/v1/student/admission/?page=${page}&limit=${limit}&search=${search}`
+      `https://collage-management-backend.vercel.app/v1/student/admission/?page=${page}&limit=${limit}&search=${search}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -39,7 +39,7 @@ const AdmissionList = () => {
         <div
           className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
             theme == "light"
-              ? "bg-[#2374e1] text-white"
+              ? "bg-[#23395b] text-white"
               : "bg-[#242526] text-[#e4e6eb]"
           }`}
         >
@@ -131,7 +131,7 @@ const AdmissionList = () => {
                     <th
                       className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
-                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          ? "bg-[#166364] text-white border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                       }`}
                     >
@@ -140,7 +140,7 @@ const AdmissionList = () => {
                     <th
                       className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
-                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          ? "bg-[#166364] text-white border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                       }`}
                     >
@@ -149,7 +149,7 @@ const AdmissionList = () => {
                     <th
                       className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
-                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          ? "bg-[#166364] text-white border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                       }`}
                     >
@@ -158,16 +158,16 @@ const AdmissionList = () => {
                     <th
                       className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
-                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          ? "bg-[#166364] text-white border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                       }`}
                     >
-                      Verifay
+                      Verify
                     </th>
                     <th
                       className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
-                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          ? "bg-[#166364] text-white border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                       }`}
                     >
@@ -192,21 +192,23 @@ const AdmissionList = () => {
 
           <div
             className={`lg:px-5 py-3 border-t fle text-center ${
-              theme == "light" ? "bg-white " : "border-[#414343]"
+              theme == "light"
+                ? "bg-[#166364] text-white rounded-2xl"
+                : "border-[#414343]"
             }`}
           >
             <div className="inline-f  mt-2 xs:mt-0 flex justify-between  items-center ">
               <button
                 onClick={() => priviesPage()}
                 className={`text-sm   text-white font-semibold py-2 lg:px-8 px-4 rounded-lg ${
-                  theme == "light" ? "bg-[#5195ed]" : "bg-[#414343]"
+                  theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
                 } `}
               >
                 Prev
               </button>
               <span
                 className={`text-xs xs:text-sm  ${
-                  theme == "light" ? "text-gray-900" : "text-[#e4e6eb]"
+                  theme == "light" ? "text-white" : "text-[#e4e6eb]"
                 }`}
               >
                 Page No
@@ -215,7 +217,7 @@ const AdmissionList = () => {
               <button
                 onClick={() => setPage(page + 1)}
                 className={`text-sm   text-white font-semibold py-2 lg:px-8 px-4 rounded-lg ${
-                  theme == "light" ? "bg-[#5195ed]" : "bg-[#414343]"
+                  theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
                 } `}
               >
                 Next

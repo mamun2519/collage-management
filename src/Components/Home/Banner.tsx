@@ -11,6 +11,7 @@ import { AiFillWindows } from "react-icons/ai";
 import { FcBusinessman, FcDepartment } from "react-icons/fc";
 import { GiTeacher } from "react-icons/gi";
 import { ThemeContext } from "../../App";
+import { Link, useNavigate } from "react-router-dom";
 const Banner = () => {
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const slides = [
@@ -68,11 +69,12 @@ const Banner = () => {
   const goToSlide = (slideIndex: number) => {
     setCurrentIndex(slideIndex);
   };
+
   return (
     <div
       className={`${
-        theme === "light" ? " bg-base-200 " : "bg-[#242526]  border-[#414343]"
-      }lg:h-[430px]  container mx-auto rounded mt-10`}
+        theme === "light" ? "  " : "bg-[#242526]  border-[#414343]"
+      }lg:h-[430px]  container mx-auto rounded pt-10`}
     >
       <div className=" p-5 grid lg:grid-cols-2 gap-5 grid-cols-1">
         <div className="h-[300px] md:h-[500] lg:h-[380px] w-full m-auto px-4 relative group">
@@ -101,13 +103,14 @@ const Banner = () => {
 
         <div>
           <div className=" grid  grid-cols-3  lg:gap-5 gap-3 lg:mt-">
-            <div
+            <Link
+              to="/Notice"
               className={`${
                 theme === "light"
                   ? "bg-white border text-[#262582]"
                   : "bg-[#414343] text-white"
               } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
-              flex justify-center items-center `}
+              flex justify-center items-center shadow hover:bg-[#23395b] hover:text-white `}
             >
               <div>
                 <span className=" text-2xl  flex justify-center mb-2 ">
@@ -115,14 +118,15 @@ const Banner = () => {
                 </span>
                 <h3 className=" uppercase ">Notice</h3>
               </div>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/result"
               className={`${
                 theme === "light"
                   ? "bg-white border text-[#262582]"
                   : "bg-[#414343] text-white"
               } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
-              flex justify-center items-center `}
+              flex justify-center items-center shadow hover:bg-[#23395b] hover:text-white`}
             >
               <div className=" ">
                 <span className=" text-2xl  flex justify-center mb-2 ">
@@ -130,31 +134,33 @@ const Banner = () => {
                 </span>
                 <h3 className=" uppercase">RESULT</h3>
               </div>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/studentId"
               className={`${
                 theme === "light"
                   ? "bg-white border text-[#262582]"
                   : "bg-[#414343] text-white"
               } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
-              flex justify-center items-center `}
+              flex justify-center items-center shadow hover:bg-[#23395b] hover:text-white`}
             >
               <div className=" ">
                 <span className=" text-2xl  flex justify-center mb-2 ">
                   <BsNewspaper />
                 </span>
-                <h3 className=" uppercase">NEWS</h3>
+                <h3 className=" uppercase">Student Id Card</h3>
               </div>
-            </div>
+            </Link>
           </div>
           <div className=" grid  grid-cols-3  lg:gap-5 gap-3 mt-5">
-            <div
+            <Link
+              to="routine"
               className={`${
                 theme === "light"
                   ? "bg-white border text-[#262582]"
                   : "bg-[#414343] text-white"
               } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
-              flex justify-center items-center `}
+              flex justify-center items-center shadow hover:bg-[#23395b] hover:text-white`}
             >
               <div className=" ">
                 <span className=" text-2xl  flex justify-center mb-2 ">
@@ -162,14 +168,15 @@ const Banner = () => {
                 </span>
                 <h3 className=" uppercase text-center">EXAM ROUTINE</h3>
               </div>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/onlineAdmission"
               className={`${
                 theme === "light"
                   ? "bg-white border text-[#262582]"
                   : "bg-[#414343] text-white"
               } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
-              flex justify-center items-center `}
+              flex justify-center items-center shadow hover:bg-[#23395b] hover:text-white`}
             >
               <div className=" ">
                 <span className=" text-2xl  flex justify-center mb-2 ">
@@ -177,14 +184,15 @@ const Banner = () => {
                 </span>
                 <h3 className=" uppercase">ADMISSION</h3>
               </div>
-            </div>
-            <div
+            </Link>
+            <Link
+              to="/routine"
               className={`${
                 theme === "light"
                   ? "bg-white border text-[#262582]"
                   : "bg-[#414343] text-white"
               } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
-              flex justify-center items-center `}
+              flex justify-center items-center shadow hover:bg-[#23395b] hover:text-white`}
             >
               <div className=" ">
                 <span className=" text-2xl  flex justify-center mb-2 ">
@@ -192,33 +200,37 @@ const Banner = () => {
                 </span>
                 <h3 className=" uppercase text-center">CLASS ROUTINE</h3>
               </div>
-            </div>
+            </Link>
           </div>
-          <div className=" grid  grid-cols-3 lg:gap-5 gap-3 mt-5">
+          <Link
+            to="/about/collageLocation"
+            className=" grid  grid-cols-3 lg:gap-5 gap-3 mt-5"
+          >
             <div
               className={`${
                 theme === "light"
                   ? "bg-white border text-[#262582]"
                   : "bg-[#414343] text-white"
               } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
-              flex justify-center items-center `}
+              flex justify-center items-center shadow hover:bg-[#23395b] hover:text-white`}
             >
               <div className=" ">
                 <span className=" text-2xl  flex justify-center mb-2 ">
                   <FcDepartment />
                 </span>
                 <h3 className=" uppercase lg:text-[17px] text-[14px]">
-                  DEPARTMENT
+                  Collage Location
                 </h3>
               </div>
             </div>
-            <div
+            <Link
+              to="/about/teachers"
               className={`${
                 theme === "light"
                   ? "bg-white border "
                   : "bg-[#414343] text-white"
               } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
-              flex justify-center items-center `}
+              flex justify-center items-center shadow hover:bg-[#23395b] hover:text-white`}
             >
               <div className=" ">
                 <span className=" text-2xl  flex justify-center mb-2 ">
@@ -226,14 +238,14 @@ const Banner = () => {
                 </span>
                 <h3 className=" uppercase">TEACHERS</h3>
               </div>
-            </div>
+            </Link>
             <div
               className={`${
                 theme === "light"
                   ? "bg-white border text-[#262582]"
                   : "bg-[#414343] text-white"
               } lg:w-full xl:w-full sm:w-[105px] md:w-60  h-28 rounded-lg 
-              flex justify-center items-center `}
+              flex justify-center items-center shadow hover:bg-[#23395b] hover:text-white`}
             >
               <div className=" ">
                 <span className=" text-2xl  flex justify-center mb-2 ">
@@ -242,7 +254,7 @@ const Banner = () => {
                 <h3 className=" uppercase">STUDENTS</h3>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

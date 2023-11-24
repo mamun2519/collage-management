@@ -82,7 +82,7 @@ const AdmissionLIstRow = ({ admission }: AdmissionInfo) => {
             navigate(`/dashboard/admissionList/addmissionDetails/${_id}`)
           }
           className={` font-semibold text-white px-4 rounded-lg py-1 ${
-            theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+            theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
           }`}
         >
           Verified Now

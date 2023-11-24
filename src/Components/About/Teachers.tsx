@@ -15,7 +15,7 @@ const Teachers = () => {
   useEffect(() => {
     isLoading(true);
     fetch(
-      `http://localhost:5000/v1/teacher/all?page=${page}&limit=${limit}&search=${search}`
+      `https://collage-management-backend.vercel.app/v1/teacher/all?page=${page}&limit=${limit}&search=${search}`
     )
       .then((res) => res.json())
       .then((data) => {

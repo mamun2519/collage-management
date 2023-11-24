@@ -41,7 +41,7 @@ const AddNotice = () => {
       date: data.date,
       description: data.description,
     };
-    fetch(`http://localhost:5000/v1/notice`, {
+    fetch(`https://collage-management-backend.vercel.app/v1/notice`, {
       method: "POST",
       body: JSON.stringify(routine),
       headers: {
@@ -71,7 +71,7 @@ const AddNotice = () => {
         <div
           className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
             theme == "light"
-              ? "bg-[#2374e1] text-white"
+              ? "bg-[#23395b] text-white"
               : "bg-[#242526] text-[#e4e6eb]"
           }`}
         >
@@ -103,7 +103,7 @@ const AddNotice = () => {
               className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 w-full  shadow-md px-2 ${
                 theme == "light"
                   ? selected == ad.title
-                    ? "bg-[#2374e1]"
+                    ? "bg-[#23395b]"
                     : "bg-base-100"
                   : selected == ad.title
                   ? "bg-[#414343]"
@@ -282,7 +282,7 @@ const AddNotice = () => {
                 <div className=" text-center">
                   <input
                     className={` font-semibold text-white px-6 mt-2 rounded-lg py-2 ${
-                      theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+                      theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
                     }`}
                     type="submit"
                     value="Notice Post"

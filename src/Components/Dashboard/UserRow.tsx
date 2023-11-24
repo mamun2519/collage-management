@@ -7,7 +7,6 @@ interface User {
   key: string;
 }
 const UserRow = ({ user }: User) => {
-  console.log(user);
   const { theme, toggleTheme } = useContext<any>(ThemeContext);
   const [isOpen, setIsOpen] = useState(false);
   const [userId, setUserId] = useState("");
@@ -83,7 +82,7 @@ const UserRow = ({ user }: User) => {
           <button
             onClick={() => makeAdminModal(_id)}
             className={` font-semibold text-white px-4 rounded-lg py-1 ${
-              theme == "light" ? "bg-[#2374e1]" : "bg-[#414343]"
+              theme == "light" ? "bg-[#23395b]" : "bg-[#414343]"
             }`}
           >
             Admin Now

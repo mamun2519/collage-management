@@ -34,7 +34,7 @@ const ClassRoutine = () => {
     isLoading(true);
 
     fetch(
-      `http://localhost:5000/v1/routine/department?classs=${data?.classs}&session=${data.session}`
+      `https://collage-management-backend.vercel.app/v1/routine/department?classs=${data?.classs}&session=${data.session}`
     )
       .then((res) => res.json())
       .then((result) => {

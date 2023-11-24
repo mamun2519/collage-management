@@ -40,7 +40,10 @@ const SideNav = () => {
             <NavLink
               style={({ isActive, isPending }) => {
                 return {
-                  color: isActive ? "#0b0825" : "inherit",
+                  color: isActive ? "#ffff" : "inherit",
+                  backgroundColor: isActive ? "#23395b" : "",
+                  padding: isActive ? "8px 25px" : "",
+                  borderRadius: isActive ? "20px" : "",
                 };
               }}
               className={({ isActive, isPending }) => {
@@ -60,7 +63,10 @@ const SideNav = () => {
             <NavLink
               style={({ isActive, isPending }) => {
                 return {
-                  color: isActive ? "text-[#0b0825]" : "inherit",
+                  color: isActive ? "#ffff" : "inherit",
+                  backgroundColor: isActive ? "#23395b" : "",
+                  padding: isActive ? "8px 25px" : "",
+                  borderRadius: isActive ? "20px" : "",
                 };
               }}
               className={({ isActive, isPending }) => {
@@ -81,7 +87,10 @@ const SideNav = () => {
               <NavLink
                 style={({ isActive, isPending }) => {
                   return {
-                    color: isActive ? "text-[#0b0825]" : "inherit",
+                    color: isActive ? "#ffff" : "inherit",
+                    backgroundColor: isActive ? "#23395b" : "",
+                    padding: isActive ? "8px 25px" : "",
+                    borderRadius: isActive ? "20px" : "",
                   };
                 }}
                 className={({ isActive, isPending }) => {
@@ -112,7 +121,10 @@ const SideNav = () => {
             <NavLink
               style={({ isActive, isPending }) => {
                 return {
-                  color: isActive ? "blue" : "inherit",
+                  color: isActive ? "#ffff" : "inherit",
+                  backgroundColor: isActive ? "#23395b" : "",
+                  padding: isActive ? "8px 25px" : "",
+                  borderRadius: isActive ? "20px" : "",
                 };
               }}
               className={({ isActive, isPending }) => {
@@ -132,7 +144,10 @@ const SideNav = () => {
             <NavLink
               style={({ isActive, isPending }) => {
                 return {
-                  color: isActive ? "blue" : "inherit",
+                  color: isActive ? "#ffff" : "inherit",
+                  backgroundColor: isActive ? "#23395b" : "",
+                  padding: isActive ? "8px 25px" : "",
+                  borderRadius: isActive ? "20px" : "",
                 };
               }}
               className={({ isActive, isPending }) => {
@@ -153,7 +168,10 @@ const SideNav = () => {
               <NavLink
                 style={({ isActive, isPending }) => {
                   return {
-                    color: isActive ? "blue" : "inherit",
+                    color: isActive ? "#ffff" : "inherit",
+                    backgroundColor: isActive ? "#23395b" : "",
+                    padding: isActive ? "8px 25px" : "",
+                    borderRadius: isActive ? "20px" : "",
                   };
                 }}
                 className={({ isActive, isPending }) => {

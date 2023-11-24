@@ -18,7 +18,9 @@ const RasultPublished = () => {
   const [routines, setRoutine] = useState([routine]);
   const [edit, setEdit] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:5000/v1/student/admission/${id}`)
+    fetch(
+      `https://collage-management-backend.vercel.app/v1/student/admission/${id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setStudent(data.student);
@@ -89,13 +91,16 @@ const RasultPublished = () => {
       Gpa: gpa,
     };
     if (selectedExamType) {
-      fetch(`http://localhost:5000/v1/student/admission/result/${id}`, {
-        method: "POST",
-        body: JSON.stringify(result),
-        headers: {
-          "Content-type": "application/json",
-        },
-      })
+      fetch(
+        `https://collage-management-backend.vercel.app/v1/student/admission/result/${id}`,
+        {
+          method: "POST",
+          body: JSON.stringify(result),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
@@ -199,7 +204,7 @@ const RasultPublished = () => {
                     <th
                       className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
-                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          ? "bg-[#166364] text-white border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                       }`}
                     >
@@ -208,7 +213,7 @@ const RasultPublished = () => {
                     <th
                       className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
-                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          ? "bg-[#166364] text-white border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                       }`}
                     >
@@ -217,7 +222,7 @@ const RasultPublished = () => {
                     <th
                       className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
-                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          ? "bg-[#166364] text-white border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                       }`}
                     >
@@ -226,7 +231,7 @@ const RasultPublished = () => {
                     <th
                       className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
-                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          ? "bg-[#166364] text-white border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                       }`}
                     >
@@ -235,7 +240,7 @@ const RasultPublished = () => {
                     <th
                       className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                         theme == "light"
-                          ? "bg-gray-100 text-gray-600 border-gray-200"
+                          ? "bg-[#166364] text-white border-gray-200"
                           : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                       }`}
                     >

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
 import { RiSettings4Line } from "react-icons/ri";
@@ -8,26 +8,58 @@ import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
 import { FiMessageSquare, FiFolder, FiShoppingCart } from "react-icons/fi";
 const Navber = () => {
   const menus = [
-    { name: "Admission List", link: "/dashboard/admissionList", icon: MdOutlineDashboard },
-    { name: "Student List", link: "/dashboard/studentList", icon: AiOutlineUser },
-    { name: "Add Class Routine", link: "/dashboard/classRoutine", icon: FiMessageSquare },
-    { name: "Add Exam Routine", link: "/dashboard/examRoutine", icon: TbReportAnalytics, margin: true },
-    
+    {
+      name: "Admission List",
+      link: "/dashboard/admissionList",
+      icon: MdOutlineDashboard,
+    },
+    {
+      name: "Student List",
+      link: "/dashboard/studentList",
+      icon: AiOutlineUser,
+    },
+    {
+      name: "Add Class Routine",
+      link: "/dashboard/classRoutine",
+      icon: FiMessageSquare,
+    },
+    {
+      name: "Add Exam Routine",
+      link: "/dashboard/examRoutine",
+      icon: TbReportAnalytics,
+      margin: true,
+    },
+
     { name: "Result Published", link: "/dashboard/results", icon: FiFolder },
     { name: "Notices", link: "/dashboard/notice", icon: FiFolder },
     { name: "Add Notice", link: "/dashboard/addNotice", icon: FiFolder },
-    { name: "Teacher List", link: "/dashboard/teacherList", icon: FiShoppingCart },
-    { name: "Add Teacher", link: "/dashboard/addTeacher", icon: FiShoppingCart },
-    { name: "Events", link: "/dashboard/events", icon: AiOutlineHeart, margin: true },
-    { name: "Add Events", link: "/dashboard/addEvents", icon: AiOutlineHeart,},
+    {
+      name: "Teacher List",
+      link: "/dashboard/teacherList",
+      icon: FiShoppingCart,
+    },
+    {
+      name: "Add Teacher",
+      link: "/dashboard/addTeacher",
+      icon: FiShoppingCart,
+    },
+    {
+      name: "Events",
+      link: "/dashboard/events",
+      icon: AiOutlineHeart,
+      margin: true,
+    },
+    { name: "Add Events", link: "/dashboard/addEvents", icon: AiOutlineHeart },
     // { name: "", link: "/", icon: AiOutlineHeart,  },
     { name: "User List", link: "/dashboard/userList", icon: RiSettings4Line },
   ];
   const [open, setOpen] = useState(true);
+  const path = useLocation();
+
   return (
     <section className="flex ">
       <div
-        className={`bg-[#242526]  min-h-screen ${
+        className={`bg-[#166364]  min-h-screen ${
           open ? "w-72" : "w-16"
         } duration-500 text-gray-100 px-4`}
       >
@@ -43,8 +75,8 @@ const Navber = () => {
             <Link
               to={menu?.link}
               key={i}
-              className={` ${
-                menu?.margin && "mt-5"
+              className={` ${menu?.margin && "mt-5"} ${
+                path.pathname === menu.link && "bg-[#23395b]"
               } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
             >
               <div>{React.createElement(menu?.icon, { size: "20" })}</div>
@@ -71,7 +103,7 @@ const Navber = () => {
       </div>
       {/* page content  */}
       <div className="px-5 w-full">
-        <Outlet/>
+        <Outlet />
       </div>
     </section>
   );

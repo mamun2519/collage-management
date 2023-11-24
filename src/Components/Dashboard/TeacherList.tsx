@@ -26,7 +26,7 @@ const TeacherList = () => {
     setSelected(click[0]?.title);
     isLoading(true);
     fetch(
-      `http://localhost:5000/v1/teacher/department?department=${admissionName}`
+      `https://collage-management-backend.vercel.app/v1/teacher/department?department=${admissionName}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -50,7 +50,7 @@ const TeacherList = () => {
         <div
           className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
             theme == "light"
-              ? "bg-[#2374e1] text-white"
+              ? "bg-[#23395b] text-white"
               : "bg-[#242526] text-[#e4e6eb]"
           }`}
         >
@@ -85,7 +85,7 @@ const TeacherList = () => {
               className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 w-full  shadow-md px-2 ${
                 theme == "light"
                   ? selected == ad.title
-                    ? "bg-[#2374e1]"
+                    ? "bg-[#23395b]"
                     : "bg-base-100"
                   : selected == ad.title
                   ? "bg-[#414343]"
@@ -154,7 +154,7 @@ const TeacherList = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
@@ -163,7 +163,7 @@ const TeacherList = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
@@ -172,7 +172,7 @@ const TeacherList = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
@@ -181,7 +181,7 @@ const TeacherList = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
@@ -190,7 +190,7 @@ const TeacherList = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
@@ -199,7 +199,7 @@ const TeacherList = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >

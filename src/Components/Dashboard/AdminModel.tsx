@@ -13,7 +13,7 @@ const AdminModel = ({ closeModal, openModal, isOpen, id }: Admin) => {
   const [user, setUser] = useState<any>({});
   const [role, setRole] = useState("");
   useEffect(() => {
-    fetch(`http://localhost:5000/v1/user/${id}`)
+    fetch(`https://collage-management-backend.vercel.app/v1/user/${id}`)
       .then((res) => res.json())
       .then((data) => setUser(data?.user));
   }, []);
@@ -22,7 +22,7 @@ const AdminModel = ({ closeModal, openModal, isOpen, id }: Admin) => {
   };
   const makeUserAdminHendeler = (user: any) => {
     fetch(
-      `http://localhost:5000/v1/user/admin/${user?.email}?roleAction=${role}`,
+      `https://collage-management-backend.vercel.app/v1/user/admin/${user?.email}?roleAction=${role}`,
       {
         method: "PUT",
         headers: {

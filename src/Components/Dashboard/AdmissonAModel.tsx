@@ -19,7 +19,9 @@ const AdmissonAModel = ({ isOpen, closeModal, id, setAgain }: Modal) => {
 
   const { name } = student;
   useEffect(() => {
-    fetch(`http://localhost:5000/v1/student/admission/${id}`)
+    fetch(
+      `https://collage-management-backend.vercel.app/v1/student/admission/${id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setStudent(data.student);
@@ -42,13 +44,16 @@ const AdmissonAModel = ({ isOpen, closeModal, id, setAgain }: Modal) => {
       roll: data.roll,
       verifay: true,
     };
-    fetch(`http://localhost:5000/v1/student/admission/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(verifay),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
+    fetch(
+      `https://collage-management-backend.vercel.app/v1/student/admission/${id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(verifay),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

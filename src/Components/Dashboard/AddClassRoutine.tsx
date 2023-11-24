@@ -31,7 +31,9 @@ const AddClassRoutine = () => {
   useEffect(() => {
     isLoading(true);
     if (selected) {
-      fetch(`http://localhost:5000/v1/routine/chackRoutine?classs=${selected}`)
+      fetch(
+        `https://collage-management-backend.vercel.app/v1/routine/chackRoutine?classs=${selected}`
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
@@ -101,13 +103,16 @@ const AddClassRoutine = () => {
     };
     console.log(createRoutine);
     if (selectedSession) {
-      fetch("http://localhost:5000/v1/routine/classRoutine", {
-        method: "POST",
-        body: JSON.stringify(createRoutine),
-        headers: {
-          "Content-type": "application/json",
-        },
-      })
+      fetch(
+        "https://collage-management-backend.vercel.app/v1/routine/classRoutine",
+        {
+          method: "POST",
+          body: JSON.stringify(createRoutine),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
@@ -153,13 +158,16 @@ const AddClassRoutine = () => {
     };
 
     if (selectedSession && updateRoutineId) {
-      fetch(`http://localhost:5000/v1/routine/department/${updateRoutineId}`, {
-        method: "PUT",
-        body: JSON.stringify(createRoutine),
-        headers: {
-          "Content-type": "application/json",
-        },
-      })
+      fetch(
+        `https://collage-management-backend.vercel.app/v1/routine/department/${updateRoutineId}`,
+        {
+          method: "PUT",
+          body: JSON.stringify(createRoutine),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
@@ -187,7 +195,7 @@ const AddClassRoutine = () => {
         <div
           className={`flex py-2 gap-0 px-1 lg:px-8 lg:gap-5 rounded-lg  font-medium ${
             theme == "light"
-              ? "bg-[#2374e1] text-white"
+              ? "bg-[#23395b] text-white"
               : "bg-[#242526] text-[#e4e6eb]"
           }`}
         >
@@ -218,7 +226,7 @@ const AddClassRoutine = () => {
               className={`card  flex justify-center items-center   border h-40 lg:h-28 lg:w-80 w-full  shadow-md px-2 ${
                 theme == "light"
                   ? selected == ad.title
-                    ? "bg-[#2374e1]"
+                    ? "bg-[#23395b]"
                     : "bg-base-100"
                   : selected == ad.title
                   ? "bg-[#414343]"
@@ -311,7 +319,7 @@ const AddClassRoutine = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
@@ -320,7 +328,7 @@ const AddClassRoutine = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
@@ -329,7 +337,7 @@ const AddClassRoutine = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
@@ -338,7 +346,7 @@ const AddClassRoutine = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
@@ -347,7 +355,7 @@ const AddClassRoutine = () => {
                           <th
                             className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                               theme == "light"
-                                ? "bg-gray-100 text-gray-600 border-gray-200"
+                                ? "bg-[#166364] text-white border-gray-200"
                                 : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                             }`}
                           >
@@ -357,7 +365,7 @@ const AddClassRoutine = () => {
                             <th
                               className={`px-5 py-3 border-b-2  text-left text-xs font-semibold  uppercase tracking-wider ${
                                 theme == "light"
-                                  ? "bg-gray-100 text-gray-600 border-gray-200"
+                                  ? "bg-[#166364] text-white border-gray-200"
                                   : "bg-[#414343] text-[#e4e6eb] border-[#414343]"
                               }`}
                             >
@@ -605,7 +613,7 @@ const AddClassRoutine = () => {
                     onClick={() => addRoutineFlied()}
                     className={`font-semibold  px-8 rounded-lg py-2 ${
                       theme == "light"
-                        ? "bg-[#2374e1] text-white"
+                        ? "bg-[#23395b] text-white"
                         : "bg-[#414343] text-[#e4e6eb]"
                     }`}
                   >
@@ -618,7 +626,7 @@ const AddClassRoutine = () => {
                       onClick={() => submitHendeler()}
                       className={`font-semibold  px-8 rounded-lg py-2 mt-3 ${
                         theme == "light"
-                          ? "bg-[#2374e1] text-white"
+                          ? "bg-[#23395b] text-white"
                           : "bg-[#414343] text-[#e4e6eb]"
                       } `}
                     >
@@ -638,7 +646,7 @@ const AddClassRoutine = () => {
                       onClick={() => updateButtonHendler()}
                       className={`font-semibold  px-8 rounded-lg py-2 mt-3 ${
                         theme == "light"
-                          ? "bg-[#2374e1] text-white"
+                          ? "bg-[#23395b] text-white"
                           : "bg-[#414343] text-[#e4e6eb]"
                       } `}
                     >
@@ -648,7 +656,7 @@ const AddClassRoutine = () => {
                       onClick={() => cancleHendeler()}
                       className="bg-white font-semibold text-[#2374e1] border text-white px-8 rounded-lg py-2 mt-3"
                     >
-                      cancle
+                      Cancel
                     </button>
                   </div>
                 )}
@@ -658,17 +666,17 @@ const AddClassRoutine = () => {
                       onClick={() => updateRequestHendeler()}
                       className={`font-semibold  px-8 rounded-lg py-2 mt-3 ${
                         theme == "light"
-                          ? "bg-[#2374e1] text-white"
+                          ? "bg-[#23395b] text-white"
                           : "bg-[#414343] text-[#e4e6eb]"
                       } `}
                     >
-                      Confrom Update
+                      Conform Update
                     </button>
                     <button
                       onClick={() => cancleHendeler()}
                       className="bg-white font-semibold text-[#2374e1] border px-8 rounded-lg py-2 mt-3"
                     >
-                      cancle
+                      Cancel
                     </button>
                   </div>
                 )}

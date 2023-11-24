@@ -11,7 +11,7 @@ const Notice = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/v1/notice?page=${page}&limit=${limit}&search=${search}`
+      `https://collage-management-backend.vercel.app/v1/notice?page=${page}&limit=${limit}&search=${search}`
     )
       .then((res) => res.json())
       .then((data) => {

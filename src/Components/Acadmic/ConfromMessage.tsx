@@ -29,7 +29,10 @@ const ConfromMessage = () => {
     console.log(admission);
 
     axios
-      .post("http://localhost:5000/v1/student/admission", admission)
+      .post(
+        "https://collage-management-backend.vercel.app/v1/student/admission",
+        admission
+      )
       .then(function (response) {
         console.log(response);
       })
