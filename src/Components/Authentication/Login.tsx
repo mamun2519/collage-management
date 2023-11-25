@@ -75,7 +75,7 @@ const Login = () => {
       <div className="card w-full lg:w-3/4 bg-base-100 shadow border">
         <div className=" grid lg:grid-cols-2  grid-cols-1">
           <div>
-            <img src="/assets/picture/Fingerprint-rafiki.svg" alt="" />
+            <img src="/assets/login.svg" alt="" />
           </div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="lg:p-10 p-5">
@@ -143,12 +143,10 @@ const Login = () => {
                   </span>
                 )}
               </label>
-              <p className="text-center my-1 text-blue-500">
-                Forgate Password?
-              </p>
+              <p className="text-center my-1 text-blue-500">Forgat Password?</p>
               <div className="mt-5">
                 <input
-                  className="bg-red-500 cursor-pointer w-full rounded-full text-white h-12"
+                  className="bg-[#23395b] cursor-pointer w-full rounded-full text-white h-12"
                   type="submit"
                   value="Sing in"
                 />

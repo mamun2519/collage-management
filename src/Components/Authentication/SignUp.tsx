@@ -86,7 +86,7 @@ const SignUp: React.FC = () => {
       <div className="card w-full lg:w-3/4 bg-base-100 shadow border">
         <div className=" grid lg:grid-cols-2  grid-cols-1 gap-10">
           <div className="flex items-center">
-            <img src="/assets/picture/Reset password-pana.svg" alt="" />
+            <img src="/assets/singup.svg" alt="" />
           </div>
           <div className="lg:p-10 p-5">
             <div className="text-center mt-5 ">
@@ -181,7 +181,7 @@ const SignUp: React.FC = () => {
 
               <div className="mt-5">
                 <input
-                  className="bg-red-500 w-full rounded-full text-white h-12"
+                  className="bg-[#23395b] w-full rounded-full text-white h-12"
                   type="submit"
                   value="Sing in"
                 />

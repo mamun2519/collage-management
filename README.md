@@ -1,15 +1,16 @@
+# Complect React TypeScript MERN Stack Project
 
-# Complect React TypeSrcipt  MERN Stack Project
-
-"Collage-Management" Its verry Large Single Page application.
+"Collage-Management" Its very Large Single Page application.
 
 ## Live Link
-Please visited my webiste. https://collage-management-ca2fc.web.app/
-## Tacnology use
+
+Please visited my webSite. https://ctg-govt-collage.vercel.app/
+
+## Technology use
 
 This project is used by the following companies:
 
-- React/TypeSrcipt App
+- React/TypeScript App
 - Mongoose
 - Node Js
 - Express js
@@ -27,4 +28,3 @@ This project is used by the following companies:
 - Swiper
 
 ## Website Description
-
