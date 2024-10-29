@@ -28,7 +28,13 @@ const SideNav = () => {
         <div className="z-50 md:w-auto w-full flex justify-between">
           {/* <img src="" alt="BanglaDesh Railway School" className="md:cursor-pointer h-9" /> */}
 
-          <span className="uppercase ">GOVT PUBLIC COLLAGE</span>
+          <Link to="/" className="uppercase ">
+            <img
+              src="/assets/logo2.png"
+              className="w-24 h-12 rounded-lg"
+              alt="logo"
+            />
+          </Link>
           <div className="text-3xl md:hidden" onClick={() => setOpen(!open)}>
             <GiHamburgerMenu
               name={`${open ? "close" : "menu"}`}

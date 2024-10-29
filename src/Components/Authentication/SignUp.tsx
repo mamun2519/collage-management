@@ -183,7 +183,7 @@ const SignUp: React.FC = () => {
                 <input
                   className="bg-[#23395b] w-full rounded-full text-white h-12"
                   type="submit"
-                  value="Sing in"
+                  value="Sing Up"
                 />
                 {errorMessage}
                 <SocalLogin signInWithGoogle={signInWithGoogle} />
